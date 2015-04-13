@@ -5,6 +5,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 import fr.oms.fragments.FragmentListeAssociations;
+import fr.oms.fragments.FragmentListeDisciplines;
 import fr.oms.fragments.FragmentListeEquipements;
 import fr.oms.fragments.FragmentListeQuartiers;
 import fr.oms.fragments.PageFragment;
@@ -29,7 +30,8 @@ public class SampleFragmentPagerAdapter extends FragmentStatePagerAdapter {
     	switch(position){
     	case 0: return new FragmentListeAssociations();
     	case 1: return new FragmentListeEquipements();
-    	case 2: return new FragmentListeQuartiers();
+    	case 2: return new FragmentListeDisciplines();
+    	case 3: return new FragmentListeQuartiers();
     	default: return new FragmentListeAssociations();
     	}
     }
