@@ -15,7 +15,7 @@ public class AnnuaireFragment extends Fragment{
 
 	private int mPage;
 
-	public static android.support.v4.app.Fragment newInstance(int page) {
+	public static Fragment newInstance(int page) {
 		Bundle args = new Bundle();
 		args.putInt(ARG_PAGE, page);
 		android.support.v4.app.Fragment fragment = new AnnuaireFragment();
@@ -26,7 +26,6 @@ public class AnnuaireFragment extends Fragment{
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		//mPage = getArguments().getInt(ARG_PAGE);
 	}
 
 	@Override
@@ -34,12 +33,8 @@ public class AnnuaireFragment extends Fragment{
 			Bundle savedInstanceState) {
 		View view = inflater.inflate(R.layout.pager, container, false);
 		ViewPager viewPager = (ViewPager) view.findViewById(R.id.viewpager);
-        if(viewPager==null){
-        	System.out.println("PAGER NULL");
-        }
         viewPager.setAdapter(new SampleFragmentPagerAdapter(getFragmentManager(), 
             getActivity()));
-
         // Give the SlidingTabLayout the ViewPager
         SlidingTabLayout slidingTabLayout = (SlidingTabLayout) view.findViewById(R.id.sliding_tabs);
         // Center the tabs in the layout

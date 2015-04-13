@@ -1,10 +1,10 @@
 package fr.oms.adapter;
 
-import fr.oms.fragments.AnnuaireFragment;
 import android.content.Context;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
+import fr.oms.fragments.PageFragment;
 
 public class SampleFragmentPagerAdapter extends FragmentPagerAdapter {
     final int PAGE_COUNT = 3;
@@ -23,7 +23,7 @@ public class SampleFragmentPagerAdapter extends FragmentPagerAdapter {
 
     @Override
     public Fragment getItem(int position) {
-        return AnnuaireFragment.newInstance(position + 1);
+        return PageFragment.newInstance(position);
     }
 
     @Override
