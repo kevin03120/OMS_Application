@@ -1,29 +1,25 @@
 package fr.oms.activities;
 
-import fr.oms.fragments.AccueilFragment;
-import fr.oms.fragments.AgendaFragment;
-import fr.oms.fragments.NavigationDrawerFragment;
-import android.app.Activity;
 import android.app.ActionBar;
-import android.app.Fragment;
-import android.app.FragmentManager;
-import android.content.Context;
-import android.os.Build;
+import android.app.Activity;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentActivity;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.widget.DrawerLayout;
 import android.util.Log;
-import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.support.v4.app.FragmentActivity;
-import android.support.v4.widget.DrawerLayout;
-import android.widget.ArrayAdapter;
-import android.widget.TextView;
 import android.widget.Toast;
+import fr.oms.fragments.AccueilFragment;
+import fr.oms.fragments.AgendaFragment;
+import fr.oms.fragments.AnnuaireFragment;
+import fr.oms.fragments.NavigationDrawerFragment;
 
-public class MainActivity extends Activity implements NavigationDrawerFragment.NavigationDrawerCallbacks {
+public class MainActivity extends FragmentActivity implements NavigationDrawerFragment.NavigationDrawerCallbacks {
 
 	/**
 	 * Fragment managing the behaviors, interactions and presentation of the
@@ -53,6 +49,10 @@ public class MainActivity extends Activity implements NavigationDrawerFragment.N
 	@Override
 	public void onNavigationDrawerItemSelected(int position) {
 		// update the main content by replacing fragments
+		if(position==1){
+			//this.setContentView(R.layout.pager);
+			
+		}
 		displayView(position);
 	}
 
@@ -64,6 +64,7 @@ public class MainActivity extends Activity implements NavigationDrawerFragment.N
 	        fragment = new AccueilFragment();
 	        break;
 	    case 1:
+	    	fragment=new AnnuaireFragment();
 	        Toast.makeText(this, "en attente Annuaire", Toast.LENGTH_SHORT).show();
 	        break;
 	    case 2:
@@ -75,7 +76,7 @@ public class MainActivity extends Activity implements NavigationDrawerFragment.N
 	    }
 
 	    if (fragment != null) {
-	        FragmentManager fragmentManager = getFragmentManager();
+	        FragmentManager fragmentManager = getSupportFragmentManager();
 	        fragmentManager.beginTransaction().replace(R.id.container, fragment).commit();
 	    } else {
 	        // error in creating fragment
