@@ -37,11 +37,9 @@ public class MainActivity extends FragmentActivity implements NavigationDrawerFr
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
-
 		mNavigationDrawerFragment = (NavigationDrawerFragment) getFragmentManager().findFragmentById(
 				R.id.navigation_drawer);
 		mTitle = getTitle();
-
 		// Set up the drawer.
 		mNavigationDrawerFragment.setUp(R.id.navigation_drawer, (DrawerLayout) findViewById(R.id.drawer_layout));
 	}
@@ -49,10 +47,6 @@ public class MainActivity extends FragmentActivity implements NavigationDrawerFr
 	@Override
 	public void onNavigationDrawerItemSelected(int position) {
 		// update the main content by replacing fragments
-		if(position==1){
-			//this.setContentView(R.layout.pager);
-			
-		}
 		displayView(position);
 	}
 
@@ -64,7 +58,7 @@ public class MainActivity extends FragmentActivity implements NavigationDrawerFr
 	        fragment = new AccueilFragment();
 	        break;
 	    case 1:
-	    	fragment=new AnnuaireFragment();
+	    	fragment = new AnnuaireFragment();
 	        Toast.makeText(this, "en attente Annuaire", Toast.LENGTH_SHORT).show();
 	        break;
 	    case 2:

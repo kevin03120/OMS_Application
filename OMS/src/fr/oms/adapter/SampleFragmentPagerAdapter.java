@@ -3,17 +3,17 @@ package fr.oms.adapter;
 import android.content.Context;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.app.FragmentStatePagerAdapter;
 import fr.oms.fragments.PageFragment;
 
-public class SampleFragmentPagerAdapter extends FragmentPagerAdapter {
-    final int PAGE_COUNT = 3;
-    private String tabTitles[] = new String[] { "Tab1", "Tab2", "Tab3" };
+public class SampleFragmentPagerAdapter extends FragmentStatePagerAdapter {
+    final int PAGE_COUNT = 4;
+    private String tabTitles[] = new String[] { "Associations", "Equipements", "Disciplines", "Quartiers" };
     private Context context;
 
     public SampleFragmentPagerAdapter(FragmentManager fm, Context context) {
         super(fm);
-        this.context = context;
+        this.context = context;        
     }
 
     @Override
@@ -23,6 +23,7 @@ public class SampleFragmentPagerAdapter extends FragmentPagerAdapter {
 
     @Override
     public Fragment getItem(int position) {
+    	System.out.println("GET ITEM");
         return PageFragment.newInstance(position);
     }
 
