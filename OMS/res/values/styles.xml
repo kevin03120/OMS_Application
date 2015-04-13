@@ -1,0 +1,136 @@
+<resources>
+
+    <!--
+        Base application theme, dependent on API level. This theme is replaced
+        by AppBaseTheme from res/values-vXX/styles.xml on newer devices.
+    -->
+    <style name="AppBaseTheme" parent="android:Theme.Light">
+        <!--
+            Theme customizations available in newer API levels can go in
+            res/values-vXX/styles.xml, while customizations related to
+            backward-compatibility can go here.
+        -->
+    </style>
+
+    <!-- Application theme. -->
+    <style name="AppTheme" parent="AppBaseTheme">
+        <!-- All customizations that are NOT specific to a particular API-level can go here. -->
+    </style>
+
+    <style name="btnStyleOrange" parent="@android:style/Widget.Button">
+        <item name="android:textSize">15sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">#FFFFFF</item>
+        <item name="android:gravity">center</item>
+        <item name="android:shadowColor">#000000</item>
+        <item name="android:shadowDx">1</item>
+        <item name="android:shadowDy">1</item>
+        <item name="android:shadowRadius">0.6</item>
+        <item name="android:background">@drawable/custom_btn_sorbus</item>
+        <item name="android:padding">10dip</item>
+    </style>
+
+    <style name="btnStylePaprika" parent="@android:style/Widget.Button">
+        <item name="android:textSize">15sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">#FFFFFF</item>
+        <item name="android:gravity">center</item>
+        <item name="android:shadowColor">#000000</item>
+        <item name="android:shadowDx">1</item>
+        <item name="android:shadowDy">1</item>
+        <item name="android:shadowRadius">0.6</item>
+        <item name="android:background">@drawable/custom_btn_paprika</item>
+        <item name="android:padding">10dip</item>
+    </style>
+
+    <style name="btnStyleRed" parent="@android:style/Widget.Button">
+        <item name="android:textSize">15sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">#FFFFFF</item>
+        <item name="android:gravity">center</item>
+        <item name="android:shadowColor">#000000</item>
+        <item name="android:shadowDx">1</item>
+        <item name="android:shadowDy">1</item>
+        <item name="android:shadowRadius">0.6</item>
+        <item name="android:background">@drawable/custom_btn_red</item>
+        <item name="android:padding">10dip</item>
+    </style>
+    
+    <style name="btnStyleBlue" parent="@android:style/Widget.Button">
+        <item name="android:textSize">15sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">#FFFFFF</item>
+        <item name="android:gravity">center</item>
+        <item name="android:shadowColor">#000000</item>
+        <item name="android:shadowDx">1</item>
+        <item name="android:shadowDy">1</item>
+        <item name="android:shadowRadius">0.6</item>
+        <item name="android:background">@drawable/custom_btn_blue</item>
+        <item name="android:padding">10dip</item>
+    </style>
+    
+
+    <style name="btnStyleYellow" parent="@android:style/Widget.Button">
+        <item name="android:textSize">15sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">#FFFFFF</item>
+        <item name="android:gravity">center</item>
+        <item name="android:shadowColor">#000000</item>
+        <item name="android:shadowDx">1</item>
+        <item name="android:shadowDy">1</item>
+        <item name="android:shadowRadius">0.6</item>
+        <item name="android:background">@drawable/custom_btn_yellow</item>
+        <item name="android:padding">10dip</item>
+    </style>
+
+    <style name="btnStyleGreen" parent="@android:style/Widget.Button">
+        <item name="android:textSize">15sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">#FFFFFF</item>
+        <item name="android:gravity">center</item>
+        <item name="android:shadowColor">#000000</item>
+        <item name="android:shadowDx">1</item>
+        <item name="android:shadowDy">1</item>
+        <item name="android:shadowRadius">0.6</item>
+        <item name="android:background">@drawable/custom_btn_green</item>
+        <item name="android:padding">10dip</item>
+    </style>
+
+    <color name="Vert1">#1FCF6D</color>
+    <color name="Vert2">#1AAF5D</color>
+    <color name="Vert3">#00BE9C</color>
+    <color name="Vert4">#01A185</color>
+    <color name="Bleu1">#2C97DF</color>
+    <color name="Bleu2">#227FBC</color>
+    <color name="BleuClair">#A9E2F3</color>
+    <color name="VertClair">#D8F6CE</color>
+    <color name="Violet1">#9C56B8</color>
+    <color name="Violet2">#8F3FB0</color>
+    <color name="BleuFonce1">#334960</color>
+    <color name="BleuFonce2">#2C3E52</color>
+    <color name="Jaune">#F3C500</color>
+    <color name="Orange1">#F59C00</color>
+    <color name="Orange2">#E87E04</color>
+    <color name="Orange3">#D55400</color>
+    <color name="Rouge1">#EA4B35</color>
+    <color name="Rouge2">#C33825</color>
+    <color name="Blanc">#ECF0F1</color>
+    <color name="Gris1">#BEC3C7</color>
+    <color name="Gris2">#95A5A5</color>
+    <color name="Gris3">#7E8C8D</color>
+    <color name="VertNum1">#5FB404</color>
+    <color name="VertNum2">#4B8A08</color>
+    <color name="JauneNum1">#F7FE2E</color>
+    <color name="JauneNum2">#FACC2E</color>
+    <color name="RougeNum1">#DF3A01</color>
+    <color name="RougeNum2">#B43104</color>
+    <color name="JauneClair">#DEFE5E</color>
+    <color name="BleuOms">#009EE0</color>
+    <color name="BleuOmsFonce">#0089C4</color>
+    <color name="VertOms">#C4D600</color>
+    <color name="VertOmsFonce">#A4B300</color>
+    <color name="NoirOms">#54585A</color>
+    <color name="OrangeOms">#F29400</color>
+    <color name="OrangeOmsFonce">#D58200</color>
+
+</resources>

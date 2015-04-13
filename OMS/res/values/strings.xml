@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">OMS</string>
+    <string name="action_example">example</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="accueil">Accueil</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="action_settings">Settings</string>
+    <string name="info_image">Logo de l\'OMS</string>
+    <string name="ma_position">Ma Position</string>
+    <string name="actualite">Actualités</string>
+    <string name="association">Les associations</string>
+    <string name="equipement">Les equipements</string>
+    <string name="quartier">Les quartiers</string>
+    <string name="discipline">Les disciplines</string>
+    <string name="info_icone">Information sur l\'OMS</string>
+    <string name="titre_info">Autres Informations</string>
+    <string name="guide_sport"><u>Guide des sports</u></string>
+    <string name="plan_oms"><u>Plan OMS</u></string>
+	<string name="lien_guide_sport">http://fr.calameo.com/read/00122036544c76167c62c</string>
+	<string name="lien_plan_OMS">http://www.oms-clermont-ferrand.fr/plan-oms</string>
+	<string name="adherents">Adhérents ?</string>
+	<string name="non_adherents">Non Adhérents ?</string>
+	<string name="fleche">></string>
+	<string name="titreSportDialog">Sports concernant la discipline :</string>
+	<string name="Sync">Synchroniser les données</string>
+	<string name="annuaire">Annuaire</string>
+	<string name="logo_adherent">adherent OMS</string>
+	<string name="detailCo">Pas de connexion Internet !</string>
+	<string name="goMap">- Voir sur la carte -</string>
+	<string name="info_assoc_site"><u>Plus d\'informations sur le site</u></string>
+	<string name="pasAdherent">Impossible de voir la fiche d\'une association non adhérente à l\'OMS.</string>
+	<string name="lienSite">http://www.oms-clermont-ferrand.fr/</string>
+	<string name="contactNonDispo">Aucun contact disponible</string>
+	<string name="equipementNonDispo">Aucun equipement disponible</string>
+	<string name="agenda">Agenda</string>
+	<string name="titreDetailAssociation">Détail d\'une association</string>
+	<string name="goSite">Pour plus d\'informations</string>
+	<string-array name="menus">
+		<item >Accueil</item>
+		<item >Annuaire</item>
+		<item >Agenda</item>
+		<item >Ma Position</item>
+	</string-array>
+</resources>

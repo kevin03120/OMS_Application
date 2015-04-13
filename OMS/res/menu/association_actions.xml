@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android" >
+    <item android:id="@+id/lien_site"
+          android:title="@string/info_assoc_site"
+          android:showAsAction="ifRoom" />
+</menu>
