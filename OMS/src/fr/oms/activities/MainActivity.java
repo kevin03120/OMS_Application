@@ -2,6 +2,7 @@ package fr.oms.activities;
 
 import android.app.ActionBar;
 import android.app.Activity;
+import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
@@ -14,10 +15,12 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
+import fr.oms.dataloader.CSVParser;
 import fr.oms.fragments.AccueilFragment;
 import fr.oms.fragments.AgendaFragment;
 import fr.oms.fragments.AnnuaireFragment;
 import fr.oms.fragments.NavigationDrawerFragment;
+import fr.oms.modele.Manager;
 
 public class MainActivity extends FragmentActivity implements NavigationDrawerFragment.NavigationDrawerCallbacks {
 
@@ -36,7 +39,11 @@ public class MainActivity extends FragmentActivity implements NavigationDrawerFr
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		Manager.getInstance().clearDonnees();
+		CSVParser parser=new CSVParser(this);
+		parser.readCSV();
 		setContentView(R.layout.activity_main);
+		setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 		mNavigationDrawerFragment = (NavigationDrawerFragment) getFragmentManager().findFragmentById(
 				R.id.navigation_drawer);
 		mTitle = getTitle();

@@ -33,7 +33,7 @@ public class FragmentListeAssociations extends Fragment {
 	private List<Association> mesAssocFiltreSport;
 	private int idSport = 0;
 	private TextView txtFiltre;
-
+	
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
