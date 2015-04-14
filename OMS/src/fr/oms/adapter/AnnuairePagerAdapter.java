@@ -8,7 +8,6 @@ import fr.oms.fragments.FragmentListeAssociations;
 import fr.oms.fragments.FragmentListeDisciplines;
 import fr.oms.fragments.FragmentListeEquipements;
 import fr.oms.fragments.FragmentListeQuartiers;
-import fr.oms.fragments.PageFragment;
 
 public class AnnuairePagerAdapter extends FragmentStatePagerAdapter {
     final int PAGE_COUNT = 4;
@@ -17,7 +16,7 @@ public class AnnuairePagerAdapter extends FragmentStatePagerAdapter {
 
     public AnnuairePagerAdapter(FragmentManager fm, Context context) {
         super(fm);
-        this.context = context;        
+        this.setContext(context);        
     }
 
     @Override
@@ -41,4 +40,12 @@ public class AnnuairePagerAdapter extends FragmentStatePagerAdapter {
         // Generate title based on item position
         return tabTitles[position];
     }
+
+	public Context getContext() {
+		return context;
+	}
+
+	public void setContext(Context context) {
+		this.context = context;
+	}
 }

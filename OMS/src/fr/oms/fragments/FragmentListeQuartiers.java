@@ -6,10 +6,8 @@ import java.util.List;
 
 import fr.oms.activities.R;
 import fr.oms.adapter.ExpandableListAdapter;
-import fr.oms.metier.Discipline;
 import fr.oms.metier.Equipement;
 import fr.oms.metier.Quartier;
-import fr.oms.metier.Sport;
 import fr.oms.modele.Manager;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;

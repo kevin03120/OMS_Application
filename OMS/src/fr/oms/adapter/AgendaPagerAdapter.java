@@ -14,7 +14,7 @@ public class AgendaPagerAdapter extends FragmentStatePagerAdapter {
 
     public AgendaPagerAdapter(FragmentManager fm, Context context) {
         super(fm);
-        this.context = context;        
+        this.setContext(context);        
     }
 
     @Override
@@ -36,4 +36,12 @@ public class AgendaPagerAdapter extends FragmentStatePagerAdapter {
         // Generate title based on item position
         return tabTitles[position];
     }
+
+	public Context getContext() {
+		return context;
+	}
+
+	public void setContext(Context context) {
+		this.context = context;
+	}
 }
