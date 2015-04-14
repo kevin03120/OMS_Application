@@ -66,7 +66,6 @@ public class MainActivity extends FragmentActivity implements NavigationDrawerFr
 	        break;
 	    case 1:
 	    	fragment = new AnnuaireFragment();
-	        Toast.makeText(this, "en attente Annuaire", Toast.LENGTH_SHORT).show();
 	        break;
 	    case 2:
 	        fragment = new AgendaFragment();
