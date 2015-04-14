@@ -1,7 +1,10 @@
 package fr.oms.fragments;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -22,20 +25,21 @@ public class AccueilFragment extends Fragment {
 		btnAgenda = (Button)v.findViewById(R.id.annuaire);
 		btnActu = (Button)v.findViewById(R.id.actualite);
 		btnGeolocalisation = (Button)v.findViewById(R.id.maPosition);
-		clicBtnAgenda();
+		clicBtnAnnuaire();
 		clicBtnActu();
 		clicBtnGeolocalisation();
 		return v;
 	}
 	
-	private void clicBtnAgenda(){
+	private void clicBtnAnnuaire(){
 		btnAgenda.setOnClickListener(new OnClickListener() {
 			
 			@Override
 			public void onClick(View v) {
-				Toast.makeText(getActivity(), "Clic Annuaire", Toast.LENGTH_SHORT).show();
-				/*Intent intent = new Intent(AccueilActivity.this, AnnuaireActivity.class);
-				startActivity(intent);*/
+				AnnuaireFragment fragment = new AnnuaireFragment();
+				FragmentManager fragM = getActivity().getSupportFragmentManager();
+				FragmentTransaction fragT = fragM.beginTransaction();
+				fragT.replace(R.id.container, fragment).commit();
 			}
 		});
 	}
