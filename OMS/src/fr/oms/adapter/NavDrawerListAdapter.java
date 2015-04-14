@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import fr.oms.activities.R;
 import fr.oms.modele.NavDrawerItem;
@@ -46,10 +47,9 @@ public class NavDrawerListAdapter extends BaseAdapter {
 
         ImageView imgIcon = (ImageView) convertView.findViewById(R.id.ivIcon);
         TextView txtTitle = (TextView) convertView.findViewById(R.id.tvTitle);
-
+        LinearLayout layout=(LinearLayout) convertView.findViewById(R.id.layout_drawer);
         imgIcon.setImageResource(navDrawerItems.get(position).getIcon());
         txtTitle.setText(navDrawerItems.get(position).getTitle());
-
         return convertView;
     }
 
