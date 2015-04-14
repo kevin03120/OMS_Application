@@ -38,10 +38,13 @@
 	<string name="agenda">Agenda</string>
 	<string name="titreDetailAssociation">Détail d\'une association</string>
 	<string name="goSite">Pour plus d\'informations</string>
+	<string name="drawer_open">Open navigation drawer</string>
+    <string name="drawer_close">Close navigation drawer</string>
 	<string-array name="menus">
 		<item >Accueil</item>
 		<item >Annuaire</item>
 		<item >Agenda</item>
 		<item >Ma Position</item>
 	</string-array>
+	
 </resources>

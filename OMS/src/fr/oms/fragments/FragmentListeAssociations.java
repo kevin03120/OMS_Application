@@ -38,7 +38,7 @@ public class FragmentListeAssociations extends Fragment {
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
 		View v = inflater.inflate(R.layout.list_association, container,false);
-		txtFiltre = (TextView)v.findViewById(R.id.filtre);
+		txtFiltre = (TextView)v.findViewById(R.id.txt_filtre);
 		chkAdherent = (CheckBox)v.findViewById(R.id.chkAdherents);
 		chkNonAdherent = (CheckBox)v.findViewById(R.id.chkNonAdherents);
 		listeAssociation = (ListView)v.findViewById(R.id.listeAssociation);
