@@ -10,12 +10,12 @@ import fr.oms.fragments.FragmentListeEquipements;
 import fr.oms.fragments.FragmentListeQuartiers;
 import fr.oms.fragments.PageFragment;
 
-public class SampleFragmentPagerAdapter extends FragmentStatePagerAdapter {
+public class AnnuairePagerAdapter extends FragmentStatePagerAdapter {
     final int PAGE_COUNT = 4;
     private String tabTitles[] = new String[] { "Associations", "Equipements", "Disciplines", "Quartiers" };
     private Context context;
 
-    public SampleFragmentPagerAdapter(FragmentManager fm, Context context) {
+    public AnnuairePagerAdapter(FragmentManager fm, Context context) {
         super(fm);
         this.context = context;        
     }
