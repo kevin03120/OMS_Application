@@ -60,41 +60,43 @@ public class MainActivity extends FragmentActivity implements NavigationDrawerFr
 	}
 
 	private void displayView(int position) {
-	    // update the main content by replacing fragments
-	    Fragment fragment = null;
-	    switch (position) {
-	    case 0:
-	        fragment = new AccueilFragment();
-	        getActionBar().setBackgroundDrawable(
-	                new ColorDrawable((Color.BLACK)));
-	        break;
-	    case 1:
-	    	fragment = new AnnuaireFragment();
-	    	 getActionBar().setBackgroundDrawable(
-		                new ColorDrawable((getResources().getColor(R.color.VertOms))));
-	        Toast.makeText(this, "en attente Annuaire", Toast.LENGTH_SHORT).show();
-	        break;
-	    case 2:	    	
-	        fragment = new AgendaFragment();
-	        getActionBar().setBackgroundDrawable(
-	                new ColorDrawable((getResources().getColor(R.color.OrangeOms))));
-	        break;
-	    case 3:
-	        Toast.makeText(this, "en attente Geo", Toast.LENGTH_SHORT).show();
-//	        getActionBar().setBackgroundDrawable(
-//	                new ColorDrawable((getResources().getColor(R.color.BleuOms))));
-	        break;
-	    }
+		// update the main content by replacing fragments
+		Fragment fragment = null;
+		switch (position) {
+		case 0:
+			fragment = new AccueilFragment();
+			getActionBar().setBackgroundDrawable(
+					new ColorDrawable((Color.BLACK)));
+			break;
+		case 1:
 
-	    if (fragment != null) {
-	        FragmentManager fragmentManager = getSupportFragmentManager();
-	        fragmentManager.beginTransaction().replace(R.id.container, fragment).commit();
-	    } else {
-	        // error in creating fragment
-	        Log.e("MainActivity", "Error in creating fragment");
-	    }
+			fragment = new AnnuaireFragment();
+			getActionBar().setBackgroundDrawable(
+					new ColorDrawable((getResources().getColor(R.color.VertOms))));
+			Toast.makeText(this, "en attente Annuaire", Toast.LENGTH_SHORT).show();
+
+			break;
+		case 2:	    	
+			fragment = new AgendaFragment();
+			getActionBar().setBackgroundDrawable(
+					new ColorDrawable((getResources().getColor(R.color.OrangeOms))));
+			break;
+		case 3:
+			Toast.makeText(this, "en attente Geo", Toast.LENGTH_SHORT).show();
+			//	        getActionBar().setBackgroundDrawable(
+			//	                new ColorDrawable((getResources().getColor(R.color.BleuOms))));
+			break;
+		}
+
+		if (fragment != null) {
+			FragmentManager fragmentManager = getSupportFragmentManager();
+			fragmentManager.beginTransaction().replace(R.id.container, fragment).commit();
+		} else {
+			// error in creating fragment
+			Log.e("MainActivity", "Error in creating fragment");
+		}
 	}
-	
+
 	public void onSectionAttached(int number) {
 		switch (number) {
 		case 1:
