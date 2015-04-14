@@ -3,6 +3,8 @@ package fr.oms.activities;
 import android.app.ActionBar;
 import android.app.Activity;
 import android.content.pm.ActivityInfo;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
@@ -63,16 +65,24 @@ public class MainActivity extends FragmentActivity implements NavigationDrawerFr
 	    switch (position) {
 	    case 0:
 	        fragment = new AccueilFragment();
+	        getActionBar().setBackgroundDrawable(
+	                new ColorDrawable((Color.BLACK)));
 	        break;
 	    case 1:
 	    	fragment = new AnnuaireFragment();
+	    	 getActionBar().setBackgroundDrawable(
+		                new ColorDrawable((getResources().getColor(R.color.VertOms))));
 	        Toast.makeText(this, "en attente Annuaire", Toast.LENGTH_SHORT).show();
 	        break;
-	    case 2:
+	    case 2:	    	
 	        fragment = new AgendaFragment();
+	        getActionBar().setBackgroundDrawable(
+	                new ColorDrawable((getResources().getColor(R.color.OrangeOms))));
 	        break;
 	    case 3:
 	        Toast.makeText(this, "en attente Geo", Toast.LENGTH_SHORT).show();
+//	        getActionBar().setBackgroundDrawable(
+//	                new ColorDrawable((getResources().getColor(R.color.BleuOms))));
 	        break;
 	    }
 
