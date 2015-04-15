@@ -28,8 +28,15 @@ public class AnnuaireFragment extends Fragment{
         // Center the tabs in the layout
         slidingTabLayout.setDistributeEvenly(true);
         slidingTabLayout.setViewPager(viewPager);
-        System.out.println("LA VUE CREER "+ARG_PAGE);
 		return view;
+	}
+
+	public int getmPage() {
+		return mPage;
+	}
+
+	public void setmPage(int mPage) {
+		this.mPage = mPage;
 	}
 	
 }

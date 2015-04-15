@@ -104,10 +104,18 @@ public class NavigationDrawerFragment extends Fragment {
 			}
 		});
 		navDrawerItems = new ArrayList<NavDrawerItem>();
-		navDrawerItems.add(new NavDrawerItem("Accueil", android.R.drawable.ic_menu_info_details));
-		navDrawerItems.add(new NavDrawerItem("Annuaire", android.R.drawable.ic_menu_sort_by_size));
-		navDrawerItems.add(new NavDrawerItem("Agenda", android.R.drawable.ic_menu_agenda));
-		navDrawerItems.add(new NavDrawerItem("Geoposition", android.R.drawable.ic_menu_mapmode));
+		navDrawerItems.add(new NavDrawerItem("Accueil", android.R.drawable.ic_menu_info_details, getActivity().getResources().getColor(R.color.Blanc)));
+		
+		navDrawerItems.add(new NavDrawerItem("Annuaire", android.R.drawable.ic_menu_sort_by_size, getActivity().getResources().getColor(R.color.VertOmsFonce)));
+		navDrawerItems.add(new NavDrawerItem("Associations", android.R.drawable.ic_input_add,getActivity().getResources().getColor(R.color.VertOms)));
+		navDrawerItems.add(new NavDrawerItem("Equipements", R.drawable.ic_sitem,getActivity().getResources().getColor(R.color.VertOms)));
+		navDrawerItems.add(new NavDrawerItem("Disciplines", R.drawable.ic_sitem,getActivity().getResources().getColor(R.color.VertOms)));
+		navDrawerItems.add(new NavDrawerItem("Quartiers", R.drawable.ic_sitem,getActivity().getResources().getColor(R.color.VertOms)));
+		
+		navDrawerItems.add(new NavDrawerItem("Agenda", android.R.drawable.ic_menu_agenda,getActivity().getResources().getColor(R.color.OrangeOmsFonce)));
+		
+		navDrawerItems.add(new NavDrawerItem("Geoposition", android.R.drawable.ic_menu_mylocation,getActivity().getResources().getColor(R.color.BleuOmsFonce)));
+		
 		mDrawerListView.setAdapter(new NavDrawerListAdapter(getActivity(), navDrawerItems));
 		mDrawerListView.setItemChecked(mCurrentSelectedPosition, true);
 		return mDrawerListView;

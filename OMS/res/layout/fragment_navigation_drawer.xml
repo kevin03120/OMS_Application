@@ -4,7 +4,6 @@
     android:layout_height="match_parent"
     android:background="@color/Blanc"
     android:choiceMode="singleChoice"
-    android:divider="@color/BleuOms"
     android:dividerHeight="2dp"
     tools:context="fr.oms.fragments.NavigationDrawerFragment" />
 

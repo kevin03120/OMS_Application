@@ -3,6 +3,7 @@ package fr.oms.adapter;
 import java.util.ArrayList;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -48,8 +49,12 @@ public class NavDrawerListAdapter extends BaseAdapter {
         ImageView imgIcon = (ImageView) convertView.findViewById(R.id.ivIcon);
         TextView txtTitle = (TextView) convertView.findViewById(R.id.tvTitle);
         LinearLayout layout=(LinearLayout) convertView.findViewById(R.id.layout_drawer);
+        
+        layout.setBackgroundColor(navDrawerItems.get(position).getmColor());
         imgIcon.setImageResource(navDrawerItems.get(position).getIcon());
         txtTitle.setText(navDrawerItems.get(position).getTitle());
+        
+        
         return convertView;
     }
 

@@ -15,6 +15,7 @@ import android.widget.AdapterView;
 import android.widget.CheckBox;
 import android.widget.ListView;
 import android.widget.TextView;
+import fr.oms.activities.FragmentAssociationActivity;
 import fr.oms.activities.MainActivity;
 import fr.oms.activities.R;
 import fr.oms.adapter.AssociationAdapter;
@@ -38,7 +39,7 @@ public class FragmentListeAssociations extends Fragment {
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
 		View v = inflater.inflate(R.layout.list_association, container,false);
-		txtFiltre = (TextView)v.findViewById(R.id.filtre);
+		txtFiltre = (TextView)v.findViewById(R.id.txt_filtre);
 		chkAdherent = (CheckBox)v.findViewById(R.id.chkAdherents);
 		chkNonAdherent = (CheckBox)v.findViewById(R.id.chkNonAdherents);
 		listeAssociation = (ListView)v.findViewById(R.id.listeAssociation);
@@ -139,7 +140,7 @@ public class FragmentListeAssociations extends Fragment {
 				case 4 : assoc = mesAssociationsNonAdherentesFiltresSport.get(position); break;
 				case 5 : assoc = mesAssociationsAdherentesFiltresSport.get(position); break;
 				}
-				Intent intent = new Intent(FragmentListeAssociations.this.getActivity(), MainActivity.class);
+				Intent intent = new Intent(FragmentListeAssociations.this.getActivity(), FragmentAssociationActivity.class);
 				intent.putExtra("position", assoc.getUid());
 				intent.putExtra("adherents", chkAdherent.isChecked());
 				intent.putExtra("nonAdherents", chkNonAdherent.isChecked());

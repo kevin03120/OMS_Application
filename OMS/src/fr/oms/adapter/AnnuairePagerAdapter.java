@@ -16,7 +16,7 @@ public class AnnuairePagerAdapter extends FragmentStatePagerAdapter {
 
     public AnnuairePagerAdapter(FragmentManager fm, Context context) {
         super(fm);
-        this.context = context;        
+        this.setContext(context);        
     }
 
     @Override
@@ -40,4 +40,12 @@ public class AnnuairePagerAdapter extends FragmentStatePagerAdapter {
         // Generate title based on item position
         return tabTitles[position];
     }
+
+	public Context getContext() {
+		return context;
+	}
+
+	public void setContext(Context context) {
+		this.context = context;
+	}
 }

@@ -31,4 +31,12 @@ public class AgendaFragment extends Fragment {
 		slidingTabLayout.setViewPager(viewPager);
 		return view;
 	}
+
+	public int getmPage() {
+		return mPage;
+	}
+
+	public void setmPage(int mPage) {
+		this.mPage = mPage;
+	}
 }
