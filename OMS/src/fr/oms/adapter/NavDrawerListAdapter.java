@@ -3,6 +3,7 @@ package fr.oms.adapter;
 import java.util.ArrayList;
 
 import android.content.Context;
+import android.content.res.Resources;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -48,10 +49,17 @@ public class NavDrawerListAdapter extends BaseAdapter {
         LinearLayout layout = (LinearLayout)convertView.findViewById(R.id.layout_drawer);
         ImageView imgIcon = (ImageView) convertView.findViewById(R.id.ivIcon);
         TextView txtTitle = (TextView) convertView.findViewById(R.id.tvTitle);
-
+        
+        layout.setBackgroundColor(navDrawerItems.get(position).getmColor());
         imgIcon.setImageResource(navDrawerItems.get(position).getIcon());
         txtTitle.setText(navDrawerItems.get(position).getTitle());
+        Resources r = context.getResources();
+        if((txtTitle.getText()==r.getString(R.string.accueil))||(txtTitle.getText()==r.getString(R.string.annuaire))||(txtTitle.getText()==r.getString(R.string.agenda))||(txtTitle.getText()==r.getString(R.string.ma_position))){
+            txtTitle.setTextAppearance(context, R.style.TextItemNavTitre);
+        }
+        else{
+            txtTitle.setTextAppearance(context, R.style.TextItemNavSousTitre);
+        }
         return convertView;
     }
-
 }

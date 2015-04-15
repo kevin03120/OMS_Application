@@ -8,6 +8,7 @@ import android.app.Fragment;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
+import android.content.res.Resources;
 import android.net.Uri;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
@@ -57,8 +58,13 @@ public class NavigationDrawerFragment extends Fragment {
 	 */
 	private ActionBarDrawerToggle mDrawerToggle;
 
+
 	private DrawerLayout mDrawerLayout;
-	private ListView mDrawerListView;
+	public DrawerLayout getmDrawerLayout() {
+		return mDrawerLayout;
+	}
+
+	public ListView mDrawerListView;
 	private View mFragmentContainerView;
 
 	private int mCurrentSelectedPosition = 0;
@@ -83,7 +89,7 @@ public class NavigationDrawerFragment extends Fragment {
 			mCurrentSelectedPosition = savedInstanceState.getInt(STATE_SELECTED_POSITION);
 			mFromSavedInstanceState = true;
 		}
-
+		
 		// Select either the default item (0) or the last selected item.
 		selectItem(mCurrentSelectedPosition);
 	}
@@ -106,10 +112,19 @@ public class NavigationDrawerFragment extends Fragment {
 			}
 		});
 		navDrawerItems = new ArrayList<NavDrawerItem>();
-		navDrawerItems.add(new NavDrawerItem("Accueil", android.R.drawable.ic_menu_info_details));
-		navDrawerItems.add(new NavDrawerItem("Annuaire", android.R.drawable.ic_menu_sort_by_size));
-		navDrawerItems.add(new NavDrawerItem("Agenda", android.R.drawable.ic_menu_agenda));
-		navDrawerItems.add(new NavDrawerItem("Geoposition", android.R.drawable.ic_menu_mapmode));
+		Resources r = getActivity().getResources();
+		navDrawerItems.add(new NavDrawerItem(r.getString(R.string.accueil), android.R.drawable.ic_menu_info_details, r.getColor(R.color.NoirOms)));
+		
+		navDrawerItems.add(new NavDrawerItem(r.getString(R.string.annuaire), android.R.drawable.ic_menu_sort_by_size, r.getColor(R.color.VertOmsFonce)));
+		navDrawerItems.add(new NavDrawerItem(r.getString(R.string.association), R.drawable.ic_sitem,r.getColor(R.color.VertOms)));
+		navDrawerItems.add(new NavDrawerItem(r.getString(R.string.equipement), R.drawable.ic_sitem,r.getColor(R.color.VertOms)));
+		navDrawerItems.add(new NavDrawerItem(r.getString(R.string.discipline), R.drawable.ic_sitem,r.getColor(R.color.VertOms)));
+		navDrawerItems.add(new NavDrawerItem(r.getString(R.string.quartier), R.drawable.ic_sitem,r.getColor(R.color.VertOms)));
+		
+		navDrawerItems.add(new NavDrawerItem(r.getString(R.string.agenda), android.R.drawable.ic_menu_agenda,r.getColor(R.color.BleuOmsFonce)));
+		
+		navDrawerItems.add(new NavDrawerItem(r.getString(R.string.ma_position), android.R.drawable.ic_menu_mylocation,r.getColor(R.color.OrangeOmsFonce)));
+		
 		mDrawerListView.setAdapter(new NavDrawerListAdapter(getActivity(), navDrawerItems));
 		mDrawerListView.setItemChecked(mCurrentSelectedPosition, true);
 		return mDrawerListView;

@@ -9,7 +9,7 @@
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="action_settings">Settings</string>
     <string name="info_image">Logo de l\'OMS</string>
-    <string name="ma_position">Ma Position</string>
+    <string name="ma_position">Geoposition</string>
     <string name="actualite">Actualités</string>
     <string name="association">Les associations</string>
     <string name="equipement">Les equipements</string>
@@ -40,12 +40,6 @@
 	<string name="goSite">Pour plus d\'informations</string>
 	<string name="drawer_open">Open navigation drawer</string>
     <string name="drawer_close">Close navigation drawer</string>
-	<string-array name="menus">
-		<item >Accueil</item>
-		<item >Annuaire</item>
-		<item >Agenda</item>
-		<item >Ma Position</item>
-	</string-array>
 	<string name="lien_site_OMS">http://www.oms-clermont-ferrand.fr/</string>
 	
 </resources>

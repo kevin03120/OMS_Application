@@ -1,4 +1,4 @@
-<resources>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
 
     <!--
         Base application theme, dependent on API level. This theme is replaced
@@ -95,6 +95,15 @@
         <item name="android:background">@drawable/custom_btn_green</item>
         <item name="android:padding">10dip</item>
     </style>
+
+    <style name="TextItemNavTitre">
+	    <item name="android:textSize">20sp</item>
+        <item name="android:textStyle">bold</item>
+	</style>
+	
+    <style name="TextItemNavSousTitre">
+	    <item name="android:textSize">15sp</item>
+	</style>
 
     <color name="Vert1">#1FCF6D</color>
     <color name="Vert2">#1AAF5D</color>

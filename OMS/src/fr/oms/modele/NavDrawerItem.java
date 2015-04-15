@@ -3,12 +3,14 @@ package fr.oms.modele;
 public class NavDrawerItem {
     private String mTitle;
     private int mIcon;
+    private int mColor;
 
     public NavDrawerItem(){}
 
-    public NavDrawerItem(String title, int icon){
+    public NavDrawerItem(String title, int icon, int color){
         this.mTitle = title;
         this.mIcon = icon;
+        this.setmColor(color);
     }
 
     public String getTitle(){
@@ -26,4 +28,12 @@ public class NavDrawerItem {
     public void setIcon(int icon){
         this.mIcon = icon;
     }
+
+	public int getmColor() {
+		return mColor;
+	}
+
+	public void setmColor(int mColor) {
+		this.mColor = mColor;
+	}
 }
