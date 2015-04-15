@@ -53,6 +53,7 @@ public class NavDrawerListAdapter extends BaseAdapter {
         layout.setBackgroundColor(navDrawerItems.get(position).getmColor());
         imgIcon.setImageResource(navDrawerItems.get(position).getIcon());
         txtTitle.setText(navDrawerItems.get(position).getTitle());
+        
         Resources r = context.getResources();
         if((txtTitle.getText()==r.getString(R.string.accueil))||(txtTitle.getText()==r.getString(R.string.annuaire))||(txtTitle.getText()==r.getString(R.string.agenda))||(txtTitle.getText()==r.getString(R.string.ma_position))){
             txtTitle.setTextAppearance(context, R.style.TextItemNavTitre);

@@ -120,11 +120,11 @@ public class NavigationDrawerFragment extends Fragment {
 		navDrawerItems.add(new NavDrawerItem(r.getString(R.string.equipement), R.drawable.ic_sitem,r.getColor(R.color.VertOms)));
 		navDrawerItems.add(new NavDrawerItem(r.getString(R.string.discipline), R.drawable.ic_sitem,r.getColor(R.color.VertOms)));
 		navDrawerItems.add(new NavDrawerItem(r.getString(R.string.quartier), R.drawable.ic_sitem,r.getColor(R.color.VertOms)));
-		
+
 		navDrawerItems.add(new NavDrawerItem(r.getString(R.string.agenda), android.R.drawable.ic_menu_agenda,r.getColor(R.color.BleuOmsFonce)));
-		
+
 		navDrawerItems.add(new NavDrawerItem(r.getString(R.string.ma_position), android.R.drawable.ic_menu_mylocation,r.getColor(R.color.OrangeOmsFonce)));
-		
+
 		mDrawerListView.setAdapter(new NavDrawerListAdapter(getActivity(), navDrawerItems));
 		mDrawerListView.setItemChecked(mCurrentSelectedPosition, true);
 		return mDrawerListView;
