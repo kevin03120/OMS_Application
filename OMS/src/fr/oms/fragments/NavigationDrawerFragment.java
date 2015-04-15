@@ -8,6 +8,7 @@ import android.app.Fragment;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
+import android.content.res.Resources;
 import android.net.Uri;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
@@ -57,8 +58,13 @@ public class NavigationDrawerFragment extends Fragment {
 	 */
 	private ActionBarDrawerToggle mDrawerToggle;
 
+
 	private DrawerLayout mDrawerLayout;
-	private ListView mDrawerListView;
+	public DrawerLayout getmDrawerLayout() {
+		return mDrawerLayout;
+	}
+
+	public ListView mDrawerListView;
 	private View mFragmentContainerView;
 
 	private int mCurrentSelectedPosition = 0;
@@ -83,7 +89,7 @@ public class NavigationDrawerFragment extends Fragment {
 			mCurrentSelectedPosition = savedInstanceState.getInt(STATE_SELECTED_POSITION);
 			mFromSavedInstanceState = true;
 		}
-
+		
 		// Select either the default item (0) or the last selected item.
 		selectItem(mCurrentSelectedPosition);
 	}
@@ -106,22 +112,23 @@ public class NavigationDrawerFragment extends Fragment {
 			}
 		});
 		navDrawerItems = new ArrayList<NavDrawerItem>();
-		navDrawerItems.add(new NavDrawerItem("Accueil", R.drawable.ic_accueil, R.drawable.custom_btn_yellow));
+		Resources r = getActivity().getResources();
+		navDrawerItems.add(new NavDrawerItem(r.getString(R.string.accueil_underline), R.drawable.ic_accueil, R.drawable.custom_btn_yellow));
 		
-		navDrawerItems.add(new NavDrawerItem("Annuaire", R.drawable.ic_annuaire, R.drawable.custom_btn_green));
-		navDrawerItems.add(new NavDrawerItem("Associations", R.drawable.ic_arrow4,R.drawable.custom_btn_green));
-		navDrawerItems.add(new NavDrawerItem("Equipements", R.drawable.ic_arrow4,R.drawable.custom_btn_green));
-		navDrawerItems.add(new NavDrawerItem("Disciplines",R.drawable.ic_arrow4,R.drawable.custom_btn_green));
-		navDrawerItems.add(new NavDrawerItem("Quartiers", R.drawable.ic_arrow4,R.drawable.custom_btn_green));
+		navDrawerItems.add(new NavDrawerItem(r.getString(R.string.annuaire_underline), R.drawable.ic_annuaire, R.drawable.custom_btn_green));
+		navDrawerItems.add(new NavDrawerItem(r.getString(R.string.association), R.drawable.ic_arrow4,R.drawable.custom_btn_green));
+		navDrawerItems.add(new NavDrawerItem(r.getString(R.string.equipement), R.drawable.ic_arrow4,R.drawable.custom_btn_green));
+		navDrawerItems.add(new NavDrawerItem(r.getString(R.string.discipline),R.drawable.ic_arrow4,R.drawable.custom_btn_green));
+		navDrawerItems.add(new NavDrawerItem(r.getString(R.string.quartier), R.drawable.ic_arrow4,R.drawable.custom_btn_green));
 		
-		navDrawerItems.add(new NavDrawerItem("Agenda",R.drawable.ic_agenda1,R.drawable.custom_btn_blue));
-		navDrawerItems.add(new NavDrawerItem("Actualités",  R.drawable.ic_arrow4,R.drawable.custom_btn_blue));
-		navDrawerItems.add(new NavDrawerItem("Evènements", R.drawable.ic_arrow4,R.drawable.custom_btn_blue));
+		navDrawerItems.add(new NavDrawerItem(r.getString(R.string.agenda_underline),R.drawable.ic_agenda1,R.drawable.custom_btn_blue));
+		navDrawerItems.add(new NavDrawerItem(r.getString(R.string.actualite),  R.drawable.ic_arrow4,R.drawable.custom_btn_blue));
+		navDrawerItems.add(new NavDrawerItem(r.getString(R.string.evenements), R.drawable.ic_arrow4,R.drawable.custom_btn_blue));
 		
-		navDrawerItems.add(new NavDrawerItem("Geoposition", R.drawable.ic_geoloc,R.drawable.custom_btn_sorbus));
-		navDrawerItems.add(new NavDrawerItem("Associations", R.drawable.ic_arrow4,R.drawable.custom_btn_sorbus));
-		navDrawerItems.add(new NavDrawerItem("Equipement", R.drawable.ic_arrow4,R.drawable.custom_btn_sorbus));
-		navDrawerItems.add(new NavDrawerItem("Adresse",R.drawable.ic_arrow4,R.drawable.custom_btn_sorbus));
+		navDrawerItems.add(new NavDrawerItem(r.getString(R.string.geolocalisation_underline), R.drawable.ic_geoloc,R.drawable.custom_btn_sorbus));
+		navDrawerItems.add(new NavDrawerItem(r.getString(R.string.association), R.drawable.ic_arrow4,R.drawable.custom_btn_sorbus));
+		navDrawerItems.add(new NavDrawerItem(r.getString(R.string.association), R.drawable.ic_arrow4,R.drawable.custom_btn_sorbus));
+		navDrawerItems.add(new NavDrawerItem(r.getString(R.string.adresse),R.drawable.ic_arrow4,R.drawable.custom_btn_sorbus));
 		
 		mDrawerListView.setAdapter(new NavDrawerListAdapter(getActivity(), navDrawerItems));
 		mDrawerListView.setItemChecked(mCurrentSelectedPosition, true);
@@ -284,7 +291,6 @@ public class NavigationDrawerFragment extends Fragment {
 			Intent i = new Intent(Intent.ACTION_VIEW);
 			i.setData(Uri.parse(url));
 			startActivity(i);
-			
 			return true;
 		}
 

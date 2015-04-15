@@ -3,7 +3,7 @@ package fr.oms.adapter;
 import java.util.ArrayList;
 
 import android.content.Context;
-import android.graphics.Color;
+import android.content.res.Resources;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -47,9 +47,9 @@ public class NavDrawerListAdapter extends BaseAdapter {
             convertView = mInflater.inflate(R.layout.drawer_nav_item, null);
         }
 
+        LinearLayout layout = (LinearLayout)convertView.findViewById(R.id.layout_drawer);
         ImageView imgIcon = (ImageView) convertView.findViewById(R.id.ivIcon);
         TextView txtTitle = (TextView) convertView.findViewById(R.id.tvTitle);
-        LinearLayout layout=(LinearLayout) convertView.findViewById(R.id.layout_drawer);
         
         //layout.setBackgroundColor(navDrawerItems.get(position).getmColor());
         imgIcon.setImageResource(navDrawerItems.get(position).getIcon());
@@ -60,9 +60,13 @@ public class NavDrawerListAdapter extends BaseAdapter {
         	imgIcon.setScaleX(f.floatValue());
         	imgIcon.setScaleY(f.floatValue());
         }
-        
-        
+        Resources r = context.getResources();
+        if((txtTitle.getText()==r.getString(R.string.accueil_underline))||(txtTitle.getText()==r.getString(R.string.annuaire_underline))||(txtTitle.getText()==r.getString(R.string.agenda_underline))||(txtTitle.getText()==r.getString(R.string.geolocalisation_underline))){
+            txtTitle.setTextAppearance(context, R.style.TextItemNavTitre);
+        }
+        else{
+            txtTitle.setTextAppearance(context, R.style.TextItemNavSousTitre);
+        }
         return convertView;
     }
-
 }
