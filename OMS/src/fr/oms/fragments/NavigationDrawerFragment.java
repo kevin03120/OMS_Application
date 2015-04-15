@@ -106,19 +106,22 @@ public class NavigationDrawerFragment extends Fragment {
 			}
 		});
 		navDrawerItems = new ArrayList<NavDrawerItem>();
-		navDrawerItems.add(new NavDrawerItem("Accueil", R.drawable.ic_accueil, getActivity().getResources().getColor(R.color.Blanc)));
+		navDrawerItems.add(new NavDrawerItem("Accueil", R.drawable.ic_accueil, R.drawable.custom_btn_yellow));
 		
-		navDrawerItems.add(new NavDrawerItem("Annuaire", R.drawable.ic_annuaire, getActivity().getResources().getColor(R.color.VertOmsFonce)));
-		navDrawerItems.add(new NavDrawerItem("Associations",  R.drawable.ic_sitem,getActivity().getResources().getColor(R.color.VertOms)));
-		navDrawerItems.add(new NavDrawerItem("Equipements", R.drawable.ic_sitem,getActivity().getResources().getColor(R.color.VertOms)));
-		navDrawerItems.add(new NavDrawerItem("Disciplines", R.drawable.ic_sitem,getActivity().getResources().getColor(R.color.VertOms)));
-		navDrawerItems.add(new NavDrawerItem("Quartiers", R.drawable.ic_sitem,getActivity().getResources().getColor(R.color.VertOms)));
+		navDrawerItems.add(new NavDrawerItem("Annuaire", R.drawable.ic_annuaire, R.drawable.custom_btn_green));
+		navDrawerItems.add(new NavDrawerItem("Associations", R.drawable.ic_arrow4,R.drawable.custom_btn_green));
+		navDrawerItems.add(new NavDrawerItem("Equipements", R.drawable.ic_arrow4,R.drawable.custom_btn_green));
+		navDrawerItems.add(new NavDrawerItem("Disciplines",R.drawable.ic_arrow4,R.drawable.custom_btn_green));
+		navDrawerItems.add(new NavDrawerItem("Quartiers", R.drawable.ic_arrow4,R.drawable.custom_btn_green));
 		
-		navDrawerItems.add(new NavDrawerItem("Agenda",R.drawable.ic_agenda1,getActivity().getResources().getColor(R.color.BleuOmsFonce)));
-		navDrawerItems.add(new NavDrawerItem("Actualités",  R.drawable.ic_sitem,getActivity().getResources().getColor(R.color.BleuOms)));
-		navDrawerItems.add(new NavDrawerItem("Evènements",  R.drawable.ic_sitem,getActivity().getResources().getColor(R.color.BleuOms)));
+		navDrawerItems.add(new NavDrawerItem("Agenda",R.drawable.ic_agenda1,R.drawable.custom_btn_blue));
+		navDrawerItems.add(new NavDrawerItem("Actualités",  R.drawable.ic_arrow4,R.drawable.custom_btn_blue));
+		navDrawerItems.add(new NavDrawerItem("Evènements", R.drawable.ic_arrow4,R.drawable.custom_btn_blue));
 		
-		navDrawerItems.add(new NavDrawerItem("Geoposition", R.drawable.ic_geoloc,getActivity().getResources().getColor(R.color.OrangeOmsFonce)));
+		navDrawerItems.add(new NavDrawerItem("Geoposition", R.drawable.ic_geoloc,R.drawable.custom_btn_sorbus));
+		navDrawerItems.add(new NavDrawerItem("Associations", R.drawable.ic_arrow4,R.drawable.custom_btn_sorbus));
+		navDrawerItems.add(new NavDrawerItem("Equipement", R.drawable.ic_arrow4,R.drawable.custom_btn_sorbus));
+		navDrawerItems.add(new NavDrawerItem("Adresse",R.drawable.ic_arrow4,R.drawable.custom_btn_sorbus));
 		
 		mDrawerListView.setAdapter(new NavDrawerListAdapter(getActivity(), navDrawerItems));
 		mDrawerListView.setItemChecked(mCurrentSelectedPosition, true);

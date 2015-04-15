@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
+import android.widget.ImageView.ScaleType;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import fr.oms.activities.R;
@@ -50,10 +51,15 @@ public class NavDrawerListAdapter extends BaseAdapter {
         TextView txtTitle = (TextView) convertView.findViewById(R.id.tvTitle);
         LinearLayout layout=(LinearLayout) convertView.findViewById(R.id.layout_drawer);
         
-        layout.setBackgroundColor(navDrawerItems.get(position).getmColor());
+        //layout.setBackgroundColor(navDrawerItems.get(position).getmColor());
         imgIcon.setImageResource(navDrawerItems.get(position).getIcon());
         txtTitle.setText(navDrawerItems.get(position).getTitle());
-        
+        Double f=0.7;
+        layout.setBackgroundResource(navDrawerItems.get(position).getmColor());
+        if(navDrawerItems.get(position).getIcon()==R.drawable.ic_arrow4){
+        	imgIcon.setScaleX(f.floatValue());
+        	imgIcon.setScaleY(f.floatValue());
+        }
         
         
         return convertView;
