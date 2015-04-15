@@ -106,17 +106,19 @@ public class NavigationDrawerFragment extends Fragment {
 			}
 		});
 		navDrawerItems = new ArrayList<NavDrawerItem>();
-		navDrawerItems.add(new NavDrawerItem("Accueil", android.R.drawable.ic_menu_info_details, getActivity().getResources().getColor(R.color.Blanc)));
+		navDrawerItems.add(new NavDrawerItem("Accueil", R.drawable.ic_accueil, getActivity().getResources().getColor(R.color.Blanc)));
 		
-		navDrawerItems.add(new NavDrawerItem("Annuaire", android.R.drawable.ic_menu_sort_by_size, getActivity().getResources().getColor(R.color.VertOmsFonce)));
-		navDrawerItems.add(new NavDrawerItem("Associations", android.R.drawable.ic_input_add,getActivity().getResources().getColor(R.color.VertOms)));
+		navDrawerItems.add(new NavDrawerItem("Annuaire", R.drawable.ic_annuaire, getActivity().getResources().getColor(R.color.VertOmsFonce)));
+		navDrawerItems.add(new NavDrawerItem("Associations",  R.drawable.ic_sitem,getActivity().getResources().getColor(R.color.VertOms)));
 		navDrawerItems.add(new NavDrawerItem("Equipements", R.drawable.ic_sitem,getActivity().getResources().getColor(R.color.VertOms)));
 		navDrawerItems.add(new NavDrawerItem("Disciplines", R.drawable.ic_sitem,getActivity().getResources().getColor(R.color.VertOms)));
 		navDrawerItems.add(new NavDrawerItem("Quartiers", R.drawable.ic_sitem,getActivity().getResources().getColor(R.color.VertOms)));
 		
-		navDrawerItems.add(new NavDrawerItem("Agenda", android.R.drawable.ic_menu_agenda,getActivity().getResources().getColor(R.color.OrangeOmsFonce)));
+		navDrawerItems.add(new NavDrawerItem("Agenda",R.drawable.ic_agenda1,getActivity().getResources().getColor(R.color.BleuOmsFonce)));
+		navDrawerItems.add(new NavDrawerItem("Actualités",  R.drawable.ic_sitem,getActivity().getResources().getColor(R.color.BleuOms)));
+		navDrawerItems.add(new NavDrawerItem("Evènements",  R.drawable.ic_sitem,getActivity().getResources().getColor(R.color.BleuOms)));
 		
-		navDrawerItems.add(new NavDrawerItem("Geoposition", android.R.drawable.ic_menu_mylocation,getActivity().getResources().getColor(R.color.BleuOmsFonce)));
+		navDrawerItems.add(new NavDrawerItem("Geoposition", R.drawable.ic_geoloc,getActivity().getResources().getColor(R.color.OrangeOmsFonce)));
 		
 		mDrawerListView.setAdapter(new NavDrawerListAdapter(getActivity(), navDrawerItems));
 		mDrawerListView.setItemChecked(mCurrentSelectedPosition, true);

@@ -36,7 +36,7 @@ public class AccueilFragment extends Fragment {
 			
 			@Override
 			public void onClick(View v) {
-				AnnuaireFragment fragment = new AnnuaireFragment();
+				AnnuaireFragment fragment = new AnnuaireFragment(0);
 				FragmentManager fragM = getActivity().getSupportFragmentManager();
 				FragmentTransaction fragT = fragM.beginTransaction();
 				fragT.replace(R.id.container, fragment).commit();

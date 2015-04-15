@@ -16,6 +16,10 @@ public class AnnuaireFragment extends Fragment{
 	
 	private int mPage;
 	public static AnnuairePagerAdapter sp;
+	
+	public AnnuaireFragment(int page) {
+		this.mPage=page;
+	}
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -27,6 +31,7 @@ public class AnnuaireFragment extends Fragment{
         SlidingTabLayout slidingTabLayout = (SlidingTabLayout) view.findViewById(R.id.sliding_tabs);
         // Center the tabs in the layout
         slidingTabLayout.setDistributeEvenly(true);
+        viewPager.setCurrentItem(mPage,true);
         slidingTabLayout.setViewPager(viewPager);
 		return view;
 	}

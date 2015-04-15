@@ -21,6 +21,7 @@ import fr.oms.dataloader.CSVParser;
 import fr.oms.fragments.AccueilFragment;
 import fr.oms.fragments.AgendaFragment;
 import fr.oms.fragments.AnnuaireFragment;
+import fr.oms.fragments.FragmentListeAssociations;
 import fr.oms.fragments.NavigationDrawerFragment;
 import fr.oms.modele.Manager;
 
@@ -62,25 +63,64 @@ public class MainActivity extends FragmentActivity implements NavigationDrawerFr
 	private void displayView(int position) {
 		// update the main content by replacing fragments
 		Fragment fragment = null;
+		
 		switch (position) {
 		case 0:
 			fragment = new AccueilFragment();
 			getActionBar().setBackgroundDrawable(
 					new ColorDrawable((Color.BLACK)));
 			break;
+			
 		case 1:
-			fragment = new AnnuaireFragment();
+			fragment = new AnnuaireFragment(0);
 			getActionBar().setBackgroundDrawable(
 					new ColorDrawable((getResources().getColor(R.color.VertOms))));
 			Toast.makeText(this, "en attente Annuaire", Toast.LENGTH_SHORT).show();
-
 			break;
-		case 2:	    	
-			fragment = new AgendaFragment();
+			
+		case 2:
+			fragment = new AnnuaireFragment(0);			
+			getActionBar().setBackgroundDrawable(
+					new ColorDrawable((getResources().getColor(R.color.VertOms))));
+			break;
+			
+		case 3:
+			fragment = new AnnuaireFragment(1);			
+			getActionBar().setBackgroundDrawable(
+					new ColorDrawable((getResources().getColor(R.color.VertOms))));
+			break;
+			
+		case 4:
+			fragment = new AnnuaireFragment(2);			
+			getActionBar().setBackgroundDrawable(
+					new ColorDrawable((getResources().getColor(R.color.VertOms))));
+			break;
+			
+		case 5:
+			fragment = new AnnuaireFragment(3);			
+			getActionBar().setBackgroundDrawable(
+					new ColorDrawable((getResources().getColor(R.color.VertOms))));
+			break;
+			
+		case 6:	    	
+			fragment = new AgendaFragment(0);
 			getActionBar().setBackgroundDrawable(
 					new ColorDrawable((getResources().getColor(R.color.OrangeOms))));
 			break;
-		case 3:
+			
+		case 7:	    	
+			fragment = new AgendaFragment(0);
+			getActionBar().setBackgroundDrawable(
+					new ColorDrawable((getResources().getColor(R.color.OrangeOms))));
+			break;
+			
+		case 8:	    	
+			fragment = new AgendaFragment(1);
+			getActionBar().setBackgroundDrawable(
+					new ColorDrawable((getResources().getColor(R.color.OrangeOms))));
+			break;
+			
+		case 9:
 			Toast.makeText(this, "en attente Geo", Toast.LENGTH_SHORT).show();
 			//	        getActionBar().setBackgroundDrawable(
 			//	                new ColorDrawable((getResources().getColor(R.color.BleuOms))));

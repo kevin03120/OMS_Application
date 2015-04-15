@@ -55,6 +55,7 @@ public class NavDrawerListAdapter extends BaseAdapter {
         txtTitle.setText(navDrawerItems.get(position).getTitle());
         
         
+        
         return convertView;
     }
 

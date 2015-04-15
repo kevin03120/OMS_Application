@@ -18,12 +18,17 @@ public class AgendaFragment extends Fragment {
 	private int mPage;
 	public static AgendaPagerAdapter sp;
 
+	public AgendaFragment(int page) {
+		this.mPage=page;
+	}
+
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
 		View view = inflater.inflate(R.layout.pager, container, false);
 		ViewPager viewPager = (ViewPager) view.findViewById(R.id.viewpager);
 		viewPager.setAdapter(new AgendaPagerAdapter(getFragmentManager(),this.getActivity()));
+		viewPager.setCurrentItem(mPage,true);
 		// Give the SlidingTabLayout the ViewPager
 		SlidingTabLayout slidingTabLayout = (SlidingTabLayout) view.findViewById(R.id.sliding_tabs);
 		// Center the tabs in the layout
