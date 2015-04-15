@@ -22,7 +22,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="FragmentAssociationActivity"></activity>
+        <activity android:name="FragmentAssociationActivity"
+            android:theme="@style/Theme.Vert_oms"></activity>
     </application>
 
 </manifest>
