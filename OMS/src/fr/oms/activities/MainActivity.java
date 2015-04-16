@@ -16,7 +16,6 @@ import fr.oms.dataloader.CSVParser;
 import fr.oms.fragments.AccueilFragment;
 import fr.oms.fragments.AgendaFragment;
 import fr.oms.fragments.AnnuaireFragment;
-import fr.oms.fragments.FragmentListeAssociations;
 import fr.oms.fragments.NavigationDrawerFragment;
 import fr.oms.modele.Manager;
 
@@ -105,19 +104,19 @@ public class MainActivity extends FragmentActivity implements NavigationDrawerFr
 		case 6:	    	
 			fragment = new AgendaFragment(0);
 			getActionBar().setBackgroundDrawable(
-					new ColorDrawable((getResources().getColor(R.color.OrangeOms))));
+					new ColorDrawable((getResources().getColor(R.color.BleuOms))));
 			break;
 			
 		case 7:	    	
 			fragment = new AgendaFragment(0);
 			getActionBar().setBackgroundDrawable(
-					new ColorDrawable((getResources().getColor(R.color.OrangeOms))));
+					new ColorDrawable((getResources().getColor(R.color.BleuOms))));
 			break;
 			
 		case 8:	    	
 			fragment = new AgendaFragment(1);
 			getActionBar().setBackgroundDrawable(
-					new ColorDrawable((getResources().getColor(R.color.OrangeOms))));
+					new ColorDrawable((getResources().getColor(R.color.BleuOms))));
 			break;
 			
 		case 9:

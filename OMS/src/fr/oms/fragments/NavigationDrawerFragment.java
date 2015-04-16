@@ -23,7 +23,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
-import android.widget.Toast;
 import fr.oms.activities.R;
 import fr.oms.adapter.NavDrawerListAdapter;
 import fr.oms.modele.NavDrawerItem;
@@ -113,7 +112,7 @@ public class NavigationDrawerFragment extends Fragment {
 		});
 		navDrawerItems = new ArrayList<NavDrawerItem>();
 		Resources r = getActivity().getResources();
-		navDrawerItems.add(new NavDrawerItem(r.getString(R.string.accueil_underline), R.drawable.ic_accueil, R.drawable.custom_btn_yellow));
+		navDrawerItems.add(new NavDrawerItem(r.getString(R.string.accueil_underline), R.drawable.ic_accueil, R.drawable.custom_btn_red));
 		
 		navDrawerItems.add(new NavDrawerItem(r.getString(R.string.annuaire_underline), R.drawable.ic_annuaire, R.drawable.custom_btn_green));
 		navDrawerItems.add(new NavDrawerItem(r.getString(R.string.association), R.drawable.ic_arrow4,R.drawable.custom_btn_greenclair));

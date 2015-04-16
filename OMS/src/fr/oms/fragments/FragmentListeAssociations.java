@@ -16,7 +16,6 @@ import android.widget.CheckBox;
 import android.widget.ListView;
 import android.widget.TextView;
 import fr.oms.activities.FragmentAssociationActivity;
-import fr.oms.activities.MainActivity;
 import fr.oms.activities.R;
 import fr.oms.adapter.AssociationAdapter;
 import fr.oms.metier.Association;
