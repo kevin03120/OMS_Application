@@ -23,39 +23,15 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
-import android.widget.Toast;
 import fr.oms.activities.R;
 import fr.oms.adapter.NavDrawerListAdapter;
 import fr.oms.modele.NavDrawerItem;
 
-/**
- * Fragment used for managing interactions for and presentation of a navigation
- * drawer. See the <a href=
- * "https://developer.android.com/design/patterns/navigation-drawer.html#Interaction"
- * > design guidelines</a> for a complete explanation of the behaviors
- * implemented here.
- */
 public class NavigationDrawerFragment extends Fragment {
 
-	/**
-	 * Remember the position of the selected item.
-	 */
 	private static final String STATE_SELECTED_POSITION = "selected_navigation_drawer_position";
-
-	/**
-	 * Per the design guidelines, you should show the drawer on launch until the
-	 * user manually expands it. This shared preference tracks this.
-	 */
 	private static final String PREF_USER_LEARNED_DRAWER = "navigation_drawer_learned";
-
-	/**
-	 * A pointer to the current callbacks instance (the Activity).
-	 */
 	private NavigationDrawerCallbacks mCallbacks;
-
-	/**
-	 * Helper component that ties the action bar to the navigation drawer.
-	 */
 	private ActionBarDrawerToggle mDrawerToggle;
 
 
@@ -116,19 +92,19 @@ public class NavigationDrawerFragment extends Fragment {
 		navDrawerItems.add(new NavDrawerItem(r.getString(R.string.accueil_underline), R.drawable.ic_accueil, R.drawable.custom_btn_yellow));
 		
 		navDrawerItems.add(new NavDrawerItem(r.getString(R.string.annuaire_underline), R.drawable.ic_annuaire, R.drawable.custom_btn_green));
-		navDrawerItems.add(new NavDrawerItem(r.getString(R.string.association), R.drawable.ic_arrow4,R.drawable.custom_btn_green));
-		navDrawerItems.add(new NavDrawerItem(r.getString(R.string.equipement), R.drawable.ic_arrow4,R.drawable.custom_btn_green));
-		navDrawerItems.add(new NavDrawerItem(r.getString(R.string.discipline),R.drawable.ic_arrow4,R.drawable.custom_btn_green));
-		navDrawerItems.add(new NavDrawerItem(r.getString(R.string.quartier), R.drawable.ic_arrow4,R.drawable.custom_btn_green));
+		navDrawerItems.add(new NavDrawerItem(r.getString(R.string.association), R.drawable.ic_arrow4,R.drawable.custom_btn_greenclair));
+		navDrawerItems.add(new NavDrawerItem(r.getString(R.string.equipement), R.drawable.ic_arrow4,R.drawable.custom_btn_greenclair));
+		navDrawerItems.add(new NavDrawerItem(r.getString(R.string.discipline),R.drawable.ic_arrow4,R.drawable.custom_btn_greenclair));
+		navDrawerItems.add(new NavDrawerItem(r.getString(R.string.quartier), R.drawable.ic_arrow4,R.drawable.custom_btn_greenclair));
 		
 		navDrawerItems.add(new NavDrawerItem(r.getString(R.string.agenda_underline),R.drawable.ic_agenda1,R.drawable.custom_btn_blue));
-		navDrawerItems.add(new NavDrawerItem(r.getString(R.string.actualite),  R.drawable.ic_arrow4,R.drawable.custom_btn_blue));
-		navDrawerItems.add(new NavDrawerItem(r.getString(R.string.evenements), R.drawable.ic_arrow4,R.drawable.custom_btn_blue));
+		navDrawerItems.add(new NavDrawerItem(r.getString(R.string.actualite),  R.drawable.ic_arrow4,R.drawable.custom_btn_bleuclair));
+		navDrawerItems.add(new NavDrawerItem(r.getString(R.string.evenements), R.drawable.ic_arrow4,R.drawable.custom_btn_bleuclair));
 		
 		navDrawerItems.add(new NavDrawerItem(r.getString(R.string.geolocalisation_underline), R.drawable.ic_geoloc,R.drawable.custom_btn_sorbus));
-		navDrawerItems.add(new NavDrawerItem(r.getString(R.string.association), R.drawable.ic_arrow4,R.drawable.custom_btn_sorbus));
-		navDrawerItems.add(new NavDrawerItem(r.getString(R.string.association), R.drawable.ic_arrow4,R.drawable.custom_btn_sorbus));
-		navDrawerItems.add(new NavDrawerItem(r.getString(R.string.adresse),R.drawable.ic_arrow4,R.drawable.custom_btn_sorbus));
+		navDrawerItems.add(new NavDrawerItem(r.getString(R.string.association), R.drawable.ic_arrow4,R.drawable.custom_btn_orangeclair));
+		navDrawerItems.add(new NavDrawerItem(r.getString(R.string.equipement), R.drawable.ic_arrow4,R.drawable.custom_btn_orangeclair));
+		navDrawerItems.add(new NavDrawerItem(r.getString(R.string.adresse),R.drawable.ic_arrow4,R.drawable.custom_btn_orangeclair));
 		
 		mDrawerListView.setAdapter(new NavDrawerListAdapter(getActivity(), navDrawerItems));
 		mDrawerListView.setItemChecked(mCurrentSelectedPosition, true);

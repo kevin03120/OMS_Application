@@ -97,12 +97,12 @@
     </style>
 
     <style name="TextItemNavTitre">
-	    <item name="android:textSize">20sp</item>
+	    <item name="android:textSize">18sp</item>
         <item name="android:textStyle">bold</item>
 	</style>
 	
     <style name="TextItemNavSousTitre">
-	    <item name="android:textSize">15sp</item>
+	    <item name="android:textSize">14sp</item>
 	</style>
 
     <color name="Vert1">#1FCF6D</color>
@@ -135,11 +135,17 @@
     <color name="RougeNum2">#B43104</color>
     <color name="JauneClair">#DEFE5E</color>
     <color name="BleuOms">#009EE0</color>
+    <color name="BleuOmsClair">#7DD3F8</color>
+    <color name="BleuOmsClair2">#AADEF4</color>
     <color name="BleuOmsFonce">#0089C4</color>
     <color name="VertOms">#C4D600</color>
+    <color name="VertOmsClair">#ECFB4A</color>
+    <color name="VertOmsClair2">#F3FC8E</color>
     <color name="VertOmsFonce">#A4B300</color>
     <color name="NoirOms">#54585A</color>
     <color name="OrangeOms">#F29400</color>
     <color name="OrangeOmsFonce">#D58200</color>
+    <color name="OrangeOmsClair">#FAAC58</color>
+    <color name="OrangeOmsClair2">#F7C48F</color>
 
 </resources>
