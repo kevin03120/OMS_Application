@@ -1,7 +1,7 @@
 package fr.oms.adapter;
 
 import java.util.ArrayList;
-
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.res.Resources;
 import android.view.LayoutInflater;
@@ -39,7 +39,8 @@ public class NavDrawerListAdapter extends BaseAdapter {
         return position;
     }
 
-    @Override
+    @SuppressLint("InflateParams")
+	@Override
     public View getView(int position, View convertView, ViewGroup parent) {
         if (convertView == null) {
             LayoutInflater mInflater = LayoutInflater.from(context);

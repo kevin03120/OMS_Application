@@ -52,13 +52,13 @@ public class MainActivity extends FragmentActivity implements NavigationDrawerFr
 		case 0:
 			fragment = new AccueilFragment();
 			getActionBar().setBackgroundDrawable(
-					new ColorDrawable((Color.BLACK)));
+					new ColorDrawable(getResources().getColor(R.color.Rouge1)));
 			break;
 			
 		case 1:
 			fragment = new AnnuaireFragment(0);
 			getActionBar().setBackgroundDrawable(
-					new ColorDrawable((getResources().getColor(R.color.VertOms))));
+					new ColorDrawable(getResources().getColor(R.color.VertOms)));
 			break;
 			
 		case 2:
@@ -88,19 +88,19 @@ public class MainActivity extends FragmentActivity implements NavigationDrawerFr
 		case 6:	    	
 			fragment = new AgendaFragment(0);
 			getActionBar().setBackgroundDrawable(
-					new ColorDrawable((getResources().getColor(R.color.OrangeOms))));
+					new ColorDrawable((getResources().getColor(R.color.BleuOms))));
 			break;
 			
 		case 7:	    	
 			fragment = new AgendaFragment(0);
 			getActionBar().setBackgroundDrawable(
-					new ColorDrawable((getResources().getColor(R.color.OrangeOms))));
+					new ColorDrawable((getResources().getColor(R.color.BleuOms))));
 			break;
 			
 		case 8:	    	
 			fragment = new AgendaFragment(1);
 			getActionBar().setBackgroundDrawable(
-					new ColorDrawable((getResources().getColor(R.color.OrangeOms))));
+					new ColorDrawable((getResources().getColor(R.color.BleuOms))));
 			break;
 			
 		case 9:

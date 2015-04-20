@@ -25,7 +25,7 @@ import org.apache.http.message.BasicNameValuePair;
 
 import android.app.ProgressDialog;
 import android.os.AsyncTask;
-import fr.oms.activities.MainActivity;;
+import fr.oms.activities.MainActivity;
 
 public class ClientHttp extends AsyncTask<FileOutputStream, Void, Void> {
 

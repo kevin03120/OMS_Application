@@ -6,24 +6,28 @@ public class Personne {
 	private String titre;
 	private String nom;
 	private String prenom;
-	private String adresse;
+	private String adresse1;
+	private String adresse2;
 	private String codePostal;
 	private String ville;
 	private String email;
 	private String telFixe;
 	private String telPortable;
+	private String lienSiteWeb;
 	
-	public Personne(int unId, String unTitre, String unNom, String unPrenom, String uneAdresse, String unCodePostal, String uneVille, String unEmail, String unTelFixe, String unTelPortable){
-		uid = unId;
-		titre = unTitre;
-		nom = unNom;
-		prenom = unPrenom;
-		adresse = uneAdresse;
-		codePostal = unCodePostal;
-		ville = uneVille;
-		email = unEmail;
-		telFixe= unTelFixe;
-		telPortable = unTelPortable;
+	public Personne(int unId, String unTitre, String unNom, String unPrenom, String uneAdresse1, String uneAdresse2, String unCodePostal, String uneVille, String unEmail, String unTelFixe, String unTelPortable, String unLienSite){
+		setUid(unId);
+		setTitre(unTitre);
+		setNom(unNom);
+		setPrenom(unPrenom);
+		setAdresse1(uneAdresse1);
+		setAdresse2(uneAdresse2);
+		setCodePostal(unCodePostal);
+		setVille(uneVille);
+		setEmail(unEmail);
+		setTelFixe(unTelFixe);
+		setTelPortable(unTelPortable);
+		setLienSiteWeb(unLienSite);
 	}
 	
 	public int getUid() {
@@ -56,14 +60,6 @@ public class Personne {
 
 	public void setPrenom(String prenom) {
 		this.prenom = prenom;
-	}
-
-	public String getAdresse() {
-		return adresse;
-	}
-
-	public void setAdresse(String adresse) {
-		this.adresse = adresse;
 	}
 
 	public String getCodePostal() {
@@ -104,5 +100,29 @@ public class Personne {
 
 	public void setTelPortable(String telPortable) {
 		this.telPortable = telPortable;
+	}
+
+	public String getAdresse1() {
+		return adresse1;
+	}
+
+	public void setAdresse1(String adresse1) {
+		this.adresse1 = adresse1;
+	}
+
+	public String getAdresse2() {
+		return adresse2;
+	}
+
+	public void setAdresse2(String adresse2) {
+		this.adresse2 = adresse2;
+	}
+
+	public String getLienSiteWeb() {
+		return lienSiteWeb;
+	}
+
+	public void setLienSiteWeb(String lienSiteWeb) {
+		this.lienSiteWeb = lienSiteWeb;
 	}
 }

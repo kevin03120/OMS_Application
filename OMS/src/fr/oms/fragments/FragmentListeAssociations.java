@@ -16,7 +16,6 @@ import android.widget.CheckBox;
 import android.widget.ListView;
 import android.widget.TextView;
 import fr.oms.activities.FragmentAssociationActivity;
-import fr.oms.activities.MainActivity;
 import fr.oms.activities.R;
 import fr.oms.adapter.AssociationAdapter;
 import fr.oms.metier.Association;
@@ -141,7 +140,7 @@ public class FragmentListeAssociations extends Fragment {
 				case 5 : assoc = mesAssociationsAdherentesFiltresSport.get(position); break;
 				}
 				Intent intent = new Intent(FragmentListeAssociations.this.getActivity(), FragmentAssociationActivity.class);
-				intent.putExtra("position", assoc.getUid());
+				intent.putExtra("position", assoc.getId());
 				intent.putExtra("adherents", chkAdherent.isChecked());
 				intent.putExtra("nonAdherents", chkNonAdherent.isChecked());
 				intent.putExtra("sport", isFiltreSport);
