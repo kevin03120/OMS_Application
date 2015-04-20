@@ -2,6 +2,7 @@ package fr.oms.activities;
 
 import android.app.ActionBar;
 import android.content.pm.ActivityInfo;
+import android.content.res.Resources;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
@@ -21,16 +22,7 @@ import fr.oms.modele.Manager;
 
 public class MainActivity extends FragmentActivity implements NavigationDrawerFragment.NavigationDrawerCallbacks {
 
-	/**
-	 * Fragment managing the behaviors, interactions and presentation of the
-	 * navigation drawer.
-	 */
 	private NavigationDrawerFragment mNavigationDrawerFragment;
-
-	/**
-	 * Used to store the last screen title. For use in
-	 * {@link #restoreActionBar()}.
-	 */
 	private CharSequence mTitle;
 
 	@Override
@@ -44,37 +36,29 @@ public class MainActivity extends FragmentActivity implements NavigationDrawerFr
 		mNavigationDrawerFragment = (NavigationDrawerFragment) getFragmentManager().findFragmentById(
 				R.id.navigation_drawer);
 		mTitle = getTitle();
-		// Set up the drawer.
-		mNavigationDrawerFragment.setUp(R.id.navigation_drawer, (DrawerLayout) findViewById(R.id.drawer_layout));
-	}
 
-	@Override
-	public void onBackPressed() {
-		
+		mNavigationDrawerFragment.setUp(R.id.navigation_drawer, (DrawerLayout) findViewById(R.id.drawer_layout));
 	}
 	
 	@Override
 	public void onNavigationDrawerItemSelected(int position) {
-		// update the main content by replacing fragments
 		displayView(position);
 	}
 
 	private void displayView(int position) {
-		// update the main content by replacing fragments
 		Fragment fragment = null;
 		
 		switch (position) {
 		case 0:
 			fragment = new AccueilFragment();
 			getActionBar().setBackgroundDrawable(
-					new ColorDrawable((Color.BLACK)));
+					new ColorDrawable(getResources().getColor(R.color.Rouge1)));
 			break;
 			
 		case 1:
 			fragment = new AnnuaireFragment(0);
 			getActionBar().setBackgroundDrawable(
-					new ColorDrawable((getResources().getColor(R.color.VertOms))));
-			Toast.makeText(this, "en attente Annuaire", Toast.LENGTH_SHORT).show();
+					new ColorDrawable(getResources().getColor(R.color.VertOms)));
 			break;
 			
 		case 2:
@@ -129,23 +113,10 @@ public class MainActivity extends FragmentActivity implements NavigationDrawerFr
 		if (fragment != null) {
 			FragmentManager fragmentManager = getSupportFragmentManager();
 			fragmentManager.beginTransaction().replace(R.id.container, fragment).commit();
+			restoreActionBar(position);
 		} else {
 			// error in creating fragment
 			Log.e("MainActivity", "Error in creating fragment");
-		}
-	}
-
-	public void onSectionAttached(int number) {
-		switch (number) {
-		case 1:
-			mTitle = getString(R.string.agenda);
-			break;
-		case 2:
-			mTitle = getString(R.string.agenda);
-			break;
-		case 3:
-			mTitle = getString(R.string.agenda);
-			break;
 		}
 	}
 
@@ -155,7 +126,47 @@ public class MainActivity extends FragmentActivity implements NavigationDrawerFr
 		actionBar.setDisplayShowTitleEnabled(true);
 		actionBar.setTitle(mTitle);
 	}
+	
+	public void restoreActionBar(int position) {
+		ActionBar actionBar = getActionBar();
+		mTitle = donneTitreActionBar(position);
+		actionBar.setDisplayShowTitleEnabled(true);
+		actionBar.setTitle(mTitle);
+	}
 
+	private String donneTitreActionBar(int position){
+		Resources r = getResources();
+		switch (position) {
+		case 0: return r.getString(R.string.accueil);
+			
+		case 1: return r.getString(R.string.annuaire);
+			
+		case 2: return r.getString(R.string.association);
+			
+		case 3: return r.getString(R.string.equipement);
+			
+		case 4: return r.getString(R.string.discipline);
+			
+		case 5: return r.getString(R.string.quartier);
+			
+		case 6: return r.getString(R.string.agenda);
+			
+		case 7: return r.getString(R.string.actualite);
+			
+		case 8: return r.getString(R.string.evenements);
+			
+		case 9: return r.getString(R.string.geolocalisation);
+		
+		case 10: return r.getString(R.string.association);
+			
+		case 11: return r.getString(R.string.equipement);
+		
+		case 12: return r.getString(R.string.adresse);
+		
+		default: return r.getString(R.string.oms);
+		}
+	}
+	
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		if (!mNavigationDrawerFragment.isDrawerOpen()) {

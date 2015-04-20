@@ -97,12 +97,12 @@
     </style>
 
     <style name="TextItemNavTitre">
-	    <item name="android:textSize">20sp</item>
+	    <item name="android:textSize">18sp</item>
         <item name="android:textStyle">bold</item>
 	</style>
 	
     <style name="TextItemNavSousTitre">
-	    <item name="android:textSize">15sp</item>
+	    <item name="android:textSize">14sp</item>
 	</style>
 
     <color name="Vert1">#1FCF6D</color>

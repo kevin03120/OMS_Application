@@ -38,7 +38,7 @@ public class FragmentAssociationActivity extends FragmentActivity {
 	        pager.setAdapter(pagerAdapter);
 	        List<Association> associations = Manager.getInstance().getListeAssociation();
 	        for(Association a : associations){
-	        	if(pos == a.getUid()){
+	        	if(pos == a.getId()){
 	        		association = a;
 	        		position = pagerAdapter.getAssociations().indexOf(a);
 	        	}

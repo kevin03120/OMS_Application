@@ -4,7 +4,7 @@ import java.util.List;
 
 public class Association implements Comparable<Association> {
 
-	private int uid;
+	private int id;
 	private String nom;
 	private boolean adherent;
 	private List<Equipement> listeEquipement;
@@ -13,26 +13,26 @@ public class Association implements Comparable<Association> {
 	private Personne contact;
 	
 	public Association(int unId, String unNom, boolean adherent, List<Equipement> uneListeEquipement, String horraire,List<Sport> uneListeSport, Personne unContact){
-		uid = unId;
-		nom = unNom;
-		this.adherent = adherent;
+		setId(unId);
+		setNom(unNom);
+		setAdherent(adherent);
 		if(uneListeEquipement.size() > 0){
-			listeEquipement = uneListeEquipement;
+			setListeEquipement(uneListeEquipement);
 		}
 		else{
 			listeEquipement = null;
 		}
 		setHorraire(horraire);
 		setListeSport(uneListeSport);
-		contact = unContact;
+		setContact(unContact);
 	}
 
-	public int getUid() {
-		return uid;
+	public int getId() {
+		return id;
 	}
 
-	public void setUid(int uid) {
-		this.uid = uid;
+	public void setId(int uid) {
+		this.id = uid;
 	}
 
 	public String getNom() {

@@ -41,7 +41,7 @@ public class FragmentAssociation extends Fragment {
 	
 	public static FragmentAssociation newInstance(Association a) {
 		Bundle extras = new Bundle();
-		extras.putInt("id", a.getUid());
+		extras.putInt("id", a.getId());
 		FragmentAssociation fragment = new FragmentAssociation();
 		fragment.setArguments(extras);
 		return fragment;
@@ -51,7 +51,7 @@ public class FragmentAssociation extends Fragment {
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 		 View v = inflater.inflate(R.layout.association, container, false);
 			for(Association a : Manager.getInstance().getListeAssociation()){
-				if(a.getUid() == getArguments().getInt("id")){
+				if(a.getId() == getArguments().getInt("id")){
 					association = a;
 				}
 			}

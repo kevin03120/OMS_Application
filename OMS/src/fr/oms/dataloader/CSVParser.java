@@ -140,7 +140,7 @@ public class CSVParser {
 			String telfixe=mots[30];
 			String telport=mots[31];
 
-			tmp=new Personne(id, titre, nom, prenom, adresse, codePostal, ville, email, telfixe, telport);
+			tmp=new Personne(id, titre, nom, prenom, adresse, adresse, codePostal, ville, email, telfixe, telport, "");
 			Manager.getInstance().getListPersonne().add(tmp);
 
 			return tmp;
@@ -161,11 +161,11 @@ public class CSVParser {
 		}		
 
 		if(equip1==null){
-			equip1=readEquipement(mots[6]);
+			//equip1=readEquipement(mots[6]);
 		}
 
 		if(equip2==null){
-			equip2=readEquipement(mots[7]);
+			//equip2=readEquipement(mots[7]);
 		}			
 		Quartier q=recupereQuartier(mots[5]);
 		if(equip1!=null){
@@ -206,7 +206,7 @@ public class CSVParser {
 	}
 
 
-	private Equipement readEquipement(String mots) {
+	/*private Equipement readEquipement(String mots) {
 		if(!mots.equals("")){
 			int id=Manager.getInstance().getListeEquipement().size();
 			String nom=mots;
@@ -217,6 +217,6 @@ public class CSVParser {
 			return nouveauEquip;
 		}
 		return null;
-	}
+	}*/
 
 }

@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-
     <string name="app_name">OMS</string>
-    <string name="action_example">example</string>
+    <string name="action_example">Site de l\'OMS</string>
     <string name="hello_world">Hello world!</string>
     <string name="accueil">Accueil</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
@@ -19,6 +18,7 @@
     <string name="titre_info">Autres Informations</string>
     <string name="guide_sport"><u>Guide des sports</u></string>
     <string name="plan_oms"><u>Plan OMS</u></string>
+    <string name="oms"><u>OMS</u></string>
     <string name="lien_guide_sport">http://fr.calameo.com/read/00122036544c76167c62c</string>
     <string name="lien_plan_OMS">http://www.oms-clermont-ferrand.fr/plan-oms</string>
     <string name="adherents">Adhérents ?</string>
