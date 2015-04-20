@@ -24,14 +24,12 @@ public class FragmentAssociationActivity extends FragmentActivity {
 	    protected void onCreate(Bundle savedInstanceState) {
 	        super.onCreate(savedInstanceState);
 			setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
-	        setContentView(R.layout.association_pager);     
+	        setContentView(R.layout.detail_pager);     
 	        int pos = getIntent().getExtras().getInt("position");
 	        boolean adherent = getIntent().getExtras().getBoolean("adherents");
 	        boolean nonAdherent = getIntent().getExtras().getBoolean("nonAdherents");
 	        boolean sport = getIntent().getExtras().getBoolean("sport");
 	        int idSport = getIntent().getExtras().getInt("idSport");
-	        Log.i("etat", "adherent : " + adherent);
-	        Log.i("etat", "nonAdherent : " + nonAdherent);
 	        int position = 0;
 	        ViewPager pager = (ViewPager) findViewById(R.id.viewPager);
 	        MyPagerAdapter pagerAdapter = new MyPagerAdapter(getSupportFragmentManager(), adherent, nonAdherent, sport, idSport);

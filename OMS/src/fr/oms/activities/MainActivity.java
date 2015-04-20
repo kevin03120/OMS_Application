@@ -1,9 +1,9 @@
 package fr.oms.activities;
 
+
 import android.app.ActionBar;
 import android.content.pm.ActivityInfo;
 import android.content.res.Resources;
-import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;

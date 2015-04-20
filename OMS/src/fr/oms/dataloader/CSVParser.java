@@ -11,6 +11,7 @@ import java.util.regex.Pattern;
 
 import android.content.Context;
 import fr.oms.activities.R;
+import fr.oms.metier.Actualite;
 import fr.oms.metier.Association;
 import fr.oms.metier.Equipement;
 import fr.oms.metier.Personne;
@@ -97,6 +98,14 @@ public class CSVParser {
 		Collections.sort(Manager.getInstance().getListeAssociation());
 		Collections.sort(Manager.getInstance().getListeEquipement());
 		Collections.sort(Manager.getInstance().getListeQuartier());
+		Actualite actu = new Actualite(1,"ASM en finale", "l'ASM a gagné 15-9", "http://www.oms-clermont-ferrand.fr/api/v1/proxy/aHR0cDovL3d3dy5vbXMtY2xlcm1vbnQtZmVycmFuZC5mci9zaXRlcy9kZWZhdWx0L2ZpbGVzL2FnZW5kYS8xNTBweC1BU01fQ2xlcm1vbnRfQXV2ZXJnbmVfbG9nby5qcGc=?reqwidth=200", Manager.getInstance().getListeAssociation().get(1));
+		Manager.getInstance().getListeActualite().add(actu);
+		actu = new Actualite(1,"ASM en finale", "l'ASM a gagné 15-9", "http://www.oms-clermont-ferrand.fr/api/v1/proxy/aHR0cDovL3d3dy5vbXMtY2xlcm1vbnQtZmVycmFuZC5mci9zaXRlcy9kZWZhdWx0L2ZpbGVzL2FnZW5kYS8xNTBweC1BU01fQ2xlcm1vbnRfQXV2ZXJnbmVfbG9nby5qcGc=?reqwidth=200", Manager.getInstance().getListeAssociation().get(1));
+		Manager.getInstance().getListeActualite().add(actu);
+		actu = new Actualite(1,"ASM en finale", "l'ASM a gagné 15-9", "http://www.oms-clermont-ferrand.fr/api/v1/proxy/aHR0cDovL3d3dy5vbXMtY2xlcm1vbnQtZmVycmFuZC5mci9zaXRlcy9kZWZhdWx0L2ZpbGVzL2FnZW5kYS8xNTBweC1BU01fQ2xlcm1vbnRfQXV2ZXJnbmVfbG9nby5qcGc=?reqwidth=200", Manager.getInstance().getListeAssociation().get(1));
+		Manager.getInstance().getListeActualite().add(actu);
+		actu = new Actualite(1,"ASM en finale", "l'ASM a gagné 15-9", "http://www.oms-clermont-ferrand.fr/api/v1/proxy/aHR0cDovL3d3dy5vbXMtY2xlcm1vbnQtZmVycmFuZC5mci9zaXRlcy9kZWZhdWx0L2ZpbGVzL2FnZW5kYS8xNTBweC1BU01fQ2xlcm1vbnRfQXV2ZXJnbmVfbG9nby5qcGc=?reqwidth=200", Manager.getInstance().getListeAssociation().get(1));
+		Manager.getInstance().getListeActualite().add(actu);
 	}
 
 
@@ -140,7 +149,7 @@ public class CSVParser {
 			String telfixe=mots[30];
 			String telport=mots[31];
 
-			//tmp=new Personne(id, titre, nom, prenom, adresse, codePostal, ville, email, telfixe, telport);
+			tmp=new Personne(id, titre, nom, prenom, adresse, adresse, codePostal, ville, email, telfixe, telport, "");
 			Manager.getInstance().getListPersonne().add(tmp);
 
 			return tmp;

@@ -11,9 +11,11 @@ import java.util.List;
 import android.content.Context;
 import android.content.res.Resources.NotFoundException;
 import fr.oms.activities.R;
+import fr.oms.metier.Actualite;
 import fr.oms.metier.Association;
 import fr.oms.metier.Discipline;
 import fr.oms.metier.Equipement;
+import fr.oms.metier.Evenement;
 import fr.oms.metier.Personne;
 import fr.oms.metier.Quartier;
 import fr.oms.metier.Sport;
@@ -26,6 +28,8 @@ public class Manager {
 	private List<Equipement> listeEquipement;
 	private List<Quartier> listeQuartier;
 	private List<Sport> listeSport;
+	private List<Actualite> listeActualite;
+	private List<Evenement> listeEvenement;
 	private List<Personne> listPersonne;
 	private iAccesDonnees accesDonnees;
 	
@@ -34,9 +38,12 @@ public class Manager {
 		listeAssociation = new ArrayList<Association>();
 		listeEquipement = new ArrayList<Equipement>();
 		listeQuartier = new ArrayList<Quartier>();
+		listeActualite = new ArrayList<Actualite>();
+		listeEvenement = new ArrayList<Evenement>();
 		listeSport = new ArrayList<Sport>();
 		listPersonne = new ArrayList<Personne>();
-		//getTousLesSport();
+		listeActualite.clear();
+		listeEvenement.clear();
 	}
 	
 	private void remplieListeDiscipline(Context context){
@@ -245,10 +252,28 @@ public class Manager {
 		this.listPersonne = listPersonne;
 	}
 
+	public List<Actualite> getListeActualite() {
+		return listeActualite;
+	}
+
+	public void setListeActualite(List<Actualite> listeActualite) {
+		this.listeActualite = listeActualite;
+	}
+
+	public List<Evenement> getListeEvenement() {
+		return listeEvenement;
+	}
+
+	public void setListeEvenement(List<Evenement> listeEvenement) {
+		this.listeEvenement = listeEvenement;
+	}
+
 	public Personne recupereUnePersonneAPartirDuMail(String mail) {
 		for(Personne p : listPersonne){
-			if(p.getEmail().equals(mail)){
-				return p;
+			if(p != null){
+				if(p.getEmail().equals(mail)){
+					return p;
+				}
 			}
 		}
 		return null;
