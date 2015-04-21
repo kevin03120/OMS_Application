@@ -7,7 +7,7 @@
     android:orientation="horizontal" >
 
     <ImageView
-        android:id="@+id/logoActualite"
+        android:id="@+id/logoElement"
         android:layout_width="40dp"
         android:layout_height="40dp"
         android:layout_marginRight="10dp"

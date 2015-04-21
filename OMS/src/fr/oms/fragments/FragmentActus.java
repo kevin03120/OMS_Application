@@ -16,7 +16,7 @@ import fr.oms.modele.Manager;
 
 public class FragmentActus extends Fragment{
 	
-	ListView listActualite;
+	private ListView listActualite;
 	
 	@Override
 	public void onCreate(Bundle savedInstanceState) {

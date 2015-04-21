@@ -1,9 +1,11 @@
 package fr.oms.fragments;
 
+import fr.oms.activities.FragmentAssociationActivity;
 import fr.oms.activities.R;
 import fr.oms.metier.Actualite;
 import fr.oms.modele.DownloadImageTask;
 import fr.oms.modele.Manager;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -45,8 +47,12 @@ public class FragmentDetailActualite extends Fragment {
 		new DownloadImageTask(image).execute(actualite.getLienImage()+"=?reqwidth=40");
 		TextView txtDetailActu = (TextView)v.findViewById(R.id.txtDetailActu);
 		txtDetailActu.setText(actualite.getDescription());
-		TextView txtAssoc = (TextView)v.findViewById(R.id.txtAssociationConcerne);
-		txtAssoc.setText("Association Concernée : " + actualite.getAssociationConcernee().getNom());
+		if(actualite.getAssociationConcernee() != null){
+			TextView txtAssoc = (TextView)v.findViewById(R.id.txtAssociationConcerne);
+			txtAssoc.setText("Association Concernée : " + actualite.getAssociationConcernee().getNom());
+			touchAssoc(txtAssoc);
+			txtAssoc.setVisibility(0);
+		}
 	}
 	
 	public Actualite getActualite() {
@@ -55,5 +61,21 @@ public class FragmentDetailActualite extends Fragment {
 
 	public void setActualite(Actualite actualite) {
 		this.actualite = actualite;
+	}
+	
+	private void touchAssoc(TextView v){
+		v.setOnClickListener(new View.OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				Intent intent = new Intent(getActivity(), FragmentAssociationActivity.class);
+				intent.putExtra("position", getActualite().getAssociationConcernee().getId());
+				intent.putExtra("adherents", true);
+				intent.putExtra("nonAdherents", true);
+				intent.putExtra("sport", false);
+				intent.putExtra("idSport", 0);
+				startActivity(intent);
+			}
+		});
 	}
 }

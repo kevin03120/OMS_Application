@@ -14,6 +14,7 @@ import fr.oms.activities.R;
 import fr.oms.metier.Actualite;
 import fr.oms.metier.Association;
 import fr.oms.metier.Equipement;
+import fr.oms.metier.Evenement;
 import fr.oms.metier.Personne;
 import fr.oms.metier.Quartier;
 import fr.oms.metier.Sport;
@@ -98,14 +99,16 @@ public class CSVParser {
 		Collections.sort(Manager.getInstance().getListeAssociation());
 		Collections.sort(Manager.getInstance().getListeEquipement());
 		Collections.sort(Manager.getInstance().getListeQuartier());
+		Manager.getInstance().getListeActualite().clear();
 		Actualite actu = new Actualite(1,"ASM en finale", "l'ASM a gagné 15-9", "http://www.oms-clermont-ferrand.fr/api/v1/proxy/aHR0cDovL3d3dy5vbXMtY2xlcm1vbnQtZmVycmFuZC5mci9zaXRlcy9kZWZhdWx0L2ZpbGVzL2FnZW5kYS8xNTBweC1BU01fQ2xlcm1vbnRfQXV2ZXJnbmVfbG9nby5qcGc=?reqwidth=200", Manager.getInstance().getListeAssociation().get(1));
 		Manager.getInstance().getListeActualite().add(actu);
 		actu = new Actualite(1,"ASM en finale", "l'ASM a gagné 15-9", "http://www.oms-clermont-ferrand.fr/api/v1/proxy/aHR0cDovL3d3dy5vbXMtY2xlcm1vbnQtZmVycmFuZC5mci9zaXRlcy9kZWZhdWx0L2ZpbGVzL2FnZW5kYS8xNTBweC1BU01fQ2xlcm1vbnRfQXV2ZXJnbmVfbG9nby5qcGc=?reqwidth=200", Manager.getInstance().getListeAssociation().get(1));
 		Manager.getInstance().getListeActualite().add(actu);
-		actu = new Actualite(1,"ASM en finale", "l'ASM a gagné 15-9", "http://www.oms-clermont-ferrand.fr/api/v1/proxy/aHR0cDovL3d3dy5vbXMtY2xlcm1vbnQtZmVycmFuZC5mci9zaXRlcy9kZWZhdWx0L2ZpbGVzL2FnZW5kYS8xNTBweC1BU01fQ2xlcm1vbnRfQXV2ZXJnbmVfbG9nby5qcGc=?reqwidth=200", Manager.getInstance().getListeAssociation().get(1));
-		Manager.getInstance().getListeActualite().add(actu);
-		actu = new Actualite(1,"ASM en finale", "l'ASM a gagné 15-9", "http://www.oms-clermont-ferrand.fr/api/v1/proxy/aHR0cDovL3d3dy5vbXMtY2xlcm1vbnQtZmVycmFuZC5mci9zaXRlcy9kZWZhdWx0L2ZpbGVzL2FnZW5kYS8xNTBweC1BU01fQ2xlcm1vbnRfQXV2ZXJnbmVfbG9nby5qcGc=?reqwidth=200", Manager.getInstance().getListeAssociation().get(1));
-		Manager.getInstance().getListeActualite().add(actu);
+		Manager.getInstance().getListeEvenement().clear();
+		Evenement event = new Evenement(1,"BARCELONE - PSG", "http://www.oms-clermont-ferrand.fr/api/v1/proxy/aHR0cDovL3d3dy5vbXMtY2xlcm1vbnQtZmVycmFuZC5mci9zaXRlcy9kZWZhdWx0L2ZpbGVzL2FnZW5kYS8xNTBweC1BU01fQ2xlcm1vbnRfQXV2ZXJnbmVfbG9nby5qcGc=?reqwidth=200", Manager.getInstance().getListeAssociation().get(10), null, null, 0, "Match important entre barcelone et paris le mardi 21 Avril", 0);
+		Manager.getInstance().getListeEvenement().add(event);
+		event = new Evenement(1,"BARCELONE - PSG", "http://www.oms-clermont-ferrand.fr/api/v1/proxy/aHR0cDovL3d3dy5vbXMtY2xlcm1vbnQtZmVycmFuZC5mci9zaXRlcy9kZWZhdWx0L2ZpbGVzL2FnZW5kYS8xNTBweC1BU01fQ2xlcm1vbnRfQXV2ZXJnbmVfbG9nby5qcGc=?reqwidth=200", Manager.getInstance().getListeAssociation().get(10), null, null, 0, "Match important entre barcelone et paris le mardi 21 Avril", 0);
+		Manager.getInstance().getListeEvenement().add(event);
 	}
 
 
