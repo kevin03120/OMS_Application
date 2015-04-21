@@ -27,6 +27,7 @@
             android:theme="@style/Theme.Vert_oms"></activity>
         <activity android:name="FragmentActuActivity"></activity>
         <activity android:name="FragmentEventActivity"></activity>
+        <activity android:name="FragmentEquipementActivity"></activity>
     </application>
 
 </manifest>
