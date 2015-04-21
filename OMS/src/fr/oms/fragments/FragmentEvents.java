@@ -8,10 +8,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
-import fr.oms.activities.FragmentActuActivity;
 import fr.oms.activities.FragmentEventActivity;
 import fr.oms.activities.R;
-import fr.oms.adapter.ActualiteAdapter;
 import fr.oms.adapter.EvenementAdapter;
 import fr.oms.modele.Manager;
 

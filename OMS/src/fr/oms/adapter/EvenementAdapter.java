@@ -11,7 +11,6 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 import fr.oms.activities.R;
-import fr.oms.metier.Actualite;
 import fr.oms.metier.Evenement;
 import fr.oms.modele.DownloadImageTask;
 
