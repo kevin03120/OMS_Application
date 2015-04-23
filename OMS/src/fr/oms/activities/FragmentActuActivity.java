@@ -25,7 +25,7 @@ public class FragmentActuActivity extends FragmentActivity {
         ViewPager pager = (ViewPager) findViewById(R.id.viewPager);
         MyPagerAdapter pagerAdapter = new MyPagerAdapter(getSupportFragmentManager());
         pager.setAdapter(pagerAdapter);
-        actualite = Manager.getInstance().getListeActualite().get(pos);
+        actualite = Manager.getInstance().getListActualites().get(pos);
         pager.setCurrentItem(pos);
 	}
 	
@@ -35,7 +35,7 @@ public class FragmentActuActivity extends FragmentActivity {
 	 	
         public MyPagerAdapter(FragmentManager fragmentManager) {
             super(fragmentManager);
-            setActualites(Manager.getInstance().getListeActualite());
+            setActualites(Manager.getInstance().getListActualites());
         }
 
         public List<Actualite> getActualites() {

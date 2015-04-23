@@ -11,6 +11,7 @@ import java.util.List;
 import android.content.Context;
 import android.content.res.Resources.NotFoundException;
 import fr.oms.activities.R;
+import fr.oms.dataloader.iLoadData;
 import fr.oms.metier.Actualite;
 import fr.oms.metier.Association;
 import fr.oms.metier.Discipline;
@@ -23,55 +24,54 @@ import fr.oms.metier.Sport;
 public class Manager {
 
 	private static Manager INSTANCE;
-	private List<Discipline> listeDiscipline;
-	private List<Association> listeAssociation;
-	private List<Equipement> listeEquipement;
-	private List<Quartier> listeQuartier;
-	private List<Sport> listeSport;
-	private List<Actualite> listeActualite;
-	private List<Evenement> listeEvenement;
-	private List<Personne> listPersonne;
-	private iAccesDonnees accesDonnees;
+	private List<Discipline> listeDisciplines;
+	private List<Association> listeAssociations;
+	private List<Equipement> listeEquipements;
+	private List<Quartier> listeQuartiers;
+	private List<Sport> listeSports;
+	private List<Personne> listPersonnes;
+	private List<Actualite> listActualites;
+	private List<Evenement> listEvenements;
+	private iLoadData accesDonnees;
 	
 	private Manager(){
-		listeDiscipline = new ArrayList<Discipline>();
-		listeAssociation = new ArrayList<Association>();
-		listeEquipement = new ArrayList<Equipement>();
-		listeQuartier = new ArrayList<Quartier>();
-		listeActualite = new ArrayList<Actualite>();
-		listeEvenement = new ArrayList<Evenement>();
-		listeSport = new ArrayList<Sport>();
-		listPersonne = new ArrayList<Personne>();
-		listeActualite.clear();
-		listeEvenement.clear();
+		listeDisciplines = new ArrayList<Discipline>();
+		listeAssociations = new ArrayList<Association>();
+		listeEquipements = new ArrayList<Equipement>();
+		listeQuartiers = new ArrayList<Quartier>();
+		listeSports = new ArrayList<Sport>();
+		listPersonnes = new ArrayList<Personne>();
+		setListActualites(new ArrayList<Actualite>());
+		setListEvenements(new ArrayList<Evenement>());
+		//getTousLesSport();
 	}
 	
 	private void remplieListeDiscipline(Context context){
-		listeDiscipline.clear();
+		listeDisciplines.clear();
 		Discipline discipline = new Discipline(1, "Activités de détente et d'entretien", null);
-		listeDiscipline.add(discipline);
+		listeDisciplines.add(discipline);
 		discipline = new Discipline(2, "Multisports - Omnisports", null);
-		listeDiscipline.add(discipline);
+		listeDisciplines.add(discipline);
 		discipline = new Discipline(3, "Sport Collectif en Salle", null);
-		listeDiscipline.add(discipline);
+		listeDisciplines.add(discipline);
 		discipline = new Discipline(4, "Sport Collectif Extérieur", null);
-		listeDiscipline.add(discipline);
+		listeDisciplines.add(discipline);
 		discipline = new Discipline(5, "Sport d'eau", null);
-		listeDiscipline.add(discipline);
+		listeDisciplines.add(discipline);
 		discipline = new Discipline(6, "Sport de Combat", null);
-		listeDiscipline.add(discipline);
+		listeDisciplines.add(discipline);
 		discipline = new Discipline(7, "Sport de nature", null);
-		listeDiscipline.add(discipline);
+		listeDisciplines.add(discipline);
 		discipline = new Discipline(8, "Sport de neige ou de glace", null);
-		listeDiscipline.add(discipline);
+		listeDisciplines.add(discipline);
 		discipline = new Discipline(9, "Sport Individuel en salle", null);
-		listeDiscipline.add(discipline);
+		listeDisciplines.add(discipline);
 		discipline = new Discipline(10, "Sport Individuel Extérieur", null);
-		listeDiscipline.add(discipline);
+		listeDisciplines.add(discipline);
 		discipline = new Discipline(11, "Sports Mécaniques", null);
-		listeDiscipline.add(discipline);
+		listeDisciplines.add(discipline);
 		discipline = new Discipline(12, "Pratiques Adaptées", null);
-		listeDiscipline.add(discipline);
+		listeDisciplines.add(discipline);
 		remplieListSportDiscipline(context);
 	}
 	
@@ -99,7 +99,7 @@ public class Manager {
 			if(line.contains("d.")){
 				numDiscipline = 0;
 				line = line.replace("d.", "");
-				for(Discipline d : listeDiscipline){
+				for(Discipline d : listeDisciplines){
 					if(d.getNom().equals(line)){
 						numDiscipline = d.getUid();
 					}
@@ -107,9 +107,9 @@ public class Manager {
 			}
 			else{
 				line = line.replace("s.", "");
-				for(Sport s : listeSport){
+				for(Sport s : listeSports){
 					if(s.getNom().equals(line)){
-						for(Discipline d : listeDiscipline){
+						for(Discipline d : listeDisciplines){
 							if(d.getUid()==numDiscipline){
 								d.getListeSport().add(s);
 							}
@@ -132,11 +132,11 @@ public class Manager {
 	}
 	
 	public void clearDonnees(){
-		listeAssociation.clear();
-		listeDiscipline.clear();
-		listeEquipement.clear();
-		listeQuartier.clear();
-		listeSport.clear();
+		listeAssociations.clear();
+		listeDisciplines.clear();
+		listeEquipements.clear();
+		listeQuartiers.clear();
+		listeSports.clear();
 	}
 	
 	public void getTousLesSport(Context context) {
@@ -158,7 +158,7 @@ public class Manager {
 			e.printStackTrace();
 		}		
 		while (line!=null && !line.equals("")) {
-			listeSport.add(new Sport(idSport,line.trim()));		
+			listeSports.add(new Sport(line.trim()));		
 			try {
 				line=br.readLine();
 				idSport++;
@@ -182,116 +182,149 @@ public class Manager {
 		return INSTANCE;
 	}
 	
+	public Actualite recupereActu(int idActu){
+		for(Actualite actu : listActualites){
+			if (actu.getId() == idActu){
+				return actu;
+			}
+		}
+		return null;
+	}
+	
+	public Evenement recupereEvenement(int idEvent){
+		for (Evenement event : listEvenements){
+			if (event.getId()==idEvent){
+				return event;
+			}
+		}
+		return null;
+	}
+	
+	public Equipement recupereEquipement (int idEquip){
+		for (Equipement equip : listeEquipements){
+			if(equip.getUid()==idEquip){
+				return equip;
+			}
+		}
+		return null;
+	}
+	
+	public Association recupereAssociation(int idAssoc){
+		for (Association assoc : listeAssociations){
+			if(assoc.getId()==idAssoc){
+				return assoc;
+			}
+		}
+		return null;
+	}
 
 	public List<Discipline> getListeDiscipline() {
-		return listeDiscipline;
+		return listeDisciplines;
 	}
 
 	public void setListeDiscipline(List<Discipline> listeDiscipline) {
-		this.listeDiscipline = listeDiscipline;
+		this.listeDisciplines = listeDiscipline;
 	}
 
 	public List<Association> getListeAssociation() {
-		return listeAssociation;
+		return listeAssociations;
 	}
 
 	public void setListeAssociation(List<Association> listeAssociation) {
-		this.listeAssociation = listeAssociation;
+		this.listeAssociations = listeAssociation;
 	}
 
 	public List<Equipement> getListeEquipement() {
-		return listeEquipement;
+		return listeEquipements;
 	}
 
 	public void setListeEquipement(List<Equipement> listeEquipement) {
-		this.listeEquipement = listeEquipement;
+		this.listeEquipements = listeEquipement;
 	}
 
 	public List<Quartier> getListeQuartier() {
-		return listeQuartier;
+		return listeQuartiers;
 	}
 
 	public void setListeQuartier(List<Quartier> listeQuartier) {
-		this.listeQuartier = listeQuartier;
+		this.listeQuartiers = listeQuartier;
 	}
 
-	public iAccesDonnees getAccesDonnees() {
+	public iLoadData getAccesDonnees() {
 		return accesDonnees;
 	}
 
-	public void setAccesDonnees(iAccesDonnees accesDonnees) {
+	public void setAccesDonnees(iLoadData accesDonnees) {
 		this.accesDonnees = accesDonnees;
 	}
 	
 	public void lireDonnees(){
-		accesDonnees.lireDonnees();
+		//accesDonnees.loadAllFileFromServer();;
 	}
 
 	public List<Sport> getListeSport() {
-		return listeSport;
+		return listeSports;
 	}
 
 	public void setListeSport(List<Sport> listeSport) {
-		this.listeSport = listeSport;
-	}
-
-	public Sport recupereLeSport(String compare) {
-		for(Sport s:listeSport){
-			if(s.getNom().equals(compare)){
-				return s;
-			}
-		}
-		return null;
+		this.listeSports = listeSport;
 	}
 
 	public List<Personne> getListPersonne() {
-		return listPersonne;
+		return listPersonnes;
 	}
 
 	public void setListPersonne(List<Personne> listPersonne) {
-		this.listPersonne = listPersonne;
-	}
-
-	public List<Actualite> getListeActualite() {
-		return listeActualite;
-	}
-
-	public void setListeActualite(List<Actualite> listeActualite) {
-		this.listeActualite = listeActualite;
-	}
-
-	public List<Evenement> getListeEvenement() {
-		return listeEvenement;
-	}
-
-	public void setListeEvenement(List<Evenement> listeEvenement) {
-		this.listeEvenement = listeEvenement;
-	}
-
-	public Personne recupereUnePersonneAPartirDuMail(String mail) {
-		for(Personne p : listPersonne){
-			if(p != null){
-				if(p.getEmail().equals(mail)){
-					return p;
-				}
-			}
-		}
-		return null;
-	}
-
-	public Equipement recupererEquipementAPartirDuNom(String nom) {
-		for(Equipement e:listeEquipement){
-			if(e.getNom().equals(nom)){
-				return e;
-			}
-		}
-		return null;
+		this.listPersonnes = listPersonne;
 	}
 
 	public Quartier recupereQuartierAPartirDuNom(String nom) {
-		for(Quartier q:listeQuartier){
+		for(Quartier q:listeQuartiers){
 			if(q.getNom().equals(nom)){
 				return q;
+			}
+		}
+		return null;
+	}
+
+	public List<Actualite> getListActualites() {
+		return listActualites;
+	}
+
+	public void setListActualites(List<Actualite> listActualites) {
+		this.listActualites = listActualites;
+	}
+
+	public List<Evenement> getListEvenements() {
+		return listEvenements;
+	}
+
+	public void setListEvenements(List<Evenement> listEvenements) {
+		this.listEvenements = listEvenements;
+	}
+
+	public Association recupereAssociationAvecNom(String nom) {
+		for(Association assoc : listeAssociations){
+			if(assoc.getNom()==nom){
+				return assoc;
+			}
+		}
+		return null;
+	}
+
+	public Equipement recupereEquipementAvecNom(String nom) {
+		for(Equipement equip : listeEquipements){
+			if(equip.getNom()==nom){
+				return equip;
+			}
+		}
+		return null;
+	}
+
+	public Personne recupererPersonneAvecNomPrenom(String nom, String prenom) {
+		for(Personne p : listPersonnes){
+			if(p.getNom()==nom && p.getPrenom()==prenom){
+				return p;
 			}
 		}
 		return null;

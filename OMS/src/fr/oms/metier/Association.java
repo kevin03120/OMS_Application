@@ -16,7 +16,7 @@ public class Association implements Comparable<Association> {
 		setId(unId);
 		setNom(unNom);
 		setAdherent(adherent);
-		if(uneListeEquipement.size() > 0){
+		if(uneListeEquipement!=null && uneListeEquipement.size() > 0){
 			setListeEquipement(uneListeEquipement);
 		}
 		else{

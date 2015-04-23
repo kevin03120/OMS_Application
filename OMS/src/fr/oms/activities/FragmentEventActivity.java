@@ -26,7 +26,7 @@ public class FragmentEventActivity extends FragmentActivity {
         ViewPager pager = (ViewPager) findViewById(R.id.viewPager);
         MyPagerAdapter pagerAdapter = new MyPagerAdapter(getSupportFragmentManager());
         pager.setAdapter(pagerAdapter);
-        evenement = Manager.getInstance().getListeEvenement().get(pos);
+        evenement = Manager.getInstance().getListEvenements().get(pos);
         pager.setCurrentItem(pos);
 	}
 	
@@ -36,7 +36,7 @@ public class FragmentEventActivity extends FragmentActivity {
 	 	
         public MyPagerAdapter(FragmentManager fragmentManager) {
             super(fragmentManager);
-            setEvenements(Manager.getInstance().getListeEvenement());
+            setEvenements(Manager.getInstance().getListEvenements());
         }
 
         public List<Evenement> getEvenements() {

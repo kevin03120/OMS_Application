@@ -51,7 +51,9 @@ public class FragmentEquipement extends Fragment {
 		TextView txtVille = (TextView)v.findViewById(R.id.ville);
 		txtVille.setText(equipement.getVille());
 		TextView txtQuartier = (TextView)v.findViewById(R.id.quartier);
-		txtQuartier.setText("Quartier : " + equipement.getQuartier().getNom());
+		if(equipement.getQuartier() != null){
+			txtQuartier.setText("Quartier : " + equipement.getQuartier().getNom());
+		}
 		Button btnGoMap = (Button)v.findViewById(R.id.btn_map);
 		if((equipement.getGeoloc().getLatitude().equals(GEOLOCNULL))&&(equipement.getGeoloc().getLatitude().equals(GEOLOCNULL))){
 			btnGoMap.setVisibility(4);

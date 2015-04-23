@@ -30,7 +30,7 @@ public class FragmentDetailActualite extends Fragment {
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 		 View v = inflater.inflate(R.layout.detail_actualite, container, false);
 		 int pos = getArguments().getInt("id");
-			for(Actualite a : Manager.getInstance().getListeActualite()){
+			for(Actualite a : Manager.getInstance().getListActualites()){
 				if(a.getId() == pos){
 					setActualite(a);
 				}

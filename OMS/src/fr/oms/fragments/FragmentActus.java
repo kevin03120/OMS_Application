@@ -29,7 +29,7 @@ public class FragmentActus extends Fragment{
                              Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_layout, container, false);
         listActualite = (ListView)v.findViewById(R.id.listActualiteEvenement);
-        listActualite.setAdapter(new ActualiteAdapter(getActivity(), 0, Manager.getInstance().getListeActualite()));
+        listActualite.setAdapter(new ActualiteAdapter(getActivity(), 0, Manager.getInstance().getListActualites()));
         touchActu();
         return v;
     }

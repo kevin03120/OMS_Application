@@ -30,7 +30,7 @@ public class FragmentDetailEvenement extends Fragment {
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 		View v = inflater.inflate(R.layout.detail_evenement, container, false);
 		 int pos = getArguments().getInt("id");
-			for(Evenement e : Manager.getInstance().getListeEvenement()){
+			for(Evenement e : Manager.getInstance().getListEvenements()){
 				if(e.getId() == pos){
 					setEvenement(e);
 				}

@@ -1,10 +1,18 @@
 package fr.oms.activities;
 
 
+import java.util.concurrent.ExecutionException;
+
 import android.app.ActionBar;
+import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.Context;
+import android.content.DialogInterface;
 import android.content.pm.ActivityInfo;
 import android.content.res.Resources;
 import android.graphics.drawable.ColorDrawable;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
@@ -13,7 +21,8 @@ import android.support.v4.widget.DrawerLayout;
 import android.util.Log;
 import android.view.Menu;
 import android.widget.Toast;
-import fr.oms.dataloader.CSVParser;
+import fr.oms.dataloader.JsonDataLoader;
+import fr.oms.dataloader.ParserJson;
 import fr.oms.fragments.AccueilFragment;
 import fr.oms.fragments.AgendaFragment;
 import fr.oms.fragments.AnnuaireFragment;
@@ -29,8 +38,9 @@ public class MainActivity extends FragmentActivity implements NavigationDrawerFr
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		Manager.getInstance().clearDonnees();
-		CSVParser parser=new CSVParser(this);
-		parser.readCSV();
+
+		//CSVParser parser=new CSVParser(this);
+		//parser.readCSV();
 		setContentView(R.layout.activity_main);
 		setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 		mNavigationDrawerFragment = (NavigationDrawerFragment) getFragmentManager().findFragmentById(
@@ -38,8 +48,68 @@ public class MainActivity extends FragmentActivity implements NavigationDrawerFr
 		mTitle = getTitle();
 
 		mNavigationDrawerFragment.setUp(R.id.navigation_drawer, (DrawerLayout) findViewById(R.id.drawer_layout));
+
+
+		JsonDataLoader loader=JsonDataLoader.getInstance();
+		effectuerConnexion(loader);
+		
+		ParserJson parser=new ParserJson(getApplicationContext());
+
 	}
-	
+
+	private void effectuerConnexion(JsonDataLoader loader) {
+		if(isNetworkAvailable(this)){
+			try {
+				loader.execute(getApplicationContext()).get();
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (ExecutionException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		else{
+			AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(MainActivity.this);
+			alertDialogBuilder.setTitle(R.string.detailCo);
+			alertDialogBuilder
+			.setMessage(getResources().getString(R.string.detailCo))
+			.setCancelable(false)
+			.setPositiveButton("Annuler la synchronisation",new DialogInterface.OnClickListener() {
+				public void onClick(DialogInterface dialog,int id) {
+					dialog.dismiss();
+				}
+			});
+			AlertDialog alertDialog = alertDialogBuilder.create();
+			alertDialog.show();
+
+		}
+	}
+
+	public boolean isNetworkAvailable( Activity mActivity ) 
+	{ 
+		Context context = mActivity.getApplicationContext();
+		ConnectivityManager connectivity = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
+		if (connectivity == null) 
+		{   
+			return false;
+		} 
+		else 
+		{  
+			NetworkInfo[] info = connectivity.getAllNetworkInfo();   
+			if (info != null) 
+			{   
+				for (int i = 0; i <info.length; i++) 
+				{ 
+					if (info[i].getState() == NetworkInfo.State.CONNECTED)
+					{
+						return true; 
+					}
+				}     
+			} 
+			return false;
+		}
+	} 
 	@Override
 	public void onNavigationDrawerItemSelected(int position) {
 		displayView(position);
@@ -47,62 +117,62 @@ public class MainActivity extends FragmentActivity implements NavigationDrawerFr
 
 	private void displayView(int position) {
 		Fragment fragment = null;
-		
+
 		switch (position) {
 		case 0:
 			fragment = new AccueilFragment();
 			getActionBar().setBackgroundDrawable(
 					new ColorDrawable(getResources().getColor(R.color.Rouge1)));
 			break;
-			
+
 		case 1:
 			fragment = new AnnuaireFragment(0);
 			getActionBar().setBackgroundDrawable(
 					new ColorDrawable(getResources().getColor(R.color.VertOms)));
 			break;
-			
+
 		case 2:
 			fragment = new AnnuaireFragment(0);			
 			getActionBar().setBackgroundDrawable(
 					new ColorDrawable((getResources().getColor(R.color.VertOms))));
 			break;
-			
+
 		case 3:
 			fragment = new AnnuaireFragment(1);			
 			getActionBar().setBackgroundDrawable(
 					new ColorDrawable((getResources().getColor(R.color.VertOms))));
 			break;
-			
+
 		case 4:
 			fragment = new AnnuaireFragment(2);			
 			getActionBar().setBackgroundDrawable(
 					new ColorDrawable((getResources().getColor(R.color.VertOms))));
 			break;
-			
+
 		case 5:
 			fragment = new AnnuaireFragment(3);			
 			getActionBar().setBackgroundDrawable(
 					new ColorDrawable((getResources().getColor(R.color.VertOms))));
 			break;
-			
+
 		case 6:	    	
 			fragment = new AgendaFragment(0);
 			getActionBar().setBackgroundDrawable(
 					new ColorDrawable((getResources().getColor(R.color.BleuOms))));
 			break;
-			
+
 		case 7:	    	
 			fragment = new AgendaFragment(0);
 			getActionBar().setBackgroundDrawable(
 					new ColorDrawable((getResources().getColor(R.color.BleuOms))));
 			break;
-			
+
 		case 8:	    	
 			fragment = new AgendaFragment(1);
 			getActionBar().setBackgroundDrawable(
 					new ColorDrawable((getResources().getColor(R.color.BleuOms))));
 			break;
-			
+
 		case 9:
 			Toast.makeText(this, "en attente Geo", Toast.LENGTH_SHORT).show();
 			//	        getActionBar().setBackgroundDrawable(
@@ -126,7 +196,7 @@ public class MainActivity extends FragmentActivity implements NavigationDrawerFr
 		actionBar.setDisplayShowTitleEnabled(true);
 		actionBar.setTitle(mTitle);
 	}
-	
+
 	public void restoreActionBar(int position) {
 		ActionBar actionBar = getActionBar();
 		mTitle = donneTitreActionBar(position);
@@ -138,35 +208,35 @@ public class MainActivity extends FragmentActivity implements NavigationDrawerFr
 		Resources r = getResources();
 		switch (position) {
 		case 0: return r.getString(R.string.accueil);
-			
+
 		case 1: return r.getString(R.string.annuaire);
-			
+
 		case 2: return r.getString(R.string.association);
-			
+
 		case 3: return r.getString(R.string.equipement);
-			
+
 		case 4: return r.getString(R.string.discipline);
-			
+
 		case 5: return r.getString(R.string.quartier);
-			
+
 		case 6: return r.getString(R.string.agenda);
-			
+
 		case 7: return r.getString(R.string.actualite);
-			
+
 		case 8: return r.getString(R.string.evenements);
-			
+
 		case 9: return r.getString(R.string.geolocalisation);
-		
+
 		case 10: return r.getString(R.string.association);
-			
+
 		case 11: return r.getString(R.string.equipement);
-		
+
 		case 12: return r.getString(R.string.adresse);
-		
+
 		default: return r.getString(R.string.oms);
 		}
 	}
-	
+
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		if (!mNavigationDrawerFragment.isDrawerOpen()) {

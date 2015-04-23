@@ -65,9 +65,9 @@ public class FragmentAssociationActivity extends FragmentActivity {
 		 			if((adherent) && (nonAdherent)){
 		 				if(sport){
 		 					for(Sport s : a.getListeSport()){
-		 						if(s.getId() == idSport){
-		 							assocs.add(a);
-		 						}
+//		 						if(s.getId() == idSport){
+//		 							assocs.add(a);
+//		 						}
 		 					}
 		 				}
 		 				else{
@@ -78,9 +78,9 @@ public class FragmentAssociationActivity extends FragmentActivity {
 		 				if(!a.isAdherent()){
 			 				if(sport){
 			 					for(Sport s : a.getListeSport()){
-			 						if(s.getId() == idSport){
-			 							assocs.add(a);
-			 						}
+//			 						if(s.getId() == idSport){
+//			 							assocs.add(a);
+//			 						}
 			 					}
 			 				}
 			 				else{
@@ -92,9 +92,9 @@ public class FragmentAssociationActivity extends FragmentActivity {
 		 				if(a.isAdherent()){
 			 				if(sport){
 			 					for(Sport s : a.getListeSport()){
-			 						if(s.getId() == idSport){
-			 							assocs.add(a);
-			 						}
+//			 						if(s.getId() == idSport){
+//			 							assocs.add(a);
+//			 						}
 			 					}
 			 				}
 			 				else{

@@ -26,7 +26,7 @@ public class FragmentEvents extends Fragment{
                              Bundle savedInstanceState) {
     	View v = inflater.inflate(R.layout.fragment_layout, container, false);
         listEvenements = (ListView)v.findViewById(R.id.listActualiteEvenement);
-        listEvenements.setAdapter(new EvenementAdapter(getActivity(), 0, Manager.getInstance().getListeEvenement()));
+        listEvenements.setAdapter(new EvenementAdapter(getActivity(), 0, Manager.getInstance().getListEvenements()));
         touchEvent();
         return v;
     }

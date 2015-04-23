@@ -69,4 +69,6 @@ public class Geolocalisation {
 	public void setLatitude(String latitude) {
 		this.latitude = latitude;
 	}
+	
+	
 }
