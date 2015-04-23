@@ -1,8 +1,10 @@
 package fr.oms.fragments;
 
+import fr.oms.activities.MapPane;
 import fr.oms.activities.R;
 import fr.oms.metier.Equipement;
 import fr.oms.modele.Manager;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -10,10 +12,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
 
 public class FragmentEquipement extends Fragment {
 
+	private static final String GEOLOCNULL = "0.00000";
 	private Equipement equipement;
 	
 	public static FragmentEquipement newInstance(Equipement e) {
@@ -51,6 +53,9 @@ public class FragmentEquipement extends Fragment {
 		TextView txtQuartier = (TextView)v.findViewById(R.id.quartier);
 		txtQuartier.setText("Quartier : " + equipement.getQuartier().getNom());
 		Button btnGoMap = (Button)v.findViewById(R.id.btn_map);
+		if((equipement.getGeoloc().getLatitude().equals(GEOLOCNULL))&&(equipement.getGeoloc().getLatitude().equals(GEOLOCNULL))){
+			btnGoMap.setVisibility(4);
+		}
 		goMap(btnGoMap);
 	}
 	
@@ -59,7 +64,11 @@ public class FragmentEquipement extends Fragment {
 			
 			@Override
 			public void onClick(View v) {
-				Toast.makeText(getActivity(), equipement.getGeoloc().getLatitude() + " : " + equipement.getGeoloc().getLongitude(), Toast.LENGTH_SHORT).show();
+				Intent intent = new Intent(getActivity(), MapPane.class);
+				intent.putExtra("nom", equipement.getNom());
+				intent.putExtra("latitude", equipement.getGeoloc().getLatitude());
+				intent.putExtra("longitude", equipement.getGeoloc().getLongitude());
+				startActivity(intent);
 			}
 		});
 	}

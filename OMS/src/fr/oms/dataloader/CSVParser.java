@@ -104,9 +104,11 @@ public class CSVParser {
 		Geolocalisation geoloc = new Geolocalisation("", "", "", "", "", "", "3.10309", "45.812178");
 		Equipement equipement = new Equipement(1,"Stade Philippes Marcombes", "121 avenue de la liberation", "63150", "Clermont-Ferrand","0645896547",geoloc,Manager.getInstance().getListeQuartier().get(1));
 		Manager.getInstance().getListeEquipement().add(equipement);
+		geoloc = new Geolocalisation("", "", "", "", "", "", "0.00000", "0.00000");
+		Equipement equipement1 = new Equipement(2,"Stade marcel michelin", "121 avenue de la liberation", "63150", "Clermont-Ferrand","0645896547",geoloc,Manager.getInstance().getListeQuartier().get(1));
+		Manager.getInstance().getListeEquipement().add(equipement1);
 		Manager.getInstance().getListeEquipement().add(equipement);
-		Manager.getInstance().getListeEquipement().add(equipement);
-		Manager.getInstance().getListeEquipement().add(equipement);
+		Manager.getInstance().getListeEquipement().add(equipement1);
 		Manager.getInstance().getListeEquipement().add(equipement);
 		Manager.getInstance().getListeActualite().clear();
 		Manager.getInstance().getListeEvenement().clear();

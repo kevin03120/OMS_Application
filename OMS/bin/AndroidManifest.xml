@@ -8,12 +8,18 @@
         android:minSdkVersion="14"
         android:targetSdkVersion="22" />
     <uses-permission android:name="android.permission.INTERNET"/>
+	<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+	<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+	<uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
 
     <application
         android:allowBackup="true"
         android:icon="@drawable/logo_appli"
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
+        <meta-data android:name="com.google.android.gms.version"
+        	android:value="@integer/google_play_services_version" />
         <activity
             android:name=".MainActivity"
             android:label="@string/app_name" >
@@ -28,6 +34,10 @@
         <activity android:name="FragmentActuActivity"></activity>
         <activity android:name="FragmentEventActivity"></activity>
         <activity android:name="FragmentEquipementActivity"></activity>
+        <meta-data
+  		  	android:name="com.google.android.geo.API_KEY"
+   			android:value="AIzaSyBJBYBuNOD77rC58z1rNj35Zp8fP1W7EF8"/>
+        <activity android:name="MapPane"></activity>
     </application>
 
 </manifest>
