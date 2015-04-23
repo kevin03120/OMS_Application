@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+    
+    <TextView
+        android:id="@+id/txtTitreActu"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="10dp"
+        android:textSize="25sp"
+        android:textColor="@color/OrangeOms"
+        android:text="@string/association" />
+    
+    <ImageView
+        android:id="@+id/imgActu"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_gravity="center_horizontal"
+        android:contentDescription="@string/actualite"
+        android:layout_marginTop="5dp"/>
+    
+     <TextView
+        android:id="@+id/txtDetailActu"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="5dp"
+        android:textColor="@color/BleuOms"
+        android:text="@string/association" />
+     
+     <TextView
+        android:id="@+id/txtAssociationConcerne"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="5dp"
+        android:textColor="@color/NoirOms"
+        android:text="@string/association"
+        android:clickable="true"
+        android:visibility="invisible" />
+
+</LinearLayout>

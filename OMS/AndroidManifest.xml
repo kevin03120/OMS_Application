@@ -7,6 +7,8 @@
     <uses-sdk
         android:minSdkVersion="14"
         android:targetSdkVersion="22" />
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
 
     <application
         android:allowBackup="true"
@@ -24,6 +26,9 @@
         </activity>
         <activity android:name="FragmentAssociationActivity"
             android:theme="@style/Theme.Vert_oms"></activity>
+        <activity android:name="FragmentActuActivity"></activity>
+        <activity android:name="FragmentEventActivity"></activity>
+        <activity android:name="FragmentEquipementActivity"></activity>
     </application>
 
 </manifest>

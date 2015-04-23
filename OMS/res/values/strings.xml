@@ -37,6 +37,9 @@
     <string name="equipementNonDispo">Aucun equipement disponible</string>
     <string name="agenda">Agenda</string>
     <string name="titreDetailAssociation">Détail d\'une association</string>
+    <string name="titreDetailEquipement">Détail d\'un équipement</string>
+    <string name="titreDetailActualite">Détail d\'une actualité</string>
+    <string name="titreDetailEvenement">Détail d\'un evenement</string>
     <string name="goSite">Pour plus d\'informations</string>
     <string name="drawer_open">Open navigation drawer</string>
     <string name="drawer_close">Close navigation drawer</string>
