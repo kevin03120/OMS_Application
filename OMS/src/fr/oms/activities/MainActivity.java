@@ -52,7 +52,7 @@ public class MainActivity extends FragmentActivity implements NavigationDrawerFr
 
 		JsonDataLoader loader=JsonDataLoader.getInstance();
 		effectuerConnexion(loader);
-		
+		Manager.getInstance().getTousLesSport(getApplicationContext());
 		ParserJson parser=new ParserJson(getApplicationContext());
 
 	}

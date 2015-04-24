@@ -21,7 +21,7 @@ import fr.oms.metier.Sport;
 import fr.oms.modele.Manager;
 
 public class ParserJson {
-	
+
 	private Context context;
 	private int timeLastMaj;
 
@@ -34,11 +34,11 @@ public class ParserJson {
 		Collections.sort(Manager.getInstance().getListeAssociation());
 		Collections.sort(Manager.getInstance().getListeEquipement());
 		Collections.sort(Manager.getInstance().getListeQuartier());
-		
-//		List<Association> assocs=Manager.getInstance().getListeAssociation();
-		System.out.println("TAILLE LISTE : "+Manager.getInstance().getListeQuartier().size());
+
+		//		List<Association> assocs=Manager.getInstance().getListeAssociation();
+//		System.out.println("TAILLE LISTE : "+Manager.getInstance().getListeQuartier().size());
 	}
-	
+
 	private void parseActus(){
 		JSONObject jsObj=JsonDataLoader.getInstance().LoadFile(context.getFileStreamPath(JSONTags.FICHIER_ACTUS));
 		JSONArray jsArr=null;
@@ -70,7 +70,7 @@ public class ParserJson {
 			}
 		}
 	}
-	
+
 	private void creerNouvelleActu(JSONObject actuObj) {
 		int id = 0;
 		String title = "";
@@ -119,7 +119,7 @@ public class ParserJson {
 			}
 		}
 	}
-	
+
 	private void creerNouveauEvent(JSONObject eventObj) {
 		int id = 0;
 		String title = "";
@@ -176,7 +176,7 @@ public class ParserJson {
 			}
 		}
 	}
-	
+
 	private void creerNouveauEquip(JSONObject equipObj) {
 		int id = 0;
 		String title = "";
@@ -190,7 +190,7 @@ public class ParserJson {
 			id= equipObj.getInt(JSONTags.IDENTIFIER);
 			title=equipObj.getString(JSONTags.TITLE);
 			quartier=recupereQuartier(equipObj.getJSONArray(JSONTags.QUARTIER));
-			
+
 			goeLoc=recupereGeo(equipObj.getJSONObject(JSONTags.GEOLOC)) ;
 			address=equipObj.getString(JSONTags.ADDRESS);
 			codePostal=equipObj.getString(JSONTags.CODE_POSTAL);
@@ -205,7 +205,7 @@ public class ParserJson {
 		}
 		Manager.getInstance().getListeEquipement().add(equip);		
 	}
-	
+
 	private Quartier recupereQuartier(JSONArray jsArr) {
 		Quartier quartier=null;
 		String nomQuartier="";
@@ -227,8 +227,8 @@ public class ParserJson {
 			}
 			return quartier;
 		}
-		
-		
+
+
 		return null;
 	}
 
@@ -284,8 +284,8 @@ public class ParserJson {
 			}
 		}
 	}
-	
-	
+
+
 
 	private void creerNouvelleAssoc(JSONObject assocObj) {
 		int id=0;
@@ -300,11 +300,11 @@ public class ParserJson {
 			nom=assocObj.getString(JSONTags.TITLE);
 			if(assocObj.getInt(JSONTags.OMS_MEMBER)==1){
 				adherent=true;
-				horraire=assocObj.getString(JSONTags.HOURS);
-				listEquips=recupererLesEquipements(assocObj);
-				listSports=recupererLesSports(assocObj.getJSONArray(JSONTags.DISCIPLINES));
-				contact = recupererLeContact(assocObj);
 			}
+			horraire=assocObj.getString(JSONTags.HOURS);
+			listEquips=recupererLesEquipements(assocObj);
+			listSports=recupererLesSports(assocObj.getJSONArray(JSONTags.DISCIPLINES));
+			contact = recupererLeContact(assocObj);
 		} catch (JSONException e) {
 			e.printStackTrace();
 		}
@@ -363,7 +363,7 @@ public class ParserJson {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			
+
 		}
 		return sports;
 	}
@@ -404,5 +404,5 @@ public class ParserJson {
 	public void setLastMaj(int lastMaj) {
 		this.timeLastMaj = lastMaj;
 	}	
-	
+
 }
