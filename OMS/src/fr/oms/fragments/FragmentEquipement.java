@@ -1,7 +1,12 @@
 package fr.oms.fragments;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import fr.oms.activities.MapPane;
 import fr.oms.activities.R;
+import fr.oms.adapter.AssociationAdapter;
+import fr.oms.metier.Association;
 import fr.oms.metier.Equipement;
 import fr.oms.modele.Manager;
 import android.content.Intent;
@@ -11,12 +16,15 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ListView;
 import android.widget.TextView;
 
 public class FragmentEquipement extends Fragment {
 
 	private static final String GEOLOCNULL = "0.00000";
 	private Equipement equipement;
+	private ListView listAssociation;
+	private TextView txtAssoc;
 	
 	public static FragmentEquipement newInstance(Equipement e) {
 		Bundle extras = new Bundle();
@@ -35,8 +43,24 @@ public class FragmentEquipement extends Fragment {
 				}
 			}
 			recupererToutesViews(v);
+			adapterPourListAssociation();
 			getActivity().setTitle(getResources().getString(R.string.titreDetailEquipement));
 	     return v;
+	}
+	
+	private void adapterPourListAssociation(){
+		List<Association> lesAssocsEquipement = new ArrayList<Association>();
+		for(Association a : Manager.getInstance().getListeAssociation()){
+			if(a.getListeEquipement()!=null){
+				for(Equipement e : a.getListeEquipement()){
+					if(e.equals(equipement)){
+						lesAssocsEquipement.add(a);
+					}
+				}
+				AssociationAdapter adapterAssoc = new AssociationAdapter(getActivity(), 0, lesAssocsEquipement);
+				listAssociation.setAdapter(adapterAssoc);
+			}
+		}
 	}
 	
 	private void recupererToutesViews(View v){
@@ -59,6 +83,7 @@ public class FragmentEquipement extends Fragment {
 			btnGoMap.setVisibility(4);
 		}
 		goMap(btnGoMap);
+		listAssociation = (ListView)v.findViewById(R.id.listAssocEquipement);
 	}
 	
 	private void goMap(Button b){

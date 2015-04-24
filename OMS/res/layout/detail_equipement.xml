@@ -1,32 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/fiche_assoc"
+    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
 	android:background="@color/Blanc" >
-   
-  <LinearLayout 
-       android:layout_width="match_parent"
-       android:layout_height="wrap_content"
-       android:orientation="vertical"
-       android:layout_gravity="center_horizontal|center_vertical">
        
-        <TextView 
-                android:id="@+id/nomEquipement"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:textSize="18sp"
-                android:textColor="@color/VertOmsFonce"/>
+    <TextView 
+        android:id="@+id/nomEquipement"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:textSize="18sp"
+        android:textColor="@color/VertOmsFonce"/>
        
-    <LinearLayout 
+    <LinearLayout
         android:id="@+id/contact_fiche_assoc"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
+        android:layout_gravity="center_horizontal|center_vertical"
         android:layout_marginTop="20dp"
         android:background="@drawable/customborder_green"
-        android:layout_gravity="center_horizontal|center_vertical">
+        android:orientation="horizontal" >
         
         <ImageView 
             android:layout_width="wrap_content"
@@ -99,28 +94,33 @@
                 android:textColor="@color/NoirOms"/>
         </LinearLayout>
     </LinearLayout>
-    <LinearLayout 
+
+    <TextView
+        android:id="@+id/lesAssociations"
+        android:text="@string/association"
+        android:layout_width="wrap_content"
+        android:layout_gravity="center"
+        android:layout_height="wrap_content"/>
+        
+    <ListView
+        android:id="@+id/listAssocEquipement"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginTop="20dp"
-        android:layout_gravity="center_horizontal|center_vertical">
-      
+	    android:layout_marginLeft="5dp"
+	    android:layout_marginRight="5dp" >
+	</ListView>
 	    <Button 
 	        style="?android:attr/buttonBarButtonStyle"
 	        android:id="@+id/btn_map"
 	        android:layout_width="wrap_content"
 	        android:layout_height="wrap_content"
 	        android:layout_gravity="center"
-	        android:layout_weight="1"
+	        android:layout_marginTop="10dp"
 	        android:layout_marginLeft="5dp"
 	        android:layout_marginRight="5dp"
 	        android:gravity="center"
 	        android:text="@string/goMap"
 	        android:textColor="@color/Blanc"
 	        android:background="@drawable/custom_btn_sorbus"/>
-	    
-	</LinearLayout>
-	</LinearLayout>
 
-</FrameLayout>
+</LinearLayout>

@@ -314,7 +314,7 @@ public class Manager {
 
 	public Equipement recupereEquipementAvecNom(String nom) {
 		for(Equipement equip : listeEquipements){
-			if(equip.getNom()==nom){
+			if(equip.getNom().equals(nom)){
 				return equip;
 			}
 		}
