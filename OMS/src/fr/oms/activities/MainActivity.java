@@ -2,7 +2,6 @@ package fr.oms.activities;
 
 
 import java.util.concurrent.ExecutionException;
-
 import android.app.ActionBar;
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -33,6 +32,7 @@ public class MainActivity extends FragmentActivity implements NavigationDrawerFr
 
 	private NavigationDrawerFragment mNavigationDrawerFragment;
 	private CharSequence mTitle;
+	private DrawerLayout mDrawerLayout;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -46,13 +46,13 @@ public class MainActivity extends FragmentActivity implements NavigationDrawerFr
 		mNavigationDrawerFragment = (NavigationDrawerFragment) getFragmentManager().findFragmentById(
 				R.id.navigation_drawer);
 		mTitle = getTitle();
-
-		mNavigationDrawerFragment.setUp(R.id.navigation_drawer, (DrawerLayout) findViewById(R.id.drawer_layout));
+		mDrawerLayout=(DrawerLayout) findViewById(R.id.drawer_layout);
+		mNavigationDrawerFragment.setUp(R.id.navigation_drawer, mDrawerLayout);
 
 
 		JsonDataLoader loader=JsonDataLoader.getInstance();
 		effectuerConnexion(loader);
-		
+		Manager.getInstance().getTousLesSport(getApplicationContext());
 		ParserJson parser=new ParserJson(getApplicationContext());
 
 	}
@@ -248,5 +248,14 @@ public class MainActivity extends FragmentActivity implements NavigationDrawerFr
 			return true;
 		}
 		return super.onCreateOptionsMenu(menu);
+	}
+	
+	@Override
+	public void onBackPressed() {
+		mDrawerLayout.openDrawer(mNavigationDrawerFragment.getView());
+		if(mDrawerLayout.isDrawerOpen(mNavigationDrawerFragment.getView())){
+			super.onBackPressed();
+		}
+		//super.onBackPressed();
 	}
 }
