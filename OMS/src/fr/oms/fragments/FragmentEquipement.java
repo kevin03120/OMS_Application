@@ -25,6 +25,7 @@ public class FragmentEquipement extends Fragment {
 	private Equipement equipement;
 	private ListView listAssociation;
 	private TextView txtAssoc;
+	private TextView txtPasAssoc;
 	
 	public static FragmentEquipement newInstance(Equipement e) {
 		Bundle extras = new Bundle();
@@ -57,8 +58,16 @@ public class FragmentEquipement extends Fragment {
 						lesAssocsEquipement.add(a);
 					}
 				}
-				AssociationAdapter adapterAssoc = new AssociationAdapter(getActivity(), 0, lesAssocsEquipement);
-				listAssociation.setAdapter(adapterAssoc);
+				if(lesAssocsEquipement.size()!=0){
+					AssociationAdapter adapterAssoc = new AssociationAdapter(getActivity(), 0, lesAssocsEquipement);
+					listAssociation.setAdapter(adapterAssoc);
+					listAssociation.setVisibility(0);
+					txtPasAssoc.setVisibility(4);
+				}
+				else{
+					listAssociation.setVisibility(4);
+					txtPasAssoc.setVisibility(0);
+				}
 			}
 		}
 	}
@@ -75,6 +84,7 @@ public class FragmentEquipement extends Fragment {
 		TextView txtVille = (TextView)v.findViewById(R.id.ville);
 		txtVille.setText(equipement.getVille());
 		TextView txtQuartier = (TextView)v.findViewById(R.id.quartier);
+		txtPasAssoc = (TextView)v.findViewById(R.id.textNonAssocAffilie);
 		if(equipement.getQuartier() != null){
 			txtQuartier.setText("Quartier : " + equipement.getQuartier().getNom());
 		}

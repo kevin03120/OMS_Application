@@ -51,5 +51,6 @@
     <string name="annuaire_underline"><u>Annuaire</u></string>
     <string name="agenda_underline"><u>Agenda</u></string>
     <string name="geolocalisation_underline"><u>Géolocalisation</u></string>
+    <string name="pasAssocEquipement">Aucune association présente à cette équipement</string>
 
 </resources>

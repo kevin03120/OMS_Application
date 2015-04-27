@@ -300,11 +300,14 @@ public class ParserJson {
 			nom=assocObj.getString(JSONTags.TITLE);
 			if(assocObj.getInt(JSONTags.OMS_MEMBER)==1){
 				adherent=true;
-				horraire=assocObj.getString(JSONTags.HOURS);
-				listEquips=recupererLesEquipements(assocObj);
-				listSports=recupererLesSports(assocObj.getJSONArray(JSONTags.DISCIPLINES));
-				contact = recupererLeContact(assocObj);
 			}
+			else{
+				adherent = false;
+			}
+			horraire=assocObj.getString(JSONTags.HOURS);
+			listEquips=recupererLesEquipements(assocObj);
+			listSports=recupererLesSports(assocObj.getJSONArray(JSONTags.DISCIPLINES));
+			contact = recupererLeContact(assocObj);
 		} catch (JSONException e) {
 			e.printStackTrace();
 		}

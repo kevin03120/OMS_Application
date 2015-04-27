@@ -50,7 +50,4 @@ public class JSONTags {
 	public static String CONTACT_TEL_MOBILE="contact_tel_mobile";
 	public static String CONTACT_MAIL="contact_mail";
 	public static String CONTACT_WEBSITE="contact_website";
-	
-	
-
 }
