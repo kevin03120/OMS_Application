@@ -12,22 +12,21 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import fr.oms.activities.MapPane;
 import fr.oms.activities.R;
 import fr.oms.metier.Association;
+import fr.oms.metier.Equipement;
 import fr.oms.metier.Personne;
 import fr.oms.modele.Manager;
 
 public class FragmentAssociation extends Fragment {
 
 	private Association association;
-	private LinearLayout layoutPasAdherente;
-	private LinearLayout layoutTextPasAdherente;
-	private LinearLayout layoutContact;
-	private LinearLayout layoutHoraire;
-	private LinearLayout layoutEquipement;
-	private Button btnMap;
-	private Button btnSite;
-	private TextView textPasAdherente;
+	private TextView btnSite;
+	private LinearLayout ficheAdherente;
+	private LinearLayout ficheNonAdherente;
+	private TextView infoAssocNonAdherente;
+	private TextView nomAssocPasAdherente;
 	private TextView nomAssociation;
 	private TextView nomContact;
 	private ImageView iconeAdherent;
@@ -37,6 +36,8 @@ public class FragmentAssociation extends Fragment {
 	private TextView horaire;
 	private TextView equipement1;
 	private TextView equipement2;
+	private Button lieu_map_1;
+	private Button lieu_map_2;
 	private Personne pers;
 	
 	public static FragmentAssociation newInstance(Association a) {
@@ -70,16 +71,52 @@ public class FragmentAssociation extends Fragment {
 		horaire = (TextView)v.findViewById(R.id.horaire);
 		equipement1 = (TextView)v.findViewById(R.id.lieu_equipement1);
 		equipement2 = (TextView)v.findViewById(R.id.lieu_equipement2);
+		lieu_map_1 = (Button)v.findViewById(R.id.btn_map);
+		lieu_map_2 = (Button)v.findViewById(R.id.btn_map_2);
 		iconeAdherent = (ImageView)v.findViewById(R.id.iconeAdherentAssociationFiche);
-		layoutPasAdherente = (LinearLayout)v.findViewById(R.id.layout_assoc_pas_adherente);
-		layoutTextPasAdherente = (LinearLayout)v.findViewById(R.id.layout_text_pas_adherente);
-		textPasAdherente = (TextView)v.findViewById(R.id.info_assoc_non_adherente);
-		layoutContact = (LinearLayout)v.findViewById(R.id.contact_fiche_assoc);
-		layoutHoraire = (LinearLayout)v.findViewById(R.id.horaire_fiche_assoc);
-		layoutEquipement = (LinearLayout)v.findViewById(R.id.equipement_fiche_assoc);
-		btnMap = (Button)v.findViewById(R.id.btn_map);
-		btnSite = (Button)v.findViewById(R.id.btn_info_site);
+		btnSite = (TextView)v.findViewById(R.id.btn_info_site);
+		ficheAdherente = (LinearLayout)v.findViewById(R.id.fiche_assoc);
+		ficheNonAdherente = (LinearLayout)v.findViewById(R.id.layout_assoc_pas_adherente);
+		nomAssocPasAdherente = (TextView)v.findViewById(R.id.nomAssocPasAdherente);
+		infoAssocNonAdherente = (TextView)v.findViewById(R.id.info_assoc_non_adherente);
 		onGoSite();
+	}
+	
+	private void changeLayoutSiPasAdherent(){
+		if(!association.isAdherent()){
+			nomAssociation.setVisibility(0);
+			ficheAdherente.setVisibility(4);
+			ficheNonAdherente.setVisibility(0);
+			infoAssocNonAdherente.setVisibility(0);
+			nomAssocPasAdherente.setVisibility(0);
+			nomAssocPasAdherente.setText(association.getNom());
+		}
+	}
+	
+	private void onMap1(){
+		lieu_map_1.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+            	Equipement equipement = association.getListeEquipement().get(0);
+            	Intent intent = new Intent(getActivity(), MapPane.class);
+				intent.putExtra("nom", equipement.getNom());
+				intent.putExtra("latitude", equipement.getGeoloc().getLatitude());
+				intent.putExtra("longitude", equipement.getGeoloc().getLongitude());
+				startActivity(intent);
+            }
+        });
+	}
+	
+	private void onMap2(){
+		lieu_map_1.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+            	Equipement equipement = association.getListeEquipement().get(0);
+            	Intent intent = new Intent(getActivity(), MapPane.class);
+				intent.putExtra("nom", equipement.getNom());
+				intent.putExtra("latitude", equipement.getGeoloc().getLatitude());
+				intent.putExtra("longitude", equipement.getGeoloc().getLongitude());
+				startActivity(intent);
+            }
+        });
 	}
 	
 	public void onGoSite(){
@@ -111,38 +148,55 @@ public class FragmentAssociation extends Fragment {
 		nomAssociation.setText(association.getNom());
 		pers = association.getContact();
 		if(pers != null){
-			nomContact.setText(pers.getTitre() + " " + pers.getNom() + " " + pers.getPrenom());
-			telFixContact.setText("Tel Fix : " + pers.getTelFixe());
-			telPortContact.setText("Tel Port : " + pers.getTelPortable());
-			mailContact.setText(pers.getEmail());
+			if(!pers.getNom().equals("")){
+				nomContact.setText(pers.getTitre() + " " + pers.getNom() + " " + pers.getPrenom());
+			}
+			else{
+				nomContact.setText("Nom du contact inconnu");
+			}
+			if(!pers.getTelFixe().equals("")){
+				telFixContact.setText("Telephone Fix : " + pers.getTelFixe());
+			}
+			else{
+				telFixContact.setText("Telephone Fix inconnu");
+			}
+			if(!pers.getTelPortable().equals("")){
+				telPortContact.setText("Telephone Portable : " + pers.getTelPortable());
+			}
+			else{
+				telPortContact.setText("Telephone Portable inconnu");
+			}
+			if(!pers.getEmail().equals("")){
+				mailContact.setText(pers.getEmail());
+			}
+			else{
+				mailContact.setText("Adresse email inconnue");
+			}
+		}
+		if(!association.getHorraire().equals("")){
+			horaire.setText(association.getHorraire());
 		}
 		else{
-			nomContact.setText(getResources().getString(R.string.contactNonDispo));
+			horaire.setText("Horaires inconnues");
 		}
-		horaire.setText(association.getHorraire());
-		if(association.getListeEquipement()!=null){
-			if(association.getListeEquipement().size() >=2){	
-				equipement1.setText(association.getListeEquipement().get(0).getNom());
+		if(association.getListeEquipement() != null){
+			equipement1.setText(association.getListeEquipement().get(0).getNom());
+			onMap1();
+			if(association.getListeEquipement().size() == 2){
 				equipement2.setText(association.getListeEquipement().get(1).getNom());
+				onMap2();
 			}
-			else if(association.getListeEquipement().size() == 1){
-				equipement1.setText(association.getListeEquipement().get(0).getNom());
-				equipement2.setVisibility(4);
-			}			
-		}else{
-			equipement1.setText("Aucun equipement connu");
-			equipement2.setVisibility(4);
+			else {
+				equipement2.setText("Pas d'equipement secondaire");
+				lieu_map_2.setVisibility(4);
+			}
 		}
-		if(!association.isAdherent()){
-			iconeAdherent.setVisibility(4);
-			layoutPasAdherente.setVisibility(0);
-			layoutTextPasAdherente.setVisibility(0);
-			textPasAdherente.setVisibility(0);
-			layoutContact.setVisibility(4);
-			layoutEquipement.setVisibility(4);
-			layoutHoraire.setVisibility(4);
-			btnMap.setVisibility(4);
-			btnSite.setVisibility(4);
+		else{
+			equipement1.setText("Pas d'equipement principale");
+			lieu_map_1.setVisibility(4);
+			equipement2.setText("Pas d'equipement secondaire");
+			lieu_map_2.setVisibility(4);
 		}
+		changeLayoutSiPasAdherent();
 	}
 }

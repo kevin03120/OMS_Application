@@ -24,7 +24,6 @@ public class FragmentEquipement extends Fragment {
 	private static final String GEOLOCNULL = "0.00000";
 	private Equipement equipement;
 	private ListView listAssociation;
-	private TextView txtAssoc;
 	private TextView txtPasAssoc;
 	
 	public static FragmentEquipement newInstance(Equipement e) {
@@ -76,17 +75,40 @@ public class FragmentEquipement extends Fragment {
 		TextView txtTitreEquipement = (TextView)v.findViewById(R.id.nomEquipement);
 		txtTitreEquipement.setText(equipement.getNom());
 		TextView txtTel = (TextView)v.findViewById(R.id.telFixEquipement);
-		txtTel.setText("Tel : " + equipement.getTelephone());
+		if(!equipement.getTelephone().equals("")){
+			txtTel.setText(equipement.getTelephone());
+		}
+		else{
+			txtTel.setText("Aucun numero de telephone affilié");
+		}
 		TextView txtAdresse = (TextView)v.findViewById(R.id.adresse);
-		txtAdresse.setText(equipement.getAdresse());
+		if(!equipement.getAdresse().equals("")){
+			txtAdresse.setText("Adresse : " + equipement.getAdresse());
+		}
+		else{
+			txtAdresse.setText("Aucune adresse affiliée");
+		}
 		TextView txtCodePostal = (TextView)v.findViewById(R.id.codePostal);
-		txtCodePostal.setText(equipement.getCodePostal());
+		if(!equipement.getCodePostal().equals("")){
+			txtCodePostal.setText("Code Postal : " + equipement.getCodePostal());
+		}
+		else{
+			txtCodePostal.setText("Aucun code postal affilié");
+		}
 		TextView txtVille = (TextView)v.findViewById(R.id.ville);
-		txtVille.setText(equipement.getVille());
+		if(!equipement.getVille().equals("")){
+			txtVille.setText("Ville : " + equipement.getVille());
+		}
+		else{
+			txtVille.setText("Aucune ville affiliée");
+		}
 		TextView txtQuartier = (TextView)v.findViewById(R.id.quartier);
 		txtPasAssoc = (TextView)v.findViewById(R.id.textNonAssocAffilie);
 		if(equipement.getQuartier() != null){
 			txtQuartier.setText("Quartier : " + equipement.getQuartier().getNom());
+		}
+		else{
+			txtQuartier.setText("Aucun quartier affilié à cet équipement");
 		}
 		Button btnGoMap = (Button)v.findViewById(R.id.btn_map);
 		if((equipement.getGeoloc().getLatitude().equals(GEOLOCNULL))&&(equipement.getGeoloc().getLatitude().equals(GEOLOCNULL))){
