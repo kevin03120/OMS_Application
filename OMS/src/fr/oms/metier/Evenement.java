@@ -1,6 +1,6 @@
 package fr.oms.metier;
 
-public class Evenement {
+public class Evenement implements Comparable<Evenement>{
 
 	private int id;
 	private String titre;
@@ -79,6 +79,16 @@ public class Evenement {
 	
 	public void setCreation(int creation) {
 		this.creation = creation;
+	}
+
+	@Override
+	public int compareTo(Evenement another) {
+		if(this.getDate()<another.getDate()){
+			return -1;
+		}else if(this.getDate()>another.getDate()){
+			return 1;
+		}
+		return 0;
 	}
 	
 }

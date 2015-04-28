@@ -1,9 +1,7 @@
 package fr.oms.dataloader;
 
-import java.security.Timestamp;
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Date;
 import java.util.List;
 
 import org.json.JSONArray;
@@ -11,7 +9,6 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import android.content.Context;
-import android.text.Html;
 import fr.oms.metier.Actualite;
 import fr.oms.metier.Association;
 import fr.oms.metier.Equipement;
@@ -36,7 +33,9 @@ public class ParserJson {
 		Collections.sort(Manager.getInstance().getListeAssociation());
 		Collections.sort(Manager.getInstance().getListeEquipement());
 		Collections.sort(Manager.getInstance().getListeQuartier());
-
+		Collections.sort(Manager.getInstance().getListEvenements());
+		Collections.reverse(Manager.getInstance().getListEvenements());
+		
 		//		List<Association> assocs=Manager.getInstance().getListeAssociation();
 //		System.out.println("TAILLE LISTE : "+Manager.getInstance().getListeQuartier().size());
 	}
