@@ -50,8 +50,8 @@ public class MainActivity extends FragmentActivity implements NavigationDrawerFr
 		mNavigationDrawerFragment.setUp(R.id.navigation_drawer, mDrawerLayout);
 
 
-		JsonDataLoader loader=JsonDataLoader.getInstance();
-		effectuerConnexion(loader);
+//		JsonDataLoader loader=JsonDataLoader.getInstance();
+//		effectuerConnexion(loader);
 		Manager.getInstance().getTousLesSport(getApplicationContext());
 		ParserJson parser=new ParserJson(getApplicationContext());
 

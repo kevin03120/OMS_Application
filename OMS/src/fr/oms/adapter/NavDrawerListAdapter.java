@@ -1,9 +1,11 @@
 package fr.oms.adapter;
 
 import java.util.ArrayList;
+
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.res.Resources;
+import android.graphics.Paint;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -51,7 +53,6 @@ public class NavDrawerListAdapter extends BaseAdapter {
         ImageView imgIcon = (ImageView) convertView.findViewById(R.id.ivIcon);
         TextView txtTitle = (TextView) convertView.findViewById(R.id.tvTitle);
         
-        //layout.setBackgroundColor(navDrawerItems.get(position).getmColor());
         imgIcon.setImageResource(navDrawerItems.get(position).getIcon());
         txtTitle.setText(navDrawerItems.get(position).getTitle());
         Double f=0.7;
@@ -62,7 +63,7 @@ public class NavDrawerListAdapter extends BaseAdapter {
         }
         Resources r = context.getResources();
         if((txtTitle.getText()==r.getString(R.string.accueil_underline))||(txtTitle.getText()==r.getString(R.string.annuaire_underline))||(txtTitle.getText()==r.getString(R.string.agenda_underline))||(txtTitle.getText()==r.getString(R.string.geolocalisation_underline))){
-            txtTitle.setTextAppearance(context, R.style.TextItemNavTitre);
+            txtTitle.setTextAppearance(context, R.style.TextItemNavTitre);           
         }
         else{
             txtTitle.setTextAppearance(context, R.style.TextItemNavSousTitre);

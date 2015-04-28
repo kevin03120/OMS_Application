@@ -8,6 +8,8 @@ import fr.oms.modele.Manager;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.text.Html;
+import android.text.method.LinkMovementMethod;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -46,7 +48,8 @@ public class FragmentDetailActualite extends Fragment {
 		ImageView image = (ImageView)v.findViewById(R.id.imgActu);
 		new DownloadImageTask(image).execute(actualite.getLienImage()+"=?reqwidth=40");
 		TextView txtDetailActu = (TextView)v.findViewById(R.id.txtDetailActu);
-		txtDetailActu.setText(actualite.getDescription());
+		txtDetailActu.setText(Html.fromHtml(actualite.getDescription()));
+		txtDetailActu.setMovementMethod(LinkMovementMethod.getInstance());
 		if(actualite.getAssociationConcernee() != null){
 			TextView txtAssoc = (TextView)v.findViewById(R.id.txtAssociationConcerne);
 			txtAssoc.setText("Association Concernée : " + actualite.getAssociationConcernee().getNom());

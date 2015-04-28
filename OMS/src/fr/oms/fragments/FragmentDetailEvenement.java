@@ -1,18 +1,20 @@
 package fr.oms.fragments;
 
-import fr.oms.activities.FragmentAssociationActivity;
-import fr.oms.activities.R;
-import fr.oms.metier.Evenement;
-import fr.oms.modele.DownloadImageTask;
-import fr.oms.modele.Manager;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.text.Html;
+import android.text.method.LinkMovementMethod;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import fr.oms.activities.FragmentAssociationActivity;
+import fr.oms.activities.R;
+import fr.oms.metier.Evenement;
+import fr.oms.modele.DownloadImageTask;
+import fr.oms.modele.Manager;
 
 public class FragmentDetailEvenement extends Fragment {
 
@@ -46,7 +48,8 @@ public class FragmentDetailEvenement extends Fragment {
 		ImageView image = (ImageView)v.findViewById(R.id.imgEvent);
 		new DownloadImageTask(image).execute(evenement.getLienImage()+"=?reqwidth=40");
 		TextView txtDetailActu = (TextView)v.findViewById(R.id.txtDetailEvent);
-		txtDetailActu.setText(evenement.getDescription());
+		txtDetailActu.setText(Html.fromHtml(evenement.getDescription()));
+		txtDetailActu.setMovementMethod(LinkMovementMethod.getInstance());
 		if(evenement.getAssociationConcernee() != null){
 			TextView txtAssoc = (TextView)v.findViewById(R.id.txtAssociationConcerne);
 			txtAssoc.setText("Association Concernée : " + evenement.getAssociationConcernee().getNom());

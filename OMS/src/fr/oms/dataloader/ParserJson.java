@@ -1,8 +1,10 @@
 package fr.oms.dataloader;
 
+import java.security.Timestamp;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.Date;
 import java.util.List;
 
 import org.json.JSONArray;
@@ -10,6 +12,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import android.content.Context;
+import android.text.Html;
 import fr.oms.metier.Actualite;
 import fr.oms.metier.Association;
 import fr.oms.metier.Equipement;
@@ -81,6 +84,8 @@ public class ParserJson {
 			id= actuObj.getInt(JSONTags.IDENTIFIER);
 			title=actuObj.getString(JSONTags.TITLE);
 			description=actuObj.getString(JSONTags.BODY);
+			//description=Html.fromHtml(description).toString();			
+			System.out.println(description);
 			image=actuObj.getString(JSONTags.IMAGE);
 			assoc=Manager.getInstance().recupereAssociationAvecNom(actuObj.getString(JSONTags.ASSOCIATION));
 		} catch (JSONException e) {
@@ -128,6 +133,7 @@ public class ParserJson {
 		Equipement lieu1=null;
 		Equipement lieu2=null;
 		int date=0;
+		
 		String description="";
 		int created=0;
 		try {
@@ -139,10 +145,12 @@ public class ParserJson {
 			lieu2=Manager.getInstance().recupereEquipementAvecNom(eventObj.getString(JSONTags.LOCATION_02));
 			date=eventObj.getInt(JSONTags.DATE);
 			description=eventObj.getString(JSONTags.BODY);
+			//description=Html.fromHtml(description).toString();
 			created=eventObj.getInt(JSONTags.CREATED);			
 		} catch (JSONException e) {
 			e.printStackTrace();
 		}
+		
 		Evenement event=new Evenement(id, title, image, association, lieu1, lieu2, date, description, created);
 		Manager.getInstance().getListEvenements().add(event);
 	}
@@ -392,6 +400,10 @@ public class ParserJson {
 		return equipements;
 	}
 
+	
+
+	
+	
 	public Context getContext() {
 		return context;
 	}
