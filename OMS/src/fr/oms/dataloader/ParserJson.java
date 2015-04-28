@@ -2,7 +2,6 @@ package fr.oms.dataloader;
 
 import java.security.Timestamp;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Collections;
 import java.util.Date;
 import java.util.List;

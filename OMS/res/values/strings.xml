@@ -1,56 +1,59 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">OMS</string>
-    <string name="action_example">Site de l\'OMS</string>
-    <string name="hello_world">Hello world!</string>
-    <string name="accueil">Accueil</string>
-    <string name="navigation_drawer_open">Open navigation drawer</string>
-    <string name="navigation_drawer_close">Close navigation drawer</string>
-    <string name="action_settings">Settings</string>
-    <string name="info_image">Logo de l\'OMS</string>
-    <string name="ma_position">Geoposition</string>
-    <string name="actualite">Actualités</string>
-    <string name="association">Les associations</string>
-    <string name="equipement">Les equipements</string>
-    <string name="quartier">Les quartiers</string>
-    <string name="discipline">Les disciplines</string>
-    <string name="info_icone">Information sur l\'OMS</string>
-    <string name="titre_info">Autres Informations</string>
-    <string name="guide_sport"><u>Guide des sports</u></string>
-    <string name="plan_oms"><u>Plan OMS</u></string>
-    <string name="oms"><u>OMS</u></string>
-    <string name="lien_guide_sport">http://fr.calameo.com/read/00122036544c76167c62c</string>
-    <string name="lien_plan_OMS">http://www.oms-clermont-ferrand.fr/plan-oms</string>
-    <string name="adherents">Adhérents ?</string>
-    <string name="non_adherents">Non Adhérents ?</string>
-    <string name="fleche">></string>
-    <string name="titreSportDialog">Sports concernant la discipline :</string>
-    <string name="Sync">Synchroniser les données</string>
-    <string name="annuaire">Annuaire</string>
-    <string name="logo_adherent">adherent OMS</string>
-    <string name="detailCo">Pas de connexion Internet !</string>
-    <string name="goMap">- Voir sur la carte -</string>
-    <string name="info_assoc_site"><u>Plus d\'informations sur le site</u></string>
-    <string name="pasAdherent">Impossible de voir la fiche d\'une association non adhérente à l\'OMS.</string>
-    <string name="lienSite">http://www.oms-clermont-ferrand.fr/</string>
-    <string name="contactNonDispo">Aucun contact disponible</string>
-    <string name="equipementNonDispo">Aucun equipement disponible</string>
-    <string name="agenda">Agenda</string>
-    <string name="titreDetailAssociation">Détail d\'une association</string>
-    <string name="titreDetailEquipement">Détail d\'un équipement</string>
-    <string name="titreDetailActualite">Détail d\'une actualité</string>
-    <string name="titreDetailEvenement">Détail d\'un evenement</string>
-    <string name="goSite">Pour plus d\'informations</string>
-    <string name="drawer_open">Open navigation drawer</string>
-    <string name="drawer_close">Close navigation drawer</string>
-    <string name="lien_site_OMS">http://www.oms-clermont-ferrand.fr/</string>
-    <string name="evenements">Evènements</string>
-    <string name="adresse">Adresse</string>
-    <string name="geolocalisation">Géolocalisation</string>
-    <string name="accueil_underline"><u>Accueil</u></string>
-    <string name="annuaire_underline"><u>Annuaire</u></string>
-    <string name="agenda_underline"><u>Agenda</u></string>
-    <string name="geolocalisation_underline"><u>Géolocalisation</u></string>
-    <string name="pasAssocEquipement">Aucune association présente à cette équipement</string>
+    <string name="app_name" translatable="false">OMS</string>
+    <string name="action_example" translatable="false">Site de l\'OMS</string>
+    <string name="hello_world" translatable="false">Hello world!</string>
+    <string name="accueil" translatable="false">Accueil</string>
+    <string name="navigation_drawer_open" translatable="false">Open navigation drawer</string>
+    <string name="navigation_drawer_close" translatable="false">Close navigation drawer</string>
+    <string name="action_settings" translatable="false">Settings</string>
+    <string name="info_image" translatable="false">Logo de l\'OMS</string>
+    <string name="ma_position" translatable="false">Geoposition</string>
+    <string name="actualite" translatable="false">Actualités</string>
+    <string name="association" translatable="false">Les associations</string>
+    <string name="equipement" translatable="false">Les equipements</string>
+    <string name="quartier" translatable="false">Les quartiers</string>
+    <string name="discipline" translatable="false">Les disciplines</string>
+    <string name="info_icone" translatable="false">Information sur l\'OMS</string>
+    <string name="titre_info" translatable="false">Autres Informations</string>
+    <string name="guide_sport" translatable="false"><u>Guide des sports</u></string>
+    <string name="plan_oms" translatable="false"><u>Plan OMS</u></string>
+    <string name="oms" translatable="false"><u>OMS</u></string>
+    <string name="lien_guide_sport" translatable="false">http://fr.calameo.com/read/00122036544c76167c62c</string>
+    <string name="lien_plan_OMS" translatable="false">http://www.oms-clermont-ferrand.fr/plan-oms</string>
+    <string name="adherents" translatable="false">Adhérents ?</string>
+    <string name="non_adherents" translatable="false">Non Adhérents ?</string>
+    <string name="fleche" translatable="false">></string>
+    <string name="titreSportDialog" translatable="false">Sports concernant la discipline :</string>
+    <string name="Sync" translatable="false">Synchroniser les données</string>
+    <string name="annuaire" translatable="false">Annuaire</string>
+    <string name="logo_adherent" translatable="false">adherent OMS</string>
+    <string name="detailCo" translatable="false">Pas de connexion Internet !</string>
+    <string name="goMap" translatable="false">- Voir sur la carte -</string>
+    <string name="info_assoc_site" translatable="false"><u>Plus d\'informations sur le site</u></string>
+    <string name="pasAdherent" translatable="false">Impossible de voir la fiche d\'une association non adhérente à l\'OMS.</string>
+    <string name="lienSite" translatable="false">http://www.oms-clermont-ferrand.fr/</string>
+    <string name="contactNonDispo" translatable="false">Aucun contact disponible</string>
+    <string name="equipementNonDispo" translatable="false">Aucun equipement disponible</string>
+    <string name="agenda" translatable="false">Agenda</string>
+    <string name="titreDetailAssociation" translatable="false">Détail d\'une association</string>
+    <string name="titreDetailEquipement" translatable="false">Détail d\'un équipement</string>
+    <string name="titreDetailActualite" translatable="false">Détail d\'une actualité</string>
+    <string name="titreDetailEvenement" translatable="false">Détail d\'un evenement</string>
+    <string name="goSite" translatable="false">Pour plus d\'informations</string>
+    <string name="drawer_open" translatable="false">Open navigation drawer</string>
+    <string name="drawer_close" translatable="false">Close navigation drawer</string>
+    <string name="lien_site_OMS" translatable="false">http://www.oms-clermont-ferrand.fr/</string>
+    <string name="evenements" translatable="false">Evènements</string>
+    <string name="adresse" translatable="false">Adresse</string>
+    <string name="geolocalisation" translatable="false">Géolocalisation</string>
+    <string name="accueil_underline" translatable="false"><u>Accueil</u></string>
+    <string name="annuaire_underline" translatable="false"><u>Annuaire</u></string>
+    <string name="agenda_underline" translatable="false"><u>Agenda</u></string>
+    <string name="telephone" translatable="false">Telephone</string>
+    <string name="location" translatable="false">Location</string>
+    <string name="associationPratiquantes" translatable="false">Les associations pratiquant içi</string>
+    <string name="geolocalisation_underline" translatable="false"><u>Géolocalisation</u></string>
+    <string name="pasAssocEquipement" translatable="false">Aucune association présente à cette équipement</string>
 
 </resources>
