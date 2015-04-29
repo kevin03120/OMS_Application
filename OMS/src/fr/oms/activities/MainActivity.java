@@ -38,23 +38,22 @@ public class MainActivity extends FragmentActivity implements NavigationDrawerFr
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		Manager.getInstance().clearDonnees();
-
-		//CSVParser parser=new CSVParser(this);
-		//parser.readCSV();
 		setContentView(R.layout.activity_main);
 		setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
-		mNavigationDrawerFragment = (NavigationDrawerFragment) getFragmentManager().findFragmentById(
-				R.id.navigation_drawer);
-		mTitle = getTitle();
-		mDrawerLayout=(DrawerLayout) findViewById(R.id.drawer_layout);
-		mNavigationDrawerFragment.setUp(R.id.navigation_drawer, mDrawerLayout);
-
-
+		initDrawer();
 //		JsonDataLoader loader=JsonDataLoader.getInstance();
 //		effectuerConnexion(loader);
 		Manager.getInstance().getTousLesSport(getApplicationContext());
 		ParserJson parser=new ParserJson(getApplicationContext());
 
+	}
+	
+	private void initDrawer(){
+		mNavigationDrawerFragment = (NavigationDrawerFragment) getFragmentManager().findFragmentById(
+				R.id.navigation_drawer);
+		mTitle = getTitle();
+		mDrawerLayout=(DrawerLayout) findViewById(R.id.drawer_layout);
+		mNavigationDrawerFragment.setUp(R.id.navigation_drawer, mDrawerLayout);
 	}
 
 	private void effectuerConnexion(JsonDataLoader loader) {
@@ -110,6 +109,7 @@ public class MainActivity extends FragmentActivity implements NavigationDrawerFr
 			return false;
 		}
 	} 
+	
 	@Override
 	public void onNavigationDrawerItemSelected(int position) {
 		displayView(position);
@@ -117,7 +117,6 @@ public class MainActivity extends FragmentActivity implements NavigationDrawerFr
 
 	private void displayView(int position) {
 		Fragment fragment = null;
-
 		switch (position) {
 		case 0:
 			fragment = new AccueilFragment();

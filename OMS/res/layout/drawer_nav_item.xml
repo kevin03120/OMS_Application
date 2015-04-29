@@ -2,29 +2,33 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/layout_drawer"
     android:layout_width="match_parent"
+    
     android:layout_height="wrap_content" >
 
     <ImageView
         android:id="@+id/ivIcon"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:layout_marginTop="5dp"
-        android:layout_marginBottom="5dp"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
         android:layout_alignParentLeft="true"
+        android:layout_centerVertical="true"
+        android:layout_marginBottom="5dp"
         android:layout_marginLeft="12dp"
         android:layout_marginRight="12dp"
-        android:layout_centerVertical="true" />
-    
-    
+        android:layout_marginTop="5dp" />
+
     <TextView
         android:id="@+id/tvTitle"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:layout_toRightOf="@id/ivIcon"
-        android:minHeight="?android:attr/listPreferredItemHeightSmall"
-        android:textAppearance="?android:attr/textAppearanceListItemSmall"
         android:gravity="center_vertical"
-        android:textColor="@android:color/black"
-        android:paddingRight="40dp"/>
-    
+        android:minHeight="?android:attr/listPreferredItemHeightSmall"
+        android:paddingEnd="40dp"
+        android:paddingLeft="0dp"
+        android:paddingRight="40dp"
+        android:paddingStart="0dp"
+        android:textAppearance="?android:attr/textAppearanceListItemSmall"
+        style="?android:listSeparatorTextViewStyle"
+        android:textColor="@android:color/black" />
+
 </LinearLayout>

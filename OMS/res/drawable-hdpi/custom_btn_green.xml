@@ -1,21 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <selector xmlns:android="http://schemas.android.com/apk/res/android" >
      <item android:state_pressed="true" >
-         <shape android:shape="rectangle"  >
-             <stroke android:width="1dip" android:color="@color/VertOms" />
-             <gradient  android:angle="-90"  android:startColor="@color/VertOmsFonce" android:endColor="@color/VertOms"  />            
-         </shape>
+         <color android:color="@color/VertOmsFonce"/>
      </item>
-    <item android:state_focused="true">
-         <shape android:shape="rectangle"  >
-             <stroke android:width="1dip" android:color="@color/VertOms" />
-             <solid  android:color="@color/VertOms"/>       
-         </shape>
-     </item>  
+    
     <item >
-        <shape android:shape="rectangle"  >
-             <stroke android:width="1dip" android:color="@color/VertOmsFonce" />
-             <gradient  android:angle="-90"  android:startColor="@color/VertOms" android:endColor="@color/VertOmsFonce" />            
-         </shape>
+       <color android:color="@color/VertOms"/>
      </item>
 </selector>

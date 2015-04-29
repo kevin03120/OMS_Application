@@ -39,7 +39,7 @@
         <item name="android:shadowDx">1</item>
         <item name="android:shadowDy">1</item>
         <item name="android:shadowRadius">0.6</item>
-        <item name="android:background">@drawable/custom_btn_paprika</item>
+        <item name="android:background">@drawable/custom_btn_black</item>
         <item name="android:padding">10dip</item>
     </style>
 
@@ -79,7 +79,7 @@
         <item name="android:shadowDx">1</item>
         <item name="android:shadowDy">1</item>
         <item name="android:shadowRadius">0.6</item>
-        <item name="android:background">@drawable/custom_btn_yellow</item>
+        <item name="android:background">@drawable/custom_btn_orange</item>
         <item name="android:padding">10dip</item>
     </style>
 
@@ -99,10 +99,12 @@
     <style name="TextItemNavTitre">
 	    <item name="android:textSize">18sp</item>
         <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@android:color/white</item>
 	</style>
 	
     <style name="TextItemNavSousTitre">
 	    <item name="android:textSize">14sp</item>
+	    <item name="android:textColor">@android:color/white</item>
 	</style>
 
     <color name="Vert1">#1FCF6D</color>
@@ -147,5 +149,6 @@
     <color name="OrangeOmsFonce">#D58200</color>
     <color name="OrangeOmsClair">#FAAC58</color>
     <color name="OrangeOmsClair2">#F7C48F</color>
+    <color name="BlackDrawer">#2E2E2E</color>
 
 </resources>

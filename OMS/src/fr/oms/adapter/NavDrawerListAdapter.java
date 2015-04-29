@@ -53,13 +53,18 @@ public class NavDrawerListAdapter extends BaseAdapter {
         ImageView imgIcon = (ImageView) convertView.findViewById(R.id.ivIcon);
         TextView txtTitle = (TextView) convertView.findViewById(R.id.tvTitle);
         
-        imgIcon.setImageResource(navDrawerItems.get(position).getIcon());
         txtTitle.setText(navDrawerItems.get(position).getTitle());
-        Double f=0.7;
-        layout.setBackgroundResource(navDrawerItems.get(position).getmColor());
-        if(navDrawerItems.get(position).getIcon()==R.drawable.ic_arrow4){
-        	imgIcon.setScaleX(f.floatValue());
-        	imgIcon.setScaleY(f.floatValue());
+        
+        if(navDrawerItems.get(position).getIcon()!=0){
+        	   imgIcon.setImageResource(navDrawerItems.get(position).getIcon());
+               
+               Double f=0.7;
+               layout.setBackgroundResource(navDrawerItems.get(position).getmColor());
+               if(navDrawerItems.get(position).getIcon()==R.drawable.ic_arrow4){
+               	imgIcon.setScaleX(f.floatValue());
+               	imgIcon.setScaleY(f.floatValue());
+               }
+               
         }
         Resources r = context.getResources();
         if((txtTitle.getText()==r.getString(R.string.accueil_underline))||(txtTitle.getText()==r.getString(R.string.annuaire_underline))||(txtTitle.getText()==r.getString(R.string.agenda_underline))||(txtTitle.getText()==r.getString(R.string.geolocalisation_underline))){

@@ -54,27 +54,18 @@ public class NavigationDrawerFragment extends Fragment {
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-
-		// Read in the flag indicating whether or not the user has demonstrated
-		// awareness of the
-		// drawer. See PREF_USER_LEARNED_DRAWER for details.
 		SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(getActivity());
 		mUserLearnedDrawer = sp.getBoolean(PREF_USER_LEARNED_DRAWER, false);
-
 		if (savedInstanceState != null) {
 			mCurrentSelectedPosition = savedInstanceState.getInt(STATE_SELECTED_POSITION);
 			mFromSavedInstanceState = true;
 		}
-		
-		// Select either the default item (0) or the last selected item.
 		selectItem(mCurrentSelectedPosition);
 	}
 
 	@Override
 	public void onActivityCreated(Bundle savedInstanceState) {
 		super.onActivityCreated(savedInstanceState);
-		// Indicate that this fragment would like to influence the set of
-		// actions in the action bar.
 		setHasOptionsMenu(true);
 	}
 
@@ -87,25 +78,45 @@ public class NavigationDrawerFragment extends Fragment {
 				selectItem(position);
 			}
 		});
+//		navDrawerItems = new ArrayList<NavDrawerItem>();
+//		Resources r = getActivity().getResources();
+//		navDrawerItems.add(new NavDrawerItem(r.getString(R.string.accueil_underline), R.drawable.ic_accueil, R.drawable.custom_btn_black));
+//
+//		navDrawerItems.add(new NavDrawerItem(r.getString(R.string.annuaire_underline), R.drawable.ic_annuaire, R.drawable.custom_btn_black));
+//		navDrawerItems.add(new NavDrawerItem(r.getString(R.string.association), R.drawable.tab_selected_focused_vert_oms,R.drawable.custom_btn_black));
+//		navDrawerItems.add(new NavDrawerItem(r.getString(R.string.equipement), R.drawable.tab_indicator_ab_vert_oms,R.drawable.custom_btn_black));
+//		navDrawerItems.add(new NavDrawerItem(r.getString(R.string.discipline),R.drawable.tab_selected_pressed_vert_oms,R.drawable.custom_btn_black));
+//		navDrawerItems.add(new NavDrawerItem(r.getString(R.string.quartier), R.drawable.tab_unselected_focused_vert_oms,R.drawable.custom_btn_black));
+//
+//		navDrawerItems.add(new NavDrawerItem(r.getString(R.string.agenda_underline),R.drawable.ic_agenda1,R.drawable.custom_btn_black));
+//		navDrawerItems.add(new NavDrawerItem(r.getString(R.string.actualite),  R.drawable.spinner_ab_default_vert_oms,R.drawable.custom_btn_black));
+//		navDrawerItems.add(new NavDrawerItem(r.getString(R.string.evenements), R.drawable.ab_stacked_solid_bleu_oms,R.drawable.custom_btn_black));
+//
+//		navDrawerItems.add(new NavDrawerItem(r.getString(R.string.geolocalisation_underline), R.drawable.ic_geoloc,R.drawable.custom_btn_black));
+//		navDrawerItems.add(new NavDrawerItem(r.getString(R.string.association), R.drawable.spinner_ab_focused_bleu_oms,R.drawable.custom_btn_black));
+//		navDrawerItems.add(new NavDrawerItem(r.getString(R.string.equipement), R.drawable.ic_arrow4,R.drawable.custom_btn_black));
+//		navDrawerItems.add(new NavDrawerItem(r.getString(R.string.adresse),R.drawable.ic_arrow4,R.drawable.custom_btn_black));
+		
+		
 		navDrawerItems = new ArrayList<NavDrawerItem>();
 		Resources r = getActivity().getResources();
-		navDrawerItems.add(new NavDrawerItem(r.getString(R.string.accueil_underline), R.drawable.ic_accueil, R.drawable.custom_btn_red));
-		
+		navDrawerItems.add(new NavDrawerItem(r.getString(R.string.accueil_underline), R.drawable.logo_appli, R.drawable.custom_btn_black));
+
 		navDrawerItems.add(new NavDrawerItem(r.getString(R.string.annuaire_underline), R.drawable.ic_annuaire, R.drawable.custom_btn_green));
-		navDrawerItems.add(new NavDrawerItem(r.getString(R.string.association), R.drawable.ic_arrow4,R.drawable.custom_btn_greenclair));
-		navDrawerItems.add(new NavDrawerItem(r.getString(R.string.equipement), R.drawable.ic_arrow4,R.drawable.custom_btn_greenclair));
-		navDrawerItems.add(new NavDrawerItem(r.getString(R.string.discipline),R.drawable.ic_arrow4,R.drawable.custom_btn_greenclair));
-		navDrawerItems.add(new NavDrawerItem(r.getString(R.string.quartier), R.drawable.ic_arrow4,R.drawable.custom_btn_greenclair));
-		
+		navDrawerItems.add(new NavDrawerItem(r.getString(R.string.association)));
+		navDrawerItems.add(new NavDrawerItem(r.getString(R.string.equipement)));
+		navDrawerItems.add(new NavDrawerItem(r.getString(R.string.discipline)));
+		navDrawerItems.add(new NavDrawerItem(r.getString(R.string.quartier)));
+
 		navDrawerItems.add(new NavDrawerItem(r.getString(R.string.agenda_underline),R.drawable.ic_agenda1,R.drawable.custom_btn_blue));
-		navDrawerItems.add(new NavDrawerItem(r.getString(R.string.actualite),  R.drawable.ic_arrow4,R.drawable.custom_btn_bleuclair));
-		navDrawerItems.add(new NavDrawerItem(r.getString(R.string.evenements), R.drawable.ic_arrow4,R.drawable.custom_btn_bleuclair));
-		
-		navDrawerItems.add(new NavDrawerItem(r.getString(R.string.geolocalisation_underline), R.drawable.ic_geoloc,R.drawable.custom_btn_sorbus));
-		navDrawerItems.add(new NavDrawerItem(r.getString(R.string.association), R.drawable.ic_arrow4,R.drawable.custom_btn_orangeclair));
-		navDrawerItems.add(new NavDrawerItem(r.getString(R.string.equipement), R.drawable.ic_arrow4,R.drawable.custom_btn_orangeclair));
-		navDrawerItems.add(new NavDrawerItem(r.getString(R.string.adresse),R.drawable.ic_arrow4,R.drawable.custom_btn_orangeclair));
-		
+		navDrawerItems.add(new NavDrawerItem(r.getString(R.string.actualite)));
+		navDrawerItems.add(new NavDrawerItem(r.getString(R.string.evenements)));
+
+		navDrawerItems.add(new NavDrawerItem(r.getString(R.string.geolocalisation_underline), R.drawable.ic_geoloc,R.drawable.custom_btn_orange));
+		navDrawerItems.add(new NavDrawerItem(r.getString(R.string.association)));
+		navDrawerItems.add(new NavDrawerItem(r.getString(R.string.equipement)));
+		navDrawerItems.add(new NavDrawerItem(r.getString(R.string.adresse)));
+
 		mDrawerListView.setAdapter(new NavDrawerListAdapter(getActivity(), navDrawerItems));
 		mDrawerListView.setItemChecked(mCurrentSelectedPosition, true);
 		return mDrawerListView;
@@ -127,18 +138,10 @@ public class NavigationDrawerFragment extends Fragment {
 	public void setUp(int fragmentId, DrawerLayout drawerLayout) {
 		mFragmentContainerView = getActivity().findViewById(fragmentId);
 		mDrawerLayout = drawerLayout;
-
-		// set a custom shadow that overlays the main content when the drawer
-		// opens
 		mDrawerLayout.setDrawerShadow(R.drawable.drawer_shadow, GravityCompat.START);
-		// set up the drawer's list view with items and click listener
-
 		ActionBar actionBar = getActionBar();
 		actionBar.setDisplayHomeAsUpEnabled(true);
 		actionBar.setHomeButtonEnabled(true);
-
-		// ActionBarDrawerToggle ties together the the proper interactions
-		// between the navigation drawer and the action bar app icon.
 		mDrawerToggle = new ActionBarDrawerToggle(getActivity(), /* host Activity */
 				mDrawerLayout, /* DrawerLayout object */
 				R.drawable.ic_drawer, /* nav drawer image to replace 'Up' caret */

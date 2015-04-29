@@ -1,21 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <selector xmlns:android="http://schemas.android.com/apk/res/android" >
      <item android:state_pressed="true" >
-         <shape android:shape="rectangle"  >
-             <stroke android:width="1dip" android:color="@color/BleuOms" />
-             <gradient  android:angle="-90"  android:startColor="@color/BleuOms" android:endColor="@color/BleuOmsFonce"  />            
-         </shape>
+       <color android:color="@color/BleuOmsFonce"/>
      </item>
-    <item android:state_focused="true">
-         <shape android:shape="rectangle"  >
-             <stroke android:width="1dip" android:color="@color/BleuOms" />
-             <solid  android:color="@color/BleuOms"/>       
-         </shape>
-     </item>  
     <item >
-        <shape android:shape="rectangle"  >
-             <stroke android:width="1dip" android:color="@color/BleuOms" />
-             <gradient  android:angle="-90"  android:startColor="@color/BleuOmsFonce" android:endColor="@color/BleuOms" />            
-         </shape>
+       <color android:color="@color/BleuOms"/>
      </item>
 </selector>
