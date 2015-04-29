@@ -71,7 +71,7 @@ public class FragmentAssociation extends Fragment {
 		horaire = (TextView)v.findViewById(R.id.horaire);
 		equipement1 = (TextView)v.findViewById(R.id.lieu_equipement1);
 		equipement2 = (TextView)v.findViewById(R.id.lieu_equipement2);
-		lieu_map_1 = (Button)v.findViewById(R.id.btn_map);
+		lieu_map_1 = (Button)v.findViewById(R.id.btn_map_1);
 		lieu_map_2 = (Button)v.findViewById(R.id.btn_map_2);
 		iconeAdherent = (ImageView)v.findViewById(R.id.iconeAdherentAssociationFiche);
 		btnSite = (TextView)v.findViewById(R.id.btn_info_site);
@@ -107,9 +107,9 @@ public class FragmentAssociation extends Fragment {
 	}
 	
 	private void onMap2(){
-		lieu_map_1.setOnClickListener(new View.OnClickListener() {
+		lieu_map_2.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-            	Equipement equipement = association.getListeEquipement().get(0);
+            	Equipement equipement = association.getListeEquipement().get(1);
             	Intent intent = new Intent(getActivity(), MapPane.class);
 				intent.putExtra("nom", equipement.getNom());
 				intent.putExtra("latitude", equipement.getGeoloc().getLatitude());

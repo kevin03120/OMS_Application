@@ -40,9 +40,11 @@ public class MainActivity extends FragmentActivity implements NavigationDrawerFr
 		Manager.getInstance().clearDonnees();
 		setContentView(R.layout.activity_main);
 		setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+
 		initDrawer();
 //		JsonDataLoader loader=JsonDataLoader.getInstance();
 //		effectuerConnexion(loader);
+
 		Manager.getInstance().getTousLesSport(getApplicationContext());
 		ParserJson parser=new ParserJson(getApplicationContext());
 

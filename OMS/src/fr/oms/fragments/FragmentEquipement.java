@@ -3,6 +3,7 @@ package fr.oms.fragments;
 import java.util.ArrayList;
 import java.util.List;
 
+import fr.oms.activities.FragmentAssociationActivity;
 import fr.oms.activities.MapPane;
 import fr.oms.activities.R;
 import fr.oms.adapter.AssociationAdapter;
@@ -15,6 +16,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -25,6 +27,7 @@ public class FragmentEquipement extends Fragment {
 	private Equipement equipement;
 	private ListView listAssociation;
 	private TextView txtPasAssoc;
+	private List<Association> lesAssocsEquipement;
 	
 	public static FragmentEquipement newInstance(Equipement e) {
 		Bundle extras = new Bundle();
@@ -44,12 +47,13 @@ public class FragmentEquipement extends Fragment {
 			}
 			recupererToutesViews(v);
 			adapterPourListAssociation();
+			clicItemListAssoc();
 			getActivity().setTitle(getResources().getString(R.string.titreDetailEquipement));
 	     return v;
 	}
 	
 	private void adapterPourListAssociation(){
-		List<Association> lesAssocsEquipement = new ArrayList<Association>();
+		lesAssocsEquipement = new ArrayList<Association>();
 		for(Association a : Manager.getInstance().getListeAssociation()){
 			if(a.getListeEquipement()!=null){
 				for(Equipement e : a.getListeEquipement()){
@@ -69,6 +73,23 @@ public class FragmentEquipement extends Fragment {
 				}
 			}
 		}
+	}
+	
+	private void clicItemListAssoc(){
+		listAssociation.setOnItemClickListener(new ListView.OnItemClickListener(){
+
+			@Override
+			public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+				Association a = lesAssocsEquipement.get(position);
+				Intent intent = new Intent(getActivity(), FragmentAssociationActivity.class);
+				intent.putExtra("position", a.getId());
+				intent.putExtra("adherents", true);
+				intent.putExtra("nonAdherents", true);
+				intent.putExtra("sport", false);
+				intent.putExtra("idSport", 0);
+				startActivity(intent);
+			}
+		});
 	}
 	
 	private void recupererToutesViews(View v){

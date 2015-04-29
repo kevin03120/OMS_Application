@@ -6,13 +6,13 @@ public class Evenement implements Comparable<Evenement>{
 	private String titre;
 	private String lienImage;
 	private Association associationConcernee;
-	private Equipement lieu1;
+	private String lieu1;
 	private Equipement lieu2;
 	private int date;
 	private String description;
 	private int creation;
 	
-	public Evenement(int unId, String unTitre, String unLienImage, Association uneAssociationConcernee, Equipement unLieu1, Equipement unLieu2, int uneDate, String uneDescription, int uneCreation ){
+	public Evenement(int unId, String unTitre, String unLienImage, Association uneAssociationConcernee, String unLieu1, Equipement unLieu2, int uneDate, String uneDescription, int uneCreation ){
 		setId(unId);
 		setTitre(unTitre);
 		setLienImage(unLienImage);
@@ -48,10 +48,10 @@ public class Evenement implements Comparable<Evenement>{
 	public void setAssociationConcernee(Association associationConcernee) {
 		this.associationConcernee = associationConcernee;
 	}
-	public Equipement getLieu1() {
+	public String getLieu1() {
 		return lieu1;
 	}
-	public void setLieu1(Equipement lieu1) {
+	public void setLieu1(String lieu1) {
 		this.lieu1 = lieu1;
 	}
 	public Equipement getLieu2() {

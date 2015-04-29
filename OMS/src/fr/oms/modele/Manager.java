@@ -305,7 +305,7 @@ public class Manager {
 
 	public Association recupereAssociationAvecNom(String nom) {
 		for(Association assoc : listeAssociations){
-			if(assoc.getNom()==nom){
+			if(assoc.getNom().equals(nom)){
 				return assoc;
 			}
 		}
@@ -323,7 +323,7 @@ public class Manager {
 
 	public Personne recupererPersonneAvecNomPrenom(String nom, String prenom) {
 		for(Personne p : listPersonnes){
-			if(p.getNom()==nom && p.getPrenom()==prenom){
+			if(p.getNom().equals(nom) && p.getPrenom().equals(prenom)){
 				return p;
 			}
 		}

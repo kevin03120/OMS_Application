@@ -38,7 +38,7 @@
 
         <Button
             android:id="@+id/actualite"
-            style="@style/btnStyleYellow"
+            style="@style/btnStyleBlue"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="20dp"
@@ -50,7 +50,7 @@
         <Button
             android:id="@+id/maPosition"
             android:textSize="20sp"
-            style="@style/btnStyleBlue"
+            style="@style/btnStyleYellow"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="20dp"

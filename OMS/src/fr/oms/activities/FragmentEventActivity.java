@@ -6,6 +6,7 @@ import fr.oms.fragments.FragmentDetailEvenement;
 import fr.oms.metier.Evenement;
 import fr.oms.modele.Manager;
 import android.content.pm.ActivityInfo;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
@@ -22,6 +23,8 @@ public class FragmentEventActivity extends FragmentActivity {
 		super.onCreate(savedInstanceState);
 		setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         setContentView(R.layout.detail_pager); 
+		getActionBar().setBackgroundDrawable(
+				new ColorDrawable(getResources().getColor(R.color.BleuOms)));
         int pos = getIntent().getExtras().getInt("position");
         ViewPager pager = (ViewPager) findViewById(R.id.viewPager);
         MyPagerAdapter pagerAdapter = new MyPagerAdapter(getSupportFragmentManager());
