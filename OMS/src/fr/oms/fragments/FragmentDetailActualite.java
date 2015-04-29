@@ -54,7 +54,6 @@ public class FragmentDetailActualite extends Fragment {
 			TextView txtAssoc = (TextView)v.findViewById(R.id.txtAssociationConcerne);
 			txtAssoc.setText("Association Concernée : " + actualite.getAssociationConcernee().getNom());
 			touchAssoc(txtAssoc);
-			txtAssoc.setVisibility(0);
 		}
 	}
 	

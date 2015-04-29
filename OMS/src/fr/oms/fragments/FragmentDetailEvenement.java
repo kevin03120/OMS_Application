@@ -11,7 +11,9 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 import fr.oms.activities.FragmentAssociationActivity;
+import fr.oms.activities.FragmentEquipementActivity;
 import fr.oms.activities.R;
+import fr.oms.metier.Equipement;
 import fr.oms.metier.Evenement;
 import fr.oms.modele.DownloadImageTask;
 import fr.oms.modele.Manager;
@@ -56,10 +58,9 @@ public class FragmentDetailEvenement extends Fragment {
 			touchAssoc(txtAssoc);
 			txtAssoc.setVisibility(0);
 		}
-		if(evenement.getLieu1() != null){
+		if(!evenement.getLieu1().equals("")){
 			TextView txtLieu1 = (TextView)v.findViewById(R.id.txtLieu1);
-			txtLieu1.setText("Lieu 1 : " + evenement.getLieu1().getNom());
-			touchLieu1(txtLieu1);
+			txtLieu1.setText("Lieu 1 : " + evenement.getLieu1());
 			txtLieu1.setVisibility(0);
 		}
 		if(evenement.getLieu2() != null){
@@ -86,22 +87,16 @@ public class FragmentDetailEvenement extends Fragment {
 		});
 	}
 	
-	private void touchLieu1(TextView v){
-		v.setOnClickListener(new View.OnClickListener() {
-			
-			@Override
-			public void onClick(View v) {
-				//en attent de la fiche equipement
-			}
-		});
-	}
-	
 	private void touchLieu2(TextView v){
 		v.setOnClickListener(new View.OnClickListener() {
 			
 			@Override
 			public void onClick(View v) {
-				//en attent de la fiche equipement
+				Equipement lieu = evenement.getLieu2();
+				int position = lieu.getUid();
+				Intent intent = new Intent(getActivity(), FragmentEquipementActivity.class);
+				intent.putExtra("position", position);
+				startActivity(intent);
 			}
 		});
 	}

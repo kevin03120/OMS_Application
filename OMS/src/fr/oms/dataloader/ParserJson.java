@@ -26,10 +26,10 @@ public class ParserJson {
 
 	public ParserJson(Context context) {
 		this.context=context;
-		parseActus();
-		parseEvenements();
 		parseEquipements();
 		parseAssociations();
+		parseActus();
+		parseEvenements();
 		Collections.sort(Manager.getInstance().getListeAssociation());
 		Collections.sort(Manager.getInstance().getListeEquipement());
 		Collections.sort(Manager.getInstance().getListeQuartier());
@@ -128,7 +128,7 @@ public class ParserJson {
 		String title = "";
 		String image ="";
 		Association association=null;
-		Equipement lieu1=null;
+		String lieu1=null;
 		Equipement lieu2=null;
 		int date=0;
 		
@@ -139,7 +139,7 @@ public class ParserJson {
 			title=eventObj.getString(JSONTags.TITLE);
 			image=eventObj.getString(JSONTags.IMAGE);
 			association=Manager.getInstance().recupereAssociationAvecNom(eventObj.getString(JSONTags.ASSOCIATION));
-			lieu1=Manager.getInstance().recupereEquipementAvecNom(eventObj.getString(JSONTags.LOCATION_01));
+			lieu1=eventObj.getString(JSONTags.LOCATION_01);
 			lieu2=Manager.getInstance().recupereEquipementAvecNom(eventObj.getString(JSONTags.LOCATION_02));
 			date=eventObj.getInt(JSONTags.DATE);
 			description=eventObj.getString(JSONTags.BODY);

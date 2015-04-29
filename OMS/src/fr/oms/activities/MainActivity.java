@@ -39,8 +39,6 @@ public class MainActivity extends FragmentActivity implements NavigationDrawerFr
 		super.onCreate(savedInstanceState);
 		Manager.getInstance().clearDonnees();
 
-		//CSVParser parser=new CSVParser(this);
-		//parser.readCSV();
 		setContentView(R.layout.activity_main);
 		setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 		mNavigationDrawerFragment = (NavigationDrawerFragment) getFragmentManager().findFragmentById(
@@ -49,9 +47,8 @@ public class MainActivity extends FragmentActivity implements NavigationDrawerFr
 		mDrawerLayout=(DrawerLayout) findViewById(R.id.drawer_layout);
 		mNavigationDrawerFragment.setUp(R.id.navigation_drawer, mDrawerLayout);
 
-
-//		JsonDataLoader loader=JsonDataLoader.getInstance();
-//		effectuerConnexion(loader);
+		JsonDataLoader loader=JsonDataLoader.getInstance();
+		effectuerConnexion(loader);
 		Manager.getInstance().getTousLesSport(getApplicationContext());
 		ParserJson parser=new ParserJson(getApplicationContext());
 
