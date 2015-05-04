@@ -10,6 +10,10 @@
     <string name="info_image" translatable="false">Logo de l\'OMS</string>
     <string name="ma_position" translatable="false">Geoposition</string>
     <string name="actualite" translatable="false">Actualités</string>
+    <string name="provider_enabled" translatable="false">The provider %s is now enabled</string>
+    <string name="provider_disabled" translatable="false">The provider %s is now disabled</string>
+    <string name="provider_new_status" translatable="false">The provider %1$s has now a new status %2$s</string>
+    <string name="new_location" translatable="false">New Location : Latitude = %1$s, Longitude = %2$s, Altitude = %3$s avec une précision de %4$s mètres </string>
     <string name="association" translatable="false">Les associations</string>
     <string name="equipement" translatable="false">Les equipements</string>
     <string name="quartier" translatable="false">Les quartiers</string>

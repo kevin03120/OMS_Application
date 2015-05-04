@@ -217,6 +217,15 @@ public class Manager {
 		}
 		return null;
 	}
+	
+	public Sport recupereSportAvecNom(String nom){
+		for (Sport sport : listeSports){
+			if(sport.getNom().equals(nom)){
+				return sport;
+			}
+		}
+		return null;
+	}
 
 	public List<Discipline> getListeDiscipline() {
 		return listeDisciplines;

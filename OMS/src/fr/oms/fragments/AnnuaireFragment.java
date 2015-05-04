@@ -24,9 +24,13 @@ public class AnnuaireFragment extends Fragment{
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
+		String nomSport = null;
+		if(getArguments()!=null){
+			nomSport = getArguments().getString("nomSport");
+		}
 		View view = inflater.inflate(R.layout.pager, container, false);
 		ViewPager viewPager = (ViewPager) view.findViewById(R.id.viewpager);
-        viewPager.setAdapter(new AnnuairePagerAdapter(getFragmentManager(),this.getActivity()));
+        viewPager.setAdapter(new AnnuairePagerAdapter(getFragmentManager(),this.getActivity(), nomSport));
         // Give the SlidingTabLayout the ViewPager
         SlidingTabLayout slidingTabLayout = (SlidingTabLayout) view.findViewById(R.id.sliding_tabs);
         // Center the tabs in the layout

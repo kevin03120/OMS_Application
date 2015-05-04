@@ -14,6 +14,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import fr.oms.activities.MapPane;
 import fr.oms.activities.R;
+import fr.oms.adapter.AssociationAdapter;
 import fr.oms.metier.Association;
 import fr.oms.metier.Equipement;
 import fr.oms.metier.Personne;

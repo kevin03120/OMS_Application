@@ -42,8 +42,7 @@
         android:visibility="invisible"
         android:clickable="true"
         android:layout_gravity="center_horizontal"
-        android:textColor="@color/Orange1"
-        android:onClick="onDeleteFiltre"/>
+        android:textColor="@color/Orange1"/>
     
     <ListView
         android:id="@+id/listeAssociation"

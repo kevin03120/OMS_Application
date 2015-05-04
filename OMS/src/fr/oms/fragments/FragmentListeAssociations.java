@@ -31,8 +31,9 @@ public class FragmentListeAssociations extends Fragment {
 	private List<Association> mesAssoc;
 	private boolean isFiltreSport = false;
 	private List<Association> mesAssocFiltreSport;
-	private int idSport = 0;
+	private String nomSport = "";
 	private TextView txtFiltre;
+	private AssociationAdapter associationAdapter;
 	
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -43,10 +44,11 @@ public class FragmentListeAssociations extends Fragment {
 		chkNonAdherent = (CheckBox)v.findViewById(R.id.chkNonAdherents);
 		listeAssociation = (ListView)v.findViewById(R.id.listeAssociation);
 		listeAssociation.setFastScrollEnabled(true);
+		onDeleteFiltre();
 		filtre = 0;
-		if(getActivity().getIntent().getExtras()!=null){
+		if(getArguments()!=null){
 			isFiltreSport = true;
-			idSport = getActivity().getIntent().getExtras().getInt("idSport");
+			nomSport = getArguments().getString("nomSport");
 			filtre = 3;
 		}
 		mesAssoc = rendNouvelleListe();
@@ -62,19 +64,21 @@ public class FragmentListeAssociations extends Fragment {
 		if(isFiltreSport){
 			for(Association a : Manager.getInstance().getListeAssociation()){
 				for(Sport s : a.getListeSport()){
-//					if(s.getId() == idSport){
-//						txtFiltre.setText("Filtre " + s.getNom() + " (Cliquez ici pour le supprimer)");
-//						txtFiltre.setVisibility(0);
-//						mesAssocFiltreSport.add(a);
-//					}
+					if(s.getNom().equals(nomSport)){
+						txtFiltre.setText("Filtre " + s.getNom() + " (Cliquez ici pour le supprimer)");
+						txtFiltre.setVisibility(0);
+						mesAssocFiltreSport.add(a);
+					}
 				}
 			}
-			AssociationAdapter associationAdapter = new AssociationAdapter(getActivity(), 0, mesAssocFiltreSport);
+			associationAdapter = new AssociationAdapter(getActivity(), 0, mesAssocFiltreSport);
+			associationAdapter.notifyDataSetChanged();
 			listeAssociation.setAdapter(associationAdapter);
 			touchAssoc();
 		}
 		else{
-			AssociationAdapter associationAdapter = new AssociationAdapter(getActivity(), 0, Manager.getInstance().getListeAssociation());
+			associationAdapter = new AssociationAdapter(getActivity(), 0, Manager.getInstance().getListeAssociation());
+			associationAdapter.notifyDataSetChanged();
 			System.out.println("Je passe la liste des assoc "+Manager.getInstance().getListeAssociation().size());
 			listeAssociation.setAdapter(associationAdapter);
 			touchAssoc();
@@ -144,16 +148,22 @@ public class FragmentListeAssociations extends Fragment {
 				intent.putExtra("adherents", chkAdherent.isChecked());
 				intent.putExtra("nonAdherents", chkNonAdherent.isChecked());
 				intent.putExtra("sport", isFiltreSport);
-				intent.putExtra("idSport", idSport);
+				intent.putExtra("nomSport", nomSport);
 				startActivity(intent);
 			}
 		}); 
 	}
 
-	public void onDeleteFiltre(View v){
-		isFiltreSport = false;
-		afficheListe();
-		txtFiltre.setVisibility(4);
+	public void onDeleteFiltre(){
+		txtFiltre.setOnClickListener(new View.OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				isFiltreSport = false;
+				afficheListe();
+				txtFiltre.setVisibility(4);
+			}
+		});
 	}
 
 
@@ -187,7 +197,9 @@ public class FragmentListeAssociations extends Fragment {
 		}
 		mesAssoc = rendNouvelleListe();
 		rentreAssociationDansListeSelonFiltre(mesAssoc);
-		AssociationAdapter associationAdapter = new AssociationAdapter(this.getActivity(), 0, mesAssoc);
+		associationAdapter.notifyDataSetChanged();
+		associationAdapter = new AssociationAdapter(this.getActivity(), 0, mesAssoc);
+		associationAdapter.notifyDataSetChanged();
 		listeAssociation.setAdapter(associationAdapter);
 	}
 
@@ -218,9 +230,9 @@ public class FragmentListeAssociations extends Fragment {
 		break;
 		case 3 : for(Association a : Manager.getInstance().getListeAssociation()){
 			for(Sport s : a.getListeSport()){
-//				if(s.getId() == idSport){
-//					sportExist = true;
-//				}
+				if(s.getNom().equals(nomSport)){
+					sportExist = true;
+				}
 			}
 			if(!sportExist){
 				mesAssocs.remove(a);
@@ -235,9 +247,9 @@ public class FragmentListeAssociations extends Fragment {
 			}
 			if(mesAssocs.contains(a)){
 				for(Sport s : a.getListeSport()){
-//					if(s.getId() == idSport){
-//						sportExist = true;
-//					}
+					if(s.getNom().equals(nomSport)){
+						sportExist = true;
+					}
 				}
 				if(!sportExist){
 					mesAssocs.remove(a);
@@ -252,9 +264,9 @@ public class FragmentListeAssociations extends Fragment {
 			}
 			if(mesAssocs.contains(a)){
 				for(Sport s : a.getListeSport()){
-//					if(s.getId() == idSport){
-//						sportExist = true;
-//					}
+					if(s.getNom().equals(nomSport)){
+						sportExist = true;
+					}
 				}
 				if(!sportExist){
 					mesAssocs.remove(a);

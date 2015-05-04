@@ -5,7 +5,7 @@ import java.util.HashMap;
 import java.util.List;
 
 import fr.oms.activities.R;
-import fr.oms.adapter.ExpandableListAdapter;
+import fr.oms.adapter.ExpandableListAdapterQuartier;
 import fr.oms.metier.Equipement;
 import fr.oms.metier.Quartier;
 import fr.oms.modele.Manager;
@@ -42,7 +42,7 @@ public class FragmentListeQuartiers extends Fragment{
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
 		//DisciplineAdapter disciplineAdapter = new DisciplineAdapter(getActivity(), 0, Manager.getInstance().getListeDiscipline());
-		ExpandableListAdapter adapter=new ExpandableListAdapter(getActivity(), listeDesNomsQuartier, mapEquipementParQuartier);
+		ExpandableListAdapterQuartier adapter=new ExpandableListAdapterQuartier(getActivity(), listeDesNomsQuartier, mapEquipementParQuartier);
 		View v = inflater.inflate(R.layout.list_discipline, container,false);
 		listeQuartiers = (ExpandableListView) v.findViewById(R.id.lvExp);
 		//listeDiscipline = (ListView)v.findViewById(R.id.listeDiscipline);

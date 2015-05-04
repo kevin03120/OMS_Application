@@ -29,10 +29,10 @@ public class FragmentAssociationActivity extends FragmentActivity {
 	        boolean adherent = getIntent().getExtras().getBoolean("adherents");
 	        boolean nonAdherent = getIntent().getExtras().getBoolean("nonAdherents");
 	        boolean sport = getIntent().getExtras().getBoolean("sport");
-	        int idSport = getIntent().getExtras().getInt("idSport");
+	        String nomSport = getIntent().getExtras().getString("nomSport");
 	        int position = 0;
 	        ViewPager pager = (ViewPager) findViewById(R.id.viewPager);
-	        MyPagerAdapter pagerAdapter = new MyPagerAdapter(getSupportFragmentManager(), adherent, nonAdherent, sport, idSport);
+	        MyPagerAdapter pagerAdapter = new MyPagerAdapter(getSupportFragmentManager(), adherent, nonAdherent, sport, nomSport);
 	        pager.setAdapter(pagerAdapter);
 	        List<Association> associations = Manager.getInstance().getListeAssociation();
 	        for(Association a : associations){
@@ -48,9 +48,9 @@ public class FragmentAssociationActivity extends FragmentActivity {
 
 		 	private List<Association> associations;
 		 	
-	        public MyPagerAdapter(FragmentManager fragmentManager, Boolean adherent, Boolean nonAdherent, Boolean sport, int idSport) {
+	        public MyPagerAdapter(FragmentManager fragmentManager, Boolean adherent, Boolean nonAdherent, Boolean sport, String nomSport) {
 	            super(fragmentManager);
-	            setAssociations(rendListeActualise(adherent, nonAdherent, sport, idSport));
+	            setAssociations(rendListeActualise(adherent, nonAdherent, sport, nomSport));
 	        }
 
 	        @Override
@@ -59,15 +59,15 @@ public class FragmentAssociationActivity extends FragmentActivity {
 	            return FragmentAssociation.newInstance(association);
 	        }
 
-	        private List<Association> rendListeActualise(boolean adherent, boolean nonAdherent, boolean sport, int idSport){
+	        private List<Association> rendListeActualise(boolean adherent, boolean nonAdherent, boolean sport, String nomSport){
 		 		List<Association> assocs = new ArrayList<Association>();
 		 		for(Association a : Manager.getInstance().getListeAssociation()){
 		 			if((adherent) && (nonAdherent)){
 		 				if(sport){
 		 					for(Sport s : a.getListeSport()){
-//		 						if(s.getId() == idSport){
-//		 							assocs.add(a);
-//		 						}
+		 						if(s.getNom().equals(nomSport)){
+		 							assocs.add(a);
+		 						}
 		 					}
 		 				}
 		 				else{
@@ -78,9 +78,9 @@ public class FragmentAssociationActivity extends FragmentActivity {
 		 				if(!a.isAdherent()){
 			 				if(sport){
 			 					for(Sport s : a.getListeSport()){
-//			 						if(s.getId() == idSport){
-//			 							assocs.add(a);
-//			 						}
+			 						if(s.getNom().equals(nomSport)){
+			 							assocs.add(a);
+			 						}
 			 					}
 			 				}
 			 				else{
@@ -92,9 +92,9 @@ public class FragmentAssociationActivity extends FragmentActivity {
 		 				if(a.isAdherent()){
 			 				if(sport){
 			 					for(Sport s : a.getListeSport()){
-//			 						if(s.getId() == idSport){
-//			 							assocs.add(a);
-//			 						}
+			 						if(s.getNom().equals(nomSport)){
+			 							assocs.add(a);
+			 						}
 			 					}
 			 				}
 			 				else{
