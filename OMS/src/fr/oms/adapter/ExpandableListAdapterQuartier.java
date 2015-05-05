@@ -13,7 +13,6 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.BaseExpandableListAdapter;
 import android.widget.TextView;
-import android.widget.Toast;
 import fr.oms.activities.FragmentEquipementActivity;
 import fr.oms.activities.R;
 import fr.oms.metier.Equipement;

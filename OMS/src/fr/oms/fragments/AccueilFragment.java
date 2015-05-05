@@ -1,5 +1,6 @@
 package fr.oms.fragments;
 
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -9,7 +10,6 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.Toast;
 import fr.oms.activities.R;
 
 public class AccueilFragment extends Fragment {
@@ -39,6 +39,8 @@ public class AccueilFragment extends Fragment {
 				FragmentManager fragM = getActivity().getSupportFragmentManager();
 				FragmentTransaction fragT = fragM.beginTransaction();
 				fragT.replace(R.id.container, fragment).commit();
+				getActivity().getActionBar().setBackgroundDrawable(
+						new ColorDrawable((getResources().getColor(R.color.VertOms))));
 			}
 		});
 	}
@@ -49,9 +51,12 @@ public class AccueilFragment extends Fragment {
 			
 			@Override
 			public void onClick(View v) {
-				Toast.makeText(getActivity(), "Clic Agenda", Toast.LENGTH_SHORT).show();
-				/*Intent intent = new Intent(AccueilActivity.this, AnnuaireActivity.class);
-				startActivity(intent);*/
+				AgendaFragment fragment = new AgendaFragment(0);
+				FragmentManager fragM = getActivity().getSupportFragmentManager();
+				FragmentTransaction fragT = fragM.beginTransaction();
+				fragT.replace(R.id.container, fragment).commit();
+				getActivity().getActionBar().setBackgroundDrawable(
+						new ColorDrawable((getResources().getColor(R.color.BleuOms))));
 			}
 		});
 	}
@@ -62,9 +67,12 @@ public class AccueilFragment extends Fragment {
 			
 			@Override
 			public void onClick(View v) {
-				Toast.makeText(getActivity(), "Clic Geo", Toast.LENGTH_SHORT).show();
-				/*Intent intent = new Intent(AccueilActivity.this, AnnuaireActivity.class);
-				startActivity(intent);*/
+				GeolocalisationFragment fragment = new GeolocalisationFragment(0);
+				FragmentManager fragM = getActivity().getSupportFragmentManager();
+				FragmentTransaction fragT = fragM.beginTransaction();
+				fragT.replace(R.id.container, fragment).commit();
+				getActivity().getActionBar().setBackgroundDrawable(
+						new ColorDrawable((getResources().getColor(R.color.OrangeOms))));
 			}
 		});
 	}

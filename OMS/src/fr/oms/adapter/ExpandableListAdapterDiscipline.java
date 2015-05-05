@@ -5,7 +5,6 @@ import java.util.HashMap;
 import java.util.List;
 
 import android.content.Context;
-import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -17,12 +16,8 @@ import android.view.ViewGroup;
 import android.view.View.OnClickListener;
 import android.widget.BaseExpandableListAdapter;
 import android.widget.TextView;
-import fr.oms.activities.FragmentEquipementActivity;
 import fr.oms.activities.R;
 import fr.oms.fragments.AnnuaireFragment;
-import fr.oms.metier.Equipement;
-import fr.oms.metier.Sport;
-import fr.oms.modele.Manager;
 
 public class ExpandableListAdapterDiscipline extends BaseExpandableListAdapter{
 

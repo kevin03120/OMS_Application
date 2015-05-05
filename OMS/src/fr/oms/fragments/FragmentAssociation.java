@@ -14,7 +14,6 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import fr.oms.activities.MapPane;
 import fr.oms.activities.R;
-import fr.oms.adapter.AssociationAdapter;
 import fr.oms.metier.Association;
 import fr.oms.metier.Equipement;
 import fr.oms.metier.Personne;
@@ -74,7 +73,7 @@ public class FragmentAssociation extends Fragment {
 		equipement2 = (TextView)v.findViewById(R.id.lieu_equipement2);
 		lieu_map_1 = (Button)v.findViewById(R.id.btn_map_1);
 		lieu_map_2 = (Button)v.findViewById(R.id.btn_map_2);
-		iconeAdherent = (ImageView)v.findViewById(R.id.iconeAdherentAssociationFiche);
+		setIconeAdherent((ImageView)v.findViewById(R.id.iconeAdherentAssociationFiche));
 		btnSite = (TextView)v.findViewById(R.id.btn_info_site);
 		ficheAdherente = (LinearLayout)v.findViewById(R.id.fiche_assoc);
 		ficheNonAdherente = (LinearLayout)v.findViewById(R.id.layout_assoc_pas_adherente);
@@ -199,5 +198,13 @@ public class FragmentAssociation extends Fragment {
 			lieu_map_2.setVisibility(4);
 		}
 		changeLayoutSiPasAdherent();
+	}
+
+	public ImageView getIconeAdherent() {
+		return iconeAdherent;
+	}
+
+	public void setIconeAdherent(ImageView iconeAdherent) {
+		this.iconeAdherent = iconeAdherent;
 	}
 }

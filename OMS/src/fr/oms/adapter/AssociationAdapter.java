@@ -67,7 +67,7 @@ public class AssociationAdapter extends ArrayAdapter<Association>  implements Se
 		}
 		return convertView;
 	}
-
+	
 	@Override
 	public Object[] getSections() {
 		return sections;
