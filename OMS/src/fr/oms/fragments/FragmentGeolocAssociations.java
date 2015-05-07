@@ -114,7 +114,6 @@ public class FragmentGeolocAssociations extends Fragment implements LocationList
 		donneListe();
 		AssociationGeolocAdapter adapterAssoc = new AssociationGeolocAdapter(getActivity(), 0, associationTriesLocalisation, latitudeUser, longitudeUser);
 		listAssoc.setAdapter(adapterAssoc);
-		
 	}
 
 	@Override

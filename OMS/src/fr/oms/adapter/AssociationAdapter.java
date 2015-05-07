@@ -75,7 +75,6 @@ public class AssociationAdapter extends ArrayAdapter<Association>  implements Se
 
 	@Override
 	public int getPositionForSection(int section) {
-		System.out.println("SECTION : "+section);
 		return alphaIndexer.get(sections[section]);
 	}
 

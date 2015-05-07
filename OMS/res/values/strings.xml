@@ -45,7 +45,7 @@
     <string name="titreDetailEquipement" translatable="false">Détail d\'un équipement</string>
     <string name="titreDetailActualite" translatable="false">Détail d\'une actualité</string>
     <string name="titreDetailEvenement" translatable="false">Détail d\'un evenement</string>
-    <string name="goSite" translatable="false">Pour plus d\'informations</string>
+    <string name="goSite" translatable="false"><u>Pour plus d\'informations</u></string>
     <string name="drawer_open" translatable="false">Open navigation drawer</string>
     <string name="drawer_close" translatable="false">Close navigation drawer</string>
     <string name="lien_site_OMS" translatable="false">http://www.oms-clermont-ferrand.fr/</string>

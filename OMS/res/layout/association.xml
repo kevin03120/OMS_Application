@@ -161,6 +161,7 @@
 	        android:layout_height="wrap_content"
 	        android:layout_weight="0.1"
 	        android:gravity="center"
+	        android:textColor="@color/BleuOms"
 	        android:text="@string/goSite"
 	        android:clickable="true"
 	        android:onClick="onGoSite"/>
