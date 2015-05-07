@@ -2,17 +2,17 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     android:layout_gravity="center_horizontal"
-    android:background="@color/Blanc" >
-	
+    android:background="@color/Blanc"
+    android:orientation="vertical" >
+
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
+        android:layout_gravity="center_horizontal"
         android:layout_marginTop="20dp"
-        android:layout_gravity="center_horizontal" >
-        
+        android:orientation="horizontal" >
+
         <CheckBox
             android:id="@+id/chkAdherents"
             android:layout_width="wrap_content"
@@ -21,11 +21,11 @@
             android:checked="true"
             android:text="@string/adherents"
             android:textColor="@color/Orange1" />
-        
+
         <Space
             android:layout_width="25dp"
             android:layout_height="wrap_content" />
-        
+
         <CheckBox
             android:id="@+id/chkNonAdherents"
             android:layout_width="wrap_content"
@@ -35,20 +35,23 @@
             android:textColor="@color/Orange1" />
     </LinearLayout>
 
-    <TextView 
+    <TextView
         android:id="@+id/txt_filtre"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:visibility="invisible"
-        android:clickable="true"
         android:layout_gravity="center_horizontal"
-        android:textColor="@color/Orange1"/>
-    
+        android:clickable="true"
+        android:textColor="@color/Orange1"
+        android:visibility="invisible" />
+
     <ListView
         android:id="@+id/listeAssociation"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        android:layout_marginTop="20dp" >
+        android:layout_marginTop="20dp"
+        android:divider="@android:color/transparent"
+        android:dividerHeight="5dp" >
     </ListView>
+
 
 </LinearLayout>

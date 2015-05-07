@@ -43,7 +43,17 @@ public class FragmentListeAssociations extends Fragment {
 		chkAdherent = (CheckBox)v.findViewById(R.id.chkAdherents);
 		chkNonAdherent = (CheckBox)v.findViewById(R.id.chkNonAdherents);
 		listeAssociation = (ListView)v.findViewById(R.id.listeAssociation);
-		listeAssociation.setFastScrollEnabled(true);
+		int currentapiVersion = android.os.Build.VERSION.SDK_INT;
+        if (currentapiVersion <= android.os.Build.VERSION_CODES.FROYO){
+            // Do something for froyo and above versions
+        	listeAssociation.setFastScrollEnabled(true);
+
+
+        } else if(currentapiVersion > android.os.Build.VERSION_CODES.HONEYCOMB){
+            // do something for phones running an SDK before froyo
+        	listeAssociation.setFastScrollEnabled(true);
+        	listeAssociation.setFastScrollAlwaysVisible(true);
+        }
 		onDeleteFiltre();
 		filtre = 0;
 		if(getArguments()!=null){

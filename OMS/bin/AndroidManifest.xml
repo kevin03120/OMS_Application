@@ -41,7 +41,7 @@
         <activity android:name="FragmentEquipementActivity"></activity>
         <meta-data
   		  	android:name="com.google.android.geo.API_KEY"
-   			android:value="AIzaSyBJBYBuNOD77rC58z1rNj35Zp8fP1W7EF8"/>
+   			android:value="AIzaSyA2oTsok49uQ8JoRLt641CwNZBvRSIScBs"/>
         <activity android:name="MapPane"></activity>
     </application>
 
