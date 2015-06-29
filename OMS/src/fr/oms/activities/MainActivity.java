@@ -48,12 +48,7 @@ public class MainActivity extends FragmentActivity implements NavigationDrawerFr
 		mDrawerLayout=(DrawerLayout) findViewById(R.id.drawer_layout);
 		mNavigationDrawerFragment.setUp(R.id.navigation_drawer, mDrawerLayout);
 	}
-
-
-
-
 	
-
 	@Override
 	public void onNavigationDrawerItemSelected(int position) {
 		displayView(position);
