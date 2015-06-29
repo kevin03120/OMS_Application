@@ -14,7 +14,7 @@
 
     <!-- Application theme. -->
     <style name="AppTheme" parent="AppBaseTheme">
-        <item name="android:windowBackground">@drawable/large</item>
+      
         <!-- All customizations that are NOT specific to a particular API-level can go here. -->
     </style>
 
@@ -119,7 +119,13 @@
 	    <item name="android:textSize">14sp</item>
 	    <item name="android:textColor">@android:color/white</item>
 	</style>
-
+ <style name="CustomProgressBar" parent="android:Widget.ProgressBar.Horizontal">
+          <item name="android:indeterminateOnly">false</item>
+          <item name="android:progressDrawable">@drawable/custom_progress_bar_horizontal</item>
+          <item name="android:minHeight">10dip</item>
+          <item name="android:maxHeight">20dip</item>
+        </style>       
+	
     <color name="Vert1">#1FCF6D</color>
     <color name="Vert2">#1AAF5D</color>
     <color name="Vert3">#00BE9C</color>

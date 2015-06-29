@@ -22,6 +22,7 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
+import android.widget.ProgressBar;
 import fr.oms.activities.MainActivity;
 
 public class JsonDataLoader extends AsyncTask<Context, Void, Void> implements iLoadData  {
@@ -30,8 +31,10 @@ public class JsonDataLoader extends AsyncTask<Context, Void, Void> implements iL
 	private Map<String,String> urlsFichiers;	
 	private ProgressDialog progess=null;
 	private Context context=null;
+	private ProgressBar barre=null;
 	
-	public JsonDataLoader(Context context) {
+	public JsonDataLoader(Context context, ProgressBar bar) {
+		barre=bar;
 		this.context=context;
 		urlsFichiers = new HashMap<String, String>();
 		urlsFichiers.put("actus.json", "http://www.oms-clermont-ferrand.fr/api/v1/actus.json");
@@ -40,9 +43,9 @@ public class JsonDataLoader extends AsyncTask<Context, Void, Void> implements iL
 		urlsFichiers.put("equipements.json", "http://www.oms-clermont-ferrand.fr/api/v1/equipements.json");
 	}
 
-	public static JsonDataLoader getInstance(Context context) {
+	public static JsonDataLoader getInstance(Context context, ProgressBar bar) {
 		if(instance==null){
-			return new JsonDataLoader(context);
+			return new JsonDataLoader(context,bar);
 		}
 		return instance;
 	}	
@@ -52,8 +55,8 @@ public class JsonDataLoader extends AsyncTask<Context, Void, Void> implements iL
 	@Override
 	protected void onPreExecute() {
 		super.onPreExecute();		
-		progess=new ProgressDialog(context);
-		progess.show();
+//		progess=new ProgressDialog(context);
+//		progess.show();
 	}
 	
 	@Override
@@ -75,7 +78,7 @@ public class JsonDataLoader extends AsyncTask<Context, Void, Void> implements iL
 	@Override
 	protected void onPostExecute(Void result) {
 		super.onPostExecute(result);
-		progess.dismiss();
+//		progess.dismiss();
 		Intent intent=new Intent(context, MainActivity.class);
 		context.startActivity(intent);
 	}
@@ -90,6 +93,7 @@ public class JsonDataLoader extends AsyncTask<Context, Void, Void> implements iL
 
 	@Override
 	public void loadAllFileFromServer(Context context) {
+		int cpt=25;
 		for(Map.Entry<String, String> entry : urlsFichiers.entrySet()){
 			InputStream is=null;
 			HttpURLConnection connect=null;
@@ -119,7 +123,9 @@ public class JsonDataLoader extends AsyncTask<Context, Void, Void> implements iL
 			} catch (FileNotFoundException e) {
 				e.printStackTrace();
 			}
-			writeInLocalFile(f,jsonObj);			
+			writeInLocalFile(f,jsonObj);	
+			barre.setProgress(cpt);
+			cpt+=25;
 		}
 	}
 

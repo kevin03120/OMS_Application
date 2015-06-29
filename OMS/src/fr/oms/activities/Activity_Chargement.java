@@ -1,7 +1,5 @@
 package fr.oms.activities;
 
-import org.json.JSONObject;
-
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
@@ -11,45 +9,46 @@ import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-import fr.oms.dataloader.JSONTags;
+import android.widget.ProgressBar;
 import fr.oms.dataloader.JsonDataLoader;
-import fr.oms.dataloader.ParserJson;
-import fr.oms.modele.Manager;
 
 public class Activity_Chargement extends Activity {
+	
+	private  ProgressBar bar=null;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_activity__chargement);
-		JsonDataLoader loader=JsonDataLoader.getInstance(this);	
+		bar=(ProgressBar) findViewById(R.id.progressBar1);
+		JsonDataLoader loader=JsonDataLoader.getInstance(this,bar);	
 		effectuerConnexion(loader);
 		
-		if(isNetworkAvailable(this)){
-			Manager.getInstance().getTousLesSport(getApplicationContext());
-			ParserJson parser=new ParserJson(getApplicationContext());
-		}
-		else{
-			JSONObject jsObj=JsonDataLoader.getInstance(this).LoadFile(this.getFileStreamPath(JSONTags.FICHIER_ACTUS));
-			if(jsObj != null){
-				
-			}
-			else{
-				AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
-				alertDialogBuilder.setTitle(R.string.detailCo);
-				alertDialogBuilder
-				.setMessage(getResources().getString(R.string.detailCo))
-				.setCancelable(false)
-				.setPositiveButton("Fermer l'application",new DialogInterface.OnClickListener() {
-					public void onClick(DialogInterface dialog,int id) {
-						dialog.dismiss();
-						System.exit(0);
-					}
-				});
-				AlertDialog alertDialog = alertDialogBuilder.create();
-				alertDialog.show();
-			}
-		}
+//		if(isNetworkAvailable(this)){
+//			Manager.getInstance().getTousLesSport(getApplicationContext());
+//			ParserJson parser=new ParserJson(getApplicationContext(),bar);
+//		}
+//		else{
+//			JSONObject jsObj=JsonDataLoader.getInstance(this).LoadFile(this.getFileStreamPath(JSONTags.FICHIER_ACTUS));
+//			if(jsObj != null){
+//				
+//			}
+//			else{
+//				AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
+//				alertDialogBuilder.setTitle(R.string.detailCo);
+//				alertDialogBuilder
+//				.setMessage(getResources().getString(R.string.detailCo))
+//				.setCancelable(false)
+//				.setPositiveButton("Fermer l'application",new DialogInterface.OnClickListener() {
+//					public void onClick(DialogInterface dialog,int id) {
+//						dialog.dismiss();
+//						System.exit(0);
+//					}
+//				});
+//				AlertDialog alertDialog = alertDialogBuilder.create();
+//				alertDialog.show();
+//			}
+//		}
 			
 	}
 	
