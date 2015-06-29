@@ -52,7 +52,7 @@
         
         <activity
             android:name=".Activity_Chargement"
-            android:label="@string/title_activity_activity__chargement" >
+            >
               <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

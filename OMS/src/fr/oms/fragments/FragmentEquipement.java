@@ -100,28 +100,32 @@ public class FragmentEquipement extends Fragment {
 			txtTel.setText(equipement.getTelephone());
 		}
 		else{
-			txtTel.setText("Aucun numero de telephone affilié");
+			//txtTel.setText("Aucun numero de telephone affilié");
+			txtTel.setVisibility(4);
 		}
 		TextView txtAdresse = (TextView)v.findViewById(R.id.adresse);
 		if(!equipement.getAdresse().equals("")){
 			txtAdresse.setText("Adresse : " + equipement.getAdresse());
 		}
 		else{
-			txtAdresse.setText("Aucune adresse affiliée");
+			//txtAdresse.setText("Aucune adresse affiliée");
+			txtAdresse.setVisibility(4);
 		}
 		TextView txtCodePostal = (TextView)v.findViewById(R.id.codePostal);
 		if(!equipement.getCodePostal().equals("")){
 			txtCodePostal.setText("Code Postal : " + equipement.getCodePostal());
 		}
 		else{
-			txtCodePostal.setText("Aucun code postal affilié");
+			//txtCodePostal.setText("Aucun code postal affilié");
+			txtCodePostal.setVisibility(4);
 		}
 		TextView txtVille = (TextView)v.findViewById(R.id.ville);
 		if(!equipement.getVille().equals("")){
 			txtVille.setText("Ville : " + equipement.getVille());
 		}
 		else{
-			txtVille.setText("Aucune ville affiliée");
+			//txtVille.setText("Aucune ville affiliée");
+			txtVille.setVisibility(4);
 		}
 		TextView txtQuartier = (TextView)v.findViewById(R.id.quartier);
 		txtPasAssoc = (TextView)v.findViewById(R.id.textNonAssocAffilie);
@@ -129,7 +133,8 @@ public class FragmentEquipement extends Fragment {
 			txtQuartier.setText("Quartier : " + equipement.getQuartier().getNom());
 		}
 		else{
-			txtQuartier.setText("Aucun quartier affilié à cet équipement");
+			//txtQuartier.setText("Aucun quartier affilié à cet équipement");
+			txtQuartier.setVisibility(4);
 		}
 		Button btnGoMap = (Button)v.findViewById(R.id.btn_map);
 		if((equipement.getGeoloc().getLatitude().equals(GEOLOCNULL))&&(equipement.getGeoloc().getLatitude().equals(GEOLOCNULL))){

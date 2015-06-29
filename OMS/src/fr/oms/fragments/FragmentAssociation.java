@@ -80,6 +80,7 @@ public class FragmentAssociation extends Fragment {
 		nomAssocPasAdherente = (TextView)v.findViewById(R.id.nomAssocPasAdherente);
 		infoAssocNonAdherente = (TextView)v.findViewById(R.id.info_assoc_non_adherente);
 		onGoSite();
+		
 	}
 	
 	private void changeLayoutSiPasAdherent(){
@@ -152,32 +153,37 @@ public class FragmentAssociation extends Fragment {
 				nomContact.setText(pers.getTitre() + " " + pers.getNom() + " " + pers.getPrenom());
 			}
 			else{
-				nomContact.setText("Nom du contact inconnu");
+				//nomContact.setText("Nom du contact inconnu");
+				nomContact.setVisibility(4);
 			}
 			if(!pers.getTelFixe().equals("")){
 				telFixContact.setText("Telephone Fix : " + pers.getTelFixe());
 			}
 			else{
-				telFixContact.setText("Telephone Fix inconnu");
+				//telFixContact.setText("Telephone Fix inconnu");
+				telFixContact.setVisibility(4);
 			}
 			if(!pers.getTelPortable().equals("")){
 				telPortContact.setText("Telephone Portable : " + pers.getTelPortable());
 			}
 			else{
-				telPortContact.setText("Telephone Portable inconnu");
+				//telPortContact.setText("Telephone Portable inconnu");
+				telPortContact.setVisibility(4);
 			}
 			if(!pers.getEmail().equals("")){
 				mailContact.setText(pers.getEmail());
 			}
 			else{
-				mailContact.setText("Adresse email inconnue");
+				//mailContact.setText("Adresse email inconnue");
+				mailContact.setVisibility(4);
 			}
 		}
 		if(!association.getHorraire().equals("")){
 			horaire.setText(association.getHorraire());
 		}
 		else{
-			horaire.setText("Horaires inconnues");
+			//horaire.setText("Horaires inconnues");
+			horaire.setVisibility(4);
 		}
 		if(association.getListeEquipement() != null){
 			equipement1.setText(association.getListeEquipement().get(0).getNom());
@@ -187,14 +193,17 @@ public class FragmentAssociation extends Fragment {
 				onMap2();
 			}
 			else {
-				equipement2.setText("Pas d'equipement secondaire");
+				//equipement2.setText("Pas d'equipement secondaire");
+				equipement2.setVisibility(4);
 				lieu_map_2.setVisibility(4);
 			}
 		}
 		else{
-			equipement1.setText("Pas d'equipement principale");
+			//equipement1.setText("Pas d'equipement principale");
+			equipement1.setVisibility(4);
 			lieu_map_1.setVisibility(4);
-			equipement2.setText("Pas d'equipement secondaire");
+			//equipement2.setText("Pas d'equipement secondaire");
+			equipement2.setVisibility(4);
 			lieu_map_2.setVisibility(4);
 		}
 		changeLayoutSiPasAdherent();

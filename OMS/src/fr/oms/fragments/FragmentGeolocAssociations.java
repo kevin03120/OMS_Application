@@ -66,7 +66,7 @@ public class FragmentGeolocAssociations extends Fragment implements LocationList
 				Intent intent = new Intent(FragmentGeolocAssociations.this.getActivity(), FragmentAssociationActivity.class);
 				intent.putExtra("position", a.getId());
 				intent.putExtra("adherents", true);
-				intent.putExtra("nonAdherents", true);
+				intent.putExtra("nonAdherents", false);
 				intent.putExtra("sport", false);
 				intent.putExtra("nomSport", "");
 				startActivity(intent);
@@ -76,7 +76,7 @@ public class FragmentGeolocAssociations extends Fragment implements LocationList
 	
 	private void donneListe(){
 		List<Association> listeTemporaire = new ArrayList<Association>();
-		for(Association a : Manager.getInstance().getListeAssociation()){
+		for(Association a : rendNouvelleListe()){
 			if(a.getListeEquipement() != null){
 				listeTemporaire.add(a);
 			}
@@ -105,6 +105,16 @@ public class FragmentGeolocAssociations extends Fragment implements LocationList
 		loc.setLongitude(Double.parseDouble(a.getListeEquipement().get(0).getGeoloc().getLongitude()));
 	
 		return locUser.distanceTo(loc);
+	}
+	
+	private List<Association> rendNouvelleListe(){
+		List<Association> assocs = new ArrayList<Association>();
+		for(Association a : Manager.getInstance().getListeAssociation()){
+			if(a.isAdherent()){
+				assocs.add(a);
+			}
+		}
+		return assocs;
 	}
 	
 	@Override

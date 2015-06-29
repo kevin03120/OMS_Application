@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-
     <string name="app_name" translatable="false">OMS</string>
     <string name="search" translatable="false">Chercher</string>
     <string name="action_example" translatable="false">Site de l\'OMS</string>
@@ -37,7 +36,7 @@
     <string name="detailCo" translatable="false">Pas de connexion Internet !</string>
     <string name="goMap" translatable="false">- Voir sur la carte -</string>
     <string name="info_assoc_site" translatable="false"><u>Plus d\'informations sur le site</u></string>
-    <string name="pasAdherent" translatable="false">Impossible de voir la fiche d\'une association non adhérente à l\'OMS.</string>
+    <string name="pasAdherent" translatable="false">Cette association ne nous à pas communiqué ses informations. \n Prenez contact avec l\'OMS pour plus de renseignements.</string>
     <string name="lienSite" translatable="false">http://www.oms-clermont-ferrand.fr/</string>
     <string name="contactNonDispo" translatable="false">Aucun contact disponible</string>
     <string name="equipementNonDispo" translatable="false">Aucun equipement disponible</string>
@@ -46,7 +45,7 @@
     <string name="titreDetailEquipement" translatable="false">Détail d\'un équipement</string>
     <string name="titreDetailActualite" translatable="false">Détail d\'une actualité</string>
     <string name="titreDetailEvenement" translatable="false">Détail d\'un evenement</string>
-    <string name="goSite" translatable="false"><u>Pour plus d\'informations</u></string>
+    <string name="goSite" translatable="false"><u>Site Internet OMS</u></string>
     <string name="drawer_open" translatable="false">Open navigation drawer</string>
     <string name="drawer_close" translatable="false">Close navigation drawer</string>
     <string name="lien_site_OMS" translatable="false">http://www.oms-clermont-ferrand.fr/</string>
@@ -61,6 +60,5 @@
     <string name="associationPratiquantes" translatable="false">Les associations pratiquant içi</string>
     <string name="geolocalisation_underline" translatable="false"><u>Géoloc.</u></string>
     <string name="pasAssocEquipement" translatable="false">Aucune association présente à cette équipement</string>
-    <string name="title_activity_activity__chargement">Activity_Chargement</string>
 
 </resources>

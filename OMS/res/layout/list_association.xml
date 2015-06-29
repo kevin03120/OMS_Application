@@ -13,26 +13,7 @@
         android:layout_marginTop="20dp"
         android:orientation="horizontal" >
 
-        <CheckBox
-            android:id="@+id/chkAdherents"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="start"
-            android:checked="true"
-            android:text="@string/adherents"
-            android:textColor="@color/Orange1" />
-
-        <Space
-            android:layout_width="25dp"
-            android:layout_height="wrap_content" />
-
-        <CheckBox
-            android:id="@+id/chkNonAdherents"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:checked="true"
-            android:text="@string/non_adherents"
-            android:textColor="@color/Orange1" />
+      
     </LinearLayout>
 
     <TextView
