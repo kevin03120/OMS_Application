@@ -17,7 +17,7 @@ public class PageFragment extends Fragment {
 		Bundle args = new Bundle();
 		args.putInt(ARG_PAGE, page);
 		PageFragment fragment = new PageFragment();
-		System.out.println("CREATION DU FRAGMENT : "+page);
+//		System.out.println("CREATION DU FRAGMENT : "+page);
 		fragment.setArguments(args);
 		return fragment;
 	}

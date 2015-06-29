@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
     <string name="app_name" translatable="false">OMS</string>
     <string name="search" translatable="false">Chercher</string>
     <string name="action_example" translatable="false">Site de l\'OMS</string>
@@ -60,5 +61,6 @@
     <string name="associationPratiquantes" translatable="false">Les associations pratiquant içi</string>
     <string name="geolocalisation_underline" translatable="false"><u>Géoloc.</u></string>
     <string name="pasAssocEquipement" translatable="false">Aucune association présente à cette équipement</string>
+    <string name="title_activity_activity__chargement">Activity_Chargement</string>
 
 </resources>

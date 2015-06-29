@@ -41,7 +41,7 @@ public class ParserJson {
 	}
 
 	private void parseActus(){
-		JSONObject jsObj=JsonDataLoader.getInstance().LoadFile(context.getFileStreamPath(JSONTags.FICHIER_ACTUS));
+		JSONObject jsObj=JsonDataLoader.getInstance(null).LoadFile(context.getFileStreamPath(JSONTags.FICHIER_ACTUS));
 		JSONArray jsArr=null;
 		try {
 			jsArr=jsObj.getJSONArray(JSONTags.RESULT);
@@ -83,7 +83,7 @@ public class ParserJson {
 			title=actuObj.getString(JSONTags.TITLE);
 			description=actuObj.getString(JSONTags.BODY);
 			//description=Html.fromHtml(description).toString();			
-			System.out.println(description);
+//			System.out.println(description);
 			image=actuObj.getString(JSONTags.IMAGE);
 			assoc=Manager.getInstance().recupereAssociationAvecNom(actuObj.getString(JSONTags.ASSOCIATION));
 		} catch (JSONException e) {
@@ -94,17 +94,17 @@ public class ParserJson {
 	}
 
 	private void parseEvenements(){
-		JSONObject jsObj=JsonDataLoader.getInstance().LoadFile(context.getFileStreamPath(JSONTags.FICHIER_EVENTS));
+		JSONObject jsObj=JsonDataLoader.getInstance(null).LoadFile(context.getFileStreamPath(JSONTags.FICHIER_EVENTS));
 		JSONArray jsArr=null;
 		try {
 			jsArr=jsObj.getJSONArray(JSONTags.RESULT);
 		} catch (JSONException e) {
 			e.printStackTrace();
 		}
-		System.out.println("IL Y A EVENTS : "+jsArr.length());
+//		System.out.println("IL Y A EVENTS : "+jsArr.length());
 		for(int i=0; i<jsArr.length();i++){
 			try {
-				System.out.println("CURRENT : "+i);
+//				System.out.println("CURRENT : "+i);
 				JSONObject eventObj=jsArr.getJSONObject(i);
 				int id=eventObj.getInt(JSONTags.IDENTIFIER);
 				Evenement eventTmp=Manager.getInstance().recupereEvenement(id);		
@@ -154,17 +154,17 @@ public class ParserJson {
 	}
 
 	private void parseEquipements(){
-		JSONObject jsObj=JsonDataLoader.getInstance().LoadFile(context.getFileStreamPath(JSONTags.FICHIER_EQUIPS));
+		JSONObject jsObj=JsonDataLoader.getInstance(null).LoadFile(context.getFileStreamPath(JSONTags.FICHIER_EQUIPS));
 		JSONArray jsArr=null;
 		try {
 			jsArr=jsObj.getJSONArray(JSONTags.RESULT);
 		} catch (JSONException e) {
 			e.printStackTrace();
 		}
-		System.out.println("IL Y A EQUIPS : "+jsArr.length());
+//		System.out.println("IL Y A EQUIPS : "+jsArr.length());
 		for(int i=0; i<jsArr.length();i++){
 			try {
-				System.out.println("CURRENT : "+i);
+//				System.out.println("CURRENT : "+i);
 				JSONObject equipObj=jsArr.getJSONObject(i);
 				int id=equipObj.getInt(JSONTags.IDENTIFIER);
 				Equipement equipTmp=Manager.getInstance().recupereEquipement(id);		
@@ -264,7 +264,7 @@ public class ParserJson {
 	}
 
 	private void parseAssociations(){
-		JSONObject jsObj=JsonDataLoader.getInstance().LoadFile(context.getFileStreamPath(JSONTags.FICHIER_ASSOCS));
+		JSONObject jsObj=JsonDataLoader.getInstance(null).LoadFile(context.getFileStreamPath(JSONTags.FICHIER_ASSOCS));
 		JSONArray jsArr=null;
 		try {
 			jsArr=jsObj.getJSONArray(JSONTags.RESULT);

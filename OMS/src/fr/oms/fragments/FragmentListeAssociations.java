@@ -89,7 +89,7 @@ public class FragmentListeAssociations extends Fragment {
 		else{
 			associationAdapter = new AssociationAdapter(getActivity(), 0, Manager.getInstance().getListeAssociation());
 			associationAdapter.notifyDataSetChanged();
-			System.out.println("Je passe la liste des assoc "+Manager.getInstance().getListeAssociation().size());
+//			System.out.println("Je passe la liste des assoc "+Manager.getInstance().getListeAssociation().size());
 			listeAssociation.setAdapter(associationAdapter);
 			touchAssoc();
 		}

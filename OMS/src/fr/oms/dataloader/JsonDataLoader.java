@@ -14,36 +14,53 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.HashMap;
 import java.util.Map;
+
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.Intent;
 import android.os.AsyncTask;
+import fr.oms.activities.MainActivity;
 
 public class JsonDataLoader extends AsyncTask<Context, Void, Void> implements iLoadData  {
 	
 	private static JsonDataLoader instance=null;
-	private Map<String,String> urlsFichiers;
-
-	private JsonDataLoader() {
+	private Map<String,String> urlsFichiers;	
+	private ProgressDialog progess=null;
+	private Context context=null;
+	
+	public JsonDataLoader(Context context) {
+		this.context=context;
 		urlsFichiers = new HashMap<String, String>();
 		urlsFichiers.put("actus.json", "http://www.oms-clermont-ferrand.fr/api/v1/actus.json");
 		urlsFichiers.put("evenements.json", "http://www.oms-clermont-ferrand.fr/api/v1/evenements.json");
 		urlsFichiers.put("associations.json", "http://www.oms-clermont-ferrand.fr/api/v1/associations.json");
 		urlsFichiers.put("equipements.json", "http://www.oms-clermont-ferrand.fr/api/v1/equipements.json");
 	}
-	
-	public static JsonDataLoader getInstance(){
+
+	public static JsonDataLoader getInstance(Context context) {
 		if(instance==null){
-			return new JsonDataLoader();
+			return new JsonDataLoader(context);
 		}
 		return instance;
-	}
+	}	
+	
+
 
 	@Override
+	protected void onPreExecute() {
+		super.onPreExecute();		
+		progess=new ProgressDialog(context);
+		progess.show();
+	}
+	
+	@Override
 	protected Void doInBackground(Context... params) {
-		loadAllFileFromServer(params[0]);
 		
+		loadAllFileFromServer(params[0]);
+					
 //		JSONArray array=null;
 //		try {
 //			array=obj.getJSONArray("result");
@@ -55,6 +72,14 @@ public class JsonDataLoader extends AsyncTask<Context, Void, Void> implements iL
 		return null;
 	}
 
+	@Override
+	protected void onPostExecute(Void result) {
+		super.onPostExecute(result);
+		progess.dismiss();
+		Intent intent=new Intent(context, MainActivity.class);
+		context.startActivity(intent);
+	}
+	
 	private void writeInLocalFile(FileOutputStream f, JSONObject jsonObj) {
 		try {
 			f.write(jsonObj.toString().getBytes());
@@ -118,7 +143,9 @@ public class JsonDataLoader extends AsyncTask<Context, Void, Void> implements iL
 			e.printStackTrace();
 		}finally{
 			try {
-				reader.close();
+				if(reader!=null){
+					reader.close();
+				}				
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
@@ -153,5 +180,7 @@ public class JsonDataLoader extends AsyncTask<Context, Void, Void> implements iL
 			}
 		}
 		return sb.toString();
-	}	
+	}
+
+	
 }

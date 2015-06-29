@@ -1,18 +1,10 @@
 package fr.oms.activities;
 
 
-import java.util.concurrent.ExecutionException;
-
 import android.app.ActionBar;
-import android.app.Activity;
-import android.app.AlertDialog;
-import android.content.Context;
-import android.content.DialogInterface;
 import android.content.pm.ActivityInfo;
 import android.content.res.Resources;
 import android.graphics.drawable.ColorDrawable;
-import android.net.ConnectivityManager;
-import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
@@ -20,7 +12,6 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.widget.DrawerLayout;
 import android.util.Log;
 import android.view.Menu;
-import fr.oms.dataloader.JsonDataLoader;
 import fr.oms.dataloader.ParserJson;
 import fr.oms.fragments.AccueilFragment;
 import fr.oms.fragments.AgendaFragment;
@@ -35,22 +26,19 @@ public class MainActivity extends FragmentActivity implements NavigationDrawerFr
 	private CharSequence mTitle;
 	private DrawerLayout mDrawerLayout;
 
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		Manager.getInstance().clearDonnees();
 		setContentView(R.layout.activity_main);
-		setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
-
-		initDrawer();
-//		JsonDataLoader loader=JsonDataLoader.getInstance();
-//		effectuerConnexion(loader);
-
+		setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);		
+		initDrawer();		
 		Manager.getInstance().getTousLesSport(getApplicationContext());
-		ParserJson parser=new ParserJson(getApplicationContext());
-
+		ParserJson parser=new ParserJson(getApplicationContext());	
+		
 	}
-	
+
 	private void initDrawer(){
 		mNavigationDrawerFragment = (NavigationDrawerFragment) getFragmentManager().findFragmentById(
 				R.id.navigation_drawer);
@@ -59,60 +47,10 @@ public class MainActivity extends FragmentActivity implements NavigationDrawerFr
 		mNavigationDrawerFragment.setUp(R.id.navigation_drawer, mDrawerLayout);
 	}
 
-	private void effectuerConnexion(JsonDataLoader loader) {
-		if(isNetworkAvailable(this)){
-			try {
-				loader.execute(getApplicationContext()).get();
-			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			} catch (ExecutionException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-		}
-		else{
-			AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(MainActivity.this);
-			alertDialogBuilder.setTitle(R.string.detailCo);
-			alertDialogBuilder
-			.setMessage(getResources().getString(R.string.detailCo))
-			.setCancelable(false)
-			.setPositiveButton("Annuler la synchronisation",new DialogInterface.OnClickListener() {
-				public void onClick(DialogInterface dialog,int id) {
-					dialog.dismiss();
-				}
-			});
-			AlertDialog alertDialog = alertDialogBuilder.create();
-			alertDialog.show();
-
-		}
-	}
-
-	public boolean isNetworkAvailable( Activity mActivity ) 
-	{ 
-		Context context = mActivity.getApplicationContext();
-		ConnectivityManager connectivity = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
-		if (connectivity == null) 
-		{   
-			return false;
-		} 
-		else 
-		{  
-			NetworkInfo[] info = connectivity.getAllNetworkInfo();   
-			if (info != null) 
-			{   
-				for (int i = 0; i <info.length; i++) 
-				{ 
-					if (info[i].getState() == NetworkInfo.State.CONNECTED)
-					{
-						return true; 
-					}
-				}     
-			} 
-			return false;
-		}
-	} 
 	
+
+	
+
 	@Override
 	public void onNavigationDrawerItemSelected(int position) {
 		displayView(position);
@@ -121,83 +59,83 @@ public class MainActivity extends FragmentActivity implements NavigationDrawerFr
 	private void displayView(int position) {
 		Fragment fragment = null;
 		switch (position) {
-			case 0:
-				fragment = new AccueilFragment();
-				getActionBar().setBackgroundDrawable(
-						new ColorDrawable(getResources().getColor(R.color.Rouge1)));
-				break;
-	
-			case 1:
-				fragment = new AnnuaireFragment(0);
-				getActionBar().setBackgroundDrawable(
-						new ColorDrawable(getResources().getColor(R.color.VertOms)));
-				break;
-	
-			case 2:
-				fragment = new AnnuaireFragment(0);			
-				getActionBar().setBackgroundDrawable(
-						new ColorDrawable((getResources().getColor(R.color.VertOms))));
-				break;
-	
-			case 3:
-				fragment = new AnnuaireFragment(1);			
-				getActionBar().setBackgroundDrawable(
-						new ColorDrawable((getResources().getColor(R.color.VertOms))));
-				break;
-	
-			case 4:
-				fragment = new AnnuaireFragment(2);			
-				getActionBar().setBackgroundDrawable(
-						new ColorDrawable((getResources().getColor(R.color.VertOms))));
-				break;
-	
-			case 5:
-				fragment = new AnnuaireFragment(3);			
-				getActionBar().setBackgroundDrawable(
-						new ColorDrawable((getResources().getColor(R.color.VertOms))));
-				break;
-	
-			case 6:	    	
-				fragment = new AgendaFragment(0);
-				getActionBar().setBackgroundDrawable(
-						new ColorDrawable((getResources().getColor(R.color.BleuOms))));
-				break;
-	
-			case 7:	    	
-				fragment = new AgendaFragment(0);
-				getActionBar().setBackgroundDrawable(
-						new ColorDrawable((getResources().getColor(R.color.BleuOms))));
-				break;
-	
-			case 8:	    	
-				fragment = new AgendaFragment(1);
-				getActionBar().setBackgroundDrawable(
-						new ColorDrawable((getResources().getColor(R.color.BleuOms))));
-				break;
-	
-			case 9:
-				fragment = new GeolocalisationFragment(0);
-				getActionBar().setBackgroundDrawable(
-						new ColorDrawable((getResources().getColor(R.color.BleuOms))));
-				break;
-				
-			case 10:
-				fragment = new GeolocalisationFragment(0);
-				getActionBar().setBackgroundDrawable(
-						new ColorDrawable((getResources().getColor(R.color.OrangeOms))));
-				break;
-				
-			case 11:
-				fragment = new GeolocalisationFragment(1);
-				getActionBar().setBackgroundDrawable(
-						new ColorDrawable((getResources().getColor(R.color.OrangeOms))));
-				break;
-	
-			case 12:
-				fragment = new GeolocalisationFragment(2);
-				getActionBar().setBackgroundDrawable(
-						new ColorDrawable((getResources().getColor(R.color.OrangeOms))));
-				break;
+		case 0:
+			fragment = new AccueilFragment();
+			getActionBar().setBackgroundDrawable(
+					new ColorDrawable(getResources().getColor(R.color.Rouge1)));
+			break;
+
+		case 1:
+			fragment = new AnnuaireFragment(0);
+			getActionBar().setBackgroundDrawable(
+					new ColorDrawable(getResources().getColor(R.color.VertOms)));
+			break;
+
+		case 2:
+			fragment = new AnnuaireFragment(0);			
+			getActionBar().setBackgroundDrawable(
+					new ColorDrawable((getResources().getColor(R.color.VertOms))));
+			break;
+
+		case 3:
+			fragment = new AnnuaireFragment(1);			
+			getActionBar().setBackgroundDrawable(
+					new ColorDrawable((getResources().getColor(R.color.VertOms))));
+			break;
+
+		case 4:
+			fragment = new AnnuaireFragment(2);			
+			getActionBar().setBackgroundDrawable(
+					new ColorDrawable((getResources().getColor(R.color.VertOms))));
+			break;
+
+		case 5:
+			fragment = new AnnuaireFragment(3);			
+			getActionBar().setBackgroundDrawable(
+					new ColorDrawable((getResources().getColor(R.color.VertOms))));
+			break;
+
+		case 6:	    	
+			fragment = new AgendaFragment(0);
+			getActionBar().setBackgroundDrawable(
+					new ColorDrawable((getResources().getColor(R.color.BleuOms))));
+			break;
+
+		case 7:	    	
+			fragment = new AgendaFragment(0);
+			getActionBar().setBackgroundDrawable(
+					new ColorDrawable((getResources().getColor(R.color.BleuOms))));
+			break;
+
+		case 8:	    	
+			fragment = new AgendaFragment(1);
+			getActionBar().setBackgroundDrawable(
+					new ColorDrawable((getResources().getColor(R.color.BleuOms))));
+			break;
+
+		case 9:
+			fragment = new GeolocalisationFragment(0);
+			getActionBar().setBackgroundDrawable(
+					new ColorDrawable((getResources().getColor(R.color.BleuOms))));
+			break;
+
+		case 10:
+			fragment = new GeolocalisationFragment(0);
+			getActionBar().setBackgroundDrawable(
+					new ColorDrawable((getResources().getColor(R.color.OrangeOms))));
+			break;
+
+		case 11:
+			fragment = new GeolocalisationFragment(1);
+			getActionBar().setBackgroundDrawable(
+					new ColorDrawable((getResources().getColor(R.color.OrangeOms))));
+			break;
+
+		case 12:
+			fragment = new GeolocalisationFragment(2);
+			getActionBar().setBackgroundDrawable(
+					new ColorDrawable((getResources().getColor(R.color.OrangeOms))));
+			break;
 		}
 
 		if (fragment != null) {
@@ -269,7 +207,7 @@ public class MainActivity extends FragmentActivity implements NavigationDrawerFr
 		}
 		return super.onCreateOptionsMenu(menu);
 	}
-	
+
 	@Override
 	public void onBackPressed() {
 		mDrawerLayout.openDrawer(mNavigationDrawerFragment.getView());
