@@ -9,6 +9,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import android.content.Context;
+import android.os.AsyncTask;
 import fr.oms.metier.Actualite;
 import fr.oms.metier.Association;
 import fr.oms.metier.Equipement;
@@ -19,7 +20,7 @@ import fr.oms.metier.Quartier;
 import fr.oms.metier.Sport;
 import fr.oms.modele.Manager;
 
-public class ParserJson {
+public class ParserJson{
 
 	private Context context;
 	private int timeLastMaj;
