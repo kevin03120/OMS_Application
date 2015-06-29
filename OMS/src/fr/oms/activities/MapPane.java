@@ -25,8 +25,6 @@ public class MapPane extends Activity implements OnMapReadyCallback, LocationLis
 	private double longitude;
 	private double latitudeUser = 0;
 	private double longitudeUser = 0;
-	private double altitude;
-	private double accuracy;
 	private LocationManager lm;
 	
 	@Override
@@ -79,22 +77,11 @@ public class MapPane extends Activity implements OnMapReadyCallback, LocationLis
 	public void onLocationChanged(Location location) {
 		latitudeUser = location.getLatitude();
 		longitudeUser = location.getLongitude();
-		altitude = location.getAltitude();
-		accuracy = location.getAccuracy();
-
-
      	
     	locUser = new Location("Point A");
     	locUser.setLatitude(latitudeUser);
     	locUser.setLongitude(longitudeUser);
     	
-		String msg = String.format(
-				getResources().getString(R.string.new_location), latitude,
-				longitude, altitude, accuracy);
-		
-		Toast.makeText(this, "Distance : " + locUser.distanceTo(loc) + " metres", Toast.LENGTH_SHORT).show();
-		
-		Toast.makeText(this, msg, Toast.LENGTH_LONG).show();
 	}
 
 	@Override

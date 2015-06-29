@@ -26,8 +26,6 @@ public class FragmentListeAssociations extends Fragment {
 
 	private ListView listeAssociation;
 	private int filtre;
-	private CheckBox chkAdherent;
-	private CheckBox chkNonAdherent;
 	private List<Association> mesAssoc;
 	private boolean isFiltreSport = false;
 	private List<Association> mesAssocFiltreSport;
@@ -40,8 +38,6 @@ public class FragmentListeAssociations extends Fragment {
 			Bundle savedInstanceState) {
 		View v = inflater.inflate(R.layout.list_association, container,false);
 		txtFiltre = (TextView)v.findViewById(R.id.txt_filtre);
-		chkAdherent = (CheckBox)v.findViewById(R.id.chkAdherents);
-		chkNonAdherent = (CheckBox)v.findViewById(R.id.chkNonAdherents);
 		listeAssociation = (ListView)v.findViewById(R.id.listeAssociation);
 		int currentapiVersion = android.os.Build.VERSION.SDK_INT;
         if (currentapiVersion <= android.os.Build.VERSION_CODES.FROYO){
@@ -55,16 +51,15 @@ public class FragmentListeAssociations extends Fragment {
         	listeAssociation.setFastScrollAlwaysVisible(true);
         }
 		onDeleteFiltre();
-		filtre = 0;
+		filtre = 1;
 		if(getArguments()!=null){
 			isFiltreSport = true;
 			nomSport = getArguments().getString("nomSport");
-			filtre = 3;
+			filtre = 5;
 		}
 		mesAssoc = rendNouvelleListe();
 		mesAssocFiltreSport = new ArrayList<Association>();
 		ajouterFiltre();
-		associerActionBouton();
 		return v;
 	}
 
@@ -72,7 +67,7 @@ public class FragmentListeAssociations extends Fragment {
 
 	private void ajouterFiltre() {
 		if(isFiltreSport){
-			for(Association a : Manager.getInstance().getListeAssociation()){
+			for(Association a : rendNouvelleListe()){
 				for(Sport s : a.getListeSport()){
 					if(s.getNom().equals(nomSport)){
 						txtFiltre.setText("Filtre " + s.getNom() + " (Cliquez ici pour le supprimer)");
@@ -87,39 +82,11 @@ public class FragmentListeAssociations extends Fragment {
 			touchAssoc();
 		}
 		else{
-			associationAdapter = new AssociationAdapter(getActivity(), 0, Manager.getInstance().getListeAssociation());
+			associationAdapter = new AssociationAdapter(getActivity(), 0,rendNouvelleListe());
 			associationAdapter.notifyDataSetChanged();
-			System.out.println("Je passe la liste des assoc "+Manager.getInstance().getListeAssociation().size());
 			listeAssociation.setAdapter(associationAdapter);
 			touchAssoc();
 		}
-	}
-
-
-
-	private void associerActionBouton() {
-		chkAdherent.setOnClickListener(new OnClickListener() {
-
-			@Override
-			public void onClick(View v) {
-				if(!chkNonAdherent.isChecked()){
-					chkAdherent.setChecked(true);
-				}
-				afficheListe();				
-			}
-		});
-
-		chkNonAdherent.setOnClickListener(new OnClickListener() {
-
-			@Override
-			public void onClick(View v) {
-				if(!chkAdherent.isChecked()){
-					chkNonAdherent.setChecked(true);
-				}
-				afficheListe();				
-			}
-		});
-
 	}
 
 	private void touchAssoc(){
@@ -127,9 +94,7 @@ public class FragmentListeAssociations extends Fragment {
 			@Override
 			public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 				List<Association> mesAssociationsAdherentes = new ArrayList<Association>();
-				List<Association> mesAssociationsNonAdherentes = new ArrayList<Association>();
 				List<Association> mesAssociationsAdherentesFiltresSport = new ArrayList<Association>();
-				List<Association> mesAssociationsNonAdherentesFiltresSport  = new ArrayList<Association>();
 				for(Association a : Manager.getInstance().getListeAssociation()){
 					if(a.isAdherent()){
 						mesAssociationsAdherentes.add(a);
@@ -137,26 +102,18 @@ public class FragmentListeAssociations extends Fragment {
 							mesAssociationsAdherentesFiltresSport.add(a);
 						}
 					}
-					else{
-						mesAssociationsNonAdherentes.add(a);
-						if(mesAssocFiltreSport.contains(a)){
-							mesAssociationsNonAdherentesFiltresSport.add(a);
-						}
-					}
 				}
 				Association assoc = null;
 				switch(FragmentListeAssociations.this.filtre){
 				case 0 : assoc = Manager.getInstance().getListeAssociation().get(position); break;
 				case 1 : assoc = mesAssociationsAdherentes.get(position); break;
-				case 2 : assoc = mesAssociationsNonAdherentes.get(position); break;
 				case 3 : assoc = mesAssocFiltreSport.get(position); break;
-				case 4 : assoc = mesAssociationsNonAdherentesFiltresSport.get(position); break;
 				case 5 : assoc = mesAssociationsAdherentesFiltresSport.get(position); break;
 				}
 				Intent intent = new Intent(FragmentListeAssociations.this.getActivity(), FragmentAssociationActivity.class);
 				intent.putExtra("position", assoc.getId());
-				intent.putExtra("adherents", chkAdherent.isChecked());
-				intent.putExtra("nonAdherents", chkNonAdherent.isChecked());
+				intent.putExtra("adherents", true);
+				intent.putExtra("nonAdherents", false);
 				intent.putExtra("sport", isFiltreSport);
 				intent.putExtra("nomSport", nomSport);
 				startActivity(intent);
@@ -180,30 +137,10 @@ public class FragmentListeAssociations extends Fragment {
 
 	private void afficheListe(){
 		if(!isFiltreSport){
-			if(chkNonAdherent.isChecked()){
-				if(chkAdherent.isChecked()){
-					filtre = 0;
-				}
-				else{
-					filtre = 2;
-				}
-			}
-			else{
-				filtre = 1;
-			}
+			filtre = 1;
 		}
 		else{
-			if(chkNonAdherent.isChecked()){
-				if(chkAdherent.isChecked()){
-					filtre = 3;
-				}
-				else{
-					filtre = 4;
-				}
-			}
-			else{
-				filtre = 5;
-			}
+			filtre = 5;
 		}
 		mesAssoc = rendNouvelleListe();
 		rentreAssociationDansListeSelonFiltre(mesAssoc);
@@ -216,7 +153,9 @@ public class FragmentListeAssociations extends Fragment {
 	private List<Association> rendNouvelleListe(){
 		List<Association> assocs = new ArrayList<Association>();
 		for(Association a : Manager.getInstance().getListeAssociation()){
-			assocs.add(a);
+			if(a.isAdherent()){
+				assocs.add(a);
+			}
 		}
 		return assocs;
 	}
@@ -224,47 +163,9 @@ public class FragmentListeAssociations extends Fragment {
 	private void rentreAssociationDansListeSelonFiltre(List<Association> mesAssocs){
 		boolean sportExist = false;
 		switch(filtre){
-		case 0 : mesAssocs = Manager.getInstance().getListeAssociation();
-		break;
 		case 1 : for(Association a : Manager.getInstance().getListeAssociation()){
 			if(!a.isAdherent()){
 				mesAssocs.remove(a);
-			}
-		}
-		break;
-		case 2 : for(Association a : Manager.getInstance().getListeAssociation()){
-			if(a.isAdherent()){
-				mesAssocs.remove(a);
-			}
-		}
-		break;
-		case 3 : for(Association a : Manager.getInstance().getListeAssociation()){
-			for(Sport s : a.getListeSport()){
-				if(s.getNom().equals(nomSport)){
-					sportExist = true;
-				}
-			}
-			if(!sportExist){
-				mesAssocs.remove(a);
-			}
-			sportExist = false;
-		}
-		break;
-
-		case 4 : for(Association a : Manager.getInstance().getListeAssociation()){
-			if(a.isAdherent()){
-				mesAssocs.remove(a);
-			}
-			if(mesAssocs.contains(a)){
-				for(Sport s : a.getListeSport()){
-					if(s.getNom().equals(nomSport)){
-						sportExist = true;
-					}
-				}
-				if(!sportExist){
-					mesAssocs.remove(a);
-				}
-				sportExist = false;
 			}
 		}
 		break;

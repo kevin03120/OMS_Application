@@ -118,7 +118,9 @@ public class JsonDataLoader extends AsyncTask<Context, Void, Void> implements iL
 			e.printStackTrace();
 		}finally{
 			try {
-				reader.close();
+				if(reader != null){
+					reader.close();
+				}
 			} catch (IOException e) {
 				e.printStackTrace();
 			}

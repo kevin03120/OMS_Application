@@ -80,6 +80,7 @@ public class FragmentAssociation extends Fragment {
 		nomAssocPasAdherente = (TextView)v.findViewById(R.id.nomAssocPasAdherente);
 		infoAssocNonAdherente = (TextView)v.findViewById(R.id.info_assoc_non_adherente);
 		onGoSite();
+		
 	}
 	
 	private void changeLayoutSiPasAdherent(){

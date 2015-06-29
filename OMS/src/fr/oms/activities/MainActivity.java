@@ -2,9 +2,8 @@ package fr.oms.activities;
 
 
 import java.util.concurrent.ExecutionException;
-
+import org.json.JSONObject;
 import android.app.ActionBar;
-import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -20,6 +19,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.widget.DrawerLayout;
 import android.util.Log;
 import android.view.Menu;
+import fr.oms.dataloader.JSONTags;
 import fr.oms.dataloader.JsonDataLoader;
 import fr.oms.dataloader.ParserJson;
 import fr.oms.fragments.AccueilFragment;
@@ -43,12 +43,33 @@ public class MainActivity extends FragmentActivity implements NavigationDrawerFr
 		setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
 		initDrawer();
-//		JsonDataLoader loader=JsonDataLoader.getInstance();
-//		effectuerConnexion(loader);
-
-		Manager.getInstance().getTousLesSport(getApplicationContext());
-		ParserJson parser=new ParserJson(getApplicationContext());
-
+		
+		if(effectuerConnexion()){
+			Manager.getInstance().getTousLesSport(getApplicationContext());
+			ParserJson parser=new ParserJson(getApplicationContext());
+		}
+		else{
+			JSONObject jsObj=JsonDataLoader.getInstance().LoadFile(this.getFileStreamPath(JSONTags.FICHIER_ACTUS));
+			if(jsObj != null){
+				Manager.getInstance().getTousLesSport(getApplicationContext());
+				ParserJson parser=new ParserJson(getApplicationContext());
+			}
+			else{
+				AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
+				alertDialogBuilder.setTitle(R.string.detailCo);
+				alertDialogBuilder
+				.setMessage(getResources().getString(R.string.detailCo))
+				.setCancelable(false)
+				.setPositiveButton("Fermer l'application",new DialogInterface.OnClickListener() {
+					public void onClick(DialogInterface dialog,int id) {
+						dialog.dismiss();
+						System.exit(0);
+					}
+				});
+				AlertDialog alertDialog = alertDialogBuilder.create();
+				alertDialog.show();
+			}
+		}
 	}
 	
 	private void initDrawer(){
@@ -59,9 +80,11 @@ public class MainActivity extends FragmentActivity implements NavigationDrawerFr
 		mNavigationDrawerFragment.setUp(R.id.navigation_drawer, mDrawerLayout);
 	}
 
-	private void effectuerConnexion(JsonDataLoader loader) {
-		if(isNetworkAvailable(this)){
+	private boolean effectuerConnexion() {
+		boolean reseau = isNetworkAvailable();
+		if(reseau){
 			try {
+				JsonDataLoader loader=JsonDataLoader.getInstance();
 				loader.execute(getApplicationContext()).get();
 			} catch (InterruptedException e) {
 				// TODO Auto-generated catch block
@@ -71,26 +94,12 @@ public class MainActivity extends FragmentActivity implements NavigationDrawerFr
 				e.printStackTrace();
 			}
 		}
-		else{
-			AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(MainActivity.this);
-			alertDialogBuilder.setTitle(R.string.detailCo);
-			alertDialogBuilder
-			.setMessage(getResources().getString(R.string.detailCo))
-			.setCancelable(false)
-			.setPositiveButton("Annuler la synchronisation",new DialogInterface.OnClickListener() {
-				public void onClick(DialogInterface dialog,int id) {
-					dialog.dismiss();
-				}
-			});
-			AlertDialog alertDialog = alertDialogBuilder.create();
-			alertDialog.show();
-
-		}
+		return reseau;
 	}
 
-	public boolean isNetworkAvailable( Activity mActivity ) 
+	public boolean isNetworkAvailable() 
 	{ 
-		Context context = mActivity.getApplicationContext();
+		Context context = this;
 		ConnectivityManager connectivity = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
 		if (connectivity == null) 
 		{   
@@ -178,7 +187,7 @@ public class MainActivity extends FragmentActivity implements NavigationDrawerFr
 			case 9:
 				fragment = new GeolocalisationFragment(0);
 				getActionBar().setBackgroundDrawable(
-						new ColorDrawable((getResources().getColor(R.color.BleuOms))));
+						new ColorDrawable((getResources().getColor(R.color.OrangeOms))));
 				break;
 				
 			case 10:
