@@ -9,7 +9,6 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import android.content.Context;
-import android.widget.ProgressBar;
 import fr.oms.metier.Actualite;
 import fr.oms.metier.Association;
 import fr.oms.metier.Equipement;
@@ -24,7 +23,6 @@ public class ParserJson{
 
 	private Context context;
 	private int timeLastMaj;
-	private ProgressBar pgr;
 
 	public ParserJson(Context context) {
 		this.context=context;
@@ -235,8 +233,6 @@ public class ParserJson{
 			}
 			return quartier;
 		}
-
-
 		return null;
 	}
 
@@ -371,7 +367,6 @@ public class ParserJson{
 				Sport s=new Sport(jsonArray.getString(i));
 				sports.add(s);
 			} catch (JSONException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 
