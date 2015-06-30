@@ -11,21 +11,29 @@ import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.Window;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 import fr.oms.dataloader.JsonDataLoader;
 
 public class Activity_Chargement extends Activity {
 	
-	private  ProgressBar bar=null;
+	private ProgressBar pgrBar;
+	private TextView txtTitre;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		requestWindowFeature(Window.FEATURE_NO_TITLE);
 		setContentView(R.layout.activity_activity__chargement);
-		bar=(ProgressBar) findViewById(R.id.progressBar1);
-		JsonDataLoader loader=JsonDataLoader.getInstance(this,bar);	
+		setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+		txtTitre = (TextView)findViewById(R.id.txtInfo);
+		pgrBar = (ProgressBar)findViewById(R.id.progressBar1);
+		JsonDataLoader loader=JsonDataLoader.getInstance(this, pgrBar, txtTitre);	
 		effectuerConnexion(loader);
 		setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+		
+		
 //		if(isNetworkAvailable(this)){
 //			Manager.getInstance().getTousLesSport(getApplicationContext());
 //			ParserJson parser=new ParserJson(getApplicationContext(),bar);

@@ -21,10 +21,12 @@
             style="?android:listSeparatorTextViewStyle"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:background="@color/Gris2"
             android:layout_marginTop="10dp"
             android:layout_weight="0.1"
-            android:text="@string/telephone" />
+            android:background="@color/NoirOms"
+            android:text="@string/telephone"
+            android:textColor="@color/Blanc"
+            android:textColorHint="@color/Blanc" />
         
         <TextView
             android:id="@+id/telFixEquipement"
@@ -34,15 +36,16 @@
             android:gravity="center"
             android:textColor="@color/NoirOms"
             android:textSize="18sp" />
-        
-      	<TextView 
+
+        <TextView
             style="?android:listSeparatorTextViewStyle"
-          	android:layout_width="match_parent"
+            android:layout_width="match_parent"
             android:layout_height="0dp"
+            android:layout_marginTop="10dp"
             android:layout_weight="0.1"
-            android:background="@color/Gris2"
-        	android:layout_marginTop="10dp"
-            android:text="@string/location"/>
+            android:background="@color/NoirOms"
+            android:text="@string/location"
+            android:textColor="@color/Blanc" />
       	
 	    <TextView 
 	        android:id="@+id/adresse"
@@ -90,15 +93,16 @@
 	        android:background="@drawable/ic_geoloc"/>
 
     	<TextView
-	        android:id="@+id/lesAssociations"
-            android:background="@color/Gris2"
-            style="?android:listSeparatorTextViewStyle"
-		    android:layout_width="match_parent"
-		    android:layout_weight="0.1"
-		    android:layout_height="0dp"
-            android:layout_marginTop="10dp"
-	        android:textSize="15sp"
-         	android:text="@string/associationPratiquantes"/>
+    	    android:id="@+id/lesAssociations"
+    	    style="?android:listSeparatorTextViewStyle"
+    	    android:layout_width="match_parent"
+    	    android:layout_height="0dp"
+    	    android:layout_marginTop="10dp"
+    	    android:layout_weight="0.1"
+    	    android:background="@color/NoirOms"
+    	    android:text="@string/associationPratiquantes"
+    	    android:textColor="@color/Blanc"
+    	    android:textSize="15sp" />
     
     <FrameLayout 
         android:layout_width="match_parent"

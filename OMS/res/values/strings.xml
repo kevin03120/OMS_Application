@@ -60,5 +60,6 @@
     <string name="associationPratiquantes" translatable="false">Les associations pratiquant içi</string>
     <string name="geolocalisation_underline" translatable="false"><u>Géoloc.</u></string>
     <string name="pasAssocEquipement" translatable="false">Aucune association présente à cette équipement</string>
-
+    <string name="chargementFichier" translatable="false">Chargement des fichiers</string>
+    <string name="Recuperation_donnees" translatable="false">"Recuperation des données"</string>
 </resources>
