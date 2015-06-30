@@ -4,6 +4,8 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
@@ -23,7 +25,7 @@ public class Activity_Chargement extends Activity {
 		bar=(ProgressBar) findViewById(R.id.progressBar1);
 		JsonDataLoader loader=JsonDataLoader.getInstance(this,bar);	
 		effectuerConnexion(loader);
-		
+		setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 //		if(isNetworkAvailable(this)){
 //			Manager.getInstance().getTousLesSport(getApplicationContext());
 //			ParserJson parser=new ParserJson(getApplicationContext(),bar);
@@ -57,6 +59,7 @@ public class Activity_Chargement extends Activity {
 				loader.execute(getApplicationContext());				
 		}
 		else{
+			
 			AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(Activity_Chargement.this);
 			alertDialogBuilder.setTitle(R.string.detailCo);
 			alertDialogBuilder
@@ -65,6 +68,8 @@ public class Activity_Chargement extends Activity {
 			.setPositiveButton("Annuler la synchronisation",new DialogInterface.OnClickListener() {
 				public void onClick(DialogInterface dialog,int id) {
 					dialog.dismiss();
+					Intent i = new Intent(Activity_Chargement.this, MainActivity.class);
+					startActivity(i);
 				}
 			});
 			AlertDialog alertDialog = alertDialogBuilder.create();

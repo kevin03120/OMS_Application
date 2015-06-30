@@ -33,8 +33,8 @@ public class MainActivity extends FragmentActivity implements NavigationDrawerFr
 		super.onCreate(savedInstanceState);
 		Manager.getInstance().clearDonnees();
 		setContentView(R.layout.activity_main);
-//		Manager.getInstance().getTousLesSport(getApplicationContext());
-//		ParserJson parser=new ParserJson(getApplicationContext());
+		Manager.getInstance().getTousLesSport(getApplicationContext());
+		ParserJson parser=new ParserJson(getApplicationContext());
 		setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
 		initDrawer();
@@ -172,27 +172,27 @@ public class MainActivity extends FragmentActivity implements NavigationDrawerFr
 
 		case 1: return r.getString(R.string.annuaire);
 
-		case 2: return r.getString(R.string.association);
+		case 2: return r.getString(R.string.annuaire);
 
-		case 3: return r.getString(R.string.equipement);
+		case 3: return r.getString(R.string.annuaire);
 
-		case 4: return r.getString(R.string.discipline);
+		case 4: return r.getString(R.string.annuaire);
 
-		case 5: return r.getString(R.string.quartier);
+		case 5: return r.getString(R.string.annuaire);
 
 		case 6: return r.getString(R.string.agenda);
 
-		case 7: return r.getString(R.string.actualite);
+		case 7: return r.getString(R.string.agenda);
 
-		case 8: return r.getString(R.string.evenements);
+		case 8: return r.getString(R.string.agenda);
 
 		case 9: return r.getString(R.string.geolocalisation);
 
-		case 10: return r.getString(R.string.association);
+		case 10: return r.getString(R.string.geolocalisation);
 
-		case 11: return r.getString(R.string.equipement);
+		case 11: return r.getString(R.string.geolocalisation);
 
-		case 12: return r.getString(R.string.adresse);
+		case 12: return r.getString(R.string.geolocalisation);
 
 		default: return r.getString(R.string.oms);
 		}

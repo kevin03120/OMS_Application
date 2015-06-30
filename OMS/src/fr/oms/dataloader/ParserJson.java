@@ -27,22 +27,17 @@ public class ParserJson{
 	private Context context;
 	private int timeLastMaj;
 
-	public ParserJson(Context context, ProgressBar bar) {
+	public ParserJson(Context context) {
 		this.context=context;
 		parseEquipements();
-		bar.setProgress(20);
 		parseAssociations();
-		bar.setProgress(40);
 		parseActus();
-		bar.setProgress(60);
 		parseEvenements();
-		bar.setProgress(80);
 		Collections.sort(Manager.getInstance().getListeAssociation());
 		Collections.sort(Manager.getInstance().getListeEquipement());
 		Collections.sort(Manager.getInstance().getListeQuartier());
 		Collections.sort(Manager.getInstance().getListEvenements());
 		Collections.reverse(Manager.getInstance().getListEvenements());
-		bar.setProgress(100);
 		
 		//		List<Association> assocs=Manager.getInstance().getListeAssociation();
 //		System.out.println("TAILLE LISTE : "+Manager.getInstance().getListeQuartier().size());
