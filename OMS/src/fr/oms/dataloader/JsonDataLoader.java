@@ -14,7 +14,7 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.HashMap;
 import java.util.Map;
-
+import fr.oms.activities.R;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -23,6 +23,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 import fr.oms.activities.MainActivity;
 
 public class JsonDataLoader extends AsyncTask<Context, Void, Void> implements iLoadData  {
@@ -31,11 +32,14 @@ public class JsonDataLoader extends AsyncTask<Context, Void, Void> implements iL
 	private Map<String,String> urlsFichiers;	
 	private ProgressDialog progess=null;
 	private Context context=null;
-	private ProgressBar pgrActu;
+	private ProgressBar barre=null;
+	private TextView txtInfo;
 	
-	public JsonDataLoader(Context context, ProgressBar pgr) {
+	public JsonDataLoader(Context context, ProgressBar bar, TextView txtTitre) {
+		barre=bar;
 		this.context=context;
-		pgrActu = pgr;
+		this.txtInfo=txtTitre;
+		
 		urlsFichiers = new HashMap<String, String>();
 		urlsFichiers.put("actus.json", "http://www.oms-clermont-ferrand.fr/api/v1/actus.json");
 		urlsFichiers.put("evenements.json", "http://www.oms-clermont-ferrand.fr/api/v1/evenements.json");
@@ -43,9 +47,9 @@ public class JsonDataLoader extends AsyncTask<Context, Void, Void> implements iL
 		urlsFichiers.put("equipements.json", "http://www.oms-clermont-ferrand.fr/api/v1/equipements.json");
 	}
 
-	public static JsonDataLoader getInstance(Context context, ProgressBar pgr) {
+	public static JsonDataLoader getInstance(Context context, ProgressBar bar, TextView txt) {
 		if(instance==null){
-			return new JsonDataLoader(context, pgr);
+			return new JsonDataLoader(context,bar, txt);
 		}
 		return instance;
 	}	
@@ -54,8 +58,7 @@ public class JsonDataLoader extends AsyncTask<Context, Void, Void> implements iL
 
 	@Override
 	protected void onPreExecute() {
-		super.onPreExecute();	
-		pgrActu.setProgress(0);
+		super.onPreExecute();		
 	}
 	
 	@Override
@@ -77,6 +80,7 @@ public class JsonDataLoader extends AsyncTask<Context, Void, Void> implements iL
 	@Override
 	protected void onPostExecute(Void result) {
 		super.onPostExecute(result);
+		txtInfo.setText(context.getResources().getString(R.string.Recuperation_donnees));
 		Intent intent=new Intent(context, MainActivity.class);
 		context.startActivity(intent);
 	}
@@ -93,8 +97,6 @@ public class JsonDataLoader extends AsyncTask<Context, Void, Void> implements iL
 	public void loadAllFileFromServer(Context context) {
 		int cpt = 25;
 		for(Map.Entry<String, String> entry : urlsFichiers.entrySet()){
-			pgrActu.setProgress(cpt);
-			cpt += 25;
 			InputStream is=null;
 			HttpURLConnection connect=null;
 			URL url = null;
@@ -123,7 +125,9 @@ public class JsonDataLoader extends AsyncTask<Context, Void, Void> implements iL
 			} catch (FileNotFoundException e) {
 				e.printStackTrace();
 			}
-			writeInLocalFile(f,jsonObj);			
+			writeInLocalFile(f,jsonObj);	
+			barre.setProgress(cpt);
+			cpt+=25;
 		}
 	}
 

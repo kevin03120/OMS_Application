@@ -1,11 +1,11 @@
 package fr.oms.activities;
 
-import org.json.JSONObject;
-
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
@@ -13,22 +13,53 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.Window;
 import android.widget.ProgressBar;
-import fr.oms.dataloader.JSONTags;
+import android.widget.TextView;
 import fr.oms.dataloader.JsonDataLoader;
-import fr.oms.dataloader.ParserJson;
-import fr.oms.modele.Manager;
 
 public class Activity_Chargement extends Activity {
+	
 	private ProgressBar pgrBar;
+	private TextView txtTitre;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
 		setContentView(R.layout.activity_activity__chargement);
-		pgrBar = (ProgressBar)findViewById(R.id.barChargement);
-		JsonDataLoader loader=JsonDataLoader.getInstance(this, pgrBar);	
-		effectuerConnexion(loader);	
+		setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+		txtTitre = (TextView)findViewById(R.id.txtInfo);
+
+		pgrBar = (ProgressBar)findViewById(R.id.progressBar1);
+		JsonDataLoader loader=JsonDataLoader.getInstance(this, pgrBar, txtTitre);	
+		effectuerConnexion(loader);
+		
+		
+//		if(isNetworkAvailable(this)){
+//			Manager.getInstance().getTousLesSport(getApplicationContext());
+//			ParserJson parser=new ParserJson(getApplicationContext(),bar);
+//		}
+//		else{
+//			JSONObject jsObj=JsonDataLoader.getInstance(this).LoadFile(this.getFileStreamPath(JSONTags.FICHIER_ACTUS));
+//			if(jsObj != null){
+//				
+//			}
+//			else{
+//				AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
+//				alertDialogBuilder.setTitle(R.string.detailCo);
+//				alertDialogBuilder
+//				.setMessage(getResources().getString(R.string.detailCo))
+//				.setCancelable(false)
+//				.setPositiveButton("Fermer l'application",new DialogInterface.OnClickListener() {
+//					public void onClick(DialogInterface dialog,int id) {
+//						dialog.dismiss();
+//						System.exit(0);
+//					}
+//				});
+//				AlertDialog alertDialog = alertDialogBuilder.create();
+//				alertDialog.show();
+//			}
+//		}
+			
 	}
 	
 	private void effectuerConnexion(JsonDataLoader loader) {
@@ -44,6 +75,8 @@ public class Activity_Chargement extends Activity {
 			.setPositiveButton("Annuler la synchronisation",new DialogInterface.OnClickListener() {
 				public void onClick(DialogInterface dialog,int id) {
 					dialog.dismiss();
+					Intent i = new Intent(Activity_Chargement.this, MainActivity.class);
+					startActivity(i);
 				}
 			});
 			AlertDialog alertDialog = alertDialogBuilder.create();

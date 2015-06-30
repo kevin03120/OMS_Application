@@ -9,7 +9,6 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import android.content.Context;
-import android.os.AsyncTask;
 import android.widget.ProgressBar;
 import fr.oms.metier.Actualite;
 import fr.oms.metier.Association;
@@ -29,7 +28,6 @@ public class ParserJson{
 
 	public ParserJson(Context context) {
 		this.context=context;
-		this.pgr = pgr;
 		parseEquipements();
 		parseAssociations();
 		parseActus();
@@ -45,7 +43,7 @@ public class ParserJson{
 	}
 
 	private void parseActus(){
-		JSONObject jsObj=JsonDataLoader.getInstance(null,null).LoadFile(context.getFileStreamPath(JSONTags.FICHIER_ACTUS));
+		JSONObject jsObj=JsonDataLoader.getInstance(null,null, null).LoadFile(context.getFileStreamPath(JSONTags.FICHIER_ACTUS));
 		JSONArray jsArr=null;
 		try {
 			jsArr=jsObj.getJSONArray(JSONTags.RESULT);
@@ -98,7 +96,7 @@ public class ParserJson{
 	}
 
 	private void parseEvenements(){
-		JSONObject jsObj=JsonDataLoader.getInstance(null,null).LoadFile(context.getFileStreamPath(JSONTags.FICHIER_EVENTS));
+		JSONObject jsObj=JsonDataLoader.getInstance(null,null,null).LoadFile(context.getFileStreamPath(JSONTags.FICHIER_EVENTS));
 		JSONArray jsArr=null;
 		try {
 			jsArr=jsObj.getJSONArray(JSONTags.RESULT);
@@ -158,7 +156,7 @@ public class ParserJson{
 	}
 
 	private void parseEquipements(){
-		JSONObject jsObj=JsonDataLoader.getInstance(null,null).LoadFile(context.getFileStreamPath(JSONTags.FICHIER_EQUIPS));
+		JSONObject jsObj=JsonDataLoader.getInstance(null,null,null).LoadFile(context.getFileStreamPath(JSONTags.FICHIER_EQUIPS));
 		JSONArray jsArr=null;
 		try {
 			jsArr=jsObj.getJSONArray(JSONTags.RESULT);
@@ -268,7 +266,7 @@ public class ParserJson{
 	}
 
 	private void parseAssociations(){
-		JSONObject jsObj=JsonDataLoader.getInstance(null,null).LoadFile(context.getFileStreamPath(JSONTags.FICHIER_ASSOCS));
+		JSONObject jsObj=JsonDataLoader.getInstance(null,null, null).LoadFile(context.getFileStreamPath(JSONTags.FICHIER_ASSOCS));
 		JSONArray jsArr=null;
 		try {
 			jsArr=jsObj.getJSONArray(JSONTags.RESULT);
