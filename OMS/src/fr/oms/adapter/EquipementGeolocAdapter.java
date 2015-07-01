@@ -1,7 +1,7 @@
 package fr.oms.adapter;
 
 import java.util.List;
-
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.location.Location;
 import android.view.LayoutInflater;
@@ -24,6 +24,7 @@ public class EquipementGeolocAdapter extends ArrayAdapter<Equipement> {
 		longitudeUser = uneLongitude;
 	}
 	
+	@SuppressLint("ViewHolder")
 	@Override
 	public View getView(int position, View convertView, ViewGroup parent) {
 		convertView = LayoutInflater.from(getContext()).inflate(R.layout.item_equipement_geoloc, parent,false);
@@ -35,7 +36,7 @@ public class EquipementGeolocAdapter extends ArrayAdapter<Equipement> {
 			item.setBackgroundResource(R.drawable.customborder);
 		}
 		else{
-			item.setBackgroundResource(R.drawable.customborder_alt);
+			item.setBackgroundResource(R.drawable.customborder_orange);
 		}
 		double distance = donneDistanceAvecEquipement(equipement);
 		int distanceArrondie = (int) Math.round(distance);

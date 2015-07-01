@@ -1,9 +1,9 @@
 package fr.oms.adapter;
 
 import java.util.List;
-
 import fr.oms.activities.R;
 import fr.oms.metier.Association;
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.location.Location;
 import android.view.LayoutInflater;
@@ -25,6 +25,7 @@ public class AssociationGeolocAdapter extends ArrayAdapter<Association> {
 		longitudeUser = uneLongitude;
 	}
 	
+	@SuppressLint("ViewHolder")
 	@Override
 	public View getView(int position, View convertView, ViewGroup parent) {
 		convertView = LayoutInflater.from(getContext()).inflate(R.layout.item_association_geoloc, parent,false);
@@ -41,7 +42,7 @@ public class AssociationGeolocAdapter extends ArrayAdapter<Association> {
 			item.setBackgroundResource(R.drawable.customborder);
 		}
 		else{
-			item.setBackgroundResource(R.drawable.customborder_alt);
+			item.setBackgroundResource(R.drawable.customborder_orange);
 		}
 		double distance = donneDistanceAvecAssoc(association);
 		int distanceArrondie = (int) Math.round(distance);
