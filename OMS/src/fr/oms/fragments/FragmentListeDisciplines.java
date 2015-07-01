@@ -13,6 +13,7 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ExpandableListView;
+import android.widget.ExpandableListView.OnGroupExpandListener;
 import android.widget.ListView;
 import fr.oms.activities.R;
 import fr.oms.adapter.ExpandableListAdapterDiscipline;
@@ -22,6 +23,7 @@ import fr.oms.modele.Manager;
 
 public class FragmentListeDisciplines extends Fragment {
 
+	private int lastExpandedPosition = -1;
 	private ExpandableListView listeDiscipline;
 	private List<String> listeDesNomsDeDisciplines;
 	private List<String> listeDesNomsDeSports;
@@ -39,6 +41,8 @@ public class FragmentListeDisciplines extends Fragment {
 			}
 			mapNomDesSportParDisciplines.put(d.getNom(), listeDesNomsDeSports);
 		}
+		
+		
 
 		super.onCreate(savedInstanceState);
 
@@ -54,6 +58,17 @@ public class FragmentListeDisciplines extends Fragment {
 		//listeDiscipline = (ListView)v.findViewById(R.id.listeDiscipline);
 		//listeDiscipline.setAdapter(disciplineAdapter);
 		listeDiscipline.setAdapter(adapter);
+		listeDiscipline.setOnGroupExpandListener(new OnGroupExpandListener() {
+
+		    @Override
+		    public void onGroupExpand(int groupPosition) {
+		            if (lastExpandedPosition != -1
+		                    && groupPosition != lastExpandedPosition) {
+		            	listeDiscipline.collapseGroup(lastExpandedPosition);
+		            }
+		            lastExpandedPosition = groupPosition;
+		    }
+		});
 		donneSport();
 		return v;
 	}

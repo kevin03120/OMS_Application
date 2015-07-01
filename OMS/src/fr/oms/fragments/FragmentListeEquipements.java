@@ -42,4 +42,5 @@ public class FragmentListeEquipements extends Fragment{
 		}); 
 	}
 
+	
 }

@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -12,10 +13,16 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.View.OnFocusChangeListener;
 import android.view.ViewGroup;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.EditText;
+import android.widget.ImageButton;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import fr.oms.activities.FragmentAssociationActivity;
 import fr.oms.activities.R;
@@ -32,15 +39,19 @@ public class FragmentListeAssociations extends Fragment {
 	private boolean isFiltreSport = false;
 	private List<Association> mesAssocFiltreSport;
 	private String nomSport = "";
+	private RelativeLayout layoutFiltre;
 	private TextView txtFiltre;
 	private EditText editRechercher;
 	private TextView failRecherche;
+	private ImageView btn_supp_filtre;
 	private AssociationAdapter associationAdapter;
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
 		View v = inflater.inflate(R.layout.list_association, container,false);
+		btn_supp_filtre = (ImageView) v.findViewById(R.id.imageSuppFiltre);
+		layoutFiltre = (RelativeLayout) v.findViewById(R.id.filtre);
 		txtFiltre = (TextView)v.findViewById(R.id.txt_filtre);
 		listeAssociation = (ListView)v.findViewById(R.id.listeAssociation);
 		editRechercher = (EditText) v.findViewById(R.id.recherche);
@@ -67,6 +78,21 @@ public class FragmentListeAssociations extends Fragment {
 		mesAssocFiltreSport = new ArrayList<Association>();
 		ajouterFiltre();
 		ajouterRecherche();
+		
+		
+
+		 editRechercher.setOnFocusChangeListener(new OnFocusChangeListener() {          
+
+		        public void onFocusChange(View v, boolean hasFocus) {
+		            if (!hasFocus) {
+		            	InputMethodManager imm =  (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
+		                imm.hideSoftInputFromWindow(v.getWindowToken(), 0);
+		            
+		            }
+		        }
+		    });
+		 
+		 
 		return v;
 	}
 
@@ -165,12 +191,19 @@ public class FragmentListeAssociations extends Fragment {
 		if(isFiltreSport){
 			for(Association a : rendNouvelleListe()){
 				for(Sport s : a.getListeSport()){
+					txtFiltre.setText("FILTRE : " + nomSport);
 					if(s.getNom().equals(nomSport)){
-						txtFiltre.setText("Filtre " + s.getNom() + " (Cliquez ici pour le supprimer)");
-						txtFiltre.setVisibility(0);
+						//txtFiltre.setVisibility(0);
+						layoutFiltre.setVisibility(View.VISIBLE);
 						mesAssocFiltreSport.add(a);
 					}
 				}
+			}
+			if(mesAssocFiltreSport.size()==0){
+				layoutFiltre.setVisibility(View.VISIBLE);
+				listeAssociation.setVisibility(View.GONE);
+				failRecherche.setVisibility(View.VISIBLE);
+				failRecherche.setText("Aucun résulat trouvé");
 			}
 			associationAdapter = new AssociationAdapter(getActivity(), 0, mesAssocFiltreSport);
 			associationAdapter.notifyDataSetChanged();
@@ -219,13 +252,16 @@ public class FragmentListeAssociations extends Fragment {
 	}
 
 	public void onDeleteFiltre(){
-		txtFiltre.setOnClickListener(new View.OnClickListener() {
+		btn_supp_filtre.setOnClickListener(new View.OnClickListener() {
 
 			@Override
 			public void onClick(View v) {
 				isFiltreSport = false;
 				afficheListe();
-				txtFiltre.setVisibility(4);
+				listeAssociation.setVisibility(View.VISIBLE);
+				failRecherche.setVisibility(View.GONE);
+				//txtFiltre.setVisibility(4);
+				layoutFiltre.setVisibility(View.GONE);
 			}
 		});
 	}

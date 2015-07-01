@@ -15,9 +15,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ExpandableListView;
+import android.widget.ExpandableListView.OnGroupExpandListener;
 
 public class FragmentListeQuartiers extends Fragment{
 
+	private int lastExpandedPosition =-1;
 	private ExpandableListView listeQuartiers;
 	private HashMap<String, List<String>> mapEquipementParQuartier;
 	private List<String> listeDesEquipementQuartier;
@@ -48,6 +50,17 @@ public class FragmentListeQuartiers extends Fragment{
 		//listeDiscipline = (ListView)v.findViewById(R.id.listeDiscipline);
 		//listeDiscipline.setAdapter(disciplineAdapter);
 		listeQuartiers.setAdapter(adapter);
+		listeQuartiers.setOnGroupExpandListener(new OnGroupExpandListener() {
+
+		    @Override
+		    public void onGroupExpand(int groupPosition) {
+		            if (lastExpandedPosition != -1
+		                    && groupPosition != lastExpandedPosition) {
+		            	listeQuartiers.collapseGroup(lastExpandedPosition);
+		            }
+		            lastExpandedPosition = groupPosition;
+		    }
+		});
 		return v;
 	}
 	
