@@ -7,12 +7,14 @@ import android.content.pm.ActivityInfo;
 import android.content.res.Resources;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.widget.DrawerLayout;
 import android.util.Log;
 import android.view.Menu;
+import android.widget.Toast;
 import fr.oms.dataloader.ParserJson;
 import fr.oms.fragments.AccueilFragment;
 import fr.oms.fragments.AgendaFragment;
@@ -26,6 +28,7 @@ public class MainActivity extends FragmentActivity implements NavigationDrawerFr
 	private NavigationDrawerFragment mNavigationDrawerFragment;
 	private CharSequence mTitle;
 	private DrawerLayout mDrawerLayout;
+	private Boolean exit = false;
 
 
 	@Override
@@ -38,7 +41,7 @@ public class MainActivity extends FragmentActivity implements NavigationDrawerFr
 		setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
 		initDrawer();
-		
+
 	}
 
 	private void initDrawer(){
@@ -48,7 +51,7 @@ public class MainActivity extends FragmentActivity implements NavigationDrawerFr
 		mDrawerLayout=(DrawerLayout) findViewById(R.id.drawer_layout);
 		mNavigationDrawerFragment.setUp(R.id.navigation_drawer, mDrawerLayout);
 	}
-	
+
 	@Override
 	public void onNavigationDrawerItemSelected(int position) {
 		displayView(position);
@@ -57,83 +60,83 @@ public class MainActivity extends FragmentActivity implements NavigationDrawerFr
 	private void displayView(int position) {
 		Fragment fragment = null;
 		switch (position) {
-			case 0:
-				fragment = new AccueilFragment();
-				getActionBar().setBackgroundDrawable(
-						new ColorDrawable(getResources().getColor(R.color.Rouge1)));
-				break;
-	
-			case 1:
-				fragment = new AnnuaireFragment(0);
-				getActionBar().setBackgroundDrawable(
-						new ColorDrawable(getResources().getColor(R.color.VertOms)));
-				break;
-	
-			case 2:
-				fragment = new AnnuaireFragment(0);			
-				getActionBar().setBackgroundDrawable(
-						new ColorDrawable((getResources().getColor(R.color.VertOms))));
-				break;
-	
-			case 3:
-				fragment = new AnnuaireFragment(1);			
-				getActionBar().setBackgroundDrawable(
-						new ColorDrawable((getResources().getColor(R.color.VertOms))));
-				break;
-	
-			case 4:
-				fragment = new AnnuaireFragment(2);			
-				getActionBar().setBackgroundDrawable(
-						new ColorDrawable((getResources().getColor(R.color.VertOms))));
-				break;
-	
-			case 5:
-				fragment = new AnnuaireFragment(3);			
-				getActionBar().setBackgroundDrawable(
-						new ColorDrawable((getResources().getColor(R.color.VertOms))));
-				break;
-	
-			case 6:	    	
-				fragment = new AgendaFragment(0);
-				getActionBar().setBackgroundDrawable(
-						new ColorDrawable((getResources().getColor(R.color.BleuOms))));
-				break;
-	
-			case 7:	    	
-				fragment = new AgendaFragment(0);
-				getActionBar().setBackgroundDrawable(
-						new ColorDrawable((getResources().getColor(R.color.BleuOms))));
-				break;
-	
-			case 8:	    	
-				fragment = new AgendaFragment(1);
-				getActionBar().setBackgroundDrawable(
-						new ColorDrawable((getResources().getColor(R.color.BleuOms))));
-				break;
-	
-			case 9:
-				fragment = new GeolocalisationFragment(0);
-				getActionBar().setBackgroundDrawable(
-						new ColorDrawable((getResources().getColor(R.color.OrangeOms))));
-				break;
-				
-			case 10:
-				fragment = new GeolocalisationFragment(0);
-				getActionBar().setBackgroundDrawable(
-						new ColorDrawable((getResources().getColor(R.color.OrangeOms))));
-				break;
-				
-			case 11:
-				fragment = new GeolocalisationFragment(1);
-				getActionBar().setBackgroundDrawable(
-						new ColorDrawable((getResources().getColor(R.color.OrangeOms))));
-				break;
-	
-			case 12:
-				fragment = new GeolocalisationFragment(2);
-				getActionBar().setBackgroundDrawable(
-						new ColorDrawable((getResources().getColor(R.color.OrangeOms))));
-				break;
+		case 0:
+			fragment = new AccueilFragment();
+			getActionBar().setBackgroundDrawable(
+					new ColorDrawable(getResources().getColor(R.color.Rouge1)));
+			break;
+
+		case 1:
+			fragment = new AnnuaireFragment(0);
+			getActionBar().setBackgroundDrawable(
+					new ColorDrawable(getResources().getColor(R.color.VertOms)));
+			break;
+
+		case 2:
+			fragment = new AnnuaireFragment(0);			
+			getActionBar().setBackgroundDrawable(
+					new ColorDrawable((getResources().getColor(R.color.VertOms))));
+			break;
+
+		case 3:
+			fragment = new AnnuaireFragment(1);			
+			getActionBar().setBackgroundDrawable(
+					new ColorDrawable((getResources().getColor(R.color.VertOms))));
+			break;
+
+		case 4:
+			fragment = new AnnuaireFragment(2);			
+			getActionBar().setBackgroundDrawable(
+					new ColorDrawable((getResources().getColor(R.color.VertOms))));
+			break;
+
+		case 5:
+			fragment = new AnnuaireFragment(3);			
+			getActionBar().setBackgroundDrawable(
+					new ColorDrawable((getResources().getColor(R.color.VertOms))));
+			break;
+
+		case 6:	    	
+			fragment = new AgendaFragment(0);
+			getActionBar().setBackgroundDrawable(
+					new ColorDrawable((getResources().getColor(R.color.BleuOms))));
+			break;
+
+		case 7:	    	
+			fragment = new AgendaFragment(0);
+			getActionBar().setBackgroundDrawable(
+					new ColorDrawable((getResources().getColor(R.color.BleuOms))));
+			break;
+
+		case 8:	    	
+			fragment = new AgendaFragment(1);
+			getActionBar().setBackgroundDrawable(
+					new ColorDrawable((getResources().getColor(R.color.BleuOms))));
+			break;
+
+		case 9:
+			fragment = new GeolocalisationFragment(0);
+			getActionBar().setBackgroundDrawable(
+					new ColorDrawable((getResources().getColor(R.color.OrangeOms))));
+			break;
+
+		case 10:
+			fragment = new GeolocalisationFragment(0);
+			getActionBar().setBackgroundDrawable(
+					new ColorDrawable((getResources().getColor(R.color.OrangeOms))));
+			break;
+
+		case 11:
+			fragment = new GeolocalisationFragment(1);
+			getActionBar().setBackgroundDrawable(
+					new ColorDrawable((getResources().getColor(R.color.OrangeOms))));
+			break;
+
+		case 12:
+			fragment = new GeolocalisationFragment(2);
+			getActionBar().setBackgroundDrawable(
+					new ColorDrawable((getResources().getColor(R.color.OrangeOms))));
+			break;
 		}
 
 		if (fragment != null) {
@@ -167,27 +170,27 @@ public class MainActivity extends FragmentActivity implements NavigationDrawerFr
 
 		case 1: return r.getString(R.string.annuaire);
 
-		case 2: return r.getString(R.string.association);
+		case 2: return r.getString(R.string.annuaire);
 
-		case 3: return r.getString(R.string.equipement);
+		case 3: return r.getString(R.string.annuaire);
 
-		case 4: return r.getString(R.string.discipline);
+		case 4: return r.getString(R.string.annuaire);
 
-		case 5: return r.getString(R.string.quartier);
+		case 5: return r.getString(R.string.annuaire);
 
 		case 6: return r.getString(R.string.agenda);
 
-		case 7: return r.getString(R.string.actualite);
+		case 7: return r.getString(R.string.agenda);
 
-		case 8: return r.getString(R.string.evenements);
+		case 8: return r.getString(R.string.agenda);
 
 		case 9: return r.getString(R.string.geolocalisation);
 
-		case 10: return r.getString(R.string.association);
+		case 10: return r.getString(R.string.geolocalisation);
 
-		case 11: return r.getString(R.string.equipement);
+		case 11: return r.getString(R.string.geolocalisation);
 
-		case 12: return r.getString(R.string.adresse);
+		case 12: return r.getString(R.string.geolocalisation);
 
 		default: return r.getString(R.string.oms);
 		}
@@ -210,8 +213,20 @@ public class MainActivity extends FragmentActivity implements NavigationDrawerFr
 	public void onBackPressed() {
 		mDrawerLayout.openDrawer(mNavigationDrawerFragment.getView());
 		if(mDrawerLayout.isDrawerOpen(mNavigationDrawerFragment.getView())){
-			//finish();
+			if (exit) {
+				finish(); // finish activity
+			} else {
+				Toast.makeText(this, "Appuyez encore pour quitter.",
+						Toast.LENGTH_SHORT).show();
+				exit = true;
+				new Handler().postDelayed(new Runnable() {
+					@Override
+					public void run() {
+						exit = false;
+					}
+				}, 3 * 1000);
+			}
+			//super.onBackPressed();
 		}
-		//super.onBackPressed();
 	}
 }

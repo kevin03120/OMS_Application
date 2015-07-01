@@ -18,20 +18,22 @@ import fr.oms.dataloader.JsonDataLoader;
 
 public class Activity_Chargement extends Activity {
 	
+	public static Activity actiCharg;
 	private ProgressBar pgrBar;
 	private TextView txtTitre;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		actiCharg=this;
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
 		setContentView(R.layout.activity_activity__chargement);
 		setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 		txtTitre = (TextView)findViewById(R.id.txtInfo);
-
 		pgrBar = (ProgressBar)findViewById(R.id.progressBar1);
 		JsonDataLoader loader=JsonDataLoader.getInstance(this, pgrBar, txtTitre);	
 		effectuerConnexion(loader);
+		setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 		
 		
 //		if(isNetworkAvailable(this)){
@@ -67,6 +69,7 @@ public class Activity_Chargement extends Activity {
 				loader.execute(getApplicationContext());				
 		}
 		else{
+			
 			AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(Activity_Chargement.this);
 			alertDialogBuilder.setTitle(R.string.detailCo);
 			alertDialogBuilder
