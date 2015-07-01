@@ -1,6 +1,7 @@
 package fr.oms.adapter;
 
 import java.util.List;
+
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.location.Location;
@@ -8,6 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import fr.oms.activities.R;
@@ -48,6 +50,10 @@ public class EquipementGeolocAdapter extends ArrayAdapter<Equipement> {
 		else{
 			txtDistance.setVisibility(0);
 		}
+		ImageView logoNature = (ImageView)convertView.findViewById(R.id.Logo_geoloc_equipement);		
+
+		 String nature = equipement.getNature();
+		 chargeImage(nature, logoNature);
 		return convertView;
 	}
 
@@ -68,6 +74,42 @@ public class EquipementGeolocAdapter extends ArrayAdapter<Equipement> {
 			distance = 0;
 		}
 		return distance;
+	}
+	
+	private void chargeImage(String nature, ImageView logoNature){
+		if(nature.equals("Patinoire")){
+			 logoNature.setImageResource(R.drawable.picto_patinoire);
+		 }
+		 else if(nature.equals("Court de Tennis")){
+			 logoNature.setImageResource(R.drawable.picto_tennis);
+		 }
+		 else if(nature.equals("Piscine")){
+			 logoNature.setImageResource(R.drawable.picto_swim);
+		 }
+		 else if(nature.equals("Terrain de boules et de pétanque")){
+			 logoNature.setImageResource(R.drawable.picto_petanque);
+		 }
+		 else if(nature.equals("Terrain multisports")){
+			 logoNature.setImageResource(R.drawable.picto_mulisports);
+		 }
+		 else if(nature.equals("Complexe sportif")){
+			 logoNature.setImageResource(R.drawable.picto_mulisports);
+		 }
+		 else if(nature.equals("Gymnase")){
+			 logoNature.setImageResource(R.drawable.picto_gymnase);
+		 }
+		 else if(nature.equals("Terrain de grand jeu")){
+			 logoNature.setImageResource(R.drawable.picto_interrogation);
+		 }
+		 else if(nature.equals("Site dédié à l'athlétisme")){
+			 logoNature.setImageResource(R.drawable.picto_athletisme);
+		 }
+		 else if(nature.equals("Equipement spécialisé")){
+			 logoNature.setImageResource(R.drawable.picto_specialise);
+		 }
+		 else{
+			 logoNature.setImageResource(R.drawable.picto_interrogation);
+		 }
 	}
 	
 }

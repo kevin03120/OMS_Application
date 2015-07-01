@@ -51,8 +51,7 @@
         </activity>
         
         <activity
-            android:name=".Activity_Chargement"
-            >
+            android:name=".Activity_Chargement">
               <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

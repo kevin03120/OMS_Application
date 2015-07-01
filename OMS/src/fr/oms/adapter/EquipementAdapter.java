@@ -42,7 +42,12 @@ public class EquipementAdapter extends ArrayAdapter<Equipement> {
 
 		 logoNature.setVisibility(0);
 		 String nature = equipement.getNature();
-		 if(nature.equals("Patinoire")){
+		 chargeImage(nature, logoNature);
+		return convertView;
+	}
+	
+	private void chargeImage(String nature, ImageView logoNature){
+		if(nature.equals("Patinoire")){
 			 logoNature.setImageResource(R.drawable.picto_patinoire);
 		 }
 		 else if(nature.equals("Court de Tennis")){
@@ -58,23 +63,22 @@ public class EquipementAdapter extends ArrayAdapter<Equipement> {
 			 logoNature.setImageResource(R.drawable.picto_mulisports);
 		 }
 		 else if(nature.equals("Complexe sportif")){
-			 logoNature.setImageResource(R.drawable.picto_tennis);
+			 logoNature.setImageResource(R.drawable.picto_mulisports);
 		 }
 		 else if(nature.equals("Gymnase")){
-			 logoNature.setImageResource(R.drawable.logo_ad);
+			 logoNature.setImageResource(R.drawable.picto_gymnase);
 		 }
 		 else if(nature.equals("Terrain de grand jeu")){
-			 logoNature.setImageResource(R.drawable.logo_ad);
+			 logoNature.setImageResource(R.drawable.picto_interrogation);
 		 }
 		 else if(nature.equals("Site dédié à l'athlétisme")){
 			 logoNature.setImageResource(R.drawable.picto_athletisme);
 		 }
 		 else if(nature.equals("Equipement spécialisé")){
-			 logoNature.setImageResource(R.drawable.logo_ad);
+			 logoNature.setImageResource(R.drawable.picto_specialise);
 		 }
 		 else{
-			 logoNature.setImageResource(R.drawable.ab_background_textured_orange_oms);
+			 logoNature.setImageResource(R.drawable.picto_interrogation);
 		 }
-		return convertView;
 	}
 }
