@@ -8,11 +8,12 @@ public class Equipement implements Comparable<Equipement> {
 	private String adresse;
 	private String codePostal;
 	private String ville;
+	private String nature;
 	private String telephone;
 	private Geolocalisation geoloc;
 	private Quartier quartier;
 	
-	public Equipement(int unId, String unNom, String uneAdresse, String unCodePostal, String uneVille, String unTelephone, Geolocalisation uneGeoloc, Quartier unQuartier){
+	public Equipement(int unId, String unNom, String uneAdresse, String unCodePostal, String uneVille, String unTelephone, Geolocalisation uneGeoloc, Quartier unQuartier, String nature){
 		setUid(unId);
 		setNom(unNom);
 		setAdresse(uneAdresse);
@@ -21,6 +22,7 @@ public class Equipement implements Comparable<Equipement> {
 		setTelephone(unTelephone);
 		setGeoloc(uneGeoloc);
 		setQuartier(unQuartier);
+		setNature(nature);
 	}
 
 	public String getCodePostal() {
@@ -85,6 +87,15 @@ public class Equipement implements Comparable<Equipement> {
 
 	public void setQuartier(Quartier quartier) {
 		this.quartier = quartier;
+	}
+	
+
+	public String getNature() {
+		return nature;
+	}
+
+	public void setNature(String nature) {
+		this.nature = nature;
 	}
 
 	@Override

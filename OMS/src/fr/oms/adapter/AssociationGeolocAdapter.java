@@ -33,6 +33,7 @@ public class AssociationGeolocAdapter extends ArrayAdapter<Association> {
 		nomAssociation.setText(association.getNom());
 		ImageView logoAdherent = (ImageView)convertView.findViewById(R.id.Logo_adherent_geoloc_association);
 		if(association.isAdherent()){
+			logoAdherent.setImageResource(R.drawable.logo_ad);
 			logoAdherent.setVisibility(0);
 		}
 		LinearLayout item = (LinearLayout)convertView.findViewById(R.id.background_item_geoloc_association);

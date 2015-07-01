@@ -1,6 +1,5 @@
 package fr.oms.adapter;
 
-import fr.oms.fragments.FragmentGeolocAdresse;
 import fr.oms.fragments.FragmentGeolocAssociations;
 import fr.oms.fragments.FragmentGeolocEquipements;
 import android.content.Context;
@@ -10,8 +9,8 @@ import android.support.v4.app.FragmentStatePagerAdapter;
 
 public class GeolocalisationPagerAdapter extends FragmentStatePagerAdapter {
 
-	final int PAGE_COUNT = 3;
-	private String tabTitles[] = new String[] { "Associations", "Equipements", "Adresse" };
+	final int PAGE_COUNT = 2;
+	private String tabTitles[] = new String[] { "Associations", "Equipements"};
     private Context context;
 
     public GeolocalisationPagerAdapter(FragmentManager fm, Context context) {
@@ -29,7 +28,6 @@ public class GeolocalisationPagerAdapter extends FragmentStatePagerAdapter {
     	switch(position){
     	case 0: return new FragmentGeolocAssociations();
     	case 1: return new FragmentGeolocEquipements();
-    	case 2: return new FragmentGeolocAdresse();
     	default: return  null;
     	}
     }

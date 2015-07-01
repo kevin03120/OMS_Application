@@ -20,6 +20,7 @@ public class JSONTags {
 	public static String LOCATION_02 = "location02";
 	public static String DATE = "date";
 	public static String QUARTIER = "district";
+	public static String NATURE = "nature";
 	public static String GEOLOC = "geoloc";
 	public static String ADDRESS = "address";
 	public static String CODE_POSTAL = "postalcode";

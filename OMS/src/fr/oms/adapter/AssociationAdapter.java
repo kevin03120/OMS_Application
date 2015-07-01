@@ -55,6 +55,7 @@ public class AssociationAdapter extends ArrayAdapter<Association>  implements Se
 		nomAssociation.setText(association.getNom());
 		ImageView logoAdherent = (ImageView)convertView.findViewById(R.id.Logo_adherent);
 		if(association.isAdherent()){
+			logoAdherent.setImageResource(R.drawable.logo_ad);
 			logoAdherent.setVisibility(0);
 		}
 		LinearLayout item = (LinearLayout)convertView.findViewById(R.id.background_item);

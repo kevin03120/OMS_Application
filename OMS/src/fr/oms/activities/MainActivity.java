@@ -210,7 +210,7 @@ public class MainActivity extends FragmentActivity implements NavigationDrawerFr
 	public void onBackPressed() {
 		mDrawerLayout.openDrawer(mNavigationDrawerFragment.getView());
 		if(mDrawerLayout.isDrawerOpen(mNavigationDrawerFragment.getView())){
-			super.onBackPressed();
+			//finish();
 		}
 		//super.onBackPressed();
 	}

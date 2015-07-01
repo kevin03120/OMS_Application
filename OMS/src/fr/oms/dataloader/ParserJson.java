@@ -191,7 +191,8 @@ public class ParserJson{
 		String address="";
 		String codePostal="";
 		String ville="";
-		String telephone="";		
+		String telephone="";	
+		String nature = "";
 		try {
 			id= equipObj.getInt(JSONTags.IDENTIFIER);
 			title=equipObj.getString(JSONTags.TITLE);
@@ -201,11 +202,12 @@ public class ParserJson{
 			address=equipObj.getString(JSONTags.ADDRESS);
 			codePostal=equipObj.getString(JSONTags.CODE_POSTAL);
 			ville=equipObj.getString(JSONTags.VILLE);
-			telephone=equipObj.getString(JSONTags.TEL);			
+			telephone=equipObj.getString(JSONTags.TEL);	
+			nature=equipObj.getString(JSONTags.NATURE);			
 		} catch (JSONException e) {
 			e.printStackTrace();
 		}
-		Equipement equip=new Equipement(id, title, address, codePostal, ville, telephone, goeLoc, quartier);
+		Equipement equip=new Equipement(id, title, address, codePostal, ville, telephone, goeLoc, quartier, nature);
 		if(quartier!=null){
 			quartier.getMesEquipements().add(equip);
 		}
