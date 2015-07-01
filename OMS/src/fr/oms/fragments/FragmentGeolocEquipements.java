@@ -18,6 +18,7 @@ import android.widget.AdapterView.OnItemClickListener;
 import android.widget.Button;
 import android.widget.ListView;
 import fr.oms.activities.FragmentEquipementActivity;
+import fr.oms.activities.MapEquipementsProches;
 import fr.oms.activities.R;
 import fr.oms.adapter.EquipementGeolocAdapter;
 import fr.oms.metier.Equipement;
@@ -67,10 +68,10 @@ public class FragmentGeolocEquipements extends Fragment implements LocationListe
 			@Override
 			public void onClick(View v) {
 				Manager.getInstance().setListEquipementProches(equipementTriesLocalisation);
-//				Intent intent = new Intent(FragmentGeolocEquipements.this.getActivity(), MapEquipementsProches.class);
-//				intent.putExtra("longitude", longitudeUser);
-//				intent.putExtra("latitude", latitudeUser);
-//				startActivity(intent);
+				Intent intent = new Intent(FragmentGeolocEquipements.this.getActivity(), MapEquipementsProches.class);
+				intent.putExtra("longitude", longitudeUser);
+				intent.putExtra("latitude", latitudeUser);
+				startActivity(intent);
 			}
 		});
 	}
