@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -12,7 +13,9 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.View.OnFocusChangeListener;
 import android.view.ViewGroup;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.ListView;
@@ -67,6 +70,21 @@ public class FragmentListeAssociations extends Fragment {
 		mesAssocFiltreSport = new ArrayList<Association>();
 		ajouterFiltre();
 		ajouterRecherche();
+		
+		
+
+		 editRechercher.setOnFocusChangeListener(new OnFocusChangeListener() {          
+
+		        public void onFocusChange(View v, boolean hasFocus) {
+		            if (!hasFocus) {
+		            	InputMethodManager imm =  (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
+		                imm.hideSoftInputFromWindow(v.getWindowToken(), 0);
+		            
+		            }
+		        }
+		    });
+		 
+		 
 		return v;
 	}
 

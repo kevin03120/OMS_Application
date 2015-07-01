@@ -8,15 +8,12 @@
 
     <EditText
         android:id="@+id/recherche"
-        android:inputType="text"
-        android:imeOptions="actionDone"
-        android:hint="@string/recherche_assoc"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
-        />
-
-       
+        android:hint="@string/recherche_assoc"
+        android:imeOptions="actionDone"
+        android:inputType="text" />
 
     <TextView
         android:id="@+id/txt_filtre"
@@ -39,7 +36,7 @@
         android:id="@+id/failRecherche"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:visibility="invisible"
-        android:text="" />
+        android:text=""
+        android:visibility="invisible" />
 
 </LinearLayout>
