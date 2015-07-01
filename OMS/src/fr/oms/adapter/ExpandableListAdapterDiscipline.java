@@ -21,7 +21,7 @@ import fr.oms.fragments.AnnuaireFragment;
 
 public class ExpandableListAdapterDiscipline extends BaseExpandableListAdapter{
 
-
+	private int lastIdGroup=66;
 	private Context _context;
 	private List<String> _listDataHeader; 
 	private HashMap<String, List<String>> _listDataChild;
@@ -130,5 +130,8 @@ public class ExpandableListAdapterDiscipline extends BaseExpandableListAdapter{
 	public boolean isChildSelectable(int groupPosition, int childPosition) {
 		return true;
 	}
+	
+
+	
 
 }
