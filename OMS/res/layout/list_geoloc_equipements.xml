@@ -5,6 +5,15 @@
     android:orientation="vertical"
     android:background="@color/Blanc">
   
+    <Button
+        android:id="@+id/goEquipementsMap"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="@style/btnStyleYellow"
+        android:layout_gravity="center_horizontal"
+        android:text="@string/goMap"
+        android:visibility="invisible"
+        android:layout_marginTop="10dp"/>
     
     <ListView 
         android:id="@+id/listeGeolocEquipement"

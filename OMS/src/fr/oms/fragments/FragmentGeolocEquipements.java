@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import fr.oms.activities.FragmentEquipementActivity;
+import fr.oms.activities.MapEquipementsProches;
 import fr.oms.activities.R;
 import fr.oms.adapter.EquipementGeolocAdapter;
 import fr.oms.metier.Equipement;
@@ -19,6 +20,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.AdapterView.OnItemClickListener;
 
@@ -26,6 +28,7 @@ public class FragmentGeolocEquipements extends Fragment implements LocationListe
 
 	private List<Equipement> equipementTriesLocalisation;
 	private ListView listEquipement;
+	private Button equipementGeoloc;
 	private double latitudeUser = 0;
 	private double longitudeUser = 0;
 	private LocationManager lm;
@@ -53,10 +56,25 @@ public class FragmentGeolocEquipements extends Fragment implements LocationListe
 		View v = inflater.inflate(R.layout.list_geoloc_equipements, container,false);
 		equipementTriesLocalisation = new ArrayList<Equipement>();
 		listEquipement = (ListView)v.findViewById(R.id.listeGeolocEquipement);
+		equipementGeoloc = (Button)v.findViewById(R.id.goEquipementsMap);
 	    onTouchItem();
+	    onTouchButton();
 	    return v;
 	}
 	
+	private void onTouchButton(){
+		equipementGeoloc.setOnClickListener(new View.OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				Manager.getInstance().setListEquipementProches(equipementTriesLocalisation);
+				Intent intent = new Intent(FragmentGeolocEquipements.this.getActivity(), MapEquipementsProches.class);
+				intent.putExtra("longitude", longitudeUser);
+				intent.putExtra("latitude", latitudeUser);
+				startActivity(intent);
+			}
+		});
+	}
 	private void onTouchItem(){
 		listEquipement.setOnItemClickListener(new OnItemClickListener() {
 			@Override
@@ -109,6 +127,7 @@ public class FragmentGeolocEquipements extends Fragment implements LocationListe
 		donneListe();
 		EquipementGeolocAdapter adapterAssoc = new EquipementGeolocAdapter(getActivity(), 0, equipementTriesLocalisation, latitudeUser, longitudeUser);
 		listEquipement.setAdapter(adapterAssoc);
+		equipementGeoloc.setVisibility(0);
 	}
 
 	@Override
@@ -128,5 +147,4 @@ public class FragmentGeolocEquipements extends Fragment implements LocationListe
 		// TODO Auto-generated method stub
 		
 	}
-	
 }

@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import fr.oms.activities.R;
 import fr.oms.metier.Evenement;
@@ -28,6 +29,13 @@ public class EvenementAdapter extends ArrayAdapter<Evenement> {
 		ImageView image = (ImageView)convertView.findViewById(R.id.logoElement);
 		new DownloadImageTask(image)
         .execute(evenement.getLienImage()+"=?reqwidth=40");
+		LinearLayout item = (LinearLayout)convertView.findViewById(R.id.background_item);
+		if (position % 2 == 0) {
+			 item.setBackgroundResource(R.drawable.customborder);
+		 }
+		 else{
+			 item.setBackgroundResource(R.drawable.customborder_blue);
+		 }
 		TextView titreActu = (TextView)convertView.findViewById(R.id.nom_element);
 		titreActu.setText(evenement.getTitre());
 		return convertView;

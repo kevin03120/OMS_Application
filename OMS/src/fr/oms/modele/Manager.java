@@ -32,6 +32,7 @@ public class Manager {
 	private List<Personne> listPersonnes;
 	private List<Actualite> listActualites;
 	private List<Evenement> listEvenements;
+	private List<Equipement> listEquipementProches;
 	private iLoadData accesDonnees;
 	
 	private Manager(){
@@ -337,6 +338,14 @@ public class Manager {
 			}
 		}
 		return null;
+	}
+
+	public List<Equipement> getListEquipementProches() {
+		return listEquipementProches;
+	}
+
+	public void setListEquipementProches(List<Equipement> listEquipementProches) {
+		this.listEquipementProches = listEquipementProches;
 	}
 
 }

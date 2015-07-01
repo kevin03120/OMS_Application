@@ -21,7 +21,6 @@ import fr.oms.activities.R;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
@@ -32,8 +31,7 @@ import fr.oms.activities.MainActivity;
 public class JsonDataLoader extends AsyncTask<Context, Void, Void> implements iLoadData  {
 	
 	private static JsonDataLoader instance=null;
-	private Map<String,String> urlsFichiers;	
-	private ProgressDialog progess=null;
+	private Map<String,String> urlsFichiers;
 	private Context context=null;
 	private ProgressBar barre=null;
 	private TextView txtInfo;
