@@ -14,7 +14,10 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.HashMap;
 import java.util.Map;
+
+import fr.oms.activities.Activity_Chargement;
 import fr.oms.activities.R;
+
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -83,6 +86,7 @@ public class JsonDataLoader extends AsyncTask<Context, Void, Void> implements iL
 		txtInfo.setText(context.getResources().getString(R.string.Recuperation_donnees));
 		Intent intent=new Intent(context, MainActivity.class);
 		context.startActivity(intent);
+		Activity_Chargement.actiCharg.finish();
 	}
 	
 	private void writeInLocalFile(FileOutputStream f, JSONObject jsonObj) {

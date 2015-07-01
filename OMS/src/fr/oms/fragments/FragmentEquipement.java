@@ -18,6 +18,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -49,6 +50,8 @@ public class FragmentEquipement extends Fragment {
 			adapterPourListAssociation();
 			clicItemListAssoc();
 			getActivity().setTitle(getResources().getString(R.string.titreDetailEquipement));
+			LinearLayout layout = (LinearLayout) v.findViewById(R.id.fiche_equip);
+			System.out.println(layout.getChildCount());
 	     return v;
 	}
 	

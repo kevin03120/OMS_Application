@@ -1,12 +1,5 @@
 package fr.oms.activities;
 
-import com.google.android.gms.maps.CameraUpdateFactory;
-import com.google.android.gms.maps.GoogleMap;
-import com.google.android.gms.maps.MapFragment;
-import com.google.android.gms.maps.OnMapReadyCallback;
-import com.google.android.gms.maps.model.LatLng;
-import com.google.android.gms.maps.model.MarkerOptions;
-
 import android.app.Activity;
 import android.location.Location;
 import android.location.LocationListener;
@@ -14,6 +7,14 @@ import android.location.LocationManager;
 import android.location.LocationProvider;
 import android.os.Bundle;
 import android.widget.Toast;
+
+import com.google.android.gms.maps.CameraUpdateFactory;
+import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.GoogleMapOptions;
+import com.google.android.gms.maps.MapFragment;
+import com.google.android.gms.maps.OnMapReadyCallback;
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.MarkerOptions;
 
 
 public class MapPane extends Activity implements OnMapReadyCallback, LocationListener {
@@ -53,25 +54,32 @@ public class MapPane extends Activity implements OnMapReadyCallback, LocationLis
         latitude = Double.parseDouble(la);
         longitude = Double.parseDouble(lo);
         MapFragment mapFragment = (MapFragment) getFragmentManager().findFragmentById(R.id.map);
+        
         mapFragment.getMapAsync(this);
     }
-
+    
+   
     @Override
     public void onMapReady(GoogleMap map) {   
-    	
     	loc = new Location("Point B");
     	loc.setLatitude(latitude);
     	loc.setLongitude(longitude);
     	
         LatLng equipement = new LatLng(latitude, longitude);
+        
         map.setMyLocationEnabled(true);
         map.moveCamera(CameraUpdateFactory.newLatLngZoom(equipement, 13));
+        
+//        MarkerOptions mo = new MarkerOptions().title(nomEquipement).visible(true);
+//        Marker marker = map.addMarker(mo);
+//        marker.showInfoWindow();
     	
         map.addMarker(new MarkerOptions()
-                .title(nomEquipement)
-                .position(equipement));
-        
+                .title(nomEquipement+ " \n " +"(cliquez pour aller)")
+                .position(equipement)).showInfoWindow();
+        map.getUiSettings().setMapToolbarEnabled(true);        
     }
+
 
 	@Override
 	public void onLocationChanged(Location location) {

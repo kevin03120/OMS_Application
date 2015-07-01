@@ -57,7 +57,7 @@
     <string name="agenda_underline" translatable="false"><u>Agenda</u></string>
     <string name="telephone" translatable="false">Telephone</string>
     <string name="location" translatable="false">Location</string>
-    <string name="associationPratiquantes" translatable="false">Les associations pratiquant içi</string>
+    <string name="associationPratiquantes" translatable="false">Les associations pratiquant</string>
     <string name="geolocalisation_underline" translatable="false"><u>Géoloc.</u></string>
     <string name="pasAssocEquipement" translatable="false">Aucune association présente à cette équipement</string>
     <string name="chargementFichier" translatable="false">Chargement des fichiers</string>

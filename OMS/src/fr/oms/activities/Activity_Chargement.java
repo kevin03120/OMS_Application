@@ -18,12 +18,14 @@ import fr.oms.dataloader.JsonDataLoader;
 
 public class Activity_Chargement extends Activity {
 	
+	public static Activity actiCharg;
 	private ProgressBar pgrBar;
 	private TextView txtTitre;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		actiCharg=this;
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
 		setContentView(R.layout.activity_activity__chargement);
 		setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
