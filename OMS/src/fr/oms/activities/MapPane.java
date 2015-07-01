@@ -76,8 +76,7 @@ public class MapPane extends Activity implements OnMapReadyCallback, LocationLis
     	
         map.addMarker(new MarkerOptions()
                 .title(nomEquipement+ " \n " +"(cliquez pour aller)")
-                .position(equipement)).showInfoWindow();
-        map.getUiSettings().setMapToolbarEnabled(true);        
+                .position(equipement)).showInfoWindow();        
     }
 
 

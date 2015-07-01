@@ -6,15 +6,17 @@
     android:background="@color/Blanc"
     android:orientation="vertical" >
 
-    <LinearLayout
-        android:layout_width="wrap_content"
+    <EditText
+        android:id="@+id/recherche"
+        android:inputType="text"
+        android:imeOptions="actionDone"
+        android:hint="@string/recherche_assoc"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="20dp"
-        android:orientation="horizontal" >
+        android:ems="10"
+        />
 
-      
-    </LinearLayout>
+       
 
     <TextView
         android:id="@+id/txt_filtre"
@@ -29,10 +31,15 @@
         android:id="@+id/listeAssociation"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        android:layout_marginTop="20dp"
         android:divider="@android:color/transparent"
         android:dividerHeight="5dp" >
     </ListView>
 
+    <TextView
+        android:id="@+id/failRecherche"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="invisible"
+        android:text="" />
 
 </LinearLayout>

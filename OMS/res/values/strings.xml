@@ -62,4 +62,5 @@
     <string name="pasAssocEquipement" translatable="false">Aucune association présente à cette équipement</string>
     <string name="chargementFichier" translatable="false">Chargement des fichiers</string>
     <string name="Recuperation_donnees" translatable="false">"Recuperation des données"</string>
+    <string name="recherche_assoc">Rechercher une assoc.</string>
 </resources>
