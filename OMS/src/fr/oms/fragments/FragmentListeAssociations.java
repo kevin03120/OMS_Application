@@ -260,7 +260,6 @@ public class FragmentListeAssociations extends Fragment {
 				afficheListe();
 				listeAssociation.setVisibility(View.VISIBLE);
 				failRecherche.setVisibility(View.GONE);
-				//txtFiltre.setVisibility(4);
 				layoutFiltre.setVisibility(View.GONE);
 			}
 		});

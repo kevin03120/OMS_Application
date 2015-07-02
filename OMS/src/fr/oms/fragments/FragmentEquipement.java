@@ -27,8 +27,8 @@ public class FragmentEquipement extends Fragment {
 	private static final String GEOLOCNULL = "0.00000";
 	private Equipement equipement;
 	private ListView listAssociation;
-	private TextView txtPasAssoc;
 	private List<Association> lesAssocsEquipement;
+	private LinearLayout header;
 	
 	public static FragmentEquipement newInstance(Equipement e) {
 		Bundle extras = new Bundle();
@@ -46,7 +46,10 @@ public class FragmentEquipement extends Fragment {
 					equipement = e;
 				}
 			}
-			recupererToutesViews(v);
+			View header = getLayoutInflater(getArguments()).inflate(R.layout.header_equipement, null);
+			recupererToutesViews(header);
+			listAssociation = (ListView)v.findViewById(R.id.listAssocEquipement);
+			listAssociation.addHeaderView(header);
 			adapterPourListAssociation();
 			clicItemListAssoc();
 			getActivity().setTitle(getResources().getString(R.string.titreDetailEquipement));
@@ -64,16 +67,9 @@ public class FragmentEquipement extends Fragment {
 						lesAssocsEquipement.add(a);
 					}
 				}
-				if(lesAssocsEquipement.size()!=0){
 					AssociationAdapter adapterAssoc = new AssociationAdapter(getActivity(), 0, lesAssocsEquipement);
 					listAssociation.setAdapter(adapterAssoc);
 					listAssociation.setVisibility(0);
-					txtPasAssoc.setVisibility(4);
-				}
-				else{
-					listAssociation.setVisibility(4);
-					txtPasAssoc.setVisibility(0);
-				}
 			}
 		}
 	}
@@ -83,7 +79,7 @@ public class FragmentEquipement extends Fragment {
 
 			@Override
 			public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-				Association a = lesAssocsEquipement.get(position);
+				Association a = lesAssocsEquipement.get(position-1);
 				Intent intent = new Intent(getActivity(), FragmentAssociationActivity.class);
 				intent.putExtra("position", a.getId());
 				intent.putExtra("adherents", true);
@@ -131,7 +127,6 @@ public class FragmentEquipement extends Fragment {
 			txtVille.setVisibility(4);
 		}
 		TextView txtQuartier = (TextView)v.findViewById(R.id.quartier);
-		txtPasAssoc = (TextView)v.findViewById(R.id.textNonAssocAffilie);
 		if(equipement.getQuartier() != null){
 			txtQuartier.setText("Quartier : " + equipement.getQuartier().getNom());
 		}
@@ -144,7 +139,6 @@ public class FragmentEquipement extends Fragment {
 			btnGoMap.setVisibility(4);
 		}
 		goMap(btnGoMap);
-		listAssociation = (ListView)v.findViewById(R.id.listAssocEquipement);
 	}
 	
 	private void goMap(Button b){
