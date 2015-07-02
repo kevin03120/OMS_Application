@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/header"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <TextView
+        android:id="@+id/nomEquipement"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:gravity="center"
+        android:layout_weight="0.2"
+		android:textStyle="bold|italic"
+        android:layout_marginTop="5dp"
+        android:textSize="18sp" />
+        
+        <TextView
+            style="?android:listSeparatorTextViewStyle"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginTop="10dp"
+            android:layout_weight="0.1"
+            android:background="@color/NoirOms"
+            android:text="@string/telephone"
+            android:textColor="@color/Blanc"
+            android:textColorHint="@color/Blanc" />
+        
+        <TextView
+            android:id="@+id/telFixEquipement"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.1"
+            android:gravity="center"
+            android:textColor="@color/NoirOms"
+            android:textSize="18sp" />
+
+        <TextView
+            style="?android:listSeparatorTextViewStyle"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginTop="10dp"
+            android:layout_weight="0.1"
+            android:background="@color/NoirOms"
+            android:text="@string/location"
+            android:textColor="@color/Blanc" />
+      	
+	    <TextView 
+	        android:id="@+id/adresse"
+	        android:layout_width="match_parent"
+	        android:gravity="center"
+	        android:layout_weight="0.1"
+	        android:layout_height="0dp"
+            android:textSize="15sp"
+            android:textColor="@color/NoirOms"/>
+	        
+	    <TextView 
+	        android:id="@+id/codePostal"
+		    android:layout_width="match_parent"
+		    android:gravity="center"
+		    android:layout_weight="0.1"
+		  	android:layout_height="0dp"
+	        android:textSize="15sp"
+            android:textColor="@color/NoirOms"/>
+	        
+	    <TextView 
+	        android:id="@+id/ville"
+		    android:layout_width="match_parent"
+		    android:gravity="center"
+		    android:layout_weight="0.1"
+		    android:layout_height="0dp"
+	        android:textSize="15sp"
+            android:textColor="@color/NoirOms"/>
+	        
+	    <TextView 
+	        android:id="@+id/quartier"
+		    android:layout_width="match_parent"
+		    android:gravity="center"
+		    android:layout_weight="0.1"
+		    android:layout_height="0dp"
+	        android:textSize="15sp"
+            android:textColor="@color/NoirOms"/>
+	    
+	    <Button 
+	        android:id="@+id/btn_map"
+	        android:layout_width="50dp"
+	        android:layout_height="50dp"
+	        android:layout_gravity="center"
+	        android:gravity="center"
+	        android:background="@drawable/ic_geoloc"/>
+
+    	<TextView
+    	    android:id="@+id/lesAssociations"
+    	    style="?android:listSeparatorTextViewStyle"
+    	    android:layout_width="match_parent"
+    	    android:layout_height="0dp"
+    	    android:layout_marginTop="10dp"
+    	    android:layout_weight="0.1"
+    	    android:background="@color/NoirOms"
+    	    android:text="@string/associationPratiquantes"
+    	    android:textColor="@color/Blanc"
+    	    android:textSize="15sp" />
+
+</LinearLayout>

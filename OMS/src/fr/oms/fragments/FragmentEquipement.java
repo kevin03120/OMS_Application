@@ -40,7 +40,7 @@ public class FragmentEquipement extends Fragment {
 	
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-		 View v = inflater.inflate(R.layout.detail_equipement, container, false);
+		View v = inflater.inflate(R.layout.detail_equipement, container, false);
 			for(Equipement e : Manager.getInstance().getListeEquipement()){
 				if(e.getUid() == getArguments().getInt("id")){
 					equipement = e;
@@ -54,7 +54,6 @@ public class FragmentEquipement extends Fragment {
 			clicItemListAssoc();
 			getActivity().setTitle(getResources().getString(R.string.titreDetailEquipement));
 			LinearLayout layout = (LinearLayout) v.findViewById(R.id.fiche_equip);
-			System.out.println(layout.getChildCount());
 	     return v;
 	}
 	
@@ -72,6 +71,20 @@ public class FragmentEquipement extends Fragment {
 					listAssociation.setVisibility(0);
 			}
 		}
+	}
+	
+	private int compteListAssociation(){
+		lesAssocsEquipement = new ArrayList<Association>();
+		for(Association a : Manager.getInstance().getListeAssociation()){
+			if(a.getListeEquipement()!=null){
+				for(Equipement e : a.getListeEquipement()){
+					if(e.equals(equipement)){
+						lesAssocsEquipement.add(a);
+					}
+				}
+			}
+		}
+		return lesAssocsEquipement.size();
 	}
 	
 	private void clicItemListAssoc(){
