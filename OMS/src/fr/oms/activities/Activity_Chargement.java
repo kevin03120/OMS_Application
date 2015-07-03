@@ -14,7 +14,9 @@ import android.view.MenuItem;
 import android.view.Window;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import fr.oms.dataloader.JSONTags;
 import fr.oms.dataloader.JsonDataLoader;
+import fr.oms.dataloader.ParserJson;
 
 public class Activity_Chargement extends Activity {
 
@@ -69,22 +71,36 @@ public class Activity_Chargement extends Activity {
 			loader.execute(getApplicationContext());				
 		}
 		else{
-
-			AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(Activity_Chargement.this);
-			alertDialogBuilder.setTitle(R.string.detailCo);
-			alertDialogBuilder
-			.setMessage(getResources().getString(R.string.detailCo))
-			.setCancelable(false)
-			.setPositiveButton("Annuler la synchronisation",new DialogInterface.OnClickListener() {
-				public void onClick(DialogInterface dialog,int id) {
-					dialog.dismiss();
-					Intent i = new Intent(Activity_Chargement.this, MainActivity.class);
-					startActivity(i);
-				}
-			});
-			AlertDialog alertDialog = alertDialogBuilder.create();
-			alertDialog.show();
-
+			if(this.getFileStreamPath(JSONTags.FICHIER_ACTUS).exists()){
+				AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(Activity_Chargement.this);
+				alertDialogBuilder.setTitle(R.string.detailCo);
+				alertDialogBuilder
+				.setMessage(getResources().getString(R.string.detailCo))
+				.setCancelable(false)
+				.setPositiveButton("Annuler la synchronisation",new DialogInterface.OnClickListener() {
+					public void onClick(DialogInterface dialog,int id) {
+						dialog.dismiss();
+						Intent i = new Intent(Activity_Chargement.this, MainActivity.class);
+						startActivity(i);
+					}
+				});
+				AlertDialog alertDialog = alertDialogBuilder.create();
+				alertDialog.show();
+			}
+			else{
+				AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(Activity_Chargement.this);
+				alertDialogBuilder.setTitle(R.string.detailAucuneDonnees);
+				alertDialogBuilder
+				.setMessage(getResources().getString(R.string.infoAucuneDonnees))
+				.setCancelable(false)
+				.setPositiveButton("Fermer l'application",new DialogInterface.OnClickListener() {
+					public void onClick(DialogInterface dialog,int id) {
+						finish();
+					}
+				});
+				AlertDialog alertDialog = alertDialogBuilder.create();
+				alertDialog.show();
+			}
 		}
 	}
 

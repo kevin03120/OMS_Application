@@ -64,4 +64,6 @@
     <string name="Recuperation_donnees" translatable="false">"Recuperation des données"</string>
     <string name="recherche_assoc">Rechercher une association</string>
 	<string name="recherche_equipement">Rechercher un equipement</string>
+	<string name="detailAucuneDonnees" translatable="false">Aucune donnée accessible</string>
+	<string name="infoAucuneDonnees" translatable="false">Pas de connexion Internet ! \n Aucune donnée téléchargée et accessible.</string>
 </resources>

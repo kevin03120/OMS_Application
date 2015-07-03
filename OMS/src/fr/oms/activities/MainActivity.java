@@ -3,9 +3,16 @@ package fr.oms.activities;
 
 
 import android.app.ActionBar;
+import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.content.res.Resources;
 import android.graphics.drawable.ColorDrawable;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v4.app.Fragment;
@@ -15,6 +22,8 @@ import android.support.v4.widget.DrawerLayout;
 import android.util.Log;
 import android.view.Menu;
 import android.widget.Toast;
+import fr.oms.dataloader.JSONTags;
+import fr.oms.dataloader.JsonDataLoader;
 import fr.oms.dataloader.ParserJson;
 import fr.oms.fragments.AccueilFragment;
 import fr.oms.fragments.AgendaFragment;
@@ -37,12 +46,39 @@ public class MainActivity extends FragmentActivity implements NavigationDrawerFr
 		Manager.getInstance().clearDonnees();
 		setContentView(R.layout.activity_main);
 		Manager.getInstance().getTousLesSport(getApplicationContext());
-		ParserJson parser=new ParserJson(getApplicationContext());
+		if(this.getFileStreamPath(JSONTags.FICHIER_ACTUS).exists()){
+			ParserJson parser=new ParserJson(getApplicationContext());
+		}
 		setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
 		initDrawer();
 
 	}
+
+	public boolean isNetworkAvailable( Activity mActivity ) 
+	{ 
+		Context context = mActivity.getApplicationContext();
+		ConnectivityManager connectivity = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
+		if (connectivity == null) 
+		{   
+			return false;
+		} 
+		else 
+		{  
+			NetworkInfo[] info = connectivity.getAllNetworkInfo();   
+			if (info != null) 
+			{   
+				for (int i = 0; i <info.length; i++) 
+				{ 
+					if (info[i].getState() == NetworkInfo.State.CONNECTED)
+					{
+						return true; 
+					}
+				}     
+			} 
+			return false;
+		}
+	} 
 
 	private void initDrawer(){
 		mNavigationDrawerFragment = (NavigationDrawerFragment) getFragmentManager().findFragmentById(
