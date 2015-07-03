@@ -13,14 +13,14 @@ import android.view.ViewGroup;
 public class GeolocalisationFragment extends Fragment {
 	
 	public static final String ARG_PAGE = "ARG_PAGE";
-
+	
 	private int mPage;
 	public static GeolocalisationPagerAdapter sp;
-
+	
 	public GeolocalisationFragment(int page) {
 		this.mPage=page;
 	}
-
+	
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {

@@ -41,11 +41,8 @@ public class FragmentListeDisciplines extends Fragment {
 			}
 			mapNomDesSportParDisciplines.put(d.getNom(), listeDesNomsDeSports);
 		}
-		
-		
 
 		super.onCreate(savedInstanceState);
-
 	}
 
 	@Override
