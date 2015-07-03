@@ -27,9 +27,10 @@ public class FragmentEquipement extends Fragment {
 	private static final String GEOLOCNULL = "0.00000";
 	private Equipement equipement;
 	private ListView listAssociation;
+	private TextView txtPasAssoc;
 	private List<Association> lesAssocsEquipement;
 	private LinearLayout header;
-	
+
 	public static FragmentEquipement newInstance(Equipement e) {
 		Bundle extras = new Bundle();
 		extras.putInt("id", e.getUid());
@@ -37,26 +38,33 @@ public class FragmentEquipement extends Fragment {
 		fragment.setArguments(extras);
 		return fragment;
 	}
-	
+
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-		View v = inflater.inflate(R.layout.detail_equipement, container, false);
-			for(Equipement e : Manager.getInstance().getListeEquipement()){
-				if(e.getUid() == getArguments().getInt("id")){
-					equipement = e;
-				}
+		View v;
+		for(Equipement e : Manager.getInstance().getListeEquipement()){
+			if(e.getUid() == getArguments().getInt("id")){
+				equipement = e;
 			}
+		}
+		if(compteListAssociation() != 0){
+			v = inflater.inflate(R.layout.detail_equipement, container, false);
 			View header = getLayoutInflater(getArguments()).inflate(R.layout.header_equipement, null);
 			recupererToutesViews(header);
+			txtPasAssoc.setVisibility(View.GONE);
 			listAssociation = (ListView)v.findViewById(R.id.listAssocEquipement);
 			listAssociation.addHeaderView(header);
 			adapterPourListAssociation();
 			clicItemListAssoc();
 			getActivity().setTitle(getResources().getString(R.string.titreDetailEquipement));
-			LinearLayout layout = (LinearLayout) v.findViewById(R.id.fiche_equip);
-	     return v;
+		}
+		else{
+			v = inflater.inflate(R.layout.header_equipement, container, false);
+			recupererToutesViews(v);
+		}
+		return v;
 	}
-	
+
 	private void adapterPourListAssociation(){
 		lesAssocsEquipement = new ArrayList<Association>();
 		for(Association a : Manager.getInstance().getListeAssociation()){
@@ -66,13 +74,13 @@ public class FragmentEquipement extends Fragment {
 						lesAssocsEquipement.add(a);
 					}
 				}
-					AssociationAdapter adapterAssoc = new AssociationAdapter(getActivity(), 0, lesAssocsEquipement);
-					listAssociation.setAdapter(adapterAssoc);
-					listAssociation.setVisibility(0);
+				AssociationAdapter adapterAssoc = new AssociationAdapter(getActivity(), 0, lesAssocsEquipement);
+				listAssociation.setAdapter(adapterAssoc);
+				listAssociation.setVisibility(0);
 			}
 		}
 	}
-	
+
 	private int compteListAssociation(){
 		lesAssocsEquipement = new ArrayList<Association>();
 		for(Association a : Manager.getInstance().getListeAssociation()){
@@ -86,7 +94,7 @@ public class FragmentEquipement extends Fragment {
 		}
 		return lesAssocsEquipement.size();
 	}
-	
+
 	private void clicItemListAssoc(){
 		listAssociation.setOnItemClickListener(new ListView.OnItemClickListener(){
 
@@ -103,7 +111,7 @@ public class FragmentEquipement extends Fragment {
 			}
 		});
 	}
-	
+
 	private void recupererToutesViews(View v){
 		TextView txtTitreEquipement = (TextView)v.findViewById(R.id.nomEquipement);
 		txtTitreEquipement.setText(equipement.getNom());
@@ -151,12 +159,13 @@ public class FragmentEquipement extends Fragment {
 		if((equipement.getGeoloc().getLatitude().equals(GEOLOCNULL))&&(equipement.getGeoloc().getLatitude().equals(GEOLOCNULL))){
 			btnGoMap.setVisibility(4);
 		}
+		txtPasAssoc = (TextView)v.findViewById(R.id.txtPasAssoc);
 		goMap(btnGoMap);
 	}
-	
+
 	private void goMap(Button b){
 		b.setOnClickListener(new View.OnClickListener() {
-			
+
 			@Override
 			public void onClick(View v) {
 				Intent intent = new Intent(getActivity(), MapPane.class);

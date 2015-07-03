@@ -36,11 +36,14 @@
             android:name=".FragmentAssociationActivity"
             android:theme="@style/Theme.Vert_oms" >
         </activity>
-        <activity android:name=".FragmentActuActivity" >
+        <activity android:name=".FragmentActuActivity"
+            android:theme="@style/Theme.Bleu_oms" >
         </activity>
-        <activity android:name=".FragmentEventActivity" >
+        <activity android:name=".FragmentEventActivity"
+            android:theme="@style/Theme.Bleu_oms" >
         </activity>
-        <activity android:name=".FragmentEquipementActivity" >
+        <activity android:name=".FragmentEquipementActivity"
+            android:theme="@style/Theme.Vert_oms" >
         </activity>
         
         <meta-data

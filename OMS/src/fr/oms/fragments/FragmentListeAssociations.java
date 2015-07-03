@@ -54,7 +54,7 @@ public class FragmentListeAssociations extends Fragment {
 		layoutFiltre = (RelativeLayout) v.findViewById(R.id.filtre);
 		txtFiltre = (TextView)v.findViewById(R.id.txt_filtre);
 		listeAssociation = (ListView)v.findViewById(R.id.listeAssociation);
-		editRechercher = (EditText) v.findViewById(R.id.recherche);
+		editRechercher = (EditText) v.findViewById(R.id.rechercheAssoc);
 		failRecherche = (TextView) v.findViewById(R.id.failRecherche);
 		int currentapiVersion = android.os.Build.VERSION.SDK_INT;
 		if (currentapiVersion <= android.os.Build.VERSION_CODES.FROYO){
@@ -78,21 +78,18 @@ public class FragmentListeAssociations extends Fragment {
 		mesAssocFiltreSport = new ArrayList<Association>();
 		ajouterFiltre();
 		ajouterRecherche();
-		
-		
 
-		 editRechercher.setOnFocusChangeListener(new OnFocusChangeListener() {          
+		editRechercher.setOnFocusChangeListener(new OnFocusChangeListener() {          
 
-		        public void onFocusChange(View v, boolean hasFocus) {
-		            if (!hasFocus) {
-		            	InputMethodManager imm =  (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
-		                imm.hideSoftInputFromWindow(v.getWindowToken(), 0);
-		            
-		            }
-		        }
-		    });
-		 
-		 
+			public void onFocusChange(View v, boolean hasFocus) {
+				if (!hasFocus) {
+					InputMethodManager imm =  (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
+					imm.hideSoftInputFromWindow(v.getWindowToken(), 0);
+				}
+			}
+		});
+
+
 		return v;
 	}
 
@@ -104,9 +101,10 @@ public class FragmentListeAssociations extends Fragment {
 
 			@Override
 			public void onTextChanged(CharSequence s, int start, int before, int count) {
-				
+
 				ArrayList<Association> listeRecherche=new ArrayList<Association>();
 				System.out.println(s);
+
 
 				if(isFiltreSport){
 					for(Association a : mesAssocFiltreSport){
@@ -168,7 +166,7 @@ public class FragmentListeAssociations extends Fragment {
 		});
 
 	}
-	
+
 	private void touchAssocFiltre(final ArrayList<Association> liste){
 		listeAssociation.setOnItemClickListener(new ListView.OnItemClickListener(){
 			@Override
