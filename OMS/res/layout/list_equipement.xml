@@ -5,13 +5,25 @@
     android:orientation="vertical"
     android:background="@color/Blanc">
   
+    <EditText
+        android:id="@+id/rechercheEquip"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="@string/recherche_equipement"
+        android:imeOptions="actionDone"
+        android:inputType="text" />
     
     <ListView 
         android:id="@+id/listeEquipement"
         android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:layout_marginTop="20dp">
-        
+        android:layout_height="fill_parent">
     </ListView>
+    <TextView
+        android:id="@+id/failRecherche"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text=""
+        android:visibility="invisible" />
 
 </LinearLayout>

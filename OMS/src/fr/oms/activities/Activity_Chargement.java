@@ -17,7 +17,7 @@ import android.widget.TextView;
 import fr.oms.dataloader.JsonDataLoader;
 
 public class Activity_Chargement extends Activity {
-	
+
 	public static Activity actiCharg;
 	private ProgressBar pgrBar;
 	private TextView txtTitre;
@@ -34,42 +34,42 @@ public class Activity_Chargement extends Activity {
 		JsonDataLoader loader=JsonDataLoader.getInstance(this, pgrBar, txtTitre);	
 		effectuerConnexion(loader);
 		setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
-		
-		
-//		if(isNetworkAvailable(this)){
-//			Manager.getInstance().getTousLesSport(getApplicationContext());
-//			ParserJson parser=new ParserJson(getApplicationContext(),bar);
-//		}
-//		else{
-//			JSONObject jsObj=JsonDataLoader.getInstance(this).LoadFile(this.getFileStreamPath(JSONTags.FICHIER_ACTUS));
-//			if(jsObj != null){
-//				
-//			}
-//			else{
-//				AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
-//				alertDialogBuilder.setTitle(R.string.detailCo);
-//				alertDialogBuilder
-//				.setMessage(getResources().getString(R.string.detailCo))
-//				.setCancelable(false)
-//				.setPositiveButton("Fermer l'application",new DialogInterface.OnClickListener() {
-//					public void onClick(DialogInterface dialog,int id) {
-//						dialog.dismiss();
-//						System.exit(0);
-//					}
-//				});
-//				AlertDialog alertDialog = alertDialogBuilder.create();
-//				alertDialog.show();
-//			}
-//		}
-			
+
+
+		//		if(isNetworkAvailable(this)){
+		//			Manager.getInstance().getTousLesSport(getApplicationContext());
+		//			ParserJson parser=new ParserJson(getApplicationContext(),bar);
+		//		}
+		//		else{
+		//			JSONObject jsObj=JsonDataLoader.getInstance(this).LoadFile(this.getFileStreamPath(JSONTags.FICHIER_ACTUS));
+		//			if(jsObj != null){
+		//				
+		//			}
+		//			else{
+		//				AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
+		//				alertDialogBuilder.setTitle(R.string.detailCo);
+		//				alertDialogBuilder
+		//				.setMessage(getResources().getString(R.string.detailCo))
+		//				.setCancelable(false)
+		//				.setPositiveButton("Fermer l'application",new DialogInterface.OnClickListener() {
+		//					public void onClick(DialogInterface dialog,int id) {
+		//						dialog.dismiss();
+		//						System.exit(0);
+		//					}
+		//				});
+		//				AlertDialog alertDialog = alertDialogBuilder.create();
+		//				alertDialog.show();
+		//			}
+		//		}
+
 	}
-	
+
 	private void effectuerConnexion(JsonDataLoader loader) {
 		if(isNetworkAvailable(this)){		
-				loader.execute(getApplicationContext());				
+			loader.execute(getApplicationContext());				
 		}
 		else{
-			
+
 			AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(Activity_Chargement.this);
 			alertDialogBuilder.setTitle(R.string.detailCo);
 			alertDialogBuilder
@@ -87,7 +87,7 @@ public class Activity_Chargement extends Activity {
 
 		}
 	}
-	
+
 	public boolean isNetworkAvailable( Activity mActivity ) 
 	{ 
 		Context context = mActivity.getApplicationContext();
