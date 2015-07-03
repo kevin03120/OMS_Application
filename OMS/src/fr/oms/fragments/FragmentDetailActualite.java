@@ -19,6 +19,7 @@ import android.widget.TextView;
 public class FragmentDetailActualite extends Fragment {
 
 	private Actualite actualite;
+	private ImageView image;
 	
 	public static FragmentDetailActualite newInstance(Actualite a) {
 		Bundle extras = new Bundle();
@@ -45,7 +46,7 @@ public class FragmentDetailActualite extends Fragment {
 	private void recupererToutesViews(View v){
 		TextView txtTitre = (TextView)v.findViewById(R.id.txtTitreActu);
 		txtTitre.setText(actualite.getTitre());
-		ImageView image = (ImageView)v.findViewById(R.id.imgActu);
+		image = (ImageView)v.findViewById(R.id.imgActu);
 		new DownloadImageTask(image).execute(actualite.getLienImage()+"=?reqwidth=40");
 		TextView txtDetailActu = (TextView)v.findViewById(R.id.txtDetailActu);
 		txtDetailActu.setText(Html.fromHtml(actualite.getDescription()));

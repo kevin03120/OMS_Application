@@ -13,6 +13,7 @@ import android.widget.TextView;
 import fr.oms.activities.FragmentAssociationActivity;
 import fr.oms.activities.FragmentEquipementActivity;
 import fr.oms.activities.R;
+import fr.oms.activities.ZoomImage;
 import fr.oms.metier.Equipement;
 import fr.oms.metier.Evenement;
 import fr.oms.modele.DownloadImageTask;
@@ -21,6 +22,7 @@ import fr.oms.modele.Manager;
 public class FragmentDetailEvenement extends Fragment {
 
 	private Evenement evenement;
+	private ImageView image;
 	
 	public static FragmentDetailEvenement newInstance(Evenement e) {
 		Bundle extras = new Bundle();
@@ -47,7 +49,7 @@ public class FragmentDetailEvenement extends Fragment {
 	private void recupererToutesViews(View v){
 		TextView txtTitre = (TextView)v.findViewById(R.id.txtTitreEvent);
 		txtTitre.setText(evenement.getTitre());
-		ImageView image = (ImageView)v.findViewById(R.id.imgEvent);
+		image = (ImageView)v.findViewById(R.id.imgEvent);
 		new DownloadImageTask(image).execute(evenement.getLienImage()+"=?reqwidth=40");
 		TextView txtDetailActu = (TextView)v.findViewById(R.id.txtDetailEvent);
 		txtDetailActu.setText(Html.fromHtml(evenement.getDescription()));
@@ -69,6 +71,20 @@ public class FragmentDetailEvenement extends Fragment {
 			touchLieu2(txtLieu2);
 			txtLieu2.setVisibility(0);
 		}
+		touchImage();
+	}
+	
+
+	
+	private void touchImage(){
+		image.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				Intent i = new Intent(getActivity(), ZoomImage.class);
+				i.putExtra("id", evenement.getId());
+				startActivity(i);
+			}
+		});
 	}
 	
 	private void touchAssoc(TextView v){
