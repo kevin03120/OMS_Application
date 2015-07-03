@@ -50,10 +50,13 @@ public class FragmentDetailActualite extends Fragment {
 		TextView txtDetailActu = (TextView)v.findViewById(R.id.txtDetailActu);
 		txtDetailActu.setText(Html.fromHtml(actualite.getDescription()));
 		txtDetailActu.setMovementMethod(LinkMovementMethod.getInstance());
+		TextView txtAssoc = (TextView)v.findViewById(R.id.txtAssociationConcerne);
 		if(actualite.getAssociationConcernee() != null){
-			TextView txtAssoc = (TextView)v.findViewById(R.id.txtAssociationConcerne);
 			txtAssoc.setText("Association Concernée : " + actualite.getAssociationConcernee().getNom());
 			touchAssoc(txtAssoc);
+		}
+		else{
+			txtAssoc.setVisibility(View.GONE);
 		}
 	}
 	

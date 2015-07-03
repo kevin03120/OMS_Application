@@ -66,4 +66,6 @@
 	<string name="recherche_equipement">Rechercher un equipement</string>
 	<string name="detailAucuneDonnees" translatable="false">Aucune donnée accessible</string>
 	<string name="infoAucuneDonnees" translatable="false">Pas de connexion Internet ! \n Aucune donnée téléchargée et accessible.</string>
+	<string name="recherche_actu">Rechercher une actualite</string>
+	<string name="recherche_event">Rechercher un evenement</string>
 </resources>

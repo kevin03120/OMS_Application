@@ -28,8 +28,12 @@ public class FragmentActuActivity extends FragmentActivity {
         ViewPager pager = (ViewPager) findViewById(R.id.viewPager);
         MyPagerAdapter pagerAdapter = new MyPagerAdapter(getSupportFragmentManager());
         pager.setAdapter(pagerAdapter);
-        actualite = Manager.getInstance().getListActualites().get(pos);
-        pager.setCurrentItem(pos);
+        for(Actualite a : Manager.getInstance().getListActualites()){
+        	if(a.getId() == pos){
+        		actualite = a;
+        	}
+        }
+        pager.setCurrentItem(Manager.getInstance().getListActualites().indexOf(actualite));
 	}
 	
 	private class MyPagerAdapter extends FragmentPagerAdapter {

@@ -5,11 +5,27 @@
     android:layout_height="match_parent"
     android:gravity="center_horizontal"
     android:orientation="vertical">
+    
+    <EditText
+        android:id="@+id/rechercheActuEvent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="@string/recherche_actu"
+        android:imeOptions="actionDone"
+        android:inputType="text" />
 
     <ListView
         android:id="@+id/listActualiteEvenement"
         android:layout_width="match_parent"
         android:layout_height="match_parent" >
     </ListView>
+    
+    <TextView
+        android:id="@+id/failRecherche"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text=""
+        android:visibility="invisible" />
 
 </LinearLayout>
