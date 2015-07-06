@@ -8,12 +8,12 @@
     <TextView
         android:id="@+id/nomEquipement"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
+        android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
         android:layout_weight="0.2"
         android:gravity="center"
-        android:textSize="18sp"
-        android:textStyle="bold|italic" />
+        android:textSize="24sp"
+        android:textStyle="bold" />
 
     <TextView
         style="?android:listSeparatorTextViewStyle"

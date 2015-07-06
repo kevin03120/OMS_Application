@@ -3,6 +3,7 @@ package fr.oms.adapter;
 import java.util.List;
 
 import fr.oms.activities.R;
+import fr.oms.dataloader.Connectivity;
 import fr.oms.metier.Actualite;
 import fr.oms.modele.DownloadImageTask;
 import android.annotation.SuppressLint;
@@ -25,11 +26,13 @@ public class ActualiteAdapter extends ArrayAdapter<Actualite> {
 	@Override
 	public View getView(int position, View convertView, ViewGroup parent) {
 		convertView = LayoutInflater.from(getContext()).inflate(R.layout.item_actualite_evenement, parent,false);
+		System.out.println(Connectivity.getNetworkInfo(getContext()));
 		Actualite actualite = getItem(position);
 		ImageView image = (ImageView)convertView.findViewById(R.id.logoElement);
 		LinearLayout item = (LinearLayout)convertView.findViewById(R.id.background_item);
 		new DownloadImageTask(image)
-        .execute(actualite.getLienImage()+"=?reqwidth=40");
+        .execute(actualite.getLienImage()+"=?reqwidth=40&quality=50");
+	
 		if (position % 2 == 0) {
 			 item.setBackgroundResource(R.drawable.customborder);
 		 }
