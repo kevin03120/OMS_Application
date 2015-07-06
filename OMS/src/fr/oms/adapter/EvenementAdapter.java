@@ -27,8 +27,6 @@ public class EvenementAdapter extends ArrayAdapter<Evenement> {
 		convertView = LayoutInflater.from(getContext()).inflate(R.layout.item_actualite_evenement, parent,false);
 		Evenement evenement = getItem(position);
 		ImageView image = (ImageView)convertView.findViewById(R.id.logoElement);
-		new DownloadImageTask(image)
-        .execute(evenement.getLienImage()+"=?reqwidth=40");
 		LinearLayout item = (LinearLayout)convertView.findViewById(R.id.background_item);
 		if (position % 2 == 0) {
 			 item.setBackgroundResource(R.drawable.customborder);

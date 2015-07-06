@@ -28,8 +28,7 @@ public class ActualiteAdapter extends ArrayAdapter<Actualite> {
 		Actualite actualite = getItem(position);
 		ImageView image = (ImageView)convertView.findViewById(R.id.logoElement);
 		LinearLayout item = (LinearLayout)convertView.findViewById(R.id.background_item);
-		new DownloadImageTask(image)
-        .execute(actualite.getLienImage()+"=?reqwidth=40");
+
 		if (position % 2 == 0) {
 			 item.setBackgroundResource(R.drawable.customborder);
 		 }

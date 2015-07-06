@@ -50,7 +50,7 @@ public class FragmentDetailEvenement extends Fragment {
 		TextView txtTitre = (TextView)v.findViewById(R.id.txtTitreEvent);
 		txtTitre.setText(evenement.getTitre());
 		image = (ImageView)v.findViewById(R.id.imgEvent);
-		new DownloadImageTask(image).execute(evenement.getLienImage()+"=?reqwidth=40");
+		new DownloadImageTask(image).execute(evenement.getLienImage()+"=?reqwidth=200");
 		TextView txtDetailActu = (TextView)v.findViewById(R.id.txtDetailEvent);
 		txtDetailActu.setText(Html.fromHtml(evenement.getDescription()));
 		txtDetailActu.setMovementMethod(LinkMovementMethod.getInstance());

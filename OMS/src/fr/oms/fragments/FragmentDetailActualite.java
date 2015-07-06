@@ -45,15 +45,15 @@ public class FragmentDetailActualite extends Fragment {
 
 	private void recupererToutesViews(View v){
 		TextView txtTitre = (TextView)v.findViewById(R.id.txtTitreActu);
-		txtTitre.setText(actualite.getTitre());
+		txtTitre.setText(getActualite().getTitre());
 		image = (ImageView)v.findViewById(R.id.imgActu);
-		new DownloadImageTask(image).execute(actualite.getLienImage()+"=?reqwidth=40");
+		new DownloadImageTask(image).execute(getActualite().getLienImage()+"=?reqwidth=200");
 		TextView txtDetailActu = (TextView)v.findViewById(R.id.txtDetailActu);
-		txtDetailActu.setText(Html.fromHtml(actualite.getDescription()));
+		txtDetailActu.setText(Html.fromHtml(getActualite().getDescription()));
 		txtDetailActu.setMovementMethod(LinkMovementMethod.getInstance());
 		TextView txtAssoc = (TextView)v.findViewById(R.id.txtAssociationConcerne);
-		if(actualite.getAssociationConcernee() != null){
-			txtAssoc.setText("Association Concernée : " + actualite.getAssociationConcernee().getNom());
+		if(getActualite().getAssociationConcernee() != null){
+			txtAssoc.setText("Association Concernée : " + getActualite().getAssociationConcernee().getNom());
 			touchAssoc(txtAssoc);
 		}
 		else{
@@ -71,7 +71,6 @@ public class FragmentDetailActualite extends Fragment {
 	
 	private void touchAssoc(TextView v){
 		v.setOnClickListener(new View.OnClickListener() {
-			
 			@Override
 			public void onClick(View v) {
 				Intent intent = new Intent(getActivity(), FragmentAssociationActivity.class);
