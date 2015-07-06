@@ -52,12 +52,14 @@ public class FragmentDetailActualite extends Fragment {
 		txtDetailActu.setText(Html.fromHtml(getActualite().getDescription()));
 		txtDetailActu.setMovementMethod(LinkMovementMethod.getInstance());
 		TextView txtAssoc = (TextView)v.findViewById(R.id.txtAssociationConcerne);
+		TextView txtPasAssoc = (TextView)v.findViewById(R.id.txtPasAssocActu);
 		if(getActualite().getAssociationConcernee() != null){
-			txtAssoc.setText("Association Concernée : " + getActualite().getAssociationConcernee().getNom());
+			txtAssoc.setText(getActualite().getAssociationConcernee().getNom());
 			touchAssoc(txtAssoc);
 		}
 		else{
 			txtAssoc.setVisibility(View.GONE);
+			txtPasAssoc.setVisibility(View.VISIBLE);
 		}
 	}
 	

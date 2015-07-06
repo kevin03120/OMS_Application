@@ -16,15 +16,37 @@
         android:text="@string/association"
         android:textColor="@color/BleuOms"
         android:textSize="20sp" />
-
+    
+	<TextView
+	        style="?android:listSeparatorTextViewStyle"
+	        android:layout_width="match_parent"
+	        android:layout_height="0dp"
+	        android:layout_marginTop="10dp"
+	        android:layout_marginBottom="5dp"
+	        android:layout_weight="0.5"
+	        android:background="@color/VertOms"
+	        android:text="Image"
+	        android:textColor="@color/NoirOms" />
+	
     <ImageView
         android:id="@+id/imgActu"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="2dp"
         android:contentDescription="@string/actualite" />
 
+    <TextView
+	        style="?android:listSeparatorTextViewStyle"
+	        android:layout_width="match_parent"
+	        android:layout_height="0dp"
+	        android:layout_marginTop="10dp"
+	        android:layout_marginBottom="5dp"
+	        android:layout_weight="0.5"
+	        android:background="@color/BleuOms"
+	        android:text="Informations"
+	        android:textColor="@color/NoirOms" />
+    
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -46,14 +68,35 @@
     </ScrollView>
 
     <TextView
+	        style="?android:listSeparatorTextViewStyle"
+	        android:layout_width="match_parent"
+	        android:layout_height="0dp"
+	        android:layout_marginTop="10dp"
+	        android:layout_marginBottom="5dp"
+	        android:layout_weight="0.5"
+	        android:background="@color/OrangeOms"
+	        android:text="Association Concernée"
+	        android:textColor="@color/NoirOms" />
+    
+    <TextView
         android:id="@+id/txtAssociationConcerne"
         style="@style/btnDetailEventActu"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:gravity="center"
-        android:layout_marginTop="10dp"
         android:layout_weight="1"
         android:clickable="true"
         android:textColor="@color/NoirOms" />
+    
+    <TextView
+        android:id="@+id/txtPasAssocActu"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:visibility="gone"
+        android:text="@string/pasAssocActualite"
+        android:textColor="@color/NoirOms"
+        android:textSize="10sp" />
 
 </LinearLayout>

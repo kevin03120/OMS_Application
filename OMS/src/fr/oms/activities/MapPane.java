@@ -13,6 +13,7 @@ import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapFragment;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 
 
@@ -74,8 +75,10 @@ public class MapPane extends Activity implements OnMapReadyCallback, LocationLis
 //        marker.showInfoWindow();
     	
         map.addMarker(new MarkerOptions()
-                .title(nomEquipement+ " \n " +"(cliquez pour aller)")
-                .position(equipement)).showInfoWindow();        
+                .title(nomEquipement)
+                .snippet("Cliquez pour aller")
+                .position(equipement)).showInfoWindow();  
+
     }
 
 
