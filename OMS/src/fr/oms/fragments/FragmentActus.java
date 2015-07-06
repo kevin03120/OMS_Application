@@ -20,12 +20,9 @@ import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
 import fr.oms.activities.FragmentActuActivity;
-import fr.oms.activities.FragmentAssociationActivity;
 import fr.oms.activities.R;
 import fr.oms.adapter.ActualiteAdapter;
-import fr.oms.adapter.AssociationAdapter;
 import fr.oms.metier.Actualite;
-import fr.oms.metier.Association;
 import fr.oms.modele.Manager;
 
 public class FragmentActus extends Fragment{

@@ -16,7 +16,6 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import fr.oms.dataloader.JSONTags;
 import fr.oms.dataloader.JsonDataLoader;
-import fr.oms.dataloader.ParserJson;
 
 public class Activity_Chargement extends Activity {
 

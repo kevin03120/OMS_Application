@@ -1,13 +1,11 @@
 package fr.oms.fragments;
 
-import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.inputmethod.InputMethodManager;
 import fr.oms.activities.R;
 import fr.oms.adapter.AnnuairePagerAdapter;
 import fr.oms.ressources.SlidingTabLayout;

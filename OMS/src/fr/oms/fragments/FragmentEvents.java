@@ -18,12 +18,9 @@ import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
-import fr.oms.activities.FragmentActuActivity;
 import fr.oms.activities.FragmentEventActivity;
 import fr.oms.activities.R;
-import fr.oms.adapter.ActualiteAdapter;
 import fr.oms.adapter.EvenementAdapter;
-import fr.oms.metier.Actualite;
 import fr.oms.metier.Evenement;
 import fr.oms.modele.Manager;
 
