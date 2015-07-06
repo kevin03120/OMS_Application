@@ -19,6 +19,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.ProgressBar;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
 
@@ -29,6 +30,7 @@ public class FragmentGeolocAssociations extends Fragment implements LocationList
 	private double latitudeUser = 0;
 	private double longitudeUser = 0;
 	private LocationManager lm;
+	private ProgressBar progessBar;
 	
 	@Override
 	public void onResume() {
@@ -51,6 +53,7 @@ public class FragmentGeolocAssociations extends Fragment implements LocationList
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
 		View v = inflater.inflate(R.layout.list_geoloc_associations, container,false);
+		progessBar = (ProgressBar) v.findViewById(R.id.progressBar1);
 		associationTriesLocalisation = new ArrayList<Association>();
 	    listAssoc = (ListView)v.findViewById(R.id.listeGeolocAssociation);
 	    onTouchItem();
@@ -119,11 +122,15 @@ public class FragmentGeolocAssociations extends Fragment implements LocationList
 	
 	@Override
 	public void onLocationChanged(Location location) {
+		listAssoc.setVisibility(View.GONE);
+		progessBar.setVisibility(View.VISIBLE);
 		latitudeUser = location.getLatitude();
 		longitudeUser = location.getLongitude();
 		donneListe();
 		AssociationGeolocAdapter adapterAssoc = new AssociationGeolocAdapter(getActivity(), 0, associationTriesLocalisation, latitudeUser, longitudeUser);
 		listAssoc.setAdapter(adapterAssoc);
+		progessBar.setVisibility(View.GONE);
+		listAssoc.setVisibility(View.VISIBLE);
 	}
 
 	@Override
