@@ -46,7 +46,7 @@ public class MapEquipementsProches extends Activity implements OnMapReadyCallbac
 	        	LatLng geolocEquipement = new LatLng(Double.parseDouble(e.getGeoloc().getLatitude()), Double.parseDouble(e.getGeoloc().getLongitude()));
 	        	if(cpt!=0){
 		        	map.addMarker(new MarkerOptions()
-		            .title(e.getNom()+ " \n " +"(cliquez pour aller)")
+		            .title(e.getNom())
 		            .position(geolocEquipement));
 		        	map.getUiSettings().setMapToolbarEnabled(true);
 	        	}

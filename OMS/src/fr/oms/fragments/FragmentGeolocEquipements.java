@@ -104,7 +104,6 @@ public class FragmentGeolocEquipements extends Fragment implements LocationListe
 			}
 			equipementTriesLocalisation.add(valeurTest);
 			listeTemporaire.remove(valeurTest);
-			i++;
 		}
 	}
 

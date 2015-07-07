@@ -62,11 +62,13 @@
     <string name="pasAssocEquipement" translatable="false">Aucune association présente à cette équipement</string>
     <string name="chargementFichier" translatable="false">Chargement des fichiers</string>
     <string name="Recuperation_donnees" translatable="false">"Recuperation des données"</string>
-    <string name="recherche_assoc">Rechercher une association</string>
-	<string name="recherche_equipement">Rechercher un equipement</string>
+    <string name="recherche_assoc" translatable="false">Rechercher une association</string>
+	<string name="recherche_equipement" translatable="false">Rechercher un equipement</string>
 	<string name="detailAucuneDonnees" translatable="false">Aucune donnée accessible</string>
 	<string name="infoAucuneDonnees" translatable="false">Pas de connexion Internet ! \n Aucune donnée téléchargée et accessible.</string>
-	<string name="recherche_actu">Rechercher une actualite</string>
-	<string name="recherche_event">Rechercher un evenement</string>
-	<string name="pasAssocActualite">Aucune association liée à cet équipement.</string>
+	<string name="recherche_actu" translatable="false">Rechercher une actualite</string>
+	<string name="recherche_event" translatable="false">Rechercher un evenement</string>
+	<string name="pasAssocActualite" translatable="false">Aucune association liée à cet équipement.</string>
+	<string name="txt_geo_load" translatable="false">Recherche ...</string>
+	<string name="btn_go" translatable="false">GO !</string>
 </resources>

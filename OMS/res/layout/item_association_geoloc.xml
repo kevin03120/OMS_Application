@@ -35,8 +35,8 @@
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:gravity="center_vertical|center_horizontal"
-        android:textSize="15sp"
+        android:textSize="20sp"
         android:text="@string/association"
         android:textColor="@color/NoirOms"
-        android:textStyle="italic|bold" />
+        android:textStyle="bold|normal" />
 </LinearLayout>
