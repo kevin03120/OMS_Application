@@ -26,11 +26,7 @@ public class ParserJson{
 
 	public ParserJson(Context context) {
 		this.context=context;
-	
-		//		List<Association> assocs=Manager.getInstance().getListeAssociation();
-//		System.out.println("TAILLE LISTE : "+Manager.getInstance().getListeQuartier().size());
 	}
-	
 	
 	public void effectuerParsing(){
 		parseEquipements();
@@ -57,17 +53,13 @@ public class ParserJson{
 				JSONObject actuObj=jsArr.getJSONObject(i);
 				int id=actuObj.getInt(JSONTags.IDENTIFIER);
 				Actualite actuTmp=Manager.getInstance().recupereActu(id);		
-				//Check si l'actu existe deja						
 				if(actuTmp!=null){
-					//Si elle existe => regarder date MAJ
 					int timeObj=actuObj.getInt(JSONTags.CREATED);
 					if(timeObj > timeLastMaj){
-						//La date de mise a jour est plus récente => mettre à jour les données
 						Manager.getInstance().getListActualites().remove(actuTmp);
 						creerNouvelleActu(actuObj);
 					}
 				}else{
-					//Nouvelle actu
 					creerNouvelleActu(actuObj);
 				}
 			} catch (JSONException e) {
@@ -86,8 +78,6 @@ public class ParserJson{
 			id= actuObj.getInt(JSONTags.IDENTIFIER);
 			title=actuObj.getString(JSONTags.TITLE);
 			description=actuObj.getString(JSONTags.BODY);
-			//description=Html.fromHtml(description).toString();			
-//			System.out.println(description);
 			image=actuObj.getString(JSONTags.IMAGE);
 			assoc=Manager.getInstance().recupereAssociationAvecNom(actuObj.getString(JSONTags.ASSOCIATION));
 		} catch (JSONException e) {
@@ -105,10 +95,8 @@ public class ParserJson{
 		} catch (JSONException e) {
 			e.printStackTrace();
 		}
-//		System.out.println("IL Y A EVENTS : "+jsArr.length());
 		for(int i=0; i<jsArr.length();i++){
 			try {
-//				System.out.println("CURRENT : "+i);
 				JSONObject eventObj=jsArr.getJSONObject(i);
 				int id=eventObj.getInt(JSONTags.IDENTIFIER);
 				Evenement eventTmp=Manager.getInstance().recupereEvenement(id);		
@@ -135,7 +123,6 @@ public class ParserJson{
 		String lieu1=null;
 		Equipement lieu2=null;
 		int date=0;
-		
 		String description="";
 		int created=0;
 		try {
@@ -147,12 +134,10 @@ public class ParserJson{
 			lieu2=Manager.getInstance().recupereEquipementAvecNom(eventObj.getString(JSONTags.LOCATION_02));
 			date=eventObj.getInt(JSONTags.DATE);
 			description=eventObj.getString(JSONTags.BODY);
-			//description=Html.fromHtml(description).toString();
 			created=eventObj.getInt(JSONTags.CREATED);			
 		} catch (JSONException e) {
 			e.printStackTrace();
 		}
-		
 		Evenement event=new Evenement(id, title, image, association, lieu1, lieu2, date, description, created);
 		Manager.getInstance().getListEvenements().add(event);
 	}
@@ -165,10 +150,8 @@ public class ParserJson{
 		} catch (JSONException e) {
 			e.printStackTrace();
 		}
-//		System.out.println("IL Y A EQUIPS : "+jsArr.length());
 		for(int i=0; i<jsArr.length();i++){
 			try {
-//				System.out.println("CURRENT : "+i);
 				JSONObject equipObj=jsArr.getJSONObject(i);
 				int id=equipObj.getInt(JSONTags.IDENTIFIER);
 				Equipement equipTmp=Manager.getInstance().recupereEquipement(id);		
@@ -201,7 +184,6 @@ public class ParserJson{
 			id= equipObj.getInt(JSONTags.IDENTIFIER);
 			title=equipObj.getString(JSONTags.TITLE);
 			quartier=recupereQuartier(equipObj.getJSONArray(JSONTags.QUARTIER));
-
 			goeLoc=recupereGeo(equipObj.getJSONObject(JSONTags.GEOLOC)) ;
 			address=equipObj.getString(JSONTags.ADDRESS);
 			codePostal=equipObj.getString(JSONTags.CODE_POSTAL);
@@ -400,10 +382,6 @@ public class ParserJson{
 		}
 		return equipements;
 	}
-
-	
-
-	
 	
 	public Context getContext() {
 		return context;

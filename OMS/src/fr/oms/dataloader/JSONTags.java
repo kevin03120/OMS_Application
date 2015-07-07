@@ -1,17 +1,13 @@
 package fr.oms.dataloader;
 
 public class JSONTags {
-	
 	public static String FICHIER_ACTUS = "actus.json";
 	public static String FICHIER_EVENTS = "evenements.json";
 	public static String FICHIER_ASSOCS = "associations.json";
 	public static String FICHIER_EQUIPS = "equipements.json";
-	
 	public static String RESULT = "result";
-	
 	public static String IDENTIFIER = "identifier";
 	public static String CREATED = "created";
-	
 	public static String TITLE = "title";
 	public static String BODY = "body";
 	public static String IMAGE = "image";
@@ -26,7 +22,6 @@ public class JSONTags {
 	public static String CODE_POSTAL = "postalcode";
 	public static String VILLE = "city";
 	public static String TEL = "tel";
-	
 	public static String GEO_NAME = "name";
 	public static String GEO_RUE = "street";
 	public static String GEO_VILLE = "city";
@@ -35,11 +30,9 @@ public class JSONTags {
 	public static String GEO_PAYS = "country";
 	public static String GEO_LONGITUDE = "longitude";
 	public static String GEO_LATITUDE = "latitude";
-	
 	public static String OMS_MEMBER = "is_oms_member";
 	public static String HOURS = "hours";
 	public static String DISCIPLINES = "disciplines";
-	
 	public static String CONTACT_TITLE="contact_title";
 	public static String CONTACT_NOM ="contact_lastname";
 	public static String CONTACT_PRENOM="contact_firstname";
