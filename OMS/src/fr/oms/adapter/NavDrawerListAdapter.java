@@ -47,24 +47,11 @@ public class NavDrawerListAdapter extends BaseAdapter {
             LayoutInflater mInflater = LayoutInflater.from(context);
             convertView = mInflater.inflate(R.layout.drawer_nav_item, null);
         }
-
         LinearLayout layout = (LinearLayout)convertView.findViewById(R.id.layout_drawer);
         ImageView imgIcon = (ImageView) convertView.findViewById(R.id.ivIcon);
         TextView txtTitle = (TextView) convertView.findViewById(R.id.tvTitle);
-        
         txtTitle.setText(navDrawerItems.get(position).getTitle());
-        
-        if(navDrawerItems.get(position).getIcon()!=0){
-        	   imgIcon.setImageResource(navDrawerItems.get(position).getIcon());
-               
-               Double f=0.7;
-               layout.setBackgroundResource(navDrawerItems.get(position).getmColor());
-               if(navDrawerItems.get(position).getIcon()==R.drawable.ic_arrow4){
-               	imgIcon.setScaleX(f.floatValue());
-               	imgIcon.setScaleY(f.floatValue());
-               }
-               
-        }
+        afficherIcon(position, layout, imgIcon);
         Resources r = context.getResources();
         if((txtTitle.getText()==r.getString(R.string.accueil_underline))||(txtTitle.getText()==r.getString(R.string.annuaire_underline))||(txtTitle.getText()==r.getString(R.string.agenda_underline))||(txtTitle.getText()==r.getString(R.string.geolocalisation_underline))){
             txtTitle.setTextAppearance(context, R.style.TextItemNavTitre);           
@@ -74,4 +61,17 @@ public class NavDrawerListAdapter extends BaseAdapter {
         }
         return convertView;
     }
+
+	private void afficherIcon(int position, LinearLayout layout,
+			ImageView imgIcon) {
+		if(navDrawerItems.get(position).getIcon()!=0){
+        	   imgIcon.setImageResource(navDrawerItems.get(position).getIcon());
+               Double f=0.7;
+               layout.setBackgroundResource(navDrawerItems.get(position).getmColor());
+               if(navDrawerItems.get(position).getIcon()==R.drawable.ic_arrow4){
+               	imgIcon.setScaleX(f.floatValue());
+               	imgIcon.setScaleY(f.floatValue());
+               }
+        }
+	}
 }

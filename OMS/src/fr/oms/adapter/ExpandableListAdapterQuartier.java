@@ -47,10 +47,8 @@ public class ExpandableListAdapterQuartier extends BaseExpandableListAdapter{
 	@Override
 	public View getChildView(int groupPosition, final int childPosition,
 			boolean isLastChild, View convertView, ViewGroup parent) {
-
 		child=(ArrayList<String>) _listDataChild.get(getGroup(groupPosition));
 		TextView textView = null;
-
 		if (convertView == null) {
 			LayoutInflater infalInflater = (LayoutInflater) this._context
 					.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
@@ -58,9 +56,12 @@ public class ExpandableListAdapterQuartier extends BaseExpandableListAdapter{
 		}
 		textView = (TextView) convertView.findViewById(R.id.lblListItem);
 		textView.setText(child.get(childPosition));
+		ajouterListnerOnClick(childPosition, convertView);
+		return convertView;
+	}
 
+	private void ajouterListnerOnClick(final int childPosition, View convertView) {
 		convertView.setOnClickListener(new OnClickListener() {
-
 			@Override
 			public void onClick(View view) {
 				String nom = ExpandableListAdapterQuartier.this.child.get(childPosition);
@@ -71,7 +72,6 @@ public class ExpandableListAdapterQuartier extends BaseExpandableListAdapter{
 				_context.startActivity(intent);
 			}
 		});
-		return convertView;
 	}
 
 	@Override
@@ -104,7 +104,6 @@ public class ExpandableListAdapterQuartier extends BaseExpandableListAdapter{
 					.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 			convertView = infalInflater.inflate(R.layout.expandable_list_group,parent,false);
 		}
-
 		TextView lblListHeader = (TextView) convertView
 				.findViewById(R.id.lblListHeader);
 		if(groupPosition%2==0){
@@ -112,7 +111,6 @@ public class ExpandableListAdapterQuartier extends BaseExpandableListAdapter{
 		}else{
 			lblListHeader.setBackgroundColor(_context.getResources().getColor(R.color.VertOms));
 		}
-		
 		lblListHeader.setTypeface(null, Typeface.BOLD);
 		lblListHeader.setText(headerTitle);
 

@@ -33,37 +33,43 @@ public class AssociationGeolocAdapter extends ArrayAdapter<Association> {
 		TextView nomAssociation = (TextView)convertView.findViewById(R.id.nom_element_geoloc_association);
 		nomAssociation.setText(association.getNom());
 		ImageView logoAdherent = (ImageView)convertView.findViewById(R.id.Logo_adherent_geoloc_association);
-		if(association.isAdherent()){
-			logoAdherent.setImageResource(R.drawable.logo_ad);
-			logoAdherent.setVisibility(0);
-		}
 		LinearLayout item = (LinearLayout)convertView.findViewById(R.id.background_item_geoloc_association);
+		double distance = donneDistanceAvecAssoc(association);
+		int distanceArrondie = (int) Math.round(distance);
+		TextView txtDistance = (TextView)convertView.findViewById(R.id.distance_association);
 		if (position % 2 == 0) {
 			item.setBackgroundResource(R.drawable.customborder);
 		}
 		else{
 			item.setBackgroundResource(R.drawable.customborder_orange);
-		}
-		double distance = donneDistanceAvecAssoc(association);
-		int distanceArrondie = (int) Math.round(distance);
-		
-		TextView txtDistance = (TextView)convertView.findViewById(R.id.distance_association);
+		}			
+		afficherLogo(association, logoAdherent);	
+		afficheDistance(distance, distanceArrondie, txtDistance);
+		return convertView;
+	}
+
+	private void afficheDistance(double distance, int distanceArrondie,
+			TextView txtDistance) {
 		if(distance!=0.0){
 			txtDistance.setText(""+distanceArrondie + " m");
 		}
 		else{
 			txtDistance.setVisibility(0);
 		}
-		return convertView;
+	}
+
+	private void afficherLogo(Association association, ImageView logoAdherent) {
+		if(association.isAdherent()){
+			logoAdherent.setImageResource(R.drawable.logo_ad);
+			logoAdherent.setVisibility(0);
+		}
 	}
 
 	private double donneDistanceAvecAssoc(Association a){
 		double distance = 0;
-		
 		Location locUser = new Location("Point A");
 		locUser.setLatitude(latitudeUser);
 		locUser.setLongitude(longitudeUser);
-		
 		Location loc = new Location("Point B");
 		if(a.getListeEquipement() != null){
 			loc.setLatitude(Double.parseDouble(a.getListeEquipement().get(0).getGeoloc().getLatitude()));
