@@ -36,8 +36,6 @@ public class Activity_Chargement extends Activity {
 		JsonDataLoader loader=JsonDataLoader.getInstance(this, pgrBar, txtTitre);	
 		effectuerConnexion(loader);
 		setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
-
-
 		//		if(isNetworkAvailable(this)){
 		//			Manager.getInstance().getTousLesSport(getApplicationContext());
 		//			ParserJson parser=new ParserJson(getApplicationContext(),bar);

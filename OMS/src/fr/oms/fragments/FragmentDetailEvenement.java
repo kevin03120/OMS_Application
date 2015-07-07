@@ -9,6 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.ListView;
 import android.widget.TextView;
 import fr.oms.activities.FragmentAssociationActivity;
 import fr.oms.activities.FragmentEquipementActivity;
@@ -54,20 +55,20 @@ public class FragmentDetailEvenement extends Fragment {
 		TextView txtDetailActu = (TextView)v.findViewById(R.id.txtDetailEvent);
 		txtDetailActu.setText(Html.fromHtml(evenement.getDescription()));
 		txtDetailActu.setMovementMethod(LinkMovementMethod.getInstance());
+		TextView txtAssoc = (TextView)v.findViewById(R.id.txtAssociationConcerne);
+		TextView txtLieu1 = (TextView)v.findViewById(R.id.txtLieu1);
+		TextView txtLieu2 = (TextView)v.findViewById(R.id.txtLieu2);
 		if(evenement.getAssociationConcernee() != null){
-			TextView txtAssoc = (TextView)v.findViewById(R.id.txtAssociationConcerne);
-			txtAssoc.setText("Association Concernée : " + evenement.getAssociationConcernee().getNom());
+			txtAssoc.setText(evenement.getAssociationConcernee().getNom());
 			touchAssoc(txtAssoc);
 			txtAssoc.setVisibility(0);
 		}
 		if(!evenement.getLieu1().equals("")){
-			TextView txtLieu1 = (TextView)v.findViewById(R.id.txtLieu1);
-			txtLieu1.setText("Lieu 1 : " + evenement.getLieu1());
+			txtLieu1.setText(evenement.getLieu1());
 			txtLieu1.setVisibility(0);
 		}
 		if(evenement.getLieu2() != null){
-			TextView txtLieu2 = (TextView)v.findViewById(R.id.txtLieu2);
-			txtLieu2.setText("Lieu 2 : " + evenement.getLieu2().getNom());
+			txtLieu2.setText(evenement.getLieu2().getNom());
 			touchLieu2(txtLieu2);
 			txtLieu2.setVisibility(0);
 		}
