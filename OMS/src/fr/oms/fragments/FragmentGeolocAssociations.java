@@ -31,38 +31,35 @@ public class FragmentGeolocAssociations extends Fragment implements LocationList
 	private double longitudeUser = 0;
 	private LocationManager lm;
 	private ProgressBar progessBar;
-	
+
 	@Override
 	public void onResume() {
-			super.onResume();
-			lm = (LocationManager) getActivity().getSystemService(Activity.LOCATION_SERVICE);
-			if (lm.isProviderEnabled(LocationManager.GPS_PROVIDER))
-				lm.requestLocationUpdates(LocationManager.GPS_PROVIDER, 10000, 0,
-						this);
-			lm.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 10000, 0,
-					this);
+		super.onResume();
+		lm = (LocationManager) getActivity().getSystemService(Activity.LOCATION_SERVICE);
+		if (lm.isProviderEnabled(LocationManager.GPS_PROVIDER))
+			lm.requestLocationUpdates(LocationManager.GPS_PROVIDER, 10000, 0,this);
+		lm.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 10000, 0,this);
 	}
-	
+
 	@Override
 	public void onPause() {
 		super.onPause();
 		lm.removeUpdates(this);
 	}
-	
+
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
 		View v = inflater.inflate(R.layout.list_geoloc_associations, container,false);
 		progessBar = (ProgressBar) v.findViewById(R.id.progressBar1);
 		associationTriesLocalisation = new ArrayList<Association>();
-	    listAssoc = (ListView)v.findViewById(R.id.listeGeolocAssociation);
-	    onTouchItem();
-	    return v;
+		listAssoc = (ListView)v.findViewById(R.id.listeGeolocAssociation);
+		onTouchItem();
+		return v;
 	}
-	
+
 	private void onTouchItem(){
 		listAssoc.setOnItemClickListener(new OnItemClickListener() {
-
 			@Override
 			public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 				Association a = associationTriesLocalisation.get(position);
@@ -76,7 +73,7 @@ public class FragmentGeolocAssociations extends Fragment implements LocationList
 			}
 		});
 	}
-	
+
 	private void donneListe(){
 		List<Association> listeTemporaire = new ArrayList<Association>();
 		for(Association a : rendNouvelleListe()){
@@ -101,14 +98,14 @@ public class FragmentGeolocAssociations extends Fragment implements LocationList
 		Location locUser = new Location("Point A");
 		locUser.setLatitude(latitudeUser);
 		locUser.setLongitude(longitudeUser);
-		
+
 		Location loc = new Location("Point B");
 		loc.setLatitude(Double.parseDouble(a.getListeEquipement().get(0).getGeoloc().getLatitude()));
 		loc.setLongitude(Double.parseDouble(a.getListeEquipement().get(0).getGeoloc().getLongitude()));
-	
+
 		return locUser.distanceTo(loc);
 	}
-	
+
 	private List<Association> rendNouvelleListe(){
 		List<Association> assocs = new ArrayList<Association>();
 		for(Association a : Manager.getInstance().getListeAssociation()){
@@ -118,7 +115,7 @@ public class FragmentGeolocAssociations extends Fragment implements LocationList
 		}
 		return assocs;
 	}
-	
+
 	@Override
 	public void onLocationChanged(Location location) {
 		listAssoc.setVisibility(View.GONE);
@@ -134,19 +131,13 @@ public class FragmentGeolocAssociations extends Fragment implements LocationList
 
 	@Override
 	public void onStatusChanged(String provider, int status, Bundle extras) {
-		// TODO Auto-generated method stub
-		
 	}
 
 	@Override
 	public void onProviderEnabled(String provider) {
-		// TODO Auto-generated method stub
-		
 	}
 
 	@Override
 	public void onProviderDisabled(String provider) {
-		// TODO Auto-generated method stub
-		
 	}
 }

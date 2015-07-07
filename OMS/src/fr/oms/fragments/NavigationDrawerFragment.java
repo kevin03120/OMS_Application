@@ -73,32 +73,12 @@ public class NavigationDrawerFragment extends Fragment {
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 		mDrawerListView = (ListView) inflater.inflate(R.layout.fragment_navigation_drawer, container, false);
-		mDrawerListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-			@Override
-			public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-				selectItem(position);
-			}
-		});
-//		navDrawerItems = new ArrayList<NavDrawerItem>();
-//		Resources r = getActivity().getResources();
-//		navDrawerItems.add(new NavDrawerItem(r.getString(R.string.accueil_underline), R.drawable.ic_accueil, R.drawable.custom_btn_black));
-//
-//		navDrawerItems.add(new NavDrawerItem(r.getString(R.string.annuaire_underline), R.drawable.ic_annuaire, R.drawable.custom_btn_black));
-//		navDrawerItems.add(new NavDrawerItem(r.getString(R.string.association), R.drawable.tab_selected_focused_vert_oms,R.drawable.custom_btn_black));
-//		navDrawerItems.add(new NavDrawerItem(r.getString(R.string.equipement), R.drawable.tab_indicator_ab_vert_oms,R.drawable.custom_btn_black));
-//		navDrawerItems.add(new NavDrawerItem(r.getString(R.string.discipline),R.drawable.tab_selected_pressed_vert_oms,R.drawable.custom_btn_black));
-//		navDrawerItems.add(new NavDrawerItem(r.getString(R.string.quartier), R.drawable.tab_unselected_focused_vert_oms,R.drawable.custom_btn_black));
-//
-//		navDrawerItems.add(new NavDrawerItem(r.getString(R.string.agenda_underline),R.drawable.ic_agenda1,R.drawable.custom_btn_black));
-//		navDrawerItems.add(new NavDrawerItem(r.getString(R.string.actualite),  R.drawable.spinner_ab_default_vert_oms,R.drawable.custom_btn_black));
-//		navDrawerItems.add(new NavDrawerItem(r.getString(R.string.evenements), R.drawable.ab_stacked_solid_bleu_oms,R.drawable.custom_btn_black));
-//
-//		navDrawerItems.add(new NavDrawerItem(r.getString(R.string.geolocalisation_underline), R.drawable.ic_geoloc,R.drawable.custom_btn_black));
-//		navDrawerItems.add(new NavDrawerItem(r.getString(R.string.association), R.drawable.spinner_ab_focused_bleu_oms,R.drawable.custom_btn_black));
-//		navDrawerItems.add(new NavDrawerItem(r.getString(R.string.equipement), R.drawable.ic_arrow4,R.drawable.custom_btn_black));
-//		navDrawerItems.add(new NavDrawerItem(r.getString(R.string.adresse),R.drawable.ic_arrow4,R.drawable.custom_btn_black));
-		
-		
+		ajouterItemClickListener();
+		initDrawerItems();
+		return mDrawerListView;
+	}
+
+	private void initDrawerItems() {
 		navDrawerItems = new ArrayList<NavDrawerItem>();
 		Resources r = getActivity().getResources();
 		navDrawerItems.add(new NavDrawerItem(r.getString(R.string.accueil_underline), R.drawable.logo_appli, R.drawable.custom_btn_black));
@@ -118,7 +98,15 @@ public class NavigationDrawerFragment extends Fragment {
 		navDrawerItems.add(new NavDrawerItem(r.getString(R.string.equipement)));
 		mDrawerListView.setAdapter(new NavDrawerListAdapter(getActivity(), navDrawerItems));
 		mDrawerListView.setItemChecked(mCurrentSelectedPosition, true);
-		return mDrawerListView;
+	}
+
+	private void ajouterItemClickListener() {
+		mDrawerListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+			@Override
+			public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+				selectItem(position);
+			}
+		});
 	}
 
 	public boolean isDrawerOpen() {

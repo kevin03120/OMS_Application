@@ -89,7 +89,6 @@ public class FragmentDetailEvenement extends Fragment {
 	
 	private void touchAssoc(TextView v){
 		v.setOnClickListener(new View.OnClickListener() {
-			
 			@Override
 			public void onClick(View v) {
 				Intent intent = new Intent(getActivity(), FragmentAssociationActivity.class);
@@ -105,7 +104,6 @@ public class FragmentDetailEvenement extends Fragment {
 	
 	private void touchLieu2(TextView v){
 		v.setOnClickListener(new View.OnClickListener() {
-			
 			@Override
 			public void onClick(View v) {
 				Equipement lieu = evenement.getLieu2();

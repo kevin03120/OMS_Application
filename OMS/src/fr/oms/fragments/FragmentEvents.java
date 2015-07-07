@@ -47,9 +47,12 @@ public class FragmentEvents extends Fragment{
         listEvenements.setAdapter(eventAdapter);
         touchEvent();
         ajouterRecherche();
+		ajouterFocusChangedListener();
+		return v;
+	}
 
+	private void ajouterFocusChangedListener() {
 		editRechercher.setOnFocusChangeListener(new OnFocusChangeListener() {          
-
 			public void onFocusChange(View v, boolean hasFocus) {
 				if (!hasFocus) {
 					InputMethodManager imm =  (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
@@ -57,18 +60,13 @@ public class FragmentEvents extends Fragment{
 				}
 			}
 		});
-		return v;
 	}
 
 	private void ajouterRecherche() {
-
 		editRechercher.addTextChangedListener(new TextWatcher() {
-
 			@Override
 			public void onTextChanged(CharSequence s, int start, int before, int count) {
-
 				ArrayList<Evenement> listeRecherche=new ArrayList<Evenement>();
-
 				for(Evenement a : Manager.getInstance().getListEvenements()){
 					if(a.getTitre().toLowerCase(Locale.FRENCH).contains(s)){						
 						listeRecherche.add(a);
@@ -85,15 +83,11 @@ public class FragmentEvents extends Fragment{
 					failRecherche.setVisibility(View.VISIBLE);
 					failRecherche.setText("Aucun résulat trouvé");
 				}
-
-
 			}
 
 			@Override
 			public void beforeTextChanged(CharSequence s, int start, int count,
 					int after) {
-				// TODO Auto-generated method stub
-
 			}
 
 			@Override
@@ -105,7 +99,6 @@ public class FragmentEvents extends Fragment{
 					listEvenements.setAdapter(eventAdapter);
 					touchEvent();
 				}
-
 			}
 		});
 

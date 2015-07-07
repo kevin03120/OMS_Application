@@ -38,10 +38,8 @@ public class FragmentGeolocEquipements extends Fragment implements LocationListe
 			super.onResume();
 			lm = (LocationManager) getActivity().getSystemService(Activity.LOCATION_SERVICE);
 			if (lm.isProviderEnabled(LocationManager.GPS_PROVIDER))
-				lm.requestLocationUpdates(LocationManager.GPS_PROVIDER, 10000, 0,
-						this);
-			lm.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 10000, 0,
-					this);
+				lm.requestLocationUpdates(LocationManager.GPS_PROVIDER, 10000, 0,this);
+			lm.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 10000, 0,this);
 	}
 	
 	@Override
@@ -64,7 +62,6 @@ public class FragmentGeolocEquipements extends Fragment implements LocationListe
 	
 	private void onTouchButton(){
 		equipementGeoloc.setOnClickListener(new View.OnClickListener() {
-			
 			@Override
 			public void onClick(View v) {
 				Manager.getInstance().setListEquipementProches(equipementTriesLocalisation);
@@ -131,19 +128,13 @@ public class FragmentGeolocEquipements extends Fragment implements LocationListe
 
 	@Override
 	public void onStatusChanged(String provider, int status, Bundle extras) {
-		// TODO Auto-generated method stub
-		
 	}
 
 	@Override
 	public void onProviderEnabled(String provider) {
-		// TODO Auto-generated method stub
-		
 	}
 
 	@Override
 	public void onProviderDisabled(String provider) {
-		// TODO Auto-generated method stub
-		
 	}
 }

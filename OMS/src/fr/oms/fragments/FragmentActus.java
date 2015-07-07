@@ -49,9 +49,13 @@ public class FragmentActus extends Fragment{
 		listActualite.setAdapter(actuAdapter);
 		touchActu();
 		ajouterRecherche();
+		ajouterFocusChangedListerner();
+		return v;
+	}
 
+
+	private void ajouterFocusChangedListerner() {
 		editRechercher.setOnFocusChangeListener(new OnFocusChangeListener() {          
-
 			public void onFocusChange(View v, boolean hasFocus) {
 				if (!hasFocus) {
 					InputMethodManager imm =  (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
@@ -59,18 +63,13 @@ public class FragmentActus extends Fragment{
 				}
 			}
 		});
-		return v;
 	}
 
 	private void ajouterRecherche() {
-
 		editRechercher.addTextChangedListener(new TextWatcher() {
-
 			@Override
 			public void onTextChanged(CharSequence s, int start, int before, int count) {
-
 				ArrayList<Actualite> listeRecherche=new ArrayList<Actualite>();
-
 				for(Actualite a : Manager.getInstance().getListActualites()){
 					if(a.getTitre().toLowerCase(Locale.FRENCH).contains(s)){						
 						listeRecherche.add(a);
@@ -87,15 +86,11 @@ public class FragmentActus extends Fragment{
 					failRecherche.setVisibility(View.VISIBLE);
 					failRecherche.setText("Aucun résulat trouvé");
 				}
-
-
 			}
 
 			@Override
 			public void beforeTextChanged(CharSequence s, int start, int count,
 					int after) {
-				// TODO Auto-generated method stub
-
 			}
 
 			@Override
@@ -107,7 +102,6 @@ public class FragmentActus extends Fragment{
 					listActualite.setAdapter(actuAdapter);
 					touchActu();
 				}
-
 			}
 		});
 

@@ -54,17 +54,7 @@ public class FragmentListeAssociations extends Fragment {
 		listeAssociation = (ListView)v.findViewById(R.id.listeAssociation);
 		editRechercher = (EditText) v.findViewById(R.id.rechercheAssoc);
 		failRecherche = (TextView) v.findViewById(R.id.failRecherche);
-		int currentapiVersion = android.os.Build.VERSION.SDK_INT;
-		if (currentapiVersion <= android.os.Build.VERSION_CODES.FROYO){
-			// Do something for froyo and above versions
-			listeAssociation.setFastScrollEnabled(true);
-
-
-		} else if(currentapiVersion > android.os.Build.VERSION_CODES.HONEYCOMB){
-			// do something for phones running an SDK before froyo
-			listeAssociation.setFastScrollEnabled(true);
-			listeAssociation.setFastScrollAlwaysVisible(true);
-		}
+		testerScrollingVersion();
 		onDeleteFiltre();
 		filtre = 1;
 		if(getArguments()!=null){
@@ -76,7 +66,11 @@ public class FragmentListeAssociations extends Fragment {
 		mesAssocFiltreSport = new ArrayList<Association>();
 		ajouterFiltre();
 		ajouterRecherche();
+		ajouterFocusChangerListener();
+		return v;
+	}
 
+	private void ajouterFocusChangerListener() {
 		editRechercher.setOnFocusChangeListener(new OnFocusChangeListener() {          
 
 			public void onFocusChange(View v, boolean hasFocus) {
@@ -86,24 +80,23 @@ public class FragmentListeAssociations extends Fragment {
 				}
 			}
 		});
-
-
-		return v;
 	}
 
-
+	private void testerScrollingVersion() {
+		int currentapiVersion = android.os.Build.VERSION.SDK_INT;
+		if (currentapiVersion <= android.os.Build.VERSION_CODES.FROYO){
+			listeAssociation.setFastScrollEnabled(true);
+		} else if(currentapiVersion > android.os.Build.VERSION_CODES.HONEYCOMB){
+			listeAssociation.setFastScrollEnabled(true);
+			listeAssociation.setFastScrollAlwaysVisible(true);
+		}
+	}
 
 	private void ajouterRecherche() {
-
 		editRechercher.addTextChangedListener(new TextWatcher() {
-
 			@Override
 			public void onTextChanged(CharSequence s, int start, int before, int count) {
-
 				ArrayList<Association> listeRecherche=new ArrayList<Association>();
-				System.out.println(s);
-
-
 				if(isFiltreSport){
 					for(Association a : mesAssocFiltreSport){
 						if(a.getNom().toLowerCase(Locale.FRENCH).contains(s)){						
@@ -139,15 +132,11 @@ public class FragmentListeAssociations extends Fragment {
 						failRecherche.setText("Aucun résulat trouvé");
 					}
 				}
-
-
 			}
 
 			@Override
 			public void beforeTextChanged(CharSequence s, int start, int count,
 					int after) {
-				// TODO Auto-generated method stub
-
 			}
 
 			@Override
@@ -159,7 +148,6 @@ public class FragmentListeAssociations extends Fragment {
 					listeAssociation.setAdapter(associationAdapter);
 					touchAssoc();
 				}
-
 			}
 		});
 
@@ -189,7 +177,6 @@ public class FragmentListeAssociations extends Fragment {
 				for(Sport s : a.getListeSport()){
 					txtFiltre.setText("FILTRE : " + nomSport);
 					if(s.getNom().equals(nomSport)){
-						//txtFiltre.setVisibility(0);
 						layoutFiltre.setVisibility(View.VISIBLE);
 						mesAssocFiltreSport.add(a);
 					}
@@ -209,7 +196,6 @@ public class FragmentListeAssociations extends Fragment {
 		else{
 			associationAdapter = new AssociationAdapter(getActivity(), 0,rendNouvelleListe());
 			associationAdapter.notifyDataSetChanged();
-			//			System.out.println("Je passe la liste des assoc "+Manager.getInstance().getListeAssociation().size());
 			listeAssociation.setAdapter(associationAdapter);
 			touchAssoc();
 		}
@@ -249,7 +235,6 @@ public class FragmentListeAssociations extends Fragment {
 
 	public void onDeleteFiltre(){
 		btn_supp_filtre.setOnClickListener(new View.OnClickListener() {
-
 			@Override
 			public void onClick(View v) {
 				isFiltreSport = false;
