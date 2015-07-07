@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Locale;
 import java.util.Set;
 
 import android.annotation.SuppressLint;
@@ -37,7 +38,7 @@ public class AssociationAdapter extends ArrayAdapter<Association>  implements Se
 		for (int x = 0; x < size; x++) {  
 			String s = items.get(x).getNom().trim();  
 			String ch = s.substring(0, 1);  
-			ch = ch.toUpperCase();  
+			ch = ch.toUpperCase(Locale.FRANCE);  
 			if (!alphaIndexer.containsKey(ch)&& !ch.equals(" "))
 				alphaIndexer.put(ch, x);
 		}  
