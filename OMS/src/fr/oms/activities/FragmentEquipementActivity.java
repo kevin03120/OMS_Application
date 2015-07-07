@@ -24,7 +24,16 @@ public class FragmentEquipementActivity extends FragmentActivity {
         setContentView(R.layout.detail_pager);     
         int pos = getIntent().getExtras().getInt("position");
         int position = 0;
-        ViewPager pager = (ViewPager) findViewById(R.id.viewPager);
+        initPager(pos, position);
+	}
+	
+	/**
+	 * Initialisation du pager
+	 * @param pos
+	 * @param position
+	 */
+	private void initPager(int pos, int position) {
+		ViewPager pager = (ViewPager) findViewById(R.id.viewPager);
         MyPagerAdapter pagerAdapter = new MyPagerAdapter(getSupportFragmentManager());
         pager.setAdapter(pagerAdapter);
         List<Equipement> equipements = Manager.getInstance().getListeEquipement();
@@ -36,6 +45,7 @@ public class FragmentEquipementActivity extends FragmentActivity {
         }
         pager.setCurrentItem(position);
 	}
+	
 	private class MyPagerAdapter extends FragmentPagerAdapter {
 
 	 	private List<Equipement> equipements;

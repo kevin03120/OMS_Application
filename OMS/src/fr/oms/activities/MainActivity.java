@@ -3,13 +3,9 @@ package fr.oms.activities;
 
 
 import android.app.ActionBar;
-import android.app.Activity;
-import android.content.Context;
 import android.content.pm.ActivityInfo;
 import android.content.res.Resources;
 import android.graphics.drawable.ColorDrawable;
-import android.net.ConnectivityManager;
-import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v4.app.Fragment;
@@ -47,36 +43,13 @@ public class MainActivity extends FragmentActivity implements NavigationDrawerFr
 			parser.effectuerParsing();
 		}
 		setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
-
 		initDrawer();
 
 	}
 
-	public boolean isNetworkAvailable( Activity mActivity ) 
-	{ 
-		Context context = mActivity.getApplicationContext();
-		ConnectivityManager connectivity = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
-		if (connectivity == null) 
-		{   
-			return false;
-		} 
-		else 
-		{  
-			NetworkInfo[] info = connectivity.getAllNetworkInfo();   
-			if (info != null) 
-			{   
-				for (int i = 0; i <info.length; i++) 
-				{ 
-					if (info[i].getState() == NetworkInfo.State.CONNECTED)
-					{
-						return true; 
-					}
-				}     
-			} 
-			return false;
-		}
-	} 
-
+	/**
+	 * Initialisation du navigation drawer
+	 */
 	private void initDrawer(){
 		mNavigationDrawerFragment = (NavigationDrawerFragment) getFragmentManager().findFragmentById(
 				R.id.navigation_drawer);
@@ -90,6 +63,10 @@ public class MainActivity extends FragmentActivity implements NavigationDrawerFr
 		displayView(position);
 	}
 
+	/**
+	 * Affiche le fragment correspondant à la position selectionnée
+	 * @param position position de l'item selectionné
+	 */
 	private void displayView(int position) {
 		Fragment fragment = null;
 		switch (position) {
@@ -182,14 +159,13 @@ public class MainActivity extends FragmentActivity implements NavigationDrawerFr
 		}
 	}
 
-	public void restoreActionBar() {
+	private void restoreActionBar() {
 		ActionBar actionBar = getActionBar();
-		//actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_STANDARD);
 		actionBar.setDisplayShowTitleEnabled(true);
 		actionBar.setTitle(mTitle);
 	}
 
-	public void restoreActionBar(int position) {
+	private void restoreActionBar(int position) {
 		ActionBar actionBar = getActionBar();
 		mTitle = donneTitreActionBar(position);
 		actionBar.setDisplayShowTitleEnabled(true);
@@ -232,9 +208,6 @@ public class MainActivity extends FragmentActivity implements NavigationDrawerFr
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		if (!mNavigationDrawerFragment.isDrawerOpen()) {
-			// Only show items in the action bar relevant to this screen
-			// if the drawer is not showing. Otherwise, let the drawer
-			// decide what to show in the action bar.
 			getMenuInflater().inflate(R.menu.main, menu);
 			restoreActionBar();
 			return true;
@@ -247,7 +220,7 @@ public class MainActivity extends FragmentActivity implements NavigationDrawerFr
 		mDrawerLayout.openDrawer(mNavigationDrawerFragment.getView());
 		if(mDrawerLayout.isDrawerOpen(mNavigationDrawerFragment.getView())){
 			if (exit) {
-				finish(); // finish activity
+				finish(); 
 			} else {
 				Toast.makeText(this, "Appuyez encore pour quitter.",
 						Toast.LENGTH_SHORT).show();
@@ -259,7 +232,6 @@ public class MainActivity extends FragmentActivity implements NavigationDrawerFr
 					}
 				}, 3 * 1000);
 			}
-			//super.onBackPressed();
 		}
 	}
 }

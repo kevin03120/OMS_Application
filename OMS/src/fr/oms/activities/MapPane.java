@@ -51,17 +51,14 @@ public class MapPane extends Activity implements OnMapReadyCallback, LocationLis
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-
 		setContentView(R.layout.map_activity);
 		go = (Button) findViewById(R.id.btnGPS);
-
 		String la = getIntent().getExtras().getString("latitude");
 		String lo = getIntent().getExtras().getString("longitude");
 		nomEquipement = getIntent().getExtras().getString("nom");
 		latitude = Double.parseDouble(la);
 		longitude = Double.parseDouble(lo);
 		MapFragment mapFragment = (MapFragment) getFragmentManager().findFragmentById(R.id.map);
-
 		mapFragment.getMapAsync(this);
 	}
 
@@ -69,34 +66,15 @@ public class MapPane extends Activity implements OnMapReadyCallback, LocationLis
 	@Override
 	public void onMapReady(GoogleMap map) {   
 		loc = new Location("Point B");
-		//    	if(latitudeUser==0){
-		//    		Location currentLoc=map.getMyLocation();
-		//    		latitudeUser=currentLoc.getLatitude();
-		//    		longitudeUser=currentLoc.getLongitude();
-		//    	}
 		loc.setLatitude(latitude);
 		loc.setLongitude(longitude);
-
-
-
-
-
 		LatLng equipement = new LatLng(latitude, longitude);
-
 		map.setMyLocationEnabled(true);
 		map.moveCamera(CameraUpdateFactory.newLatLngZoom(equipement, 13));
-
-		//        MarkerOptions mo = new MarkerOptions().title(nomEquipement).visible(true);
-		//        Marker marker = map.addMarker(mo);
-		//        marker.showInfoWindow();
-
-
 		map.addMarker(new MarkerOptions()
 		.title(nomEquipement)
 		.position(equipement)).showInfoWindow();   
-
 		map.getUiSettings().setMapToolbarEnabled(true);
-
 	}
 
 
@@ -104,16 +82,19 @@ public class MapPane extends Activity implements OnMapReadyCallback, LocationLis
 	public void onLocationChanged(Location location) {
 		latitudeUser = location.getLatitude();
 		longitudeUser = location.getLongitude();
-
 		locUser = new Location("Point A");
 		locUser.setLatitude(latitudeUser);
 		locUser.setLongitude(longitudeUser);
+		afficherBoutonGo();
+
+	}
+
+	private void afficherBoutonGo() {
 		go.setVisibility(View.VISIBLE);
 		go.setOnClickListener(new OnClickListener() {
 
 			@Override
 			public void onClick(View v) {
-				//String url = "http://maps.google.com/maps?q=loc:"+loc.getLatitude()+", "+ loc.getLongitude();
 				String url1 = "http://maps.google.com/maps?saddr="+latitudeUser+", "+ longitudeUser+
 						"&daddr="+loc.getLatitude()+", "+loc.getLongitude();
 				System.out.println("GEOLOC" + url1.toString());
@@ -122,7 +103,6 @@ public class MapPane extends Activity implements OnMapReadyCallback, LocationLis
 
 			}
 		});
-
 	}
 
 	@Override
