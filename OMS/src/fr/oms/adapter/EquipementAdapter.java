@@ -16,11 +16,9 @@ import fr.oms.metier.Equipement;
 
 public class EquipementAdapter extends ArrayAdapter<Equipement> {
 
-	private Context context;
 	
 	public EquipementAdapter(Context context, int resource, List<Equipement> objects) {
 		super(context, resource, objects);
-		this.context = context;
 	}
 	
 	@SuppressLint("ViewHolder")

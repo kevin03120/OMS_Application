@@ -44,6 +44,7 @@ public class MainActivity extends FragmentActivity implements NavigationDrawerFr
 		Manager.getInstance().getTousLesSport(getApplicationContext());
 		if(this.getFileStreamPath(JSONTags.FICHIER_ACTUS).exists()){
 			ParserJson parser=new ParserJson(getApplicationContext());
+			parser.effectuerParsing();
 		}
 		setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 

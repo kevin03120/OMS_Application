@@ -18,7 +18,6 @@ import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapFragment;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.model.LatLng;
-import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 
 
@@ -114,7 +113,7 @@ public class MapPane extends Activity implements OnMapReadyCallback, LocationLis
 
 			@Override
 			public void onClick(View v) {
-				String url = "http://maps.google.com/maps?q=loc:"+loc.getLatitude()+", "+ loc.getLongitude();
+				//String url = "http://maps.google.com/maps?q=loc:"+loc.getLatitude()+", "+ loc.getLongitude();
 				String url1 = "http://maps.google.com/maps?saddr="+latitudeUser+", "+ longitudeUser+
 						"&daddr="+loc.getLatitude()+", "+loc.getLongitude();
 				System.out.println("GEOLOC" + url1.toString());

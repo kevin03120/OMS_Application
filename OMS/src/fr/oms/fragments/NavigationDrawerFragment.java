@@ -32,6 +32,7 @@ public class NavigationDrawerFragment extends Fragment {
 	private static final String STATE_SELECTED_POSITION = "selected_navigation_drawer_position";
 	private static final String PREF_USER_LEARNED_DRAWER = "navigation_drawer_learned";
 	private NavigationDrawerCallbacks mCallbacks;
+	@SuppressWarnings("deprecation")
 	private ActionBarDrawerToggle mDrawerToggle;
 
 

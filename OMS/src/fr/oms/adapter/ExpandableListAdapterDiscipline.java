@@ -12,8 +12,8 @@ import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.view.View.OnClickListener;
+import android.view.ViewGroup;
 import android.widget.BaseExpandableListAdapter;
 import android.widget.TextView;
 import fr.oms.activities.R;
@@ -21,7 +21,6 @@ import fr.oms.fragments.AnnuaireFragment;
 
 public class ExpandableListAdapterDiscipline extends BaseExpandableListAdapter{
 
-	private int lastIdGroup=66;
 	private Context _context;
 	private List<String> _listDataHeader; 
 	private HashMap<String, List<String>> _listDataChild;

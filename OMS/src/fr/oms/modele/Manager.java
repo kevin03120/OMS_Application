@@ -143,8 +143,6 @@ public class Manager {
 	public void getTousLesSport(Context context) {
 		BufferedReader br = null;
 		String line="";		
-		int idSport=0;
-		
 		try {
 			br = new BufferedReader(new InputStreamReader(context.getResources().openRawResource(R.raw.sports), "UTF-8"));
 		} catch (UnsupportedEncodingException e1) {
@@ -162,7 +160,6 @@ public class Manager {
 			listeSports.add(new Sport(line.trim()));		
 			try {
 				line=br.readLine();
-				idSport++;
 			} catch (IOException e) {
 				e.printStackTrace();
 			}

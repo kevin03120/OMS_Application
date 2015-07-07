@@ -26,6 +26,13 @@ public class ParserJson{
 
 	public ParserJson(Context context) {
 		this.context=context;
+	
+		//		List<Association> assocs=Manager.getInstance().getListeAssociation();
+//		System.out.println("TAILLE LISTE : "+Manager.getInstance().getListeQuartier().size());
+	}
+	
+	
+	public void effectuerParsing(){
 		parseEquipements();
 		parseAssociations();
 		parseActus();
@@ -35,9 +42,6 @@ public class ParserJson{
 		Collections.sort(Manager.getInstance().getListeQuartier());
 		Collections.sort(Manager.getInstance().getListEvenements());
 		Collections.reverse(Manager.getInstance().getListEvenements());
-		
-		//		List<Association> assocs=Manager.getInstance().getListeAssociation();
-//		System.out.println("TAILLE LISTE : "+Manager.getInstance().getListeQuartier().size());
 	}
 
 	private void parseActus(){
