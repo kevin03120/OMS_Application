@@ -20,18 +20,6 @@
             android:textColor="@color/BleuOms"
             android:textSize="20sp" />
 
-        <TextView
-            android:id="@+id/imageTitre"
-            style="?android:listSeparatorTextViewStyle"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_marginBottom="5dp"
-            android:layout_marginTop="10dp"
-            android:layout_weight="0.5"
-            android:background="@color/VertOms"
-            android:text="Image"
-            android:textColor="@color/NoirOms" />
-
         <ImageView
             android:id="@+id/imgEvent"
             android:layout_width="50dp"
@@ -54,7 +42,9 @@
 
         <TextView
             android:id="@+id/txtDetailEvent"
-            style="@style/btnDetailEventActu"
+            android:background="@drawable/custom_border_text_actu_event"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/association"
@@ -74,13 +64,13 @@
 
         <TextView
             android:id="@+id/txtAssociationConcerne"
-            style="@style/btnDetailEventActu"
+            style="@style/btnStyleBlue"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
             android:clickable="true"
             android:gravity="center"
-            android:textColor="@color/NoirOms"
+            android:textColor="@color/Blanc"
             android:visibility="invisible" />
 
         <TextView
@@ -97,12 +87,12 @@
 
         <TextView
             android:id="@+id/txtLieu1"
-            style="@style/btnDetailEventActu"
+            android:background="@drawable/custom_border_text_actu_event"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
             android:gravity="center"
-            android:textColor="@color/NoirOms"
+            android:textColor="@color/BleuOms"
             android:visibility="invisible" />
 
         <TextView
@@ -119,13 +109,13 @@
 
         <TextView
             android:id="@+id/txtLieu2"
-            style="@style/btnDetailEventActu"
+            style="@style/btnStyleBlue"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
             android:clickable="true"
             android:gravity="center"
-            android:textColor="@color/NoirOms"
+            android:textColor="@color/Blanc"
             android:visibility="invisible" />
     </LinearLayout>
 

@@ -20,17 +20,6 @@
             android:textColor="@color/BleuOms"
             android:textSize="20sp" />
 
-        <TextView
-            style="?android:listSeparatorTextViewStyle"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_marginBottom="5dp"
-            android:layout_marginTop="10dp"
-            android:layout_weight="0.5"
-            android:background="@color/VertOms"
-            android:text="Image"
-            android:textColor="@color/NoirOms" />
-
         <ImageView
             android:id="@+id/imgActu"
             android:layout_width="50dp"
@@ -52,10 +41,12 @@
 
         <TextView
             android:id="@+id/txtDetailActu"
-            style="@style/btnDetailEventActu"
+            android:background="@drawable/custom_border_text_actu_event"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:text="@string/association"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp" 
             android:textColor="@color/NoirOms" />
 
         <TextView
@@ -71,13 +62,13 @@
 
         <TextView
             android:id="@+id/txtAssociationConcerne"
-            style="@style/btnDetailEventActu"
+            style="@style/btnStyleBlue"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
             android:clickable="true"
             android:gravity="center"
-            android:textColor="@color/NoirOms" />
+            android:textColor="@color/Blanc" />
 
         <TextView
             android:id="@+id/txtPasAssocActu"
