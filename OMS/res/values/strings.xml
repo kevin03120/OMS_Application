@@ -71,4 +71,8 @@
 	<string name="pasAssocActualite" translatable="false">Aucune association liée à cet équipement.</string>
 	<string name="txt_geo_load" translatable="false">Recherche ...</string>
 	<string name="btn_go" translatable="false">GO !</string>
+	<string name="txt_tuto">Tuto</string>
+	<string name="msg_bienvenue">Bienvenue sur l\'application de l\'OMS</string>
+	<string name="msg_tuto_menu">Utilisez le menu à gauche pour naviguer</string>
+	<string name="btn_tuto_ok">OK</string>
 </resources>
