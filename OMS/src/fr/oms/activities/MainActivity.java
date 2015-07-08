@@ -44,6 +44,7 @@ public class MainActivity extends FragmentActivity implements NavigationDrawerFr
 		}
 		setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 		initDrawer();
+		
 
 	}
 

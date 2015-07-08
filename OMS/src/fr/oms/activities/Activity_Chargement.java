@@ -1,5 +1,9 @@
 package fr.oms.activities;
 
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.TimeUnit;
+import java.util.concurrent.TimeoutException;
+
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
@@ -22,6 +26,7 @@ public class Activity_Chargement extends Activity {
 	public static Activity actiCharg;
 	private ProgressBar pgrBar;
 	private TextView txtTitre;
+	private JsonDataLoader loader;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -32,8 +37,8 @@ public class Activity_Chargement extends Activity {
 		setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 		txtTitre = (TextView)findViewById(R.id.txtInfo);
 		pgrBar = (ProgressBar)findViewById(R.id.progressBar1);
-		JsonDataLoader loader=JsonDataLoader.getInstance(this, pgrBar, txtTitre);	
-		effectuerConnexion(loader);
+		loader=JsonDataLoader.getInstance(this, pgrBar, txtTitre);	
+		effectuerConnexion();
 		setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 	}
 
@@ -41,9 +46,31 @@ public class Activity_Chargement extends Activity {
 	 * Méthode permettant de lancer le JsonDataLoader pour récupérer les fichiers
 	 * @param loader 
 	 */
-	private void effectuerConnexion(JsonDataLoader loader) {
-		if(isNetworkAvailable()){		
-			loader.execute(getApplicationContext());				
+	private void effectuerConnexion() {
+		if(isNetworkAvailable()){	
+			new Thread(new Runnable() {
+				
+				@Override
+				public void run() {
+					try {
+						loader.execute(getApplicationContext()).get(15000, TimeUnit.MILLISECONDS);
+					} catch (InterruptedException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					} catch (ExecutionException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					} catch (TimeoutException e) {
+						if(actiCharg.getFileStreamPath(JSONTags.FICHIER_ACTUS).exists()){
+							afficherDialogDejaFichier();
+						}else{
+							afficherDialogPasFichier();
+						}
+					}
+					
+				}
+			}).start();
+				
 		}
 		else{
 			if(this.getFileStreamPath(JSONTags.FICHIER_ACTUS).exists()){
@@ -135,5 +162,11 @@ public class Activity_Chargement extends Activity {
 			return true;
 		}
 		return super.onOptionsItemSelected(item);
+	}
+	
+	@Override
+	protected void onStop() {
+		loader.cancel(true);
+		super.onStop();
 	}
 }
