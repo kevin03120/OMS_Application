@@ -126,6 +126,12 @@
         <item name="android:textSize">14sp</item>
         <item name="android:textColor">@android:color/white</item>
     </style>
+    
+    <style name="TextItemNavTitreGeoloc">
+        <item name="android:textSize">15sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@android:color/white</item>
+    </style>
 
     <style name="CustomProgressBar" parent="android:Widget.ProgressBar.Horizontal">
         <item name="android:indeterminateOnly">false</item>

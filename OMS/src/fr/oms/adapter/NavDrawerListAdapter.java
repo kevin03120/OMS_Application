@@ -53,11 +53,17 @@ public class NavDrawerListAdapter extends BaseAdapter {
         txtTitle.setText(navDrawerItems.get(position).getTitle());
         afficherIcon(position, layout, imgIcon);
         Resources r = context.getResources();
-        if((txtTitle.getText()==r.getString(R.string.accueil_underline))||(txtTitle.getText()==r.getString(R.string.annuaire_underline))||(txtTitle.getText()==r.getString(R.string.agenda_underline))||(txtTitle.getText()==r.getString(R.string.geolocalisation_underline))){
+        if((txtTitle.getText()==r.getString(R.string.accueil_underline))||(txtTitle.getText()==r.getString(R.string.annuaire_underline))||(txtTitle.getText()==r.getString(R.string.agenda_underline))){
             txtTitle.setTextAppearance(context, R.style.TextItemNavTitre);           
         }
         else{
             txtTitle.setTextAppearance(context, R.style.TextItemNavSousTitre);
+            if((txtTitle.getText()==r.getString(R.string.localise_association))||(txtTitle.getText()==r.getString(R.string.localise_equipement))||(txtTitle.getText()==r.getString(R.string.localise_discipline))){
+            	txtTitle.setTextSize(12);
+            }
+        }
+        if(txtTitle.getText()==r.getString(R.string.geolocalisation_underline)){
+        	txtTitle.setTextAppearance(context, R.style.TextItemNavTitreGeoloc);
         }
         return convertView;
     }

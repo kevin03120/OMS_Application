@@ -94,9 +94,9 @@ public class NavigationDrawerFragment extends Fragment {
 		navDrawerItems.add(new NavDrawerItem(r.getString(R.string.evenements)));
 
 		navDrawerItems.add(new NavDrawerItem(r.getString(R.string.geolocalisation_underline), R.drawable.ic_geoloc,R.drawable.custom_btn_orange));
-		navDrawerItems.add(new NavDrawerItem(r.getString(R.string.association)));
-		navDrawerItems.add(new NavDrawerItem(r.getString(R.string.equipement)));
-		navDrawerItems.add(new NavDrawerItem(r.getString(R.string.discipline)));
+		navDrawerItems.add(new NavDrawerItem(r.getString(R.string.localise_association)));
+		navDrawerItems.add(new NavDrawerItem(r.getString(R.string.localise_equipement)));
+		navDrawerItems.add(new NavDrawerItem(r.getString(R.string.localise_discipline)));
 		mDrawerListView.setAdapter(new NavDrawerListAdapter(getActivity(), navDrawerItems));
 		mDrawerListView.setItemChecked(mCurrentSelectedPosition, true);
 	}

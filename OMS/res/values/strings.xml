@@ -19,6 +19,9 @@
     <string name="equipement" translatable="false">Les equipements</string>
     <string name="quartier" translatable="false">Les quartiers</string>
     <string name="discipline" translatable="false">Les disciplines</string>
+    <string name="localise_association" translatable="false">Localiser associations</string>
+    <string name="localise_equipement" translatable="false">Localiser equipements</string>
+    <string name="localise_discipline" translatable="false">Localiser disciplines</string>
     <string name="info_icone" translatable="false">Information sur l\'OMS</string>
     <string name="titre_info" translatable="false">Autres Informations</string>
     <string name="guide_sport" translatable="false"><u>Guide des sports</u></string>
@@ -41,12 +44,12 @@
     <string name="contactNonDispo" translatable="false">Aucun contact disponible</string>
     <string name="equipementNonDispo" translatable="false">Aucun equipement disponible</string>
     <string name="agenda" translatable="false">Agenda</string>
-    <string name="titreDetailAssociation" translatable="false">Détail d\'une association</string>
-    <string name="titreDetailEquipement" translatable="false">Détail d\'un équipement</string>
-    <string name="titreDetailActualite" translatable="false">Détail d\'une actualité</string>
-    <string name="titreDetailEvenement" translatable="false">Détail d\'un evenement</string>
-    <string name="titreDetailDiscipline" translatable="false">Détail d\'une discipline</string>
-    <string name="goSite" translatable="false"><u>Site Internet OMS</u></string>
+    <string name="titreDetailAssociation" translatable="false">Détail de l\'association</string>
+    <string name="titreDetailEquipement" translatable="false">Détail de l\'équipement</string>
+    <string name="titreDetailActualite" translatable="false">Détail de l\'actualité</string>
+    <string name="titreDetailEvenement" translatable="false">Détail de l\'événement</string>
+    <string name="titreDetailDiscipline" translatable="false">Détail de la discipline</string>
+    <string name="goSite" translatable="false"><u>Plus d\'informations : Site Internet OMS</u></string>
     <string name="drawer_open" translatable="false">Open navigation drawer</string>
     <string name="drawer_close" translatable="false">Close navigation drawer</string>
     <string name="lien_site_OMS" translatable="false">http://www.oms-clermont-ferrand.fr/</string>
@@ -59,25 +62,25 @@
     <string name="telephone" translatable="false">Telephone</string>
     <string name="location" translatable="false">Localisation</string>
     <string name="associationPratiquantes" translatable="false">Les associations utilisatrices</string>
-    <string name="geolocalisation_underline" translatable="false"><u>Géoloc.</u></string>
+    <string name="geolocalisation_underline" translatable="false"><u>Géolocalisation</u></string>
     <string name="pasAssocEquipement" translatable="false">Aucune association présente sur cet équipement</string>
     <string name="chargementFichier" translatable="false">Chargement des fichiers</string>
     <string name="Recuperation_donnees" translatable="false">Recuperation des données</string>
     <string name="recherche_assoc" translatable="false">Rechercher une association</string>
-	<string name="recherche_equipement" translatable="false">Rechercher un equipement</string>
+	<string name="recherche_equipement" translatable="false">Rechercher un équipement</string>
 	<string name="detailAucuneDonnees" translatable="false">Aucune donnée accessible</string>
 	<string name="infoAucuneDonnees" translatable="false">Pas de connexion Internet ! \n Aucune donnée téléchargée et accessible.</string>
 	<string name="sports" translatable="false">Liste des sports</string>
     <string name="pasAssocDiscipline" translatable="false">Aucune association pour cette discipline</string>
 	<string name="recherche_actu" translatable="false">Rechercher une actualite</string>
-	<string name="recherche_event" translatable="false">Rechercher un evenement</string>
+	<string name="recherche_event" translatable="false">Rechercher un événement</string>
 	<string name="pasAssocActualite" translatable="false">Aucune association liée à cet équipement.</string>
 	<string name="txt_geo_load" translatable="false">Recherche ...</string>
 	<string name="btn_go" translatable="false">GO !</string>
-	<string name="txt_tuto">Tuto</string>
-	<string name="msg_bienvenue">Bienvenue sur l\'application de l\'OMS</string>
-	<string name="msg_tuto_menu">Utilisez le menu à gauche pour naviguer</string>
-	<string name="btn_tuto_ok">OK</string>
-	<string name="detail_server_short">Serveur en maintenance</string>
-	<string name="detail_server_long">Serveur en maintenance. La dernière mise à jour n\'as pas pu être installé.</string>
+	<string name="txt_tuto" translatable="false">Tuto</string>
+	<string name="msg_bienvenue" translatable="false">Bienvenue sur l\'application de l\'OMS</string>
+	<string name="msg_tuto_menu" translatable="false">Utilisez le menu à gauche pour naviguer</string>
+	<string name="btn_tuto_ok" translatable="false">OK</string>
+	<string name="detail_server_short" translatable="false">Serveur en maintenance</string>
+	<string name="detail_server_long" translatable="false">Serveur en maintenance. La dernière mise à jour n\'as pas pu être installé.</string>
 </resources>
