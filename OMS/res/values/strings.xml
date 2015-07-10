@@ -45,6 +45,7 @@
     <string name="titreDetailEquipement" translatable="false">Détail d\'un équipement</string>
     <string name="titreDetailActualite" translatable="false">Détail d\'une actualité</string>
     <string name="titreDetailEvenement" translatable="false">Détail d\'un evenement</string>
+    <string name="titreDetailDiscipline" translatable="false">Détail d\'une discipline</string>
     <string name="goSite" translatable="false"><u>Site Internet OMS</u></string>
     <string name="drawer_open" translatable="false">Open navigation drawer</string>
     <string name="drawer_close" translatable="false">Close navigation drawer</string>
@@ -57,7 +58,7 @@
     <string name="agenda_underline" translatable="false"><u>Agenda</u></string>
     <string name="telephone" translatable="false">Telephone</string>
     <string name="location" translatable="false">Location</string>
-    <string name="associationPratiquantes" translatable="false">Les associations pratiquant</string>
+    <string name="associationPratiquantes" translatable="false">Les associations pratiquantes</string>
     <string name="geolocalisation_underline" translatable="false"><u>Géoloc.</u></string>
     <string name="pasAssocEquipement" translatable="false">Aucune association présente à cette équipement</string>
     <string name="chargementFichier" translatable="false">Chargement des fichiers</string>
@@ -66,4 +67,6 @@
 	<string name="recherche_equipement">Rechercher un equipement</string>
 	<string name="detailAucuneDonnees" translatable="false">Aucune donnée accessible</string>
 	<string name="infoAucuneDonnees" translatable="false">Pas de connexion Internet ! \n Aucune donnée téléchargée et accessible.</string>
+	<string name="sports" translatable="false">Liste des sports</string>
+    <string name="pasAssocDiscipline" translatable="false">Aucune association pour cette discipline</string>
 </resources>

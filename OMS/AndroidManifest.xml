@@ -45,10 +45,14 @@
         <activity android:name=".FragmentEquipementActivity"
             android:theme="@style/Theme.Vert_oms" >
         </activity>
+        <activity android:name=".FragmentDisciplineActivity"
+            android:theme="@style/Theme.Vert_oms" >
+            
+        </activity>
         
         <meta-data
             android:name="com.google.android.geo.API_KEY"
-            android:value="AIzaSyBJBYBuNOD77rC58z1rNj35Zp8fP1W7EF8" />
+            android:value="AIzaSyBFukrFWXeaBl9BTa8dlCU1WMAPQUXzAF8" />
 
         <activity android:name=".MapPane" >
         </activity>
@@ -62,6 +66,7 @@
             </intent-filter>
         </activity>
         <activity android:name="MapEquipementsProches"></activity>
+        <activity android:name="MapEquipementsDisciplineProches"></activity>
     </application>
 
 </manifest>
