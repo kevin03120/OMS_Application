@@ -19,6 +19,7 @@ import android.widget.TextView;
 public class FragmentDetailActualite extends Fragment {
 
 	private Actualite actualite;
+	private ImageView image;
 	
 	public static FragmentDetailActualite newInstance(Actualite a) {
 		Bundle extras = new Bundle();
@@ -44,16 +45,21 @@ public class FragmentDetailActualite extends Fragment {
 
 	private void recupererToutesViews(View v){
 		TextView txtTitre = (TextView)v.findViewById(R.id.txtTitreActu);
-		txtTitre.setText(actualite.getTitre());
-		ImageView image = (ImageView)v.findViewById(R.id.imgActu);
-		new DownloadImageTask(image).execute(actualite.getLienImage()+"=?reqwidth=40");
+		txtTitre.setText(getActualite().getTitre());
+		image = (ImageView)v.findViewById(R.id.imgActu);
+		new DownloadImageTask(image).execute(getActualite().getLienImage()+"=?reqwidth=200");
 		TextView txtDetailActu = (TextView)v.findViewById(R.id.txtDetailActu);
-		txtDetailActu.setText(Html.fromHtml(actualite.getDescription()));
+		txtDetailActu.setText(Html.fromHtml(getActualite().getDescription()));
 		txtDetailActu.setMovementMethod(LinkMovementMethod.getInstance());
-		if(actualite.getAssociationConcernee() != null){
-			TextView txtAssoc = (TextView)v.findViewById(R.id.txtAssociationConcerne);
-			txtAssoc.setText("Association Concernée : " + actualite.getAssociationConcernee().getNom());
+		TextView txtAssoc = (TextView)v.findViewById(R.id.txtAssociationConcerne);
+		TextView txtPasAssoc = (TextView)v.findViewById(R.id.txtPasAssocActu);
+		if(getActualite().getAssociationConcernee() != null){
+			txtAssoc.setText(getActualite().getAssociationConcernee().getNom());
 			touchAssoc(txtAssoc);
+		}
+		else{
+			txtAssoc.setVisibility(View.GONE);
+			txtPasAssoc.setVisibility(View.VISIBLE);
 		}
 	}
 	
@@ -67,7 +73,6 @@ public class FragmentDetailActualite extends Fragment {
 	
 	private void touchAssoc(TextView v){
 		v.setOnClickListener(new View.OnClickListener() {
-			
 			@Override
 			public void onClick(View v) {
 				Intent intent = new Intent(getActivity(), FragmentAssociationActivity.class);

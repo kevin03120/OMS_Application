@@ -2,9 +2,6 @@ package fr.oms.adapter;
 
 import java.util.List;
 
-import fr.oms.activities.R;
-import fr.oms.metier.Actualite;
-import fr.oms.modele.DownloadImageTask;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -14,6 +11,9 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import fr.oms.activities.R;
+import fr.oms.metier.Actualite;
+import fr.oms.modele.DownloadImageTask;
 
 public class ActualiteAdapter extends ArrayAdapter<Actualite> {
 
@@ -29,7 +29,7 @@ public class ActualiteAdapter extends ArrayAdapter<Actualite> {
 		ImageView image = (ImageView)convertView.findViewById(R.id.logoElement);
 		LinearLayout item = (LinearLayout)convertView.findViewById(R.id.background_item);
 		new DownloadImageTask(image)
-        .execute(actualite.getLienImage()+"=?reqwidth=40");
+        .execute(actualite.getLienImage()+"=?reqwidth=40&quality=50");
 		if (position % 2 == 0) {
 			 item.setBackgroundResource(R.drawable.customborder);
 		 }

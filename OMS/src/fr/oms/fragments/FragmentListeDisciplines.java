@@ -41,33 +41,32 @@ public class FragmentListeDisciplines extends Fragment {
 			}
 			mapNomDesSportParDisciplines.put(d.getNom(), listeDesNomsDeSports);
 		}
-
 		super.onCreate(savedInstanceState);
 	}
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
-		//DisciplineAdapter disciplineAdapter = new DisciplineAdapter(getActivity(), 0, Manager.getInstance().getListeDiscipline());
 		ExpandableListAdapterDiscipline adapter=new ExpandableListAdapterDiscipline(getActivity(), listeDesNomsDeDisciplines, mapNomDesSportParDisciplines);
 		View v = inflater.inflate(R.layout.list_discipline, container,false);
 		listeDiscipline = (ExpandableListView) v.findViewById(R.id.lvExp);
-		//listeDiscipline = (ListView)v.findViewById(R.id.listeDiscipline);
-		//listeDiscipline.setAdapter(disciplineAdapter);
 		listeDiscipline.setAdapter(adapter);
-		listeDiscipline.setOnGroupExpandListener(new OnGroupExpandListener() {
-
-		    @Override
-		    public void onGroupExpand(int groupPosition) {
-		            if (lastExpandedPosition != -1
-		                    && groupPosition != lastExpandedPosition) {
-		            	listeDiscipline.collapseGroup(lastExpandedPosition);
-		            }
-		            lastExpandedPosition = groupPosition;
-		    }
-		});
+		ajouterExpandListener();
 		donneSport();
 		return v;
+	}
+
+	private void ajouterExpandListener() {
+		listeDiscipline.setOnGroupExpandListener(new OnGroupExpandListener() {
+			@Override
+			public void onGroupExpand(int groupPosition) {
+				if (lastExpandedPosition != -1
+						&& groupPosition != lastExpandedPosition) {
+					listeDiscipline.collapseGroup(lastExpandedPosition);
+				}
+				lastExpandedPosition = groupPosition;
+			}
+		});
 	}
 
 
@@ -75,7 +74,6 @@ public class FragmentListeDisciplines extends Fragment {
 		listeDiscipline.setOnItemClickListener(new ListView.OnItemClickListener(){
 			private ListView listeSport;
 			private Discipline discipline;
-
 			@Override
 			public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 				Dialog dialog=new Dialog(getActivity());
@@ -95,7 +93,6 @@ public class FragmentListeDisciplines extends Fragment {
 
 			private void clicSurUnSport(){
 				listeSport.setOnItemClickListener(new ListView.OnItemClickListener(){
-
 					@Override
 					public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 						/*Sport sport = discipline.getListeSport().get(position);

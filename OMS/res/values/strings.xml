@@ -63,10 +63,21 @@
     <string name="pasAssocEquipement" translatable="false">Aucune association présente à cette équipement</string>
     <string name="chargementFichier" translatable="false">Chargement des fichiers</string>
     <string name="Recuperation_donnees" translatable="false">"Recuperation des données"</string>
-    <string name="recherche_assoc">Rechercher une association</string>
-	<string name="recherche_equipement">Rechercher un equipement</string>
+    <string name="recherche_assoc" translatable="false">Rechercher une association</string>
+	<string name="recherche_equipement" translatable="false">Rechercher un equipement</string>
 	<string name="detailAucuneDonnees" translatable="false">Aucune donnée accessible</string>
 	<string name="infoAucuneDonnees" translatable="false">Pas de connexion Internet ! \n Aucune donnée téléchargée et accessible.</string>
 	<string name="sports" translatable="false">Liste des sports</string>
     <string name="pasAssocDiscipline" translatable="false">Aucune association pour cette discipline</string>
+	<string name="recherche_actu" translatable="false">Rechercher une actualite</string>
+	<string name="recherche_event" translatable="false">Rechercher un evenement</string>
+	<string name="pasAssocActualite" translatable="false">Aucune association liée à cet équipement.</string>
+	<string name="txt_geo_load" translatable="false">Recherche ...</string>
+	<string name="btn_go" translatable="false">GO !</string>
+	<string name="txt_tuto">Tuto</string>
+	<string name="msg_bienvenue">Bienvenue sur l\'application de l\'OMS</string>
+	<string name="msg_tuto_menu">Utilisez le menu à gauche pour naviguer</string>
+	<string name="btn_tuto_ok">OK</string>
+	<string name="detail_server_short">Serveur en maintenance</string>
+	<string name="detail_server_long">Serveur en maintenance. La dernière mise à jour n\'as pas pu être installé.</string>
 </resources>

@@ -1,13 +1,11 @@
 package fr.oms.fragments;
 
-import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.inputmethod.InputMethodManager;
 import fr.oms.activities.R;
 import fr.oms.adapter.AnnuairePagerAdapter;
 import fr.oms.ressources.SlidingTabLayout;
@@ -33,18 +31,12 @@ public class AnnuaireFragment extends Fragment{
 		View view = inflater.inflate(R.layout.pager, container, false);
 		ViewPager viewPager = (ViewPager) view.findViewById(R.id.viewpager);
         viewPager.setAdapter(new AnnuairePagerAdapter(getFragmentManager(),this.getActivity(), nomSport));
-        // Give the SlidingTabLayout the ViewPager
         SlidingTabLayout slidingTabLayout = (SlidingTabLayout) view.findViewById(R.id.sliding_tabs);
-        // Center the tabs in the layout
         slidingTabLayout.setDistributeEvenly(true);
         viewPager.setCurrentItem(mPage,true);
         slidingTabLayout.setViewPager(viewPager);
 		return view;
 	}
-
-	
-	
-	
 	
 	public int getmPage() {
 		return mPage;

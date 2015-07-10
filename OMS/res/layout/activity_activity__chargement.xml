@@ -11,7 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:contentDescription="@string/info_image"
-        android:background="@drawable/large"/>
+        android:background="@drawable/page_de_garde"/>
     
 
     <LinearLayout 

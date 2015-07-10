@@ -26,11 +26,23 @@ public class FragmentEventActivity extends FragmentActivity {
 		getActionBar().setBackgroundDrawable(
 				new ColorDrawable(getResources().getColor(R.color.BleuOms)));
         int pos = getIntent().getExtras().getInt("position");
-        ViewPager pager = (ViewPager) findViewById(R.id.viewPager);
+        initPager(pos);
+	}
+
+	/**
+	 * Initialisation du pager
+	 * @param pos
+	 */
+	private void initPager(int pos) {
+		ViewPager pager = (ViewPager) findViewById(R.id.viewPager);
         MyPagerAdapter pagerAdapter = new MyPagerAdapter(getSupportFragmentManager());
         pager.setAdapter(pagerAdapter);
-        evenement = Manager.getInstance().getListEvenements().get(pos);
-        pager.setCurrentItem(pos);
+        for(Evenement e : Manager.getInstance().getListEvenements()){
+        	if(e.getId() == pos){
+        		evenement = e;
+        	}
+        }
+        pager.setCurrentItem(Manager.getInstance().getListEvenements().indexOf(evenement));
 	}
 	
 	private class MyPagerAdapter extends FragmentPagerAdapter {

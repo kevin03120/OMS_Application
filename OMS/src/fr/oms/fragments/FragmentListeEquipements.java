@@ -42,11 +42,13 @@ public class FragmentListeEquipements extends Fragment{
 		failRecherche = (TextView) v.findViewById(R.id.failRecherche);
 		listEquipement.setAdapter(equipementAdapter);
 		touchEquipement(listEquipement);
-
 		ajouterRecherche();
+		ajouterFocusChangedListener();
+		return v;
+	}
 
+	private void ajouterFocusChangedListener() {
 		editRechercher.setOnFocusChangeListener(new OnFocusChangeListener() {          
-
 			public void onFocusChange(View v, boolean hasFocus) {
 				if (!hasFocus) {
 					InputMethodManager imm =  (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
@@ -54,7 +56,6 @@ public class FragmentListeEquipements extends Fragment{
 				}
 			}
 		});
-		return v;
 	}
 
 	private void touchEquipement(ListView list){
@@ -70,12 +71,9 @@ public class FragmentListeEquipements extends Fragment{
 	}
 
 	private void ajouterRecherche() {
-
 		editRechercher.addTextChangedListener(new TextWatcher() {
-
 			@Override
 			public void onTextChanged(CharSequence s, int start, int before, int count) {
-
 				ArrayList<Equipement> listeRecherche=new ArrayList<Equipement>();
 				for(Equipement e : Manager.getInstance().getListeEquipement()){
 					if(e.getNom().toLowerCase(Locale.FRENCH).contains(s)){						
@@ -99,10 +97,7 @@ public class FragmentListeEquipements extends Fragment{
 			@Override
 			public void beforeTextChanged(CharSequence s, int start, int count,
 					int after) {
-				// TODO Auto-generated method stub
-
 			}
-
 			@Override
 			public void afterTextChanged(Editable s) {
 				if(s.length()==0){
@@ -112,7 +107,6 @@ public class FragmentListeEquipements extends Fragment{
 					listEquipement.setAdapter(equipAdapter);
 					touchEquipement(listEquipement);
 				}
-
 			}
 		});
 	}

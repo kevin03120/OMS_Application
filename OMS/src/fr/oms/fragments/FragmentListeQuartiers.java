@@ -43,15 +43,16 @@ public class FragmentListeQuartiers extends Fragment{
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
-		//DisciplineAdapter disciplineAdapter = new DisciplineAdapter(getActivity(), 0, Manager.getInstance().getListeDiscipline());
 		ExpandableListAdapterQuartier adapter=new ExpandableListAdapterQuartier(getActivity(), listeDesNomsQuartier, mapEquipementParQuartier);
 		View v = inflater.inflate(R.layout.list_discipline, container,false);
 		listeQuartiers = (ExpandableListView) v.findViewById(R.id.lvExp);
-		//listeDiscipline = (ListView)v.findViewById(R.id.listeDiscipline);
-		//listeDiscipline.setAdapter(disciplineAdapter);
 		listeQuartiers.setAdapter(adapter);
-		listeQuartiers.setOnGroupExpandListener(new OnGroupExpandListener() {
+		ajouterExpandListener();
+		return v;
+	}
 
+	private void ajouterExpandListener() {
+		listeQuartiers.setOnGroupExpandListener(new OnGroupExpandListener() {
 		    @Override
 		    public void onGroupExpand(int groupPosition) {
 		            if (lastExpandedPosition != -1
@@ -61,7 +62,6 @@ public class FragmentListeQuartiers extends Fragment{
 		            lastExpandedPosition = groupPosition;
 		    }
 		});
-		return v;
 	}
 	
 }

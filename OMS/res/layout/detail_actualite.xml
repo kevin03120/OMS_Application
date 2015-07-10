@@ -1,60 +1,85 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     android:background="@drawable/custom_border_detail_actu_event" >
 
-    <TextView
-        android:id="@+id/txtTitreActu"
-        style="?android:listSeparatorTextViewStyle"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_marginTop="10dp"
-        android:layout_weight="2"
-        android:gravity="center"
-        android:text="@string/association"
-        android:textColor="@color/BleuOms"
-        android:textSize="20sp" />
+        android:layout_height="match_parent"
+        android:background="@drawable/custom_border_detail_actu_event"
+        android:orientation="vertical" >
 
-    <ImageView
-        android:id="@+id/imgActu"
-        android:layout_width="wrap_content"
-        android:layout_height="0dp"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="5dp"
-        android:layout_weight="1"
-        android:contentDescription="@string/actualite" />
+        <TextView
+            android:id="@+id/txtTitreActu"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="2"
+            android:gravity="center"
+            android:text="@string/association"
+            android:textColor="@color/BleuOms"
+            android:textSize="20sp" />
 
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_marginEnd="5dp"
-        android:layout_marginStart="5dp"
-        android:layout_marginTop="5dp"
-        android:layout_weight="5" >
+        <ImageView
+            android:id="@+id/imgActu"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="2dp"
+            android:contentDescription="@string/actualite" />
+
+        <TextView
+            style="?android:listSeparatorTextViewStyle"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginBottom="5dp"
+            android:layout_marginTop="10dp"
+            android:layout_weight="0.5"
+            android:background="@color/BleuOms"
+            android:text="Informations"
+            android:textColor="@color/NoirOms" />
 
         <TextView
             android:id="@+id/txtDetailActu"
+            android:background="@drawable/custom_border_text_actu_event"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ellipsize="marquee"
-            android:focusable="true"
-            android:focusableInTouchMode="true"
-            android:marqueeRepeatLimit="marquee_forever"
+            android:layout_height="match_parent"
             android:text="@string/association"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp" 
             android:textColor="@color/NoirOms" />
-    </ScrollView>
 
-    <TextView
-        android:id="@+id/txtAssociationConcerne"
-        style="@style/btnDetailEventActu"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:gravity="center"
-        android:layout_marginTop="10dp"
-        android:layout_weight="1"
-        android:clickable="true"
-        android:textColor="@color/NoirOms" />
+        <TextView
+            style="?android:listSeparatorTextViewStyle"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginBottom="5dp"
+            android:layout_marginTop="10dp"
+            android:layout_weight="0.5"
+            android:background="@color/OrangeOms"
+            android:text="Association Concernée"
+            android:textColor="@color/NoirOms" />
 
-</LinearLayout>
+        <TextView
+            android:id="@+id/txtAssociationConcerne"
+            style="@style/btnStyleBlue"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:clickable="true"
+            android:gravity="center"
+            android:textColor="@color/Blanc" />
+
+        <TextView
+            android:id="@+id/txtPasAssocActu"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="@string/pasAssocActualite"
+            android:textColor="@color/NoirOms"
+            android:textSize="10sp"
+            android:visibility="gone" />
+    </LinearLayout>
+
+</ScrollView>

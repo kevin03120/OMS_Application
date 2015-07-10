@@ -16,17 +16,14 @@ import fr.oms.metier.Equipement;
 
 public class EquipementAdapter extends ArrayAdapter<Equipement> {
 
-	private Context context;
 	
 	public EquipementAdapter(Context context, int resource, List<Equipement> objects) {
 		super(context, resource, objects);
-		this.context = context;
 	}
 	
 	@SuppressLint("ViewHolder")
 	@Override
 	public View getView(int position, View convertView, ViewGroup parent) {
-
 		convertView = LayoutInflater.from(getContext()).inflate(R.layout.item_association_equipement, parent, false);
 		Equipement equipement = getItem(position);
 		TextView nomEquipement = (TextView) convertView.findViewById(R.id.nom_element);
@@ -39,7 +36,6 @@ public class EquipementAdapter extends ArrayAdapter<Equipement> {
 			 item.setBackgroundResource(R.drawable.customborder_alt);
 		 }
 		 ImageView logoNature = (ImageView)convertView.findViewById(R.id.Logo_adherent);		
-
 		 logoNature.setVisibility(0);
 		 String nature = equipement.getNature();
 		 chargeImage(nature, logoNature);

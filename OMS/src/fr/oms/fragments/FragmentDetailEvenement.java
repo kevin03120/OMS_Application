@@ -13,6 +13,7 @@ import android.widget.TextView;
 import fr.oms.activities.FragmentAssociationActivity;
 import fr.oms.activities.FragmentEquipementActivity;
 import fr.oms.activities.R;
+import fr.oms.activities.ZoomImage;
 import fr.oms.metier.Equipement;
 import fr.oms.metier.Evenement;
 import fr.oms.modele.DownloadImageTask;
@@ -21,6 +22,7 @@ import fr.oms.modele.Manager;
 public class FragmentDetailEvenement extends Fragment {
 
 	private Evenement evenement;
+	private ImageView image;
 	
 	public static FragmentDetailEvenement newInstance(Evenement e) {
 		Bundle extras = new Bundle();
@@ -47,33 +49,46 @@ public class FragmentDetailEvenement extends Fragment {
 	private void recupererToutesViews(View v){
 		TextView txtTitre = (TextView)v.findViewById(R.id.txtTitreEvent);
 		txtTitre.setText(evenement.getTitre());
-		ImageView image = (ImageView)v.findViewById(R.id.imgEvent);
-		new DownloadImageTask(image).execute(evenement.getLienImage()+"=?reqwidth=40");
+		image = (ImageView)v.findViewById(R.id.imgEvent);
+		new DownloadImageTask(image).execute(evenement.getLienImage()+"=?reqwidth=200");
 		TextView txtDetailActu = (TextView)v.findViewById(R.id.txtDetailEvent);
 		txtDetailActu.setText(Html.fromHtml(evenement.getDescription()));
 		txtDetailActu.setMovementMethod(LinkMovementMethod.getInstance());
+		TextView txtAssoc = (TextView)v.findViewById(R.id.txtAssociationConcerne);
+		TextView txtLieu1 = (TextView)v.findViewById(R.id.txtLieu1);
+		TextView txtLieu2 = (TextView)v.findViewById(R.id.txtLieu2);
 		if(evenement.getAssociationConcernee() != null){
-			TextView txtAssoc = (TextView)v.findViewById(R.id.txtAssociationConcerne);
-			txtAssoc.setText("Association Concernée : " + evenement.getAssociationConcernee().getNom());
+			txtAssoc.setText(evenement.getAssociationConcernee().getNom());
 			touchAssoc(txtAssoc);
 			txtAssoc.setVisibility(0);
 		}
 		if(!evenement.getLieu1().equals("")){
-			TextView txtLieu1 = (TextView)v.findViewById(R.id.txtLieu1);
-			txtLieu1.setText("Lieu 1 : " + evenement.getLieu1());
+			txtLieu1.setText(evenement.getLieu1());
 			txtLieu1.setVisibility(0);
 		}
 		if(evenement.getLieu2() != null){
-			TextView txtLieu2 = (TextView)v.findViewById(R.id.txtLieu2);
-			txtLieu2.setText("Lieu 2 : " + evenement.getLieu2().getNom());
+			txtLieu2.setText(evenement.getLieu2().getNom());
 			touchLieu2(txtLieu2);
 			txtLieu2.setVisibility(0);
 		}
+		touchImage();
+	}
+	
+
+	
+	private void touchImage(){
+		image.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				Intent i = new Intent(getActivity(), ZoomImage.class);
+				i.putExtra("id", evenement.getId());
+				startActivity(i);
+			}
+		});
 	}
 	
 	private void touchAssoc(TextView v){
 		v.setOnClickListener(new View.OnClickListener() {
-			
 			@Override
 			public void onClick(View v) {
 				Intent intent = new Intent(getActivity(), FragmentAssociationActivity.class);
@@ -89,7 +104,6 @@ public class FragmentDetailEvenement extends Fragment {
 	
 	private void touchLieu2(TextView v){
 		v.setOnClickListener(new View.OnClickListener() {
-			
 			@Override
 			public void onClick(View v) {
 				Equipement lieu = evenement.getLieu2();

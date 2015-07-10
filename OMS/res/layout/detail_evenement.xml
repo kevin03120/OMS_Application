@@ -1,83 +1,122 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:background="@drawable/custom_border_detail_actu_event" >
-    
-    <TextView
-        android:id="@+id/txtTitreEvent"
-        style="?android:listSeparatorTextViewStyle"
+<ScrollView
+        xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_marginTop="10dp"
-        android:layout_weight="2"
-        android:gravity="center"
-        android:text="@string/association"
-        android:textColor="@color/BleuOms"
-        android:textSize="20sp" />
-    
-    <ImageView
-        android:id="@+id/imgEvent"
-        android:layout_width="wrap_content"
-        android:layout_height="0dp"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="5dp"
-        android:layout_weight="0.5"
-        android:contentDescription="@string/evenements"/>
-    
-    <ScrollView
+        android:layout_height="match_parent"
+        android:background="@drawable/custom_border_detail_actu_event">
+
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_marginEnd="5dp"
-        android:layout_marginStart="5dp"
-        android:layout_marginTop="5dp"
-        android:layout_weight="4" >
-        
-	     <TextView
-	        android:id="@+id/txtDetailEvent"
-	        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical" >
+
+        <TextView
+            android:id="@+id/txtTitreEvent"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="2"
+            android:gravity="center"
+            android:text="@string/association"
+            android:textColor="@color/BleuOms"
+            android:textSize="20sp" />
+
+        <ImageView
+            android:id="@+id/imgEvent"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="2dp"
+            android:contentDescription="@string/evenements" />
+
+        <TextView
+            android:id="@+id/infoTitre"
+            style="?android:listSeparatorTextViewStyle"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginBottom="5dp"
+            android:layout_marginTop="10dp"
+            android:layout_weight="0.5"
+            android:background="@color/BleuOms"
+            android:text="Informations"
+            android:textColor="@color/NoirOms" />
+
+        <TextView
+            android:id="@+id/txtDetailEvent"
+            android:background="@drawable/custom_border_text_actu_event"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:ellipsize="marquee"
-            android:focusable="true"
-            android:focusableInTouchMode="true"
-            android:marqueeRepeatLimit="marquee_forever"
             android:text="@string/association"
             android:textColor="@color/NoirOms" />
-     
-     </ScrollView>
-     
-     <TextView
-        android:id="@+id/txtAssociationConcerne"
-        style="@style/btnDetailEventActu"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:gravity="center"
-        android:layout_marginTop="10dp"
-        android:layout_weight="1"
-        android:clickable="true"
-        android:visibility="invisible"
-        android:textColor="@color/NoirOms" />
-     
-     <TextView
-        android:id="@+id/txtLieu1"
-        style="@style/btnDetailEventActu"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:gravity="center"
-        android:layout_weight="1"
-        android:visibility="invisible"
-        android:textColor="@color/NoirOms" />
-     
-     <TextView
-        android:id="@+id/txtLieu2"
-        style="@style/btnDetailEventActu"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:gravity="center"
-        android:layout_weight="1"
-        android:clickable="true"
-        android:visibility="invisible"
-        android:textColor="@color/NoirOms" />
 
-</LinearLayout>
+        <TextView
+            android:id="@+id/assocTitre"
+            style="?android:listSeparatorTextViewStyle"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginBottom="5dp"
+            android:layout_marginTop="10dp"
+            android:layout_weight="0.5"
+            android:background="@color/OrangeOms"
+            android:text="Association Concernée"
+            android:textColor="@color/NoirOms" />
+
+        <TextView
+            android:id="@+id/txtAssociationConcerne"
+            style="@style/btnStyleBlue"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:clickable="true"
+            android:gravity="center"
+            android:textColor="@color/Blanc"
+            android:visibility="invisible" />
+
+        <TextView
+            android:id="@+id/lieuTitre"
+            style="?android:listSeparatorTextViewStyle"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginBottom="5dp"
+            android:layout_marginTop="10dp"
+            android:layout_weight="0.5"
+            android:background="@color/OrangeOms"
+            android:text="Lieu :"
+            android:textColor="@color/NoirOms" />
+
+        <TextView
+            android:id="@+id/txtLieu1"
+            android:background="@drawable/custom_border_text_actu_event"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:textColor="@color/BleuOms"
+            android:visibility="invisible" />
+
+        <TextView
+            android:id="@+id/equipementTitre"
+            style="?android:listSeparatorTextViewStyle"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginBottom="5dp"
+            android:layout_marginTop="10dp"
+            android:layout_weight="0.5"
+            android:background="@color/OrangeOms"
+            android:text="Equipement Concerné :"
+            android:textColor="@color/NoirOms" />
+
+        <TextView
+            android:id="@+id/txtLieu2"
+            style="@style/btnStyleBlue"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:clickable="true"
+            android:gravity="center"
+            android:textColor="@color/Blanc"
+            android:visibility="invisible" />
+    </LinearLayout>
+
+</ScrollView>

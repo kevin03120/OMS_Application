@@ -1,5 +1,9 @@
 package fr.oms.activities;
 
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.TimeUnit;
+import java.util.concurrent.TimeoutException;
+
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
@@ -16,97 +20,113 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import fr.oms.dataloader.JSONTags;
 import fr.oms.dataloader.JsonDataLoader;
-import fr.oms.dataloader.ParserJson;
 
 public class Activity_Chargement extends Activity {
 
 	public static Activity actiCharg;
 	private ProgressBar pgrBar;
 	private TextView txtTitre;
+	private JsonDataLoader loader;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		actiCharg=this;
+		actiCharg=this;		
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
 		setContentView(R.layout.activity_activity__chargement);
 		setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 		txtTitre = (TextView)findViewById(R.id.txtInfo);
 		pgrBar = (ProgressBar)findViewById(R.id.progressBar1);
-		JsonDataLoader loader=JsonDataLoader.getInstance(this, pgrBar, txtTitre);	
-		effectuerConnexion(loader);
+		loader=JsonDataLoader.getInstance(this, pgrBar, txtTitre);	
+		effectuerConnexion();
 		setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
-
-
-		//		if(isNetworkAvailable(this)){
-		//			Manager.getInstance().getTousLesSport(getApplicationContext());
-		//			ParserJson parser=new ParserJson(getApplicationContext(),bar);
-		//		}
-		//		else{
-		//			JSONObject jsObj=JsonDataLoader.getInstance(this).LoadFile(this.getFileStreamPath(JSONTags.FICHIER_ACTUS));
-		//			if(jsObj != null){
-		//				
-		//			}
-		//			else{
-		//				AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
-		//				alertDialogBuilder.setTitle(R.string.detailCo);
-		//				alertDialogBuilder
-		//				.setMessage(getResources().getString(R.string.detailCo))
-		//				.setCancelable(false)
-		//				.setPositiveButton("Fermer l'application",new DialogInterface.OnClickListener() {
-		//					public void onClick(DialogInterface dialog,int id) {
-		//						dialog.dismiss();
-		//						System.exit(0);
-		//					}
-		//				});
-		//				AlertDialog alertDialog = alertDialogBuilder.create();
-		//				alertDialog.show();
-		//			}
-		//		}
-
 	}
 
-	private void effectuerConnexion(JsonDataLoader loader) {
-		if(isNetworkAvailable(this)){		
-			loader.execute(getApplicationContext());				
+	/**
+	 * Méthode permettant de lancer le JsonDataLoader pour récupérer les fichiers
+	 * @param loader 
+	 */
+	private void effectuerConnexion() {
+		if(isNetworkAvailable()){	
+			new Thread(new Runnable() {
+				
+				@Override
+				public void run() {
+					try {
+						loader.execute(getApplicationContext()).get(15000, TimeUnit.MILLISECONDS);
+					} catch (InterruptedException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					} catch (ExecutionException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					} catch (TimeoutException e) {
+						if(actiCharg.getFileStreamPath(JSONTags.FICHIER_ACTUS).exists()){
+							afficherDialogDejaFichier();
+						}else{
+							afficherDialogPasFichier();
+						}
+					}
+					
+				}
+			}).start();
+				
 		}
 		else{
 			if(this.getFileStreamPath(JSONTags.FICHIER_ACTUS).exists()){
-				AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(Activity_Chargement.this);
-				alertDialogBuilder.setTitle(R.string.detailCo);
-				alertDialogBuilder
-				.setMessage(getResources().getString(R.string.detailCo))
-				.setCancelable(false)
-				.setPositiveButton("Annuler la synchronisation",new DialogInterface.OnClickListener() {
-					public void onClick(DialogInterface dialog,int id) {
-						dialog.dismiss();
-						Intent i = new Intent(Activity_Chargement.this, MainActivity.class);
-						startActivity(i);
-					}
-				});
-				AlertDialog alertDialog = alertDialogBuilder.create();
-				alertDialog.show();
+				afficherDialogDejaFichier();
 			}
 			else{
-				AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(Activity_Chargement.this);
-				alertDialogBuilder.setTitle(R.string.detailAucuneDonnees);
-				alertDialogBuilder
-				.setMessage(getResources().getString(R.string.infoAucuneDonnees))
-				.setCancelable(false)
-				.setPositiveButton("Fermer l'application",new DialogInterface.OnClickListener() {
-					public void onClick(DialogInterface dialog,int id) {
-						finish();
-					}
-				});
-				AlertDialog alertDialog = alertDialogBuilder.create();
-				alertDialog.show();
+				afficherDialogPasFichier();
 			}
 		}
 	}
 
-	public boolean isNetworkAvailable( Activity mActivity ) 
+	/**
+	 * Affiche un dialog lorsqu'il n'y a pas de connexion et qu'aucun fichier n'est présent.
+	 */
+	private void afficherDialogPasFichier() {
+		AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(Activity_Chargement.this);
+		alertDialogBuilder.setTitle(R.string.detailAucuneDonnees);
+		alertDialogBuilder
+		.setMessage(getResources().getString(R.string.infoAucuneDonnees))
+		.setCancelable(false)
+		.setPositiveButton("Fermer l'application",new DialogInterface.OnClickListener() {
+			public void onClick(DialogInterface dialog,int id) {
+				finish();
+			}
+		});
+		AlertDialog alertDialog = alertDialogBuilder.create();
+		alertDialog.show();
+	}
+
+	/**
+	 * Affiche un dialog lorsqu'il n'y a pas de connexion et que les fichiers de données sont présent.
+	 */
+	private void afficherDialogDejaFichier() {
+		AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(Activity_Chargement.this);
+		alertDialogBuilder.setTitle(R.string.detailCo);
+		alertDialogBuilder
+		.setMessage(getResources().getString(R.string.detailCo))
+		.setCancelable(false)
+		.setPositiveButton("Annuler la synchronisation",new DialogInterface.OnClickListener() {
+			public void onClick(DialogInterface dialog,int id) {
+				dialog.dismiss();
+				Intent i = new Intent(Activity_Chargement.this, MainActivity.class);
+				startActivity(i);
+			}
+		});
+		AlertDialog alertDialog = alertDialogBuilder.create();
+		alertDialog.show();
+	}
+
+	/**
+	 * Test s'il existe une connexion internet
+	 * @return true si une connexion existe false sinon
+	 */
+	private boolean isNetworkAvailable() 
 	{ 
-		Context context = mActivity.getApplicationContext();
+		Context context = getApplicationContext();
 		ConnectivityManager connectivity = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
 		if (connectivity == null) 
 		{   
@@ -131,20 +151,22 @@ public class Activity_Chargement extends Activity {
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
-		// Inflate the menu; this adds items to the action bar if it is present.
 		getMenuInflater().inflate(R.menu.activity__chargement, menu);
 		return true;
 	}
 
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
-		// Handle action bar item clicks here. The action bar will
-		// automatically handle clicks on the Home/Up button, so long
-		// as you specify a parent activity in AndroidManifest.xml.
 		int id = item.getItemId();
 		if (id == R.id.action_settings) {
 			return true;
 		}
 		return super.onOptionsItemSelected(item);
+	}
+	
+	@Override
+	protected void onStop() {
+		loader.cancel(true);
+		super.onStop();
 	}
 }

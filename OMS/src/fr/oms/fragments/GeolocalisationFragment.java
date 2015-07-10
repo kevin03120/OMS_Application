@@ -28,9 +28,7 @@ public class GeolocalisationFragment extends Fragment {
 		ViewPager viewPager = (ViewPager) view.findViewById(R.id.viewpager);
 		viewPager.setAdapter(new GeolocalisationPagerAdapter(getFragmentManager(),this.getActivity()));
 		viewPager.setCurrentItem(mPage,true);
-		// Give the SlidingTabLayout the ViewPager
 		SlidingTabLayout slidingTabLayout = (SlidingTabLayout) view.findViewById(R.id.sliding_tabs);
-		// Center the tabs in the layout
 		slidingTabLayout.setDistributeEvenly(true);
 		slidingTabLayout.setViewPager(viewPager);
 		return view;

@@ -15,8 +15,11 @@ import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 
 public class FragmentActuActivity extends FragmentActivity {
-
+	/**
+	 * L'actualité à représenter
+	 */
 	private Actualite actualite;
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -25,11 +28,23 @@ public class FragmentActuActivity extends FragmentActivity {
 		getActionBar().setBackgroundDrawable(
 				new ColorDrawable(getResources().getColor(R.color.BleuOms)));
         int pos = getIntent().getExtras().getInt("position");
-        ViewPager pager = (ViewPager) findViewById(R.id.viewPager);
+        initPager(pos);
+	}
+
+	/**
+	 * Initialisation du pager
+	 * @param pos 
+	 */
+	private void initPager(int pos) {
+		ViewPager pager = (ViewPager) findViewById(R.id.viewPager);
         MyPagerAdapter pagerAdapter = new MyPagerAdapter(getSupportFragmentManager());
         pager.setAdapter(pagerAdapter);
-        actualite = Manager.getInstance().getListActualites().get(pos);
-        pager.setCurrentItem(pos);
+        for(Actualite a : Manager.getInstance().getListActualites()){
+        	if(a.getId() == pos){
+        		actualite = a;
+        	}
+        }
+        pager.setCurrentItem(Manager.getInstance().getListActualites().indexOf(actualite));
 	}
 	
 	private class MyPagerAdapter extends FragmentPagerAdapter {
