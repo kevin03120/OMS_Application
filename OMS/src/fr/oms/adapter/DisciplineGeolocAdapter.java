@@ -4,12 +4,10 @@ import java.util.List;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
-import android.location.Location;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import fr.oms.activities.R;
@@ -22,8 +20,8 @@ public class DisciplineGeolocAdapter extends ArrayAdapter<Discipline> {
 	
 	public DisciplineGeolocAdapter(Context context, int resource, List<Discipline> objects, double uneLatitude, double uneLongitude) {
 		super(context, resource, objects);
-		latitudeUser = uneLatitude;
-		longitudeUser = uneLongitude;
+		setLatitudeUser(uneLatitude);
+		setLongitudeUser(uneLongitude);
 	}
 	
 	@SuppressLint("ViewHolder")
@@ -41,6 +39,22 @@ public class DisciplineGeolocAdapter extends ArrayAdapter<Discipline> {
 			item.setBackgroundResource(R.drawable.customborder_orange);
 		}
 		return convertView;
+	}
+
+	public double getLatitudeUser() {
+		return latitudeUser;
+	}
+
+	public void setLatitudeUser(double latitudeUser) {
+		this.latitudeUser = latitudeUser;
+	}
+
+	public double getLongitudeUser() {
+		return longitudeUser;
+	}
+
+	public void setLongitudeUser(double longitudeUser) {
+		this.longitudeUser = longitudeUser;
 	}
 	
 	
