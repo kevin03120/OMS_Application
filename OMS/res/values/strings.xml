@@ -41,11 +41,12 @@
     <string name="contactNonDispo" translatable="false">Aucun contact disponible</string>
     <string name="equipementNonDispo" translatable="false">Aucun equipement disponible</string>
     <string name="agenda" translatable="false">Agenda</string>
-    <string name="titreDetailAssociation" translatable="false">Détail de l\'association</string>
-    <string name="titreDetailEquipement" translatable="false">Détail de l\'équipement</string>
-    <string name="titreDetailActualite" translatable="false">Détail de l\'actualité</string>
-    <string name="titreDetailEvenement" translatable="false">Détail de l\'evenement</string>
-    <string name="goSite" translatable="false"><u>Plus d\'informations : site Internet de l\'OMS</u></string>
+    <string name="titreDetailAssociation" translatable="false">Détail d\'une association</string>
+    <string name="titreDetailEquipement" translatable="false">Détail d\'un équipement</string>
+    <string name="titreDetailActualite" translatable="false">Détail d\'une actualité</string>
+    <string name="titreDetailEvenement" translatable="false">Détail d\'un evenement</string>
+    <string name="titreDetailDiscipline" translatable="false">Détail d\'une discipline</string>
+    <string name="goSite" translatable="false"><u>Site Internet OMS</u></string>
     <string name="drawer_open" translatable="false">Open navigation drawer</string>
     <string name="drawer_close" translatable="false">Close navigation drawer</string>
     <string name="lien_site_OMS" translatable="false">http://www.oms-clermont-ferrand.fr/</string>
@@ -66,6 +67,8 @@
 	<string name="recherche_equipement" translatable="false">Rechercher un equipement</string>
 	<string name="detailAucuneDonnees" translatable="false">Aucune donnée accessible</string>
 	<string name="infoAucuneDonnees" translatable="false">Pas de connexion Internet ! \n Aucune donnée téléchargée et accessible.</string>
+	<string name="sports" translatable="false">Liste des sports</string>
+    <string name="pasAssocDiscipline" translatable="false">Aucune association pour cette discipline</string>
 	<string name="recherche_actu" translatable="false">Rechercher une actualite</string>
 	<string name="recherche_event" translatable="false">Rechercher un evenement</string>
 	<string name="pasAssocActualite" translatable="false">Aucune association liée à cet équipement.</string>

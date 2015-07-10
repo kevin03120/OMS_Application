@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/header"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <TextView
+        android:id="@+id/nomDiscipline"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="5dp"
+        android:layout_weight="0.2"
+        android:gravity="center"
+        android:textSize="18sp"
+        android:textStyle="bold|italic" />
+
+    <TextView
+        style="?android:listSeparatorTextViewStyle"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="10dp"
+        android:layout_weight="0.1"
+        android:background="@color/VertOms"
+        android:text="@string/sports"
+        android:textColor="@color/NoirOms" />
+
+	<TextView
+	    android:id="@+id/listeSports"
+	    android:layout_width="match_parent"
+	    android:layout_height="match_parent"
+	    android:textColor="@color/NoirOms"
+	    android:gravity="center" />
+
+    <TextView
+        style="?android:listSeparatorTextViewStyle"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="10dp"
+        android:layout_weight="0.1"
+        android:background="@color/BleuOms"
+        android:text="@string/geolocalisation"
+        android:textColor="@color/NoirOms" />
+
+    <Button
+        android:id="@+id/btn_map"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_gravity="center"
+        android:background="@drawable/ic_geoloc"
+        android:gravity="center" />
+
+    <TextView
+        android:id="@+id/lesAssociations"
+        style="?android:listSeparatorTextViewStyle"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="10dp"
+        android:layout_weight="0.1"
+        android:background="@color/OrangeOms"
+        android:text="@string/associationPratiquantes"
+        android:textColor="@color/NoirOms"
+        android:textSize="15sp" />
+
+    <TextView
+        android:id="@+id/txtPasAssoc"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.1"
+        android:gravity="center"
+        android:text="@string/pasAssocDiscipline"
+        android:textColor="@color/NoirOms"
+        android:textSize="10sp" />
+    
+</LinearLayout>

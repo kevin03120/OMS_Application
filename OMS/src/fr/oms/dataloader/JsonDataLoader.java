@@ -99,6 +99,7 @@ public class JsonDataLoader extends AsyncTask<Context, Void, Void> implements iL
 		if(download){
 			Intent intent=new Intent(context, MainActivity.class);
 			context.startActivity(intent);
+			Activity_Chargement.actiCharg.finish();
 		}else{
 			if(this.context.getFileStreamPath(JSONTags.FICHIER_ACTUS).exists()){
 				afficherDialogDejaFichier();
