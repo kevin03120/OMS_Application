@@ -62,8 +62,7 @@
            android:layout_weight="0.1"
            android:gravity="center"
            android:textStyle="bold"
-           android:text="Contact"
-            android:textColor="@color/BlackDrawer"
+           android:textColor="@color/BlackDrawer"
            android:textSize="15sp" />
        
        <TextView
@@ -73,7 +72,6 @@
            android:layout_weight="0.1"
            android:gravity="center"
            android:textStyle="bold"
-           android:text="Contact"
            android:textColor="@color/BlackDrawer"
            android:textSize="15sp" />
            
@@ -94,7 +92,7 @@
            android:layout_height="0dp"
            android:layout_weight="0.1"
            android:background="@color/BleuOms"
-           android:text="Horaire"
+           android:text="Horaires"
            android:textColor="@color/BlackDrawer" />
       
         <TextView
@@ -103,7 +101,6 @@
             android:layout_height="0dp"
             android:layout_weight="0.5"
             android:gravity="center"
-            android:text="Contact"
             android:textColor="@color/BlackDrawer"
             android:textSize="15sp" />
         
@@ -113,7 +110,7 @@
      	    android:layout_height="0dp"
      	    android:layout_weight="0.1"
      	    android:background="@color/OrangeOms"
-     	    android:text="Equipement où ils pratiquent"
+     	    android:text="Lieux de pratique"
      	    android:textColor="@color/BlackDrawer" />
 	        
      	<LinearLayout

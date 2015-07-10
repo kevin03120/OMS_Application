@@ -157,14 +157,14 @@ public class FragmentAssociation extends Fragment {
 				nomContact.setVisibility(4);
 			}
 			if(!pers.getTelFixe().equals("")){
-				telFixContact.setText("Telephone Fix : " + pers.getTelFixe());
+				telFixContact.setText("Telephone : " + pers.getTelFixe());
 			}
 			else{
 				//telFixContact.setText("Telephone Fix inconnu");
 				telFixContact.setVisibility(4);
 			}
 			if(!pers.getTelPortable().equals("")){
-				telPortContact.setText("Telephone Portable : " + pers.getTelPortable());
+				telPortContact.setText("Telephone : " + pers.getTelPortable());
 			}
 			else{
 				//telPortContact.setText("Telephone Portable inconnu");

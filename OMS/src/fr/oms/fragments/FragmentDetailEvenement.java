@@ -13,7 +13,6 @@ import android.widget.TextView;
 import fr.oms.activities.FragmentAssociationActivity;
 import fr.oms.activities.FragmentEquipementActivity;
 import fr.oms.activities.R;
-import fr.oms.activities.ZoomImage;
 import fr.oms.metier.Equipement;
 import fr.oms.metier.Evenement;
 import fr.oms.modele.DownloadImageTask;
@@ -71,20 +70,6 @@ public class FragmentDetailEvenement extends Fragment {
 			touchLieu2(txtLieu2);
 			txtLieu2.setVisibility(0);
 		}
-		touchImage();
-	}
-	
-
-	
-	private void touchImage(){
-		image.setOnClickListener(new View.OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				Intent i = new Intent(getActivity(), ZoomImage.class);
-				i.putExtra("id", evenement.getId());
-				startActivity(i);
-			}
-		});
 	}
 	
 	private void touchAssoc(TextView v){

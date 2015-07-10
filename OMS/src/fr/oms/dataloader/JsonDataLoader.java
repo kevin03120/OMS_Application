@@ -24,7 +24,6 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.AsyncTask;
-import android.os.Bundle;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import fr.oms.activities.Activity_Chargement;
@@ -135,7 +134,7 @@ public class JsonDataLoader extends AsyncTask<Context, Void, Void> implements iL
 			}
 			try{
 				connect = (HttpURLConnection) url.openConnection();
-				connect.setConnectTimeout(10);
+				connect.setConnectTimeout(5000);
 				is = connect.getInputStream();
 				//System.out.println(connect.getResponseCode());
 			} catch (java.net.SocketTimeoutException e) {

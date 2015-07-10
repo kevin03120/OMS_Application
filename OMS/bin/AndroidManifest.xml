@@ -63,7 +63,6 @@
             </intent-filter>
         </activity>
         <activity android:name="MapEquipementsProches"></activity>
-        <activity android:name="ZoomImage"></activity>
     </application>
 
 </manifest>

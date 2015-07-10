@@ -57,6 +57,7 @@ public class MainActivity extends FragmentActivity implements NavigationDrawerFr
 		mTitle = getTitle();
 		mDrawerLayout=(DrawerLayout) findViewById(R.id.drawer_layout);
 		mNavigationDrawerFragment.setUp(R.id.navigation_drawer, mDrawerLayout);
+		mDrawerLayout.openDrawer(mNavigationDrawerFragment.getView());
 	}
 
 	@Override

@@ -53,7 +53,7 @@ public class Activity_Chargement extends Activity {
 				@Override
 				public void run() {
 					try {
-						loader.execute(getApplicationContext()).get(15000, TimeUnit.MILLISECONDS);
+						loader.execute(getApplicationContext()).get(30000, TimeUnit.MILLISECONDS);
 					} catch (InterruptedException e) {
 						// TODO Auto-generated catch block
 						e.printStackTrace();
