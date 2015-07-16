@@ -73,6 +73,10 @@
             android:name=".MentionsActivity"
             android:label="@string/title_activity_mentions" >
         </activity>
+        <activity
+            android:name=".ParametresActivity"
+            android:label="@string/title_activity_parametres" >
+        </activity>
     </application>
 
 </manifest>

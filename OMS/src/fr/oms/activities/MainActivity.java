@@ -225,6 +225,10 @@ public class MainActivity extends FragmentActivity implements NavigationDrawerFr
 			Intent intent=new Intent(this,MentionsActivity.class);
 			startActivity(intent);
 		}
+		else if(item.getItemId() == R.id.parametres){
+			Intent intent=new Intent(this,ParametresActivity.class);
+			startActivity(intent);
+		}
 		return super.onOptionsItemSelected(item);
 	}
 
