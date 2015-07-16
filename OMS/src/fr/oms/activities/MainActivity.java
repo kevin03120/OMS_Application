@@ -222,8 +222,6 @@ public class MainActivity extends FragmentActivity implements NavigationDrawerFr
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
 		if(item.getItemId() == R.id.mentions){
-			Intent intent=new Intent(this,MentionsActivity.class);
-			startActivity(intent);
 		}
 		return super.onOptionsItemSelected(item);
 	}
