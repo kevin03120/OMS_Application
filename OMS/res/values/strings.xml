@@ -90,5 +90,9 @@
     <string name="title_activity_mentions" translatable="false">MentionsActivity</string>
     <string name="conditions_generales" translatable="false">Conditions Générales d\'utilisation</string>
     <string name="infos_editeur" translatable="false">Informations Editeurs</string>
+    <string name="title_activity_parametres">Paramètres</string>
+    <string name="maj_auto">Activer la mise à jour automatique</string>
+    <string name="faire_maj">Effectuer mise à jour</string>
+    <string name="necessite_redem">(Nécessite le redemarrage de l\'application)</string>
 
 </resources>
