@@ -83,4 +83,8 @@
 	<string name="btn_tuto_ok" translatable="false">OK</string>
 	<string name="detail_server_short" translatable="false">Serveur en maintenance</string>
 	<string name="detail_server_long" translatable="false">Serveur en maintenance. La dernière mise à jour n\'as pas pu être installé.</string>
+	<string name="option_parametre" translatable="false">Paramètres</string>
+	<string name="option_guide" translatable="false">Guide des sports</string>
+	<string name="option_mentions" translatable="false">Mentions légales</string>
+	
 </resources>
