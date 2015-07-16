@@ -3,6 +3,7 @@ package fr.oms.activities;
 
 
 import android.app.ActionBar;
+import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.content.res.Resources;
 import android.graphics.drawable.ColorDrawable;
@@ -14,6 +15,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.widget.DrawerLayout;
 import android.util.Log;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.widget.Toast;
 import fr.oms.dataloader.JSONTags;
 import fr.oms.dataloader.ParserJson;
@@ -215,6 +217,15 @@ public class MainActivity extends FragmentActivity implements NavigationDrawerFr
 			return true;
 		}
 		return super.onCreateOptionsMenu(menu);
+	}
+	
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		if(item.getItemId() == R.id.mentions){
+			Intent intent=new Intent(this,MentionsActivity.class);
+			startActivity(intent);
+		}
+		return super.onOptionsItemSelected(item);
 	}
 
 	@Override

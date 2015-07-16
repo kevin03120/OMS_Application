@@ -8,9 +8,23 @@
         android:icon="@drawable/ic_launcher"
         android:title="@string/action_example"/>
     <item
-        android:id="@+id/action_settings"
+        android:id="@+id/parametres"
         android:orderInCategory="100"
         android:showAsAction="never"
-        android:title="@string/action_settings"/>
+        android:title="@string/option_parametre"/>
+    
+    <item
+        android:id="@+id/guide_oms"
+        android:orderInCategory="100"
+        android:showAsAction="never"
+        android:title="@string/option_guide"/>
+    
+      <item
+        android:id="@+id/mentions"
+        android:orderInCategory="100"
+        android:showAsAction="never"
+        android:title="@string/option_mentions"/>
+    
+    
 
 </menu>

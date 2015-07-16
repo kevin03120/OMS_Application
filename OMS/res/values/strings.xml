@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
     <string name="app_name" translatable="false">OMS</string>
     <string name="search" translatable="false">Chercher</string>
     <string name="action_example" translatable="false">Site de l\'OMS</string>
@@ -67,20 +68,27 @@
     <string name="chargementFichier" translatable="false">Chargement des fichiers</string>
     <string name="Recuperation_donnees" translatable="false">Recuperation des données</string>
     <string name="recherche_assoc" translatable="false">Rechercher une association</string>
-	<string name="recherche_equipement" translatable="false">Rechercher un équipement</string>
-	<string name="detailAucuneDonnees" translatable="false">Aucune donnée accessible</string>
-	<string name="infoAucuneDonnees" translatable="false">Pas de connexion Internet ! \n Aucune donnée téléchargée et accessible.</string>
-	<string name="sports" translatable="false">Liste des sports</string>
+    <string name="recherche_equipement" translatable="false">Rechercher un équipement</string>
+    <string name="detailAucuneDonnees" translatable="false">Aucune donnée accessible</string>
+    <string name="infoAucuneDonnees" translatable="false">Pas de connexion Internet ! \n Aucune donnée téléchargée et accessible.</string>
+    <string name="sports" translatable="false">Liste des sports</string>
     <string name="pasAssocDiscipline" translatable="false">Aucune association pour cette discipline</string>
-	<string name="recherche_actu" translatable="false">Rechercher une actualite</string>
-	<string name="recherche_event" translatable="false">Rechercher un événement</string>
-	<string name="pasAssocActualite" translatable="false">Aucune association liée à cet équipement.</string>
-	<string name="txt_geo_load" translatable="false">Recherche ...</string>
-	<string name="btn_go" translatable="false">GO !</string>
-	<string name="txt_tuto" translatable="false">Tuto</string>
-	<string name="msg_bienvenue" translatable="false">Bienvenue sur l\'application de l\'OMS</string>
-	<string name="msg_tuto_menu" translatable="false">Utilisez le menu à gauche pour naviguer</string>
-	<string name="btn_tuto_ok" translatable="false">OK</string>
-	<string name="detail_server_short" translatable="false">Serveur en maintenance</string>
-	<string name="detail_server_long" translatable="false">Serveur en maintenance. La dernière mise à jour n\'as pas pu être installé.</string>
+    <string name="recherche_actu" translatable="false">Rechercher une actualite</string>
+    <string name="recherche_event" translatable="false">Rechercher un événement</string>
+    <string name="pasAssocActualite" translatable="false">Aucune association liée à cet équipement.</string>
+    <string name="txt_geo_load" translatable="false">Recherche ...</string>
+    <string name="btn_go" translatable="false">GO !</string>
+    <string name="txt_tuto" translatable="false">Tuto</string>
+    <string name="msg_bienvenue" translatable="false">Bienvenue sur l\'application de l\'OMS</string>
+    <string name="msg_tuto_menu" translatable="false">Utilisez le menu à gauche pour naviguer</string>
+    <string name="btn_tuto_ok" translatable="false">OK</string>
+    <string name="detail_server_short" translatable="false">Serveur en maintenance</string>
+    <string name="detail_server_long" translatable="false">Serveur en maintenance. La dernière mise à jour n\'as pas pu être installé.</string>
+    <string name="option_parametre" translatable="false">Paramètres</string>
+    <string name="option_guide" translatable="false">Guide des sports</string>
+    <string name="option_mentions" translatable="false">Mentions légales</string>
+    <string name="title_activity_mentions" translatable="false">MentionsActivity</string>
+    <string name="conditions_generales" translatable="false">Conditions Générales d\'utilisation</string>
+    <string name="infos_editeur" translatable="false">Informations Editeurs</string>
+
 </resources>
