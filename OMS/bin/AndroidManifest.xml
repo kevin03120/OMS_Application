@@ -13,7 +13,6 @@
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-    
 
     <uses-feature
         android:glEsVersion="0x00020000"
@@ -29,45 +28,51 @@
             android:value="@integer/google_play_services_version" />
 
         <activity
-            android:name=".MainActivity" 
+            android:name=".MainActivity"
             android:label="@string/app_name" >
-            
         </activity>
         <activity
             android:name=".FragmentAssociationActivity"
             android:theme="@style/Theme.Vert_oms" >
         </activity>
-        <activity android:name=".FragmentActuActivity"
+        <activity
+            android:name=".FragmentActuActivity"
             android:theme="@style/Theme.Bleu_oms" >
         </activity>
-        <activity android:name=".FragmentEventActivity"
+        <activity
+            android:name=".FragmentEventActivity"
             android:theme="@style/Theme.Bleu_oms" >
         </activity>
-        <activity android:name=".FragmentEquipementActivity"
+        <activity
+            android:name=".FragmentEquipementActivity"
             android:theme="@style/Theme.Vert_oms" >
         </activity>
-        <activity android:name=".FragmentDisciplineActivity"
+        <activity
+            android:name=".FragmentDisciplineActivity"
             android:theme="@style/Theme.Vert_oms" >
-            
         </activity>
-        
+
         <meta-data
             android:name="com.google.android.geo.API_KEY"
-            android:value="AIzaSyBFukrFWXeaBl9BTa8dlCU1WMAPQUXzAF8" />
+            android:value="AIzaSyA2oTsok49uQ8JoRLt641CwNZBvRSIScBs" />
 
         <activity android:name=".MapPane" >
         </activity>
-        
-        <activity
-            android:name=".Activity_Chargement" >
-              <intent-filter>
+        <activity android:name=".Activity_Chargement" >
+            <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="MapEquipementsProches"></activity>
-        <activity android:name="MapEquipementsDisciplineProches"></activity>
+        <activity android:name=".MapEquipementsProches" >
+        </activity>
+        <activity android:name=".MapEquipementsDisciplineProches" >
+        </activity>
+        <activity
+            android:name=".MentionsActivity"
+            android:label="@string/title_activity_mentions" >
+        </activity>
     </application>
 
 </manifest>

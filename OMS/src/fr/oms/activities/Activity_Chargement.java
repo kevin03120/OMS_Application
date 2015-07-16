@@ -114,6 +114,7 @@ public class Activity_Chargement extends Activity {
 				dialog.dismiss();
 				Intent i = new Intent(Activity_Chargement.this, MainActivity.class);
 				startActivity(i);
+				finish();
 			}
 		});
 		AlertDialog alertDialog = alertDialogBuilder.create();
