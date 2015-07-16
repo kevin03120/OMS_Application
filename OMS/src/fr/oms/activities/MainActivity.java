@@ -40,6 +40,7 @@ public class MainActivity extends FragmentActivity implements NavigationDrawerFr
 		Manager.getInstance().clearDonnees();
 		setContentView(R.layout.activity_main);
 		Manager.getInstance().getTousLesSport(getApplicationContext());
+		
 		if(this.getFileStreamPath(JSONTags.FICHIER_ACTUS).exists()){
 			ParserJson parser=new ParserJson(getApplicationContext());
 			parser.effectuerParsing();

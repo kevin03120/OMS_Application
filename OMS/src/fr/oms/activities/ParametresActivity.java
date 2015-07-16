@@ -24,17 +24,27 @@ public class ParametresActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_parametres);
+		final SharedPreferences prefs = getSharedPreferences(
+				"fr.oms.activities", Context.MODE_PRIVATE);
+		
 		effectuerMaj=(Button) findViewById(R.id.effectuer_maj);
 		redem=(TextView) findViewById(R.id.redemar);
 		box=(CheckBox) findViewById(R.id.chek_maj);
+		box.setChecked(prefs.getBoolean("MAJ", true));
+		if(!prefs.getBoolean("MAJ", true)){
+			effectuerMaj.setVisibility(View.VISIBLE);
+			redem.setVisibility(View.VISIBLE);
+		}else{
+			effectuerMaj.setVisibility(View.GONE);
+			redem.setVisibility(View.GONE);
+		}
 		box.setOnCheckedChangeListener(new OnCheckedChangeListener() {
 
 			@Override
 			public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {				
 
-				SharedPreferences prefs = getSharedPreferences(
-						"fr.oms.activities", Context.MODE_PRIVATE);
-				prefs.edit().putBoolean("MAJ", isChecked);
+				
+				prefs.edit().putBoolean("MAJ", isChecked).apply();
 				if(!isChecked){
 					effectuerMaj.setVisibility(View.VISIBLE);
 					redem.setVisibility(View.VISIBLE);
