@@ -186,10 +186,10 @@ public class FragmentAssociation extends Fragment {
 			horaire.setVisibility(4);
 		}
 		if(association.getListeEquipement() != null){
-			equipement1.setText(association.getListeEquipement().get(0).getNom());
+			equipement1.setText(association.getListeEquipement().get(0).getNom() + "\n" + association.getListeEquipement().get(0).getAdresse());
 			onMap1();
 			if(association.getListeEquipement().size() == 2){
-				equipement2.setText(association.getListeEquipement().get(1).getNom());
+				equipement2.setText(association.getListeEquipement().get(1).getNom() + "\n" + association.getListeEquipement().get(1).getAdresse());
 				onMap2();
 			}
 			else {

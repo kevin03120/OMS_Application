@@ -126,7 +126,7 @@
 		        android:layout_weight="1"
 		        android:gravity="center"
 		        android:text="Contact"
-		         android:textColor="@color/BlackDrawer"
+		        android:textColor="@color/BlackDrawer"
 		        android:textSize="15sp" />
 		   		
 		   	<Button
