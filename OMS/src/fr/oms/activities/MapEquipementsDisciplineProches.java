@@ -44,7 +44,7 @@ public class MapEquipementsDisciplineProches extends Activity implements OnMapRe
 	        	LatLng geolocEquipement = new LatLng(Double.parseDouble(e.getGeoloc().getLatitude()), Double.parseDouble(e.getGeoloc().getLongitude()));
 	        
 	        	map.addMarker(new MarkerOptions()
-	            .title(e.getNom()+ " \n " +"(cliquez pour aller)")
+	            .title(e.getNom())
 	            .position(geolocEquipement));
 	        	map.getUiSettings().setMapToolbarEnabled(true);
         }

@@ -53,7 +53,7 @@
         
         <meta-data
             android:name="com.google.android.geo.API_KEY"
-            android:value="AIzaSyBFukrFWXeaBl9BTa8dlCU1WMAPQUXzAF8" />
+            android:value="AIzaSyA2oTsok49uQ8JoRLt641CwNZBvRSIScBs" />
 
         <activity android:name=".MapPane" >
         </activity>
