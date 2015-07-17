@@ -179,6 +179,12 @@ public class MainActivity extends FragmentActivity implements NavigationDrawerFr
 			getActionBar().setBackgroundDrawable(
 					new ColorDrawable((getResources().getColor(R.color.JauneFlat))));
 			break;
+			
+		default:
+			fragment = new AccueilFragment();
+			getActionBar().setBackgroundDrawable(
+					new ColorDrawable(getResources().getColor(R.color.Rouge1)));
+			break;
 		
 		}
 
@@ -235,7 +241,7 @@ public class MainActivity extends FragmentActivity implements NavigationDrawerFr
 
 		case 14: return r.getString(R.string.parametres);
 		
-		case 15: return r.getString(R.string.Guide_Sport);
+		case 15: return r.getString(R.string.guide_sport);
 		
 		case 16: return r.getString(R.string.mentions);
 
