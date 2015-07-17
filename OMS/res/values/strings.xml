@@ -93,7 +93,7 @@
     <string name="title_activity_parametres">Paramètres</string>
     <string name="maj_auto">Activer la mise à jour automatique</string>
     <string name="faire_maj">Effectuer mise à jour</string>
-    <string name="necessite_redem">(Nécessite le redemarrage de l\'application)</string>
+    <string name="necessite_redem">(Nécessite le redémarrage de l\'application)</string>
     <string name="autres_underline" translatable="false"><u>Autres</u></string>
     <string name="autres" translatable="false">Autres</string>
     <string name="parametres">Paramètres</string>
