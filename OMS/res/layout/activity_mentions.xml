@@ -33,13 +33,13 @@
             android:textColor="@color/BleuOms"
             android:textStyle="bold|italic"
             android:textSize="16sp"
-            android:text="@string/conditions_generales" />
+            android:text="@string/conditions" />
         
         <TextView 
             android:id="@+id/txt_conditions"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="16dp"/>
+            android:textSize="16sp"/>
         
           
         <TextView
@@ -50,14 +50,45 @@
             android:textColor="@color/BleuOms"
             android:textStyle="bold|italic"
             android:textSize="16sp"
-            android:text="@string/infos_editeur" />
+            android:text="@string/info_editeur" />
         
          <TextView 
             android:id="@+id/txt_editeur"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="16dp"/>
+            android:textSize="16sp"/>
+         
+         <TextView
+            android:paddingTop="20dp"
+            android:paddingBottom="20dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/BleuOms"
+            android:textStyle="bold|italic"
+            android:textSize="16sp"
+            android:text="@string/info_technique" />
         
+         <TextView 
+            android:id="@+id/txt_technique"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="16sp"/>
+        
+         <TextView
+            android:paddingTop="20dp"
+            android:paddingBottom="20dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/BleuOms"
+            android:textStyle="bold|italic"
+            android:textSize="16sp"
+            android:text="@string/info_juridique" />
+        
+         <TextView 
+            android:id="@+id/txt_juridique"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="16sp"/>
         </LinearLayout>
 
        

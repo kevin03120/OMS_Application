@@ -244,32 +244,6 @@ public class MainActivity extends FragmentActivity implements NavigationDrawerFr
 	}
 
 	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-			getMenuInflater().inflate(R.menu.main, menu);
-			restoreActionBar();
-			return true;
-	}
-	
-	@Override
-	public boolean onOptionsItemSelected(MenuItem item) {
-		if(item.getItemId() == R.id.mentions){
-			Intent intent=new Intent(this,MentionsActivity.class);
-			startActivity(intent);
-		}
-		else if(item.getItemId() == R.id.parametres){
-			Intent intent=new Intent(this,ParametresActivity.class);
-			startActivity(intent);
-		}
-		else if(item.getItemId() == R.id.guide_oms){
-			String url = getResources().getString(R.string.lien_guide_sport);
-			Intent i = new Intent(Intent.ACTION_VIEW);
-			i.setData(Uri.parse(url));
-			startActivity(i);
-		}
-		return super.onOptionsItemSelected(item);
-	}
-
-	@Override
 	public void onBackPressed() {
 		mDrawerLayout.openDrawer(mNavigationDrawerFragment.getView());
 		if(mDrawerLayout.isDrawerOpen(mNavigationDrawerFragment.getView())){
