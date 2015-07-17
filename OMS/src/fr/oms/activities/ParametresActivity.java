@@ -2,7 +2,6 @@ package fr.oms.activities;
 
 import android.app.Activity;
 import android.content.Context;
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.os.Bundle;
@@ -55,20 +54,7 @@ public class ParametresActivity extends Activity {
 				}
 			}
 		});
-		clicEffectueMAJ();
-	}
-	
-	private void clicEffectueMAJ(){
-		effectuerMaj.setOnClickListener(new View.OnClickListener() {
-			
-			@Override
-			public void onClick(View v) {
-				Intent i = new Intent(ParametresActivity.this, Activity_Chargement.class);
-				i.putExtra("MAJ", true);
-				startActivity(i);
-				finish();
-			}
-		});
+		
 	}
 
 	@Override
