@@ -97,7 +97,14 @@ public class NavigationDrawerFragment extends Fragment {
 		navDrawerItems.add(new NavDrawerItem(r.getString(R.string.localise_association)));
 		navDrawerItems.add(new NavDrawerItem(r.getString(R.string.localise_equipement)));
 		navDrawerItems.add(new NavDrawerItem(r.getString(R.string.localise_discipline)));
+		
+		navDrawerItems.add(new NavDrawerItem(r.getString(R.string.autres_underline), android.R.drawable.ic_menu_preferences,R.drawable.custom_btn_yellow));
+		navDrawerItems.add(new NavDrawerItem(r.getString(R.string.parametres), 0, 0));
+		navDrawerItems.add(new NavDrawerItem(r.getString(R.string.Guide_Sport), 0, 0));
+		navDrawerItems.add(new NavDrawerItem(r.getString(R.string.mentions), 0,  0));
 		mDrawerListView.setAdapter(new NavDrawerListAdapter(getActivity(), navDrawerItems));
+		mDrawerListView.setTranscriptMode(ListView.TRANSCRIPT_MODE_ALWAYS_SCROLL);
+		mDrawerListView.setStackFromBottom(true);
 		mDrawerListView.setItemChecked(mCurrentSelectedPosition, true);
 	}
 

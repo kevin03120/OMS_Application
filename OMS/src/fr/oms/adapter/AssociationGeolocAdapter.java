@@ -1,7 +1,5 @@
 package fr.oms.adapter;
 
-import java.math.RoundingMode;
-import java.text.DecimalFormat;
 import java.util.List;
 
 import fr.oms.activities.R;

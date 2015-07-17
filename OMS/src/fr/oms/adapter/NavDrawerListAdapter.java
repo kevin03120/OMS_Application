@@ -65,6 +65,10 @@ public class NavDrawerListAdapter extends BaseAdapter {
         if(txtTitle.getText()==r.getString(R.string.geolocalisation_underline)){
         	txtTitle.setTextAppearance(context, R.style.TextItemNavTitreGeoloc);
         }
+        if((txtTitle.getText()==r.getString(R.string.parametres))||(txtTitle.getText()==r.getString(R.string.Guide_Sport))||(txtTitle.getText()==r.getString(R.string.mentions))){
+        	layout.setBackgroundResource(navDrawerItems.get(position).getmColor());
+        	imgIcon.setVisibility(View.INVISIBLE);
+        }
         return convertView;
     }
 

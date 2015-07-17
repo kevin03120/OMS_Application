@@ -1,33 +1,36 @@
-package fr.oms.activities;
+package fr.oms.fragments;
 
-import android.app.Activity;
+import fr.oms.activities.Activity_Chargement;
+import fr.oms.activities.R;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.TextView;
+import android.widget.CompoundButton.OnCheckedChangeListener;
 
-public class ParametresActivity extends Activity {
+public class ParametreFragment extends Fragment {
 
 	private CheckBox box;
 	private Button effectuerMaj;
 	private TextView redem;
 
 	@Override
-	protected void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_parametres);
-		final SharedPreferences prefs = getSharedPreferences(
+	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+		View v = inflater.inflate(R.layout.activity_parametres, container,false);
+		final SharedPreferences prefs = getActivity().getSharedPreferences(
 				"fr.oms.activities", Context.MODE_PRIVATE);
 		
-		effectuerMaj=(Button) findViewById(R.id.effectuer_maj);
-		redem=(TextView) findViewById(R.id.redemar);
-		box=(CheckBox) findViewById(R.id.chek_maj);
+		effectuerMaj=(Button) v.findViewById(R.id.effectuer_maj);
+		redem=(TextView) v.findViewById(R.id.redemar);
+		box=(CheckBox) v.findViewById(R.id.chek_maj);
 		box.setChecked(prefs.getBoolean("MAJ", true));
 		if(!prefs.getBoolean("MAJ", true)){
 			effectuerMaj.setVisibility(View.VISIBLE);
@@ -53,6 +56,7 @@ public class ParametresActivity extends Activity {
 			}
 		});
 		clicEffectueMAJ();
+		return v;
 	}
 	
 	private void clicEffectueMAJ(){
@@ -60,11 +64,12 @@ public class ParametresActivity extends Activity {
 			
 			@Override
 			public void onClick(View v) {
-				Intent i = new Intent(ParametresActivity.this, Activity_Chargement.class);
+				Intent i = new Intent(ParametreFragment.this.getActivity(), Activity_Chargement.class);
 				i.putExtra("MAJ", true);
 				startActivity(i);
-				finish();
+				getActivity().finish();
 			}
 		});
 	}
+	
 }
