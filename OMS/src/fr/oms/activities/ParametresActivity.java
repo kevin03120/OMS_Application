@@ -2,6 +2,7 @@ package fr.oms.activities;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.os.Bundle;
@@ -24,17 +25,27 @@ public class ParametresActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_parametres);
+		final SharedPreferences prefs = getSharedPreferences(
+				"fr.oms.activities", Context.MODE_PRIVATE);
+		
 		effectuerMaj=(Button) findViewById(R.id.effectuer_maj);
 		redem=(TextView) findViewById(R.id.redemar);
 		box=(CheckBox) findViewById(R.id.chek_maj);
+		box.setChecked(prefs.getBoolean("MAJ", true));
+		if(!prefs.getBoolean("MAJ", true)){
+			effectuerMaj.setVisibility(View.VISIBLE);
+			redem.setVisibility(View.VISIBLE);
+		}else{
+			effectuerMaj.setVisibility(View.GONE);
+			redem.setVisibility(View.GONE);
+		}
 		box.setOnCheckedChangeListener(new OnCheckedChangeListener() {
 
 			@Override
 			public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {				
 
-				SharedPreferences prefs = getSharedPreferences(
-						"fr.oms.activities", Context.MODE_PRIVATE);
-				prefs.edit().putBoolean("MAJ", isChecked);
+				
+				prefs.edit().putBoolean("MAJ", isChecked).apply();
 				if(!isChecked){
 					effectuerMaj.setVisibility(View.VISIBLE);
 					redem.setVisibility(View.VISIBLE);
@@ -44,7 +55,20 @@ public class ParametresActivity extends Activity {
 				}
 			}
 		});
-		
+		clicEffectueMAJ();
+	}
+	
+	private void clicEffectueMAJ(){
+		effectuerMaj.setOnClickListener(new View.OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				Intent i = new Intent(ParametresActivity.this, Activity_Chargement.class);
+				i.putExtra("MAJ", true);
+				startActivity(i);
+				finish();
+			}
+		});
 	}
 
 	@Override

@@ -40,9 +40,17 @@ public class Activity_Chargement extends Activity {
 		txtTitre = (TextView)findViewById(R.id.txtInfo);
 		pgrBar = (ProgressBar)findViewById(R.id.progressBar1);
 		loader=JsonDataLoader.getInstance(this, pgrBar, txtTitre);
+		
 		SharedPreferences prefs = getSharedPreferences(
 				"fr.oms.activities", Context.MODE_PRIVATE);
 		faireMaj=prefs.getBoolean("MAJ", true);
+		
+		if(getIntent().getExtras() != null){
+			if(getIntent().getExtras().getBoolean("MAJ")){
+				faireMaj = true;
+			}
+		}
+		
 		if(faireMaj){
 			effectuerConnexion();
 		}else{
