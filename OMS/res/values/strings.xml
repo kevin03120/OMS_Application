@@ -88,8 +88,6 @@
     <string name="option_guide" translatable="false">Guide des sports</string>
     <string name="option_mentions" translatable="false">Mentions légales</string>
     <string name="title_activity_mentions" translatable="false">MentionsActivity</string>
-    <string name="conditions_generales" translatable="false">Conditions Générales d\'utilisation</string>
-    <string name="infos_editeur" translatable="false">Informations Editeurs</string>
     <string name="title_activity_parametres">Paramètres</string>
     <string name="maj_auto">Activer la mise à jour automatique</string>
     <string name="faire_maj">Effectuer mise à jour</string>
@@ -99,5 +97,9 @@
     <string name="parametres">Paramètres</string>
     <string name="Guide_Sport">Guide des sports</string>
     <string name="mentions">Mentions légales</string>
+    <string name="conditions">1- Conditions Générales d\'utilisation</string>
+    <string name="info_editeur">2- Informations éditeur</string>
+    <string name="info_technique">3- Informations techniques</string>
+    <string name="info_juridique">4- Informations juridiques</string>
 
 </resources>

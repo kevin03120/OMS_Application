@@ -179,6 +179,12 @@ public class MainActivity extends FragmentActivity implements NavigationDrawerFr
 			getActionBar().setBackgroundDrawable(
 					new ColorDrawable((getResources().getColor(R.color.JauneFlat))));
 			break;
+			
+		default:
+			fragment = new AccueilFragment();
+			getActionBar().setBackgroundDrawable(
+					new ColorDrawable(getResources().getColor(R.color.Rouge1)));
+			break;
 		
 		}
 
@@ -235,38 +241,12 @@ public class MainActivity extends FragmentActivity implements NavigationDrawerFr
 
 		case 14: return r.getString(R.string.parametres);
 		
-		case 15: return r.getString(R.string.Guide_Sport);
+		case 15: return r.getString(R.string.guide_sport);
 		
 		case 16: return r.getString(R.string.mentions);
 
 		default: return r.getString(R.string.oms);
 		}
-	}
-
-	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-			getMenuInflater().inflate(R.menu.main, menu);
-			restoreActionBar();
-			return true;
-	}
-	
-	@Override
-	public boolean onOptionsItemSelected(MenuItem item) {
-		if(item.getItemId() == R.id.mentions){
-			Intent intent=new Intent(this,MentionsActivity.class);
-			startActivity(intent);
-		}
-		else if(item.getItemId() == R.id.parametres){
-			Intent intent=new Intent(this,ParametresActivity.class);
-			startActivity(intent);
-		}
-		else if(item.getItemId() == R.id.guide_oms){
-			String url = getResources().getString(R.string.lien_guide_sport);
-			Intent i = new Intent(Intent.ACTION_VIEW);
-			i.setData(Uri.parse(url));
-			startActivity(i);
-		}
-		return super.onOptionsItemSelected(item);
 	}
 
 	@Override

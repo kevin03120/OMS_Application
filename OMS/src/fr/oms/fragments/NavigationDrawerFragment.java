@@ -103,8 +103,6 @@ public class NavigationDrawerFragment extends Fragment {
 		navDrawerItems.add(new NavDrawerItem(r.getString(R.string.Guide_Sport), 0, 0));
 		navDrawerItems.add(new NavDrawerItem(r.getString(R.string.mentions), 0,  0));
 		mDrawerListView.setAdapter(new NavDrawerListAdapter(getActivity(), navDrawerItems));
-		mDrawerListView.setTranscriptMode(ListView.TRANSCRIPT_MODE_ALWAYS_SCROLL);
-		mDrawerListView.setStackFromBottom(true);
 		mDrawerListView.setItemChecked(mCurrentSelectedPosition, true);
 	}
 

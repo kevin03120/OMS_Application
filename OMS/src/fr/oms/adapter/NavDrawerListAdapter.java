@@ -50,6 +50,7 @@ public class NavDrawerListAdapter extends BaseAdapter {
 	@Override
 	public View getView(int position, View convertView, ViewGroup parent) {
 		ViewHolderItem viewHolder;
+		Resources r = context.getResources();
 		if (convertView == null) {
 			LayoutInflater mInflater = LayoutInflater.from(context);
 			convertView = mInflater.inflate(R.layout.drawer_nav_item, null);
@@ -60,22 +61,16 @@ public class NavDrawerListAdapter extends BaseAdapter {
 			viewHolder.txtTitle = (TextView) convertView.findViewById(R.id.tvTitle);
 			viewHolder.txtTitle.setText(navDrawerItems.get(position).getTitle());
 			afficherIcon(position, viewHolder.layout, viewHolder.imgIcon);
-			Resources r = context.getResources();
-			if((viewHolder.txtTitle.getText()==r.getString(R.string.accueil_underline))||(viewHolder.txtTitle.getText()==r.getString(R.string.annuaire_underline))||(viewHolder.txtTitle.getText()==r.getString(R.string.agenda_underline))){
+
+			if((viewHolder.txtTitle.getText()==r.getString(R.string.accueil_underline))||(viewHolder.txtTitle.getText()==r.getString(R.string.annuaire_underline))||(viewHolder.txtTitle.getText()==r.getString(R.string.agenda_underline)||(viewHolder.txtTitle.getText()==r.getString(R.string.autres_underline)))){
 				viewHolder.txtTitle.setTextAppearance(context, R.style.TextItemNavTitre);           
 			}
 			else{
 				viewHolder.txtTitle.setTextAppearance(context, R.style.TextItemNavSousTitre);
-				if((viewHolder.txtTitle.getText()==r.getString(R.string.localise_association))||(viewHolder.txtTitle.getText()==r.getString(R.string.localise_equipement))||(viewHolder.txtTitle.getText()==r.getString(R.string.localise_discipline))){
-					viewHolder.txtTitle.setTextSize(12);
-				}
+				viewHolder.txtTitle.setTextSize(12);
 			}
 			if(viewHolder.txtTitle.getText()==r.getString(R.string.geolocalisation_underline)){
 				viewHolder.txtTitle.setTextAppearance(context, R.style.TextItemNavTitreGeoloc);
-			}
-			if((viewHolder.txtTitle.getText()==r.getString(R.string.parametres))||(viewHolder.txtTitle.getText()==r.getString(R.string.Guide_Sport))||(viewHolder.txtTitle.getText()==r.getString(R.string.mentions))){
-				viewHolder.layout.setBackgroundResource(navDrawerItems.get(position).getmColor());
-				viewHolder.imgIcon.setVisibility(View.INVISIBLE);
 			}
 			convertView.setTag(viewHolder);
 
@@ -83,13 +78,23 @@ public class NavDrawerListAdapter extends BaseAdapter {
 		else{
 			viewHolder = (ViewHolderItem) convertView.getTag();
 		}
-		NavDrawerItem objectItem = (NavDrawerItem) getItem(position);
-		    if(objectItem != null) {
-		        viewHolder.txtTitle.setText(objectItem.getTitle());
-		        viewHolder.imgIcon.setImageResource(objectItem.getIcon());
-		        viewHolder.layout.setBackgroundResource(objectItem.getmColor());
-		    }
-		 
+		NavDrawerItem objectItem = navDrawerItems.get(position);
+		if(objectItem != null) {
+			viewHolder.txtTitle.setText(objectItem.getTitle());
+			if((viewHolder.txtTitle.getText()==r.getString(R.string.accueil_underline))||(viewHolder.txtTitle.getText()==r.getString(R.string.annuaire_underline))||(viewHolder.txtTitle.getText()==r.getString(R.string.agenda_underline)||(viewHolder.txtTitle.getText()==r.getString(R.string.autres_underline)))){
+				viewHolder.txtTitle.setTextAppearance(context, R.style.TextItemNavTitre);           
+			}
+			else{
+				viewHolder.txtTitle.setTextAppearance(context, R.style.TextItemNavSousTitre);
+				viewHolder.txtTitle.setTextSize(12);
+			}
+			if(viewHolder.txtTitle.getText()==r.getString(R.string.geolocalisation_underline)){
+				viewHolder.txtTitle.setTextAppearance(context, R.style.TextItemNavTitreGeoloc);
+			}
+			viewHolder.imgIcon.setImageResource(objectItem.getIcon());
+			viewHolder.layout.setBackgroundResource(objectItem.getmColor());
+		}
+
 
 		return convertView;
 	}
