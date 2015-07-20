@@ -186,10 +186,42 @@ public class FragmentAssociation extends Fragment {
 			horaire.setVisibility(4);
 		}
 		if(association.getListeEquipement() != null){
-			equipement1.setText(association.getListeEquipement().get(0).getNom() + "\n" + association.getListeEquipement().get(0).getAdresse());
+			Equipement equipementAssoc = association.getListeEquipement().get(0);
+			if(!equipementAssoc.getAdresse().equals("")&&!equipementAssoc.getVille().equals("")){
+				equipement1.setText(equipementAssoc.getNom() + "\n" + equipementAssoc.getAdresse() + ", " + equipementAssoc.getVille());
+				equipement1.setTextSize(11);
+			}
+			else if(equipementAssoc.getAdresse().equals("")&&!equipementAssoc.getVille().equals("")){
+				equipement1.setText(equipementAssoc.getNom() + "\n" + equipementAssoc.getAdresse());
+				equipement1.setTextSize(12);
+			}
+			else if(!equipementAssoc.getAdresse().equals("")&&equipementAssoc.getVille().equals("")){
+				equipement1.setText(equipementAssoc.getNom() + "\n" + equipementAssoc.getVille());
+				equipement1.setTextSize(12);
+			}
+			else{
+				equipement1.setText(equipementAssoc.getNom());
+				equipement1.setTextSize(13);
+			}
 			onMap1();
 			if(association.getListeEquipement().size() == 2){
-				equipement2.setText(association.getListeEquipement().get(1).getNom() + "\n" + association.getListeEquipement().get(1).getAdresse());
+				Equipement equipementAssocBis = association.getListeEquipement().get(1);
+				if(!equipementAssocBis.getAdresse().equals("")&&!equipementAssocBis.getVille().equals("")){
+					equipement2.setText(equipementAssocBis.getNom() + "\n" + equipementAssocBis.getAdresse() + ", " + equipementAssocBis.getVille());
+					equipement2.setTextSize(11);
+				}
+				else if(equipementAssocBis.getAdresse().equals("")&&!equipementAssocBis.getVille().equals("")){
+					equipement2.setText(equipementAssocBis.getNom() + "\n" + equipementAssocBis.getAdresse());
+					equipement2.setTextSize(12);
+				}
+				else if(!equipementAssocBis.getAdresse().equals("")&&equipementAssocBis.getVille().equals("")){
+					equipement2.setText(equipementAssocBis.getNom() + "\n" + equipementAssocBis.getVille());
+					equipement2.setTextSize(12);
+				}
+				else{
+					equipement2.setText(equipementAssocBis.getNom());
+					equipement2.setTextSize(13);
+				}
 				onMap2();
 			}
 			else {
