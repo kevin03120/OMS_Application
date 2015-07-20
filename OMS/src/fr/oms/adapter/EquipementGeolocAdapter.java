@@ -79,7 +79,7 @@ public class EquipementGeolocAdapter extends ArrayAdapter<Equipement> {
 		if(e.getGeoloc() != null){
 			loc.setLatitude(Double.parseDouble(e.getGeoloc().getLatitude()));
 			loc.setLongitude(Double.parseDouble(e.getGeoloc().getLongitude()));
-			distance = Math.pow(locUser.distanceTo(loc) / 1000,3);
+			distance = locUser.distanceTo(loc) / 1000;
 		}
 		else {
 			distance = 0;
