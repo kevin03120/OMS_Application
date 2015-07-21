@@ -84,19 +84,24 @@ public class NavigationDrawerFragment extends Fragment {
 		navDrawerItems.add(new NavDrawerItem(r.getString(R.string.accueil_underline), R.drawable.logo_appli, R.drawable.custom_btn_black));
 
 		navDrawerItems.add(new NavDrawerItem(r.getString(R.string.annuaire_underline), R.drawable.ic_annuaire, R.drawable.custom_btn_green));
-		navDrawerItems.add(new NavDrawerItem(r.getString(R.string.association)));
-		navDrawerItems.add(new NavDrawerItem(r.getString(R.string.equipement)));
-		navDrawerItems.add(new NavDrawerItem(r.getString(R.string.discipline)));
-		navDrawerItems.add(new NavDrawerItem(r.getString(R.string.quartier)));
+		navDrawerItems.add(new NavDrawerItem(r.getString(R.string.association), 0, 0));
+		navDrawerItems.add(new NavDrawerItem(r.getString(R.string.equipement), 0, 0));
+		navDrawerItems.add(new NavDrawerItem(r.getString(R.string.discipline), 0, 0));
+		navDrawerItems.add(new NavDrawerItem(r.getString(R.string.quartier), 0, 0));
 
 		navDrawerItems.add(new NavDrawerItem(r.getString(R.string.agenda_underline),R.drawable.ic_agenda1,R.drawable.custom_btn_blue));
-		navDrawerItems.add(new NavDrawerItem(r.getString(R.string.actualite)));
-		navDrawerItems.add(new NavDrawerItem(r.getString(R.string.evenements)));
+		navDrawerItems.add(new NavDrawerItem(r.getString(R.string.actualite), 0, 0));
+		navDrawerItems.add(new NavDrawerItem(r.getString(R.string.evenements), 0, 0));
 
 		navDrawerItems.add(new NavDrawerItem(r.getString(R.string.geolocalisation_underline), R.drawable.ic_geoloc,R.drawable.custom_btn_orange));
-		navDrawerItems.add(new NavDrawerItem(r.getString(R.string.localise_association)));
-		navDrawerItems.add(new NavDrawerItem(r.getString(R.string.localise_equipement)));
-		navDrawerItems.add(new NavDrawerItem(r.getString(R.string.localise_discipline)));
+		navDrawerItems.add(new NavDrawerItem(r.getString(R.string.localise_association), 0, 0));
+		navDrawerItems.add(new NavDrawerItem(r.getString(R.string.localise_equipement), 0, 0));
+		navDrawerItems.add(new NavDrawerItem(r.getString(R.string.localise_discipline), 0, 0));
+		
+		navDrawerItems.add(new NavDrawerItem(r.getString(R.string.autres_underline), android.R.drawable.ic_menu_preferences,R.drawable.custom_btn_yellow));
+		navDrawerItems.add(new NavDrawerItem(r.getString(R.string.parametres), 0, 0));
+		navDrawerItems.add(new NavDrawerItem(r.getString(R.string.Guide_Sport), 0, 0));
+		navDrawerItems.add(new NavDrawerItem(r.getString(R.string.mentions), 0,  0));
 		mDrawerListView.setAdapter(new NavDrawerListAdapter(getActivity(), navDrawerItems));
 		mDrawerListView.setItemChecked(mCurrentSelectedPosition, true);
 	}

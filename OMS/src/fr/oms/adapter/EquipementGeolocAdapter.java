@@ -52,11 +52,21 @@ public class EquipementGeolocAdapter extends ArrayAdapter<Equipement> {
 
 	private void afficheDistanceArrondie(double distance, int distanceArrondie,
 			TextView txtDistance) {
-		if(distance!=0.0){
-			txtDistance.setText(""+distanceArrondie + " m");
+		if(distance>= 0.999){
+			if(distance!=0.0){
+				txtDistance.setText("" + (double)Math.round(distance * 1000) / 1000  + " km");
+			}
+			else{
+				txtDistance.setVisibility(0);
+			}
 		}
 		else{
-			txtDistance.setVisibility(0);
+			if(distance!=0.0){
+				txtDistance.setText("" + String.valueOf(distance).substring(2, 5) + " m");
+			}
+			else{
+				txtDistance.setVisibility(0);
+			}
 		}
 	}
 
@@ -69,7 +79,7 @@ public class EquipementGeolocAdapter extends ArrayAdapter<Equipement> {
 		if(e.getGeoloc() != null){
 			loc.setLatitude(Double.parseDouble(e.getGeoloc().getLatitude()));
 			loc.setLongitude(Double.parseDouble(e.getGeoloc().getLongitude()));
-			distance = locUser.distanceTo(loc);
+			distance = locUser.distanceTo(loc) / 1000;
 		}
 		else {
 			distance = 0;

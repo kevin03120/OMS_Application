@@ -183,5 +183,7 @@
     <color name="OrangeOmsClair">#FAAC58</color>
     <color name="OrangeOmsClair2">#F7C48F</color>
     <color name="BlackDrawer">#2E2E2E</color>
+    <color name="JauneFlat">#F1C40F</color>
+    <color name="JauneClic">#F7F714</color>
 
 </resources>

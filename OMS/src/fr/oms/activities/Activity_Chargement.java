@@ -9,6 +9,7 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.ActivityInfo;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
@@ -27,6 +28,7 @@ public class Activity_Chargement extends Activity {
 	private ProgressBar pgrBar;
 	private TextView txtTitre;
 	private JsonDataLoader loader;
+	private boolean faireMaj;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -37,8 +39,25 @@ public class Activity_Chargement extends Activity {
 		setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 		txtTitre = (TextView)findViewById(R.id.txtInfo);
 		pgrBar = (ProgressBar)findViewById(R.id.progressBar1);
-		loader=JsonDataLoader.getInstance(this, pgrBar, txtTitre);	
-		effectuerConnexion();
+		loader=JsonDataLoader.getInstance(this, pgrBar, txtTitre);
+		
+		SharedPreferences prefs = getSharedPreferences(
+				"fr.oms.activities", Context.MODE_PRIVATE);
+		faireMaj=prefs.getBoolean("MAJ", true);
+		
+		if(getIntent().getExtras() != null){
+			if(getIntent().getExtras().getBoolean("MAJ")){
+				faireMaj = true;
+			}
+		}
+		
+		if(faireMaj){
+			effectuerConnexion();
+		}else{
+			Intent i = new Intent(Activity_Chargement.this, MainActivity.class);
+			startActivity(i);
+			finish();
+		}
 		setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 	}
 
@@ -114,6 +133,7 @@ public class Activity_Chargement extends Activity {
 				dialog.dismiss();
 				Intent i = new Intent(Activity_Chargement.this, MainActivity.class);
 				startActivity(i);
+				finish();
 			}
 		});
 		AlertDialog alertDialog = alertDialogBuilder.create();
@@ -148,21 +168,6 @@ public class Activity_Chargement extends Activity {
 			return false;
 		}
 	} 
-
-	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-		getMenuInflater().inflate(R.menu.activity__chargement, menu);
-		return true;
-	}
-
-	@Override
-	public boolean onOptionsItemSelected(MenuItem item) {
-		int id = item.getItemId();
-		if (id == R.id.action_settings) {
-			return true;
-		}
-		return super.onOptionsItemSelected(item);
-	}
 	
 	@Override
 	protected void onStop() {

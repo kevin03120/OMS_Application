@@ -2,16 +2,16 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:background="@drawable/custom_border_detail">
-
-<LinearLayout
-    android:id="@+id/fiche_assoc"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/Blanc"
+    android:background="@drawable/custom_border_detail"
     android:orientation="vertical" >
-       
+
+    <LinearLayout
+        android:id="@+id/fiche_assoc"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/Blanc"
+        android:orientation="vertical" >
+
         <TextView
             android:id="@+id/nomAssociation"
             android:layout_width="match_parent"
@@ -22,79 +22,96 @@
             android:text="@string/association"
             android:textColor="@color/BlackDrawer"
             android:textSize="24sp"
-            
             android:textStyle="bold" />
-       
-       <ImageView
-           android:id="@+id/iconeAdherentAssociationFiche"
-           android:layout_width="25dp"
-           android:layout_height="25dp"
-           android:layout_marginTop="5dp"
-           android:layout_marginBottom="5dp"
-           android:layout_gravity="center_horizontal|center_vertical"
-           android:background="@drawable/logo_ad"
-           android:contentDescription="@string/info_image" />
-       
-       <TextView
-           style="?android:listSeparatorTextViewStyle"
-           android:layout_width="match_parent"
-           android:layout_height="0dp"
-           android:layout_weight="0.1"
-           android:background="@color/VertOms"
-           android:text="Contact"
-           android:textColor="@color/BlackDrawer" />
-       
-       <TextView
-           android:id="@+id/nomContact"
-           android:layout_width="match_parent"
-           android:layout_height="0dp"
-           android:layout_weight="0.1"
-           android:gravity="center"
-           android:textStyle="bold"
-           android:text="Contact"
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" >
+
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_weight="1"
+                android:src="@drawable/arrow_left" />
+
+            <ImageView
+                android:id="@+id/iconeAdherentAssociationFiche"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_gravity="center_horizontal|center_vertical"
+                android:layout_marginBottom="5dp"
+                android:layout_marginTop="5dp"
+                android:background="@drawable/logo_ad"
+                android:contentDescription="@string/info_image" />
+
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_weight="1"
+                android:src="@drawable/arrow_right" />
+        </LinearLayout>
+
+        <TextView
+            style="?android:listSeparatorTextViewStyle"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.1"
+            android:background="@color/VertOms"
+            android:text="Contact"
+            android:textColor="@color/BlackDrawer" />
+
+        <TextView
+            android:id="@+id/nomContact"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.1"
+            android:gravity="center"
+            android:text="Contact"
             android:textColor="@color/BlackDrawer"
-           android:textSize="15sp" />
-       
-       <TextView
-           android:id="@+id/telFixContact"
-           android:layout_width="match_parent"
-           android:layout_height="0dp"
-           android:layout_weight="0.1"
-           android:gravity="center"
-           android:textStyle="bold"
-           android:textColor="@color/BlackDrawer"
-           android:textSize="15sp" />
-       
-       <TextView
-           android:id="@+id/telPortContact"
-           android:layout_width="match_parent"
-           android:layout_height="0dp"
-           android:layout_weight="0.1"
-           android:gravity="center"
-           android:textStyle="bold"
-           android:textColor="@color/BlackDrawer"
-           android:textSize="15sp" />
-           
-       <TextView
-           android:id="@+id/mailContact"
-           android:layout_width="match_parent"
-           android:layout_height="0dp"
-           android:layout_weight="0.1"
-           android:gravity="center"
-           android:textStyle="bold"
-           android:text="Contact"
+            android:textSize="15sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/telFixContact"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.1"
+            android:gravity="center"
             android:textColor="@color/BlackDrawer"
-           android:textSize="15sp" />
-        
-       <TextView
-           style="?android:listSeparatorTextViewStyle"
-           android:layout_width="match_parent"
-           android:layout_height="0dp"
-           android:layout_weight="0.1"
-           android:background="@color/BleuOms"
-           android:text="Horaires"
-           android:textColor="@color/BlackDrawer" />
-      
+            android:textSize="15sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/telPortContact"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.1"
+            android:gravity="center"
+            android:textColor="@color/BlackDrawer"
+            android:textSize="15sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/mailContact"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.1"
+            android:gravity="center"
+            android:text="Contact"
+            android:textColor="@color/BlackDrawer"
+            android:textSize="15sp"
+            android:textStyle="bold" />
+
+        <TextView
+            style="?android:listSeparatorTextViewStyle"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.1"
+            android:background="@color/BleuOms"
+            android:text="Horaires"
+            android:textColor="@color/BlackDrawer" />
+
         <TextView
             android:id="@+id/horaire"
             android:layout_width="match_parent"
@@ -103,118 +120,115 @@
             android:gravity="center"
             android:textColor="@color/BlackDrawer"
             android:textSize="15sp" />
-        
-     	<TextView
-     	    style="?android:listSeparatorTextViewStyle"
-     	    android:layout_width="match_parent"
-     	    android:layout_height="0dp"
-     	    android:layout_weight="0.1"
-     	    android:background="@color/OrangeOms"
-     	    android:text="Lieux de pratique"
-     	    android:textColor="@color/BlackDrawer" />
-	        
-     	<LinearLayout
-     	    android:layout_width="match_parent"
-     	    android:layout_height="0dp"
-     	    android:layout_weight="0.2"
-     	    android:orientation="horizontal" >
-     	    
-		    <TextView
-		        android:id="@+id/lieu_equipement1"
-		        android:layout_width="0dp"
-		        android:layout_height="match_parent"
-		        android:layout_weight="1"
-		        android:gravity="center"
-		        android:text="Contact"
-		         android:textColor="@color/BlackDrawer"
-		        android:textSize="15sp" />
-		   		
-		   	<Button
-		   	    android:id="@+id/btn_map_1"
-		   	    android:layout_width="0dp"
-		   	    android:layout_height="match_parent"
-		   	    android:layout_gravity="center"
-		   	    android:layout_weight="0.2"
-		   	    android:background="@drawable/ic_geoloc"
-		   	    android:gravity="center" />
 
-      	</LinearLayout>
-      	
-     	<LinearLayout
-     	    android:layout_width="match_parent"
-     	    android:layout_height="0dp"
-     	    android:layout_weight="0.2"
-     	    android:orientation="horizontal" >
-     	    
-		    <TextView
-		        android:id="@+id/lieu_equipement2"
-		        android:layout_width="0dp"
-		        android:layout_height="match_parent"
-		        android:layout_weight="1"
-		        android:gravity="center"
-		        android:text="Contact"
-		        android:textColor="@color/BlackDrawer"
-		        android:textSize="15sp" />
-		   		
-		   	<Button
-		   	    android:id="@+id/btn_map_2"
-		   	    android:layout_width="0dp"
-		   	    android:layout_height="match_parent"
-		   	    android:layout_gravity="center"
-		   	    android:layout_weight="0.2"
-		   	    android:background="@drawable/ic_geoloc"
-		   	    android:gravity="center" />
+        <TextView
+            style="?android:listSeparatorTextViewStyle"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.1"
+            android:background="@color/OrangeOms"
+            android:text="Lieux de pratique"
+            android:textColor="@color/BlackDrawer" />
 
-      	</LinearLayout>
-	  
-	    <TextView 
-	        android:id="@+id/btn_info_site"
-	        android:layout_width="match_parent"
-	        android:layout_height="wrap_content"
-	        android:layout_weight="0.1"
-	        android:gravity="center"
-	        android:textColor="@color/BleuOms"
-	        android:text="@string/goSite"
-	        android:clickable="true"
-	        android:onClick="onGoSite"/>
-</LinearLayout>
-	
-   <LinearLayout 
-       android:id="@+id/layout_assoc_pas_adherente"
-       android:orientation="vertical"
-       android:layout_width="match_parent"
-       android:layout_height="match_parent"
-	   android:background="#3F000000"
-	   android:visibility="invisible">
-   
-		    	<TextView
-		    	    android:id="@+id/nomAssocPasAdherente"
-		    	    android:layout_width="match_parent"
-		    	    android:layout_height="0dp"
-		    	    android:layout_weight="1"
-		    	    android:gravity="center"
-		    	    android:text="@string/association"
-		    	    android:textSize="24sp"
-		    	    android:textStyle="bold|italic"
-		    	    android:visibility="invisible" />
-	    
-		       <TextView
-		           android:id="@+id/info_assoc_non_adherente"
-		           android:layout_width="match_parent"
-		           android:layout_height="wrap_content"
-		           android:layout_gravity="center_vertical"
-		           android:layout_weight="2"
-		           android:background="@color/Gris2"
-		           android:gravity="center"
-		           android:text="@string/pasAdherent"
-		           android:textColor="@color/Blanc"
-		           android:visibility="invisible" />
-		       
-		       <Space 
-		           android:layout_width="match_parent"
-		           android:layout_height="0dp"
-		           android:layout_weight="2"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.2"
+            android:orientation="horizontal" >
 
-</LinearLayout>
+            <TextView
+                android:id="@+id/lieu_equipement1"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="Contact"
+                android:textColor="@color/BlackDrawer"
+                android:textSize="15sp" />
+
+            <Button
+                android:id="@+id/btn_map_1"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:layout_weight="0.2"
+                android:background="@drawable/ic_geoloc"
+                android:gravity="center" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.2"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:id="@+id/lieu_equipement2"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="Contact"
+                android:textColor="@color/BlackDrawer"
+                android:textSize="15sp" />
+
+            <Button
+                android:id="@+id/btn_map_2"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:layout_weight="0.2"
+                android:background="@drawable/ic_geoloc"
+                android:gravity="center" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/btn_info_site"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.1"
+            android:clickable="true"
+            android:gravity="center"
+            android:onClick="onGoSite"
+            android:text="@string/goSite"
+            android:textColor="@color/BleuOms" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/layout_assoc_pas_adherente"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#3F000000"
+        android:orientation="vertical"
+        android:visibility="invisible" >
+
+        <TextView
+            android:id="@+id/nomAssocPasAdherente"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="@string/association"
+            android:textSize="24sp"
+            android:textStyle="bold|italic"
+            android:visibility="invisible" />
+
+        <TextView
+            android:id="@+id/info_assoc_non_adherente"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="2"
+            android:background="@color/Gris2"
+            android:gravity="center"
+            android:text="@string/pasAdherent"
+            android:textColor="@color/Blanc"
+            android:visibility="invisible" />
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="2" />
+    </LinearLayout>
 
 </FrameLayout>

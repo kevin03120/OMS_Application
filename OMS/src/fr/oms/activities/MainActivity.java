@@ -3,9 +3,11 @@ package fr.oms.activities;
 
 
 import android.app.ActionBar;
+import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.content.res.Resources;
 import android.graphics.drawable.ColorDrawable;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v4.app.Fragment;
@@ -14,6 +16,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.widget.DrawerLayout;
 import android.util.Log;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.widget.Toast;
 import fr.oms.dataloader.JSONTags;
 import fr.oms.dataloader.ParserJson;
@@ -21,7 +24,9 @@ import fr.oms.fragments.AccueilFragment;
 import fr.oms.fragments.AgendaFragment;
 import fr.oms.fragments.AnnuaireFragment;
 import fr.oms.fragments.GeolocalisationFragment;
+import fr.oms.fragments.MentionsFragment;
 import fr.oms.fragments.NavigationDrawerFragment;
+import fr.oms.fragments.ParametreFragment;
 import fr.oms.modele.Manager;
 
 public class MainActivity extends FragmentActivity implements NavigationDrawerFragment.NavigationDrawerCallbacks {
@@ -38,6 +43,7 @@ public class MainActivity extends FragmentActivity implements NavigationDrawerFr
 		Manager.getInstance().clearDonnees();
 		setContentView(R.layout.activity_main);
 		Manager.getInstance().getTousLesSport(getApplicationContext());
+		
 		if(this.getFileStreamPath(JSONTags.FICHIER_ACTUS).exists()){
 			ParserJson parser=new ParserJson(getApplicationContext());
 			parser.effectuerParsing();
@@ -149,15 +155,43 @@ public class MainActivity extends FragmentActivity implements NavigationDrawerFr
 			getActionBar().setBackgroundDrawable(
 					new ColorDrawable((getResources().getColor(R.color.OrangeOms))));
 			break;
+			
+		case 13:
+			fragment = new ParametreFragment();
+			getActionBar().setBackgroundDrawable(
+					new ColorDrawable((getResources().getColor(R.color.JauneFlat))));
+			break;
+			
+		case 14:
+			fragment = new ParametreFragment();
+			getActionBar().setBackgroundDrawable(
+					new ColorDrawable((getResources().getColor(R.color.JauneFlat))));
+			break;
+			
+		case 15:
+			String url = getResources().getString(R.string.lien_guide_sport);
+			Intent i = new Intent(Intent.ACTION_VIEW);
+			i.setData(Uri.parse(url));
+			startActivity(i);
+
+		case 16:
+			fragment = new MentionsFragment();
+			getActionBar().setBackgroundDrawable(
+					new ColorDrawable((getResources().getColor(R.color.JauneFlat))));
+			break;
+			
+		default:
+			fragment = new AccueilFragment();
+			getActionBar().setBackgroundDrawable(
+					new ColorDrawable(getResources().getColor(R.color.Rouge1)));
+			break;
+		
 		}
 
 		if (fragment != null) {
 			FragmentManager fragmentManager = getSupportFragmentManager();
 			fragmentManager.beginTransaction().replace(R.id.container, fragment).commit();
 			restoreActionBar(position);
-		} else {
-			// error in creating fragment
-			Log.e("MainActivity", "Error in creating fragment");
 		}
 	}
 
@@ -203,18 +237,16 @@ public class MainActivity extends FragmentActivity implements NavigationDrawerFr
 
 		case 12: return r.getString(R.string.geolocalisation);
 
+		case 13: return r.getString(R.string.autres);
+
+		case 14: return r.getString(R.string.parametres);
+		
+		case 15: return r.getString(R.string.guide_sport);
+		
+		case 16: return r.getString(R.string.mentions);
+
 		default: return r.getString(R.string.oms);
 		}
-	}
-
-	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-		if (!mNavigationDrawerFragment.isDrawerOpen()) {
-			getMenuInflater().inflate(R.menu.main, menu);
-			restoreActionBar();
-			return true;
-		}
-		return super.onCreateOptionsMenu(menu);
 	}
 
 	@Override

@@ -1,6 +1,7 @@
 package fr.oms.adapter;
 
 import java.util.List;
+
 import fr.oms.activities.R;
 import fr.oms.metier.Association;
 import android.annotation.SuppressLint;
@@ -50,12 +51,23 @@ public class AssociationGeolocAdapter extends ArrayAdapter<Association> {
 
 	private void afficheDistance(double distance, int distanceArrondie,
 			TextView txtDistance) {
-		if(distance!=0.0){
-			txtDistance.setText(""+distanceArrondie + " m");
+		if(distance>= 0.999){
+			if(distance!=0.0){
+				txtDistance.setText("" + (double)Math.round(distance * 1000) / 1000  + " km");
+			}
+			else{
+				txtDistance.setVisibility(0);
+			}
 		}
 		else{
-			txtDistance.setVisibility(0);
+			if(distance!=0.0){
+				txtDistance.setText("" + String.valueOf(distance).substring(2, 5) + " m");
+			}
+			else{
+				txtDistance.setVisibility(0);
+			}
 		}
+		
 	}
 
 	private void afficherLogo(Association association, ImageView logoAdherent) {
@@ -74,7 +86,7 @@ public class AssociationGeolocAdapter extends ArrayAdapter<Association> {
 		if(a.getListeEquipement() != null){
 			loc.setLatitude(Double.parseDouble(a.getListeEquipement().get(0).getGeoloc().getLatitude()));
 			loc.setLongitude(Double.parseDouble(a.getListeEquipement().get(0).getGeoloc().getLongitude()));
-			distance = locUser.distanceTo(loc);
+			distance = locUser.distanceTo(loc) / 1000;
 		}
 		else{
 			distance = 0;
