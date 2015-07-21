@@ -71,7 +71,7 @@ public class FragmentActus extends Fragment{
 			public void onTextChanged(CharSequence s, int start, int before, int count) {
 				ArrayList<Actualite> listeRecherche=new ArrayList<Actualite>();
 				for(Actualite a : Manager.getInstance().getListActualites()){
-					if(a.getTitre().toLowerCase(Locale.FRENCH).contains(s)){						
+					if(a.getTitre().toLowerCase(Locale.FRENCH).contains(s.toString().toLowerCase(Locale.FRENCH))){						
 						listeRecherche.add(a);
 						actuAdapter = new ActualiteAdapter(getActivity(), 0, listeRecherche);
 						actuAdapter.notifyDataSetChanged();

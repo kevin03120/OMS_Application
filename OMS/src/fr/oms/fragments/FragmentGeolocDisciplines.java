@@ -19,6 +19,7 @@ import android.widget.ListView;
 import fr.oms.activities.FragmentDisciplineActivity;
 import fr.oms.activities.R;
 import fr.oms.adapter.DisciplineGeolocAdapter;
+import fr.oms.metier.Association;
 import fr.oms.metier.Discipline;
 import fr.oms.modele.Manager;
 

@@ -68,7 +68,7 @@ public class FragmentEvents extends Fragment{
 			public void onTextChanged(CharSequence s, int start, int before, int count) {
 				ArrayList<Evenement> listeRecherche=new ArrayList<Evenement>();
 				for(Evenement a : Manager.getInstance().getListEvenements()){
-					if(a.getTitre().toLowerCase(Locale.FRENCH).contains(s)){						
+					if(a.getTitre().toLowerCase(Locale.FRENCH).contains(s.toString().toLowerCase(Locale.FRENCH))){						
 						listeRecherche.add(a);
 						eventAdapter = new EvenementAdapter(getActivity(), 0, listeRecherche);
 						eventAdapter.notifyDataSetChanged();

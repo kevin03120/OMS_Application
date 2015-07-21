@@ -99,7 +99,7 @@ public class FragmentListeAssociations extends Fragment {
 				ArrayList<Association> listeRecherche=new ArrayList<Association>();
 				if(isFiltreSport){
 					for(Association a : mesAssocFiltreSport){
-						if(a.getNom().toLowerCase(Locale.FRENCH).contains(s)){						
+						if(a.getNom().toLowerCase(Locale.FRENCH).contains(s.toString().toLowerCase(Locale.FRENCH))){						
 							listeRecherche.add(a);
 							associationAdapter = new AssociationAdapter(getActivity(), 0, listeRecherche);
 							associationAdapter.notifyDataSetChanged();
@@ -116,7 +116,7 @@ public class FragmentListeAssociations extends Fragment {
 					}
 				}else{
 					for(Association a : Manager.getInstance().getListeAssociation()){
-						if(a.getNom().toLowerCase(Locale.FRENCH).contains(s)){						
+						if(a.getNom().toLowerCase(Locale.FRENCH).contains(s.toString().toLowerCase(Locale.FRENCH))){						
 							listeRecherche.add(a);
 							associationAdapter = new AssociationAdapter(getActivity(), 0, listeRecherche);
 							associationAdapter.notifyDataSetChanged();
