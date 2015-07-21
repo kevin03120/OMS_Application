@@ -57,8 +57,16 @@ public class FragmentEquipement extends Fragment {
 			getActivity().setTitle(getResources().getString(R.string.titreDetailEquipement));
 		}
 		else{
-			v = inflater.inflate(R.layout.header_equipement, container, false);
-			recupererToutesViews(v);
+//			v = inflater.inflate(R.layout.header_equipement, container, false);
+//			recupererToutesViews(v);
+			v = inflater.inflate(R.layout.detail_equipement, container, false);
+			View header = getLayoutInflater(getArguments()).inflate(R.layout.header_equipement, null);
+			recupererToutesViews(header);
+			txtPasAssoc.setVisibility(View.VISIBLE);
+			listAssociation = (ListView)v.findViewById(R.id.listAssocEquipement);
+			listAssociation.addHeaderView(header);
+			adapterPourListAssociation();
+			getActivity().setTitle(getResources().getString(R.string.titreDetailEquipement));
 		}
 		return v;
 	}

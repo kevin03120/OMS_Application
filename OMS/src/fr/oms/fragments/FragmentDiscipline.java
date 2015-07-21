@@ -6,15 +6,21 @@ import java.util.List;
 import fr.oms.activities.FragmentAssociationActivity;
 import fr.oms.activities.MapEquipementsDisciplineProches;
 import fr.oms.activities.R;
-import fr.oms.adapter.AssociationAdapter;
+import fr.oms.adapter.DiscGeolocListAssoAdapter;
+import fr.oms.adapter.DisciplineGeolocAdapter;
 import fr.oms.metier.Association;
 import fr.oms.metier.Discipline;
 import fr.oms.metier.Equipement;
 import fr.oms.metier.Sport;
 import fr.oms.modele.Manager;
+import android.app.Activity;
 import android.content.Intent;
+import android.location.Location;
+import android.location.LocationListener;
+import android.location.LocationManager;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -24,15 +30,34 @@ import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 
-public class FragmentDiscipline extends Fragment {
+public class FragmentDiscipline extends Fragment  implements LocationListener{
 
 	private static final String GEOLOCNULL = "0.00000";
 	private Discipline discipline;
 	private ListView listAssociation;
+	private ArrayList<Association> listeTemporaire;
 	private TextView txtPasAssoc;
 	private List<Association> lesAssocsDiscipline;
 	private List<Equipement> equipement;
 	private LinearLayout header;
+	private double latitudeUser;
+	private double longitudeUser;
+	private LocationManager lm;
+	
+	@Override
+	public void onResume() {
+			super.onResume();
+			lm = (LocationManager)getActivity().getSystemService(Activity.LOCATION_SERVICE);
+			if (lm.isProviderEnabled(LocationManager.GPS_PROVIDER))
+				lm.requestLocationUpdates(LocationManager.GPS_PROVIDER, 10000, 0, this);
+			lm.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 10000, 0, this);
+	}
+	
+	@Override
+	public void onPause() {
+		super.onPause();
+		lm.removeUpdates(this);
+	}
 
 	public static FragmentDiscipline newInstance(Discipline d) {
 		Bundle extras = new Bundle();
@@ -70,6 +95,7 @@ public class FragmentDiscipline extends Fragment {
 	
 	private void adapterPourListAssociation(){
 		lesAssocsDiscipline = new ArrayList<Association>();
+		listeTemporaire = new ArrayList<Association>();
 		boolean CorrespondanceSportsAssoDiscipline = false;
 		List<Sport> sAsso;
 		List<Sport> sDisc;
@@ -77,7 +103,7 @@ public class FragmentDiscipline extends Fragment {
 			if(a.isAdherent()){
 				sAsso = a.getListeSport();
 				sDisc = discipline.getListeSport();
-				if(a.getListeSport()!=null){
+				if(a.getListeSport()!=null && a.getListeEquipement() != null){
 					for(int i=0; i<sAsso.size(); i++){
 						CorrespondanceSportsAssoDiscipline = false;
 						for(int j=0; j<sDisc.size(); j++){
@@ -91,14 +117,16 @@ public class FragmentDiscipline extends Fragment {
 							break;
 						}
 					}
-					AssociationAdapter adapterAssoc = new AssociationAdapter(getActivity(), 0, lesAssocsDiscipline);
-					listAssociation.setAdapter(adapterAssoc);
-					listAssociation.setVisibility(0);
 				}
 			}
 		}
+		//Création d'un SimpleAdapter qui se chargera de mettre les items présent dans notre list (listItem) dans la vue affichageitem
+        DiscGeolocListAssoAdapter mSchedule = new DiscGeolocListAssoAdapter(this.getActivity(), 0, lesAssocsDiscipline, latitudeUser, longitudeUser);
+        //On attribut à notre listView l'adapter que l'on vient de créer
+        listAssociation.setAdapter(mSchedule);
+		listAssociation.setVisibility(View.VISIBLE);
 	}
-
+	
 	private int compteListAssociation(){
 		lesAssocsDiscipline = new ArrayList<Association>();
 		boolean CorrespondanceSportsAssoDiscipline = false;
@@ -128,6 +156,37 @@ public class FragmentDiscipline extends Fragment {
 		return lesAssocsDiscipline.size();
 	}
 
+	private double donneDistance(Association a){
+		Location locUser = new Location("Point A");
+		locUser.setLatitude(latitudeUser);
+		locUser.setLongitude(longitudeUser);
+
+		Location loc = new Location("Point B");
+		loc.setLatitude(Double.parseDouble(a.getListeEquipement().get(0).getGeoloc().getLatitude()));
+		loc.setLongitude(Double.parseDouble(a.getListeEquipement().get(0).getGeoloc().getLongitude()));
+
+		return locUser.distanceTo(loc);
+	}
+	
+	private void ordonnerParDistance(){
+		List<Association> listeTemporaire = new ArrayList<Association>();
+		for(Association a : lesAssocsDiscipline)
+			listeTemporaire.add(a);
+		if(listeTemporaire != null && listeTemporaire.size() > 0){
+			lesAssocsDiscipline.clear();
+			while(listeTemporaire.size() > 0){
+				Association valeurTest = listeTemporaire.get(0);
+				for(Association a : listeTemporaire){
+					if(donneDistance(a) <= donneDistance(valeurTest)){
+						valeurTest = a;
+					}
+				}
+				lesAssocsDiscipline.add(valeurTest);
+				listeTemporaire.remove(valeurTest);
+			}
+		}
+	}
+	
 	private void clicItemListAssoc(){
 		listAssociation.setOnItemClickListener(new ListView.OnItemClickListener(){
 
@@ -137,7 +196,7 @@ public class FragmentDiscipline extends Fragment {
 				Intent intent = new Intent(getActivity(), FragmentAssociationActivity.class);
 				intent.putExtra("position", a.getId());
 				intent.putExtra("adherents", true);
-				intent.putExtra("nonAdherents", true);
+				intent.putExtra("nonAdherents", false);
 				intent.putExtra("sport", false);
 				intent.putExtra("idSport", 0);
 				startActivity(intent);
@@ -216,4 +275,37 @@ public class FragmentDiscipline extends Fragment {
 			}
 		});
 	}
+
+	
+	@Override
+	public void onLocationChanged(Location location) {
+		latitudeUser = location.getLatitude();
+		longitudeUser = location.getLongitude();
+		
+		if(latitudeUser != 0 || longitudeUser != 0){
+			//ordonnancement par distance des associations:
+			ordonnerParDistance();
+		}
+		
+		//Création d'un SimpleAdapter qui se chargera de mettre les items présent dans notre list (listItem) dans la vue affichageitem
+        DiscGeolocListAssoAdapter mSchedule = new DiscGeolocListAssoAdapter(this.getActivity(), 0, lesAssocsDiscipline, latitudeUser, longitudeUser);
+        //On attribut à notre listView l'adapter que l'on vient de créer
+        listAssociation.setAdapter(mSchedule);
+	}
+
+	@Override
+	public void onStatusChanged(String provider, int status, Bundle extras) {
+		// TODO Auto-generated method stub
+	}
+
+	@Override
+	public void onProviderEnabled(String provider) {
+		// TODO Auto-generated method stub
+	}
+
+	@Override
+	public void onProviderDisabled(String provider) {
+		// TODO Auto-generated method stub
+	}
+	
 }

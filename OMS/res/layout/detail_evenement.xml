@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@drawable/custom_border_detail_actu_event">
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/custom_border_detail_actu_event" >
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -20,13 +19,33 @@
             android:textColor="@color/BleuOms"
             android:textSize="20sp" />
 
-        <ImageView
-            android:id="@+id/imgEvent"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginTop="2dp"
-            android:contentDescription="@string/evenements" />
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:orientation="horizontal" >
+
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:alpha="0.70"
+                android:src="@drawable/arrow_left" />
+
+            <ImageView
+                android:id="@+id/imgEvent"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="2dp"
+                android:contentDescription="@string/evenements" />
+
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_gravity="end"
+                android:alpha="0.70"
+                android:src="@drawable/arrow_right" />
+        </FrameLayout>
 
         <TextView
             android:id="@+id/infoTitre"
@@ -42,11 +61,11 @@
 
         <TextView
             android:id="@+id/txtDetailEvent"
-            android:background="@drawable/custom_border_text_actu_event"
-            android:layout_marginLeft="5dp"
-            android:layout_marginRight="5dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:background="@drawable/custom_border_text_actu_event"
             android:text="@string/association"
             android:textColor="@color/NoirOms" />
 
@@ -87,10 +106,10 @@
 
         <TextView
             android:id="@+id/txtLieu1"
-            android:background="@drawable/custom_border_text_actu_event"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
+            android:background="@drawable/custom_border_text_actu_event"
             android:gravity="center"
             android:textColor="@color/BleuOms"
             android:visibility="invisible" />

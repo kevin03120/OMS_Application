@@ -1,6 +1,8 @@
 package fr.oms.fragments;
 
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -12,6 +14,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import fr.oms.activities.Activity_Chargement;
 import fr.oms.activities.MapPane;
 import fr.oms.activities.R;
 import fr.oms.metier.Association;
@@ -239,8 +242,64 @@ public class FragmentAssociation extends Fragment {
 			lieu_map_2.setVisibility(4);
 		}
 		changeLayoutSiPasAdherent();
+		clicTelFix();
+		clicTelPortable();
 	}
 
+	public void clicTelFix(){
+		telFixContact.setOnClickListener(new View.OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(getActivity());
+				alertDialogBuilder.setTitle("Passer un appel");
+				alertDialogBuilder
+				.setMessage("Appeler " + pers.getTitre() + " " + pers.getNom() + " " + pers.getPrenom() + " au " + pers.getTelFixe() + " ?")
+				.setPositiveButton("Appeler",new DialogInterface.OnClickListener() {
+					public void onClick(DialogInterface dialog,int id) {
+						Intent callIntent = new Intent(Intent.ACTION_CALL);
+						callIntent.setData(Uri.parse("tel:" + pers.getTelFixe()));
+						startActivity(callIntent);
+					}
+				})
+				.setNegativeButton("Annuler",new DialogInterface.OnClickListener() {
+					public void onClick(DialogInterface dialog,int id) {
+						dialog.dismiss();
+					}
+				});
+				AlertDialog alertDialog = alertDialogBuilder.create();
+				alertDialog.show();
+			}
+		});
+	}
+	
+	public void clicTelPortable(){
+		telPortContact.setOnClickListener(new View.OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(getActivity());
+				alertDialogBuilder.setTitle("Passer un appel");
+				alertDialogBuilder
+				.setMessage("Appeler " + pers.getTitre() + " " + pers.getNom() + " " + pers.getPrenom() + " au " + pers.getTelPortable() + " ?")
+				.setPositiveButton("Appeler",new DialogInterface.OnClickListener() {
+					public void onClick(DialogInterface dialog,int id) {
+						Intent callIntent = new Intent(Intent.ACTION_CALL);
+						callIntent.setData(Uri.parse("tel:" + pers.getTelPortable()));
+						startActivity(callIntent);
+					}
+				})
+				.setNegativeButton("Annuler",new DialogInterface.OnClickListener() {
+					public void onClick(DialogInterface dialog,int id) {
+						dialog.dismiss();
+					}
+				});
+				AlertDialog alertDialog = alertDialogBuilder.create();
+				alertDialog.show();
+			}
+		});
+	}
+	
 	public ImageView getIconeAdherent() {
 		return iconeAdherent;
 	}

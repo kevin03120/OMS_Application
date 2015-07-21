@@ -61,7 +61,7 @@
         android:text="@string/associationPratiquantes"
         android:textColor="@color/NoirOms"
         android:textSize="15sp" />
-
+	
     <TextView
         android:id="@+id/txtPasAssoc"
         android:layout_width="match_parent"

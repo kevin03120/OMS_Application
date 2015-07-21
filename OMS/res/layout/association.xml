@@ -24,7 +24,7 @@
             android:textSize="24sp"
             android:textStyle="bold" />
 
-        <LinearLayout
+        <FrameLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal" >
@@ -32,7 +32,7 @@
             <ImageView
                 android:layout_width="30dp"
                 android:layout_height="30dp"
-                android:layout_weight="1"
+                android:alpha="0.70"
                 android:src="@drawable/arrow_left" />
 
             <ImageView
@@ -48,9 +48,10 @@
             <ImageView
                 android:layout_width="30dp"
                 android:layout_height="30dp"
-                android:layout_weight="1"
+                android:layout_gravity="end"
+                android:alpha="0.70"
                 android:src="@drawable/arrow_right" />
-        </LinearLayout>
+        </FrameLayout>
 
         <TextView
             style="?android:listSeparatorTextViewStyle"
@@ -77,8 +78,9 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="0.1"
+            android:clickable="true"
             android:gravity="center"
-            android:textColor="@color/BlackDrawer"
+            android:textColor="@color/BleuOms"
             android:textSize="15sp"
             android:textStyle="bold" />
 
@@ -87,8 +89,9 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="0.1"
+            android:clickable="true"
             android:gravity="center"
-            android:textColor="@color/BlackDrawer"
+            android:textColor="@color/BleuOms"
             android:textSize="15sp"
             android:textStyle="bold" />
 
@@ -112,14 +115,20 @@
             android:text="Horaires"
             android:textColor="@color/BlackDrawer" />
 
-        <TextView
-            android:id="@+id/horaire"
+        <ScrollView
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="0.5"
-            android:gravity="center"
-            android:textColor="@color/BlackDrawer"
-            android:textSize="15sp" />
+            android:layout_weight="0.5">
+
+            <TextView
+                android:id="@+id/horaire"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:textColor="@color/BlackDrawer"
+                android:textSize="15sp" />
+            
+        </ScrollView>
 
         <TextView
             style="?android:listSeparatorTextViewStyle"
