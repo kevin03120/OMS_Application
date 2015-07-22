@@ -76,7 +76,7 @@ public class FragmentListeEquipements extends Fragment{
 			public void onTextChanged(CharSequence s, int start, int before, int count) {
 				ArrayList<Equipement> listeRecherche=new ArrayList<Equipement>();
 				for(Equipement e : Manager.getInstance().getListeEquipement()){
-					if(e.getNom().toLowerCase(Locale.FRENCH).contains(s)){						
+					if(e.getNom().toLowerCase(Locale.FRENCH).contains(s.toString().toLowerCase(Locale.FRENCH))){						
 						listeRecherche.add(e);
 					}
 				}

@@ -65,16 +65,13 @@ public class EquipementAdapter extends ArrayAdapter<Equipement> {
 			 logoNature.setImageResource(R.drawable.picto_gymnase);
 		 }
 		 else if(nature.equals("Terrain de grand jeu")){
-			 logoNature.setImageResource(R.drawable.picto_interrogation);
+			 logoNature.setImageResource(R.drawable.picto_grandjeu);
 		 }
 		 else if(nature.equals("Site dédié à l'athlétisme")){
 			 logoNature.setImageResource(R.drawable.picto_athletisme);
 		 }
 		 else if(nature.equals("Equipement spécialisé")){
 			 logoNature.setImageResource(R.drawable.picto_specialise);
-		 }
-		 else{
-			 logoNature.setImageResource(R.drawable.picto_interrogation);
 		 }
 	}
 }

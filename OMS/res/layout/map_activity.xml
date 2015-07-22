@@ -11,17 +11,18 @@
 
 <Button
     android:id="@+id/btnGPS"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
+    android:layout_width="100dp"
+    android:layout_height="100dp"
     android:layout_alignParentBottom="true"
     android:layout_centerHorizontal="true"
     android:layout_marginBottom="72dp"
-    android:background="@color/Rouge1"
+    android:background="@drawable/round_button"
     android:paddingLeft="14dp"
     android:paddingRight="14dp"
+    android:gravity="center_vertical|center_horizontal"
     android:text="@string/btn_go"
     android:textSize="30sp"
-    android:textColor="@color/BlackDrawer"
+    android:textColor="@color/Blanc"
     android:textStyle="bold"
     android:visibility="gone" />
 
