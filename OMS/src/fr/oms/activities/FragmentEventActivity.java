@@ -17,10 +17,13 @@ import android.support.v4.view.ViewPager;
 public class FragmentEventActivity extends FragmentActivity {
 
 	private Evenement evenement;
+	private ViewPager pager;
+	public static FragmentEventActivity fragmentEventActivity;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		fragmentEventActivity = this;
 		setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         setContentView(R.layout.detail_pager); 
 		getActionBar().setBackgroundDrawable(
@@ -29,12 +32,16 @@ public class FragmentEventActivity extends FragmentActivity {
         initPager(pos);
 	}
 
+	public ViewPager getPager() {
+		return pager;
+	}
+
 	/**
 	 * Initialisation du pager
 	 * @param pos
 	 */
 	private void initPager(int pos) {
-		ViewPager pager = (ViewPager) findViewById(R.id.viewPager);
+		pager = (ViewPager) findViewById(R.id.viewPager);
         MyPagerAdapter pagerAdapter = new MyPagerAdapter(getSupportFragmentManager());
         pager.setAdapter(pagerAdapter);
         for(Evenement e : Manager.getInstance().getListEvenements()){

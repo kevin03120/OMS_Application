@@ -9,7 +9,6 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import android.content.Context;
-import android.widget.ImageView;
 import fr.oms.activities.R;
 import fr.oms.metier.Actualite;
 import fr.oms.metier.Association;

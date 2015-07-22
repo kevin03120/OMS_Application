@@ -1,5 +1,6 @@
 package fr.oms.fragments;
 
+import fr.oms.activities.FragmentActuActivity;
 import fr.oms.activities.FragmentAssociationActivity;
 import fr.oms.activities.R;
 import fr.oms.metier.Actualite;
@@ -8,6 +9,7 @@ import fr.oms.modele.Manager;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.view.ViewPager;
 import android.text.Html;
 import android.text.method.LinkMovementMethod;
 import android.view.LayoutInflater;
@@ -20,6 +22,8 @@ public class FragmentDetailActualite extends Fragment {
 
 	private Actualite actualite;
 	private ImageView image;
+	private ImageView arrow_left;
+	private ImageView arrow_right;
 	
 	public static FragmentDetailActualite newInstance(Actualite a) {
 		Bundle extras = new Bundle();
@@ -40,9 +44,33 @@ public class FragmentDetailActualite extends Fragment {
 			}
 			recupererToutesViews(v);
 			getActivity().setTitle(getResources().getString(R.string.titreDetailActualite));
-	     return v;
+			clicFlecheLeft();
+			clicFlecheRight();
+			return v;
 	}
 
+	public void clicFlecheLeft(){
+		arrow_left.setOnClickListener(new View.OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				ViewPager pager = FragmentActuActivity.fragmentActuActivity.getPager();
+				pager.setCurrentItem(pager.getCurrentItem() - 1);
+			}
+		});
+	}
+	
+	public void clicFlecheRight(){
+		arrow_right.setOnClickListener(new View.OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				ViewPager pager = FragmentActuActivity.fragmentActuActivity.getPager();
+				pager.setCurrentItem(pager.getCurrentItem() + 1);
+			}
+		});
+	}
+	
 	private void recupererToutesViews(View v){
 		TextView txtTitre = (TextView)v.findViewById(R.id.txtTitreActu);
 		txtTitre.setText(getActualite().getTitre());
@@ -61,6 +89,8 @@ public class FragmentDetailActualite extends Fragment {
 			txtAssoc.setVisibility(View.GONE);
 			txtPasAssoc.setVisibility(View.VISIBLE);
 		}
+		arrow_left = (ImageView)v.findViewById(R.id.arrow_l_actu);
+		arrow_right = (ImageView)v.findViewById(R.id.arrow_r_actu);
 	}
 	
 	public Actualite getActualite() {

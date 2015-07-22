@@ -30,6 +30,7 @@
             android:orientation="horizontal" >
 
             <ImageView
+            	android:id="@+id/arrow_l_assoc"
                 android:layout_width="60dp"
                 android:layout_height="60dp"
                 android:alpha="0.70"
@@ -46,6 +47,7 @@
                 android:contentDescription="@string/info_image" />
 
             <ImageView
+            	android:id="@+id/arrow_r_assoc"
                 android:layout_width="60dp"
                 android:layout_height="60dp"
                 android:layout_gravity="end"

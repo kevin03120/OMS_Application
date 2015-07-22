@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,7 +15,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import fr.oms.activities.Activity_Chargement;
+import fr.oms.activities.FragmentAssociationActivity;
 import fr.oms.activities.MapPane;
 import fr.oms.activities.R;
 import fr.oms.metier.Association;
@@ -42,6 +43,8 @@ public class FragmentAssociation extends Fragment {
 	private Button lieu_map_1;
 	private Button lieu_map_2;
 	private Personne pers;
+	private ImageView arrow_left;
+	private ImageView arrow_right;
 	
 	public static FragmentAssociation newInstance(Association a) {
 		Bundle extras = new Bundle();
@@ -62,7 +65,31 @@ public class FragmentAssociation extends Fragment {
 			recupererToutesViews(v);
 			placeDonneeDansView();
 			getActivity().setTitle(getResources().getString(R.string.titreDetailAssociation));
-	     return v;
+			clicFlecheLeft();
+			clicFlecheRight();
+			return v;
+	}
+	
+	public void clicFlecheLeft(){
+		arrow_left.setOnClickListener(new View.OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				ViewPager view = FragmentAssociationActivity.fragmentAssociationActivity.getPager();
+				view.setCurrentItem(view.getCurrentItem()-1);
+			}
+		});
+	}
+	
+	public void clicFlecheRight(){
+		arrow_right.setOnClickListener(new View.OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				ViewPager view = FragmentAssociationActivity.fragmentAssociationActivity.getPager();
+				view.setCurrentItem(view.getCurrentItem()+1);
+			}
+		});
 	}
 	
 	private void recupererToutesViews(View v){
@@ -82,6 +109,8 @@ public class FragmentAssociation extends Fragment {
 		ficheNonAdherente = (LinearLayout)v.findViewById(R.id.layout_assoc_pas_adherente);
 		nomAssocPasAdherente = (TextView)v.findViewById(R.id.nomAssocPasAdherente);
 		infoAssocNonAdherente = (TextView)v.findViewById(R.id.info_assoc_non_adherente);
+		arrow_left = (ImageView)v.findViewById(R.id.arrow_l_assoc);
+		arrow_right = (ImageView)v.findViewById(R.id.arrow_r_assoc);
 		onGoSite();
 		
 	}

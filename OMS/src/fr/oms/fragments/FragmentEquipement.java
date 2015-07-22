@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import fr.oms.activities.FragmentAssociationActivity;
+import fr.oms.activities.FragmentEquipementActivity;
 import fr.oms.activities.MapPane;
 import fr.oms.activities.R;
 import fr.oms.adapter.AssociationAdapter;
@@ -13,11 +14,13 @@ import fr.oms.modele.Manager;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -28,6 +31,8 @@ public class FragmentEquipement extends Fragment {
 	private ListView listAssociation;
 	private TextView txtPasAssoc;
 	private List<Association> lesAssocsEquipement;
+	private ImageView arrow_left;
+	private ImageView arrow_right;
 
 	public static FragmentEquipement newInstance(Equipement e) {
 		Bundle extras = new Bundle();
@@ -68,9 +73,33 @@ public class FragmentEquipement extends Fragment {
 			adapterPourListAssociation();
 			getActivity().setTitle(getResources().getString(R.string.titreDetailEquipement));
 		}
+		clicFlecheLeft();
+		clicFlecheRight();
 		return v;
 	}
 
+	public void clicFlecheLeft(){
+		arrow_left.setOnClickListener(new View.OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				ViewPager pager = FragmentEquipementActivity.fragmentEquipementActivity.getPager();
+				pager.setCurrentItem(pager.getCurrentItem() - 1);
+			}
+		});
+	}
+
+	public void clicFlecheRight(){
+		arrow_right.setOnClickListener(new View.OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				ViewPager pager = FragmentEquipementActivity.fragmentEquipementActivity.getPager();
+				pager.setCurrentItem(pager.getCurrentItem() + 1);
+			}
+		});
+	}
+	
 	private void adapterPourListAssociation(){
 		lesAssocsEquipement = new ArrayList<Association>();
 		for(Association a : Manager.getInstance().getListeAssociation()){
@@ -166,6 +195,8 @@ public class FragmentEquipement extends Fragment {
 			btnGoMap.setVisibility(4);
 		}
 		txtPasAssoc = (TextView)v.findViewById(R.id.txtPasAssoc);
+		arrow_left = (ImageView)v.findViewById(R.id.arrow_l_equip);
+		arrow_right = (ImageView)v.findViewById(R.id.arrow_r_equip);
 		goMap(btnGoMap);
 	}
 

@@ -16,10 +16,13 @@ import android.support.v4.view.ViewPager;
 public class FragmentEquipementActivity extends FragmentActivity {
 
 	private Equipement equipement;
+	private ViewPager pager;
+	public static FragmentEquipementActivity fragmentEquipementActivity;
 	
 	@Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        fragmentEquipementActivity = this;
 		setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         setContentView(R.layout.detail_pager);     
         int pos = getIntent().getExtras().getInt("position");
@@ -33,7 +36,7 @@ public class FragmentEquipementActivity extends FragmentActivity {
 	 * @param position
 	 */
 	private void initPager(int pos, int position) {
-		ViewPager pager = (ViewPager) findViewById(R.id.viewPager);
+		pager = (ViewPager) findViewById(R.id.viewPager);
         MyPagerAdapter pagerAdapter = new MyPagerAdapter(getSupportFragmentManager());
         pager.setAdapter(pagerAdapter);
         List<Equipement> equipements = Manager.getInstance().getListeEquipement();
@@ -46,6 +49,10 @@ public class FragmentEquipementActivity extends FragmentActivity {
         pager.setCurrentItem(position);
 	}
 	
+	public ViewPager getPager() {
+		return pager;
+	}
+
 	private class MyPagerAdapter extends FragmentPagerAdapter {
 
 	 	private List<Equipement> equipements;

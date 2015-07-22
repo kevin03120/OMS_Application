@@ -8,12 +8,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import fr.oms.activities.R;
 import fr.oms.metier.Actualite;
-import fr.oms.modele.DownloadImageTask;
 
 public class ActualiteAdapter extends ArrayAdapter<Actualite> {
 
