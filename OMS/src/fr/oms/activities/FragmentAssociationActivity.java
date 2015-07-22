@@ -19,6 +19,8 @@ import fr.oms.modele.Manager;
 public class FragmentAssociationActivity extends FragmentActivity {
 
 	private Association association;
+	private ViewPager pager;
+	public static FragmentAssociationActivity fragmentAssociationActivity;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -26,6 +28,7 @@ public class FragmentAssociationActivity extends FragmentActivity {
 		setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 		setContentView(R.layout.detail_pager); 
 
+		fragmentAssociationActivity = this;
 		//Récupération des valeurs extras
 		int pos = getIntent().getExtras().getInt("position");
 		boolean adherent = getIntent().getExtras().getBoolean("adherents");
@@ -35,7 +38,7 @@ public class FragmentAssociationActivity extends FragmentActivity {
 		int position = 0;
 
 		//Création du pager
-		ViewPager pager = (ViewPager) findViewById(R.id.viewPager);
+		pager = (ViewPager) findViewById(R.id.viewPager);
 		MyPagerAdapter pagerAdapter = new MyPagerAdapter(getSupportFragmentManager(), adherent, nonAdherent, sport, nomSport);
 		pager.setAdapter(pagerAdapter);
 		List<Association> associations = Manager.getInstance().getListeAssociation();
@@ -46,6 +49,10 @@ public class FragmentAssociationActivity extends FragmentActivity {
 			}
 		}
 		pager.setCurrentItem(position);
+	}
+
+	public ViewPager getPager() {
+		return pager;
 	}
 
 	private class MyPagerAdapter extends FragmentPagerAdapter {

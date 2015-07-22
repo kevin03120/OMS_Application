@@ -10,11 +10,6 @@ import java.util.Set;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.location.Location;
-import android.location.LocationListener;
-import android.location.LocationManager;
-import android.location.LocationProvider;
-import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -23,10 +18,8 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.SectionIndexer;
 import android.widget.TextView;
-import android.widget.Toast;
 import fr.oms.activities.R;
 import fr.oms.metier.Association;
-import fr.oms.metier.Discipline;
 import fr.oms.metier.Equipement;
 
 public class DiscGeolocListAssoAdapter extends ArrayAdapter<Association>  implements SectionIndexer {

@@ -3,6 +3,7 @@ package fr.oms.fragments;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.view.ViewPager;
 import android.text.Html;
 import android.text.method.LinkMovementMethod;
 import android.view.LayoutInflater;
@@ -12,6 +13,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import fr.oms.activities.FragmentAssociationActivity;
 import fr.oms.activities.FragmentEquipementActivity;
+import fr.oms.activities.FragmentEventActivity;
 import fr.oms.activities.R;
 import fr.oms.metier.Equipement;
 import fr.oms.metier.Evenement;
@@ -22,7 +24,9 @@ public class FragmentDetailEvenement extends Fragment {
 
 	private Evenement evenement;
 	private ImageView image;
-	
+	private ImageView arrow_left;
+	private ImageView arrow_right;
+
 	public static FragmentDetailEvenement newInstance(Evenement e) {
 		Bundle extras = new Bundle();
 		extras.putInt("id", e.getId());
@@ -30,21 +34,45 @@ public class FragmentDetailEvenement extends Fragment {
 		fragment.setArguments(extras);
 		return fragment;
 	}
-	
+
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 		View v = inflater.inflate(R.layout.detail_evenement, container, false);
-		 int pos = getArguments().getInt("id");
-			for(Evenement e : Manager.getInstance().getListEvenements()){
-				if(e.getId() == pos){
-					setEvenement(e);
-				}
+		int pos = getArguments().getInt("id");
+		for(Evenement e : Manager.getInstance().getListEvenements()){
+			if(e.getId() == pos){
+				setEvenement(e);
 			}
-			recupererToutesViews(v);
-			getActivity().setTitle(getResources().getString(R.string.titreDetailEvenement));
-	     return v;
+		}
+		recupererToutesViews(v);
+		getActivity().setTitle(getResources().getString(R.string.titreDetailEvenement));
+		clicFlecheLeft();
+		clicFlecheRight();
+		return v;
 	}
 	
+	public void clicFlecheLeft(){
+		arrow_left.setOnClickListener(new View.OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				ViewPager pager = FragmentEventActivity.fragmentEventActivity.getPager();
+				pager.setCurrentItem(pager.getCurrentItem() - 1);
+			}
+		});
+	}
+	
+	public void clicFlecheRight(){
+		arrow_right.setOnClickListener(new View.OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				ViewPager pager = FragmentEventActivity.fragmentEventActivity.getPager();
+				pager.setCurrentItem(pager.getCurrentItem() + 1);
+			}
+		});
+	}
+
 	private void recupererToutesViews(View v){
 		TextView txtTitre = (TextView)v.findViewById(R.id.txtTitreEvent);
 		txtTitre.setText(evenement.getTitre());
@@ -70,8 +98,10 @@ public class FragmentDetailEvenement extends Fragment {
 			touchLieu2(txtLieu2);
 			txtLieu2.setVisibility(0);
 		}
+		arrow_left = (ImageView)v.findViewById(R.id.arrow_l_event);
+		arrow_right = (ImageView)v.findViewById(R.id.arrow_r_event);
 	}
-	
+
 	private void touchAssoc(TextView v){
 		v.setOnClickListener(new View.OnClickListener() {
 			@Override
@@ -86,7 +116,7 @@ public class FragmentDetailEvenement extends Fragment {
 			}
 		});
 	}
-	
+
 	private void touchLieu2(TextView v){
 		v.setOnClickListener(new View.OnClickListener() {
 			@Override

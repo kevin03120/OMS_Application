@@ -19,10 +19,13 @@ public class FragmentActuActivity extends FragmentActivity {
 	 * L'actualité à représenter
 	 */
 	private Actualite actualite;
+	private ViewPager pager;
+	public static FragmentActuActivity fragmentActuActivity;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		fragmentActuActivity = this;
 		setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         setContentView(R.layout.detail_pager); 
 		getActionBar().setBackgroundDrawable(
@@ -31,12 +34,16 @@ public class FragmentActuActivity extends FragmentActivity {
         initPager(pos);
 	}
 
+	public ViewPager getPager() {
+		return pager;
+	}
+
 	/**
 	 * Initialisation du pager
 	 * @param pos 
 	 */
 	private void initPager(int pos) {
-		ViewPager pager = (ViewPager) findViewById(R.id.viewPager);
+		pager = (ViewPager) findViewById(R.id.viewPager);
         MyPagerAdapter pagerAdapter = new MyPagerAdapter(getSupportFragmentManager());
         pager.setAdapter(pagerAdapter);
         for(Actualite a : Manager.getInstance().getListActualites()){
