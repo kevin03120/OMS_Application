@@ -18,6 +18,7 @@ import fr.oms.metier.Equipement;
 
 public class EquipementAdapter extends ArrayAdapter<Equipement> {
 
+	private Context context;
 	
 	public EquipementAdapter(Context context, int resource, List<Equipement> objects) {
 		super(context, resource, objects);
@@ -37,11 +38,11 @@ public class EquipementAdapter extends ArrayAdapter<Equipement> {
 		 else{
 			 item.setBackgroundResource(R.drawable.customborder_alt);
 		 }
-		 ImageView logoNature = (ImageView)convertView.findViewById(R.id.Logo_adherent);		
-		 logoNature.setVisibility(0);
-		 String nature = equipement.getNature();
-		 
-		 chargeImage(nature, logoNature);
+		 if(equipement.getLogo()!=0){
+			 ImageView logoNature = (ImageView)convertView.findViewById(R.id.Logo_adherent);		
+			 logoNature.setVisibility(0);
+			 logoNature.setImageResource(equipement.getLogo());
+		 }
 		return convertView;
 	}
 	

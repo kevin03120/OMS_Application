@@ -17,6 +17,7 @@ import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.ProgressBar;
 import fr.oms.activities.FragmentEquipementActivity;
 import fr.oms.activities.MapEquipementsProches;
 import fr.oms.activities.R;
@@ -32,6 +33,7 @@ public class FragmentGeolocEquipements extends Fragment implements LocationListe
 	private double latitudeUser = 0;
 	private double longitudeUser = 0;
 	private LocationManager lm;
+	private ProgressBar progessBar;
 	
 	@Override
 	public void onResume() {
@@ -52,6 +54,7 @@ public class FragmentGeolocEquipements extends Fragment implements LocationListe
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
 		View v = inflater.inflate(R.layout.list_geoloc_equipements, container,false);
+		progessBar = (ProgressBar) v.findViewById(R.id.progressBar1);
 		equipementTriesLocalisation = new ArrayList<Equipement>();
 		listEquipement = (ListView)v.findViewById(R.id.listeGeolocEquipement);
 		equipementGeoloc = (Button)v.findViewById(R.id.goEquipementsMap);
@@ -118,12 +121,16 @@ public class FragmentGeolocEquipements extends Fragment implements LocationListe
 	
 	@Override
 	public void onLocationChanged(Location location) {
+		listEquipement.setVisibility(View.GONE);
+		progessBar.setVisibility(View.VISIBLE);
 		latitudeUser = location.getLatitude();
 		longitudeUser = location.getLongitude();
 		donneListe();
 		EquipementGeolocAdapter adapterAssoc = new EquipementGeolocAdapter(getActivity(), 0, equipementTriesLocalisation, latitudeUser, longitudeUser);
 		listEquipement.setAdapter(adapterAssoc);
 		equipementGeoloc.setVisibility(0);
+		progessBar.setVisibility(View.GONE);
+		listEquipement.setVisibility(View.VISIBLE);
 	}
 
 	@Override
