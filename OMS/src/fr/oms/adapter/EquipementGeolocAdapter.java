@@ -37,8 +37,6 @@ public class EquipementGeolocAdapter extends ArrayAdapter<Equipement> {
 		double distance = donneDistanceAvecEquipement(equipement);
 		int distanceArrondie = (int) Math.round(distance);
 		TextView txtDistance = (TextView)convertView.findViewById(R.id.distance_equipement);
-		ImageView logoNature = (ImageView)convertView.findViewById(R.id.Logo_geoloc_equipement);		
-		String nature = equipement.getNature();
 		if (position % 2 == 0) {
 			item.setBackgroundResource(R.drawable.customborder);
 		}
@@ -46,7 +44,11 @@ public class EquipementGeolocAdapter extends ArrayAdapter<Equipement> {
 			item.setBackgroundResource(R.drawable.customborder_orange);
 		}
 		afficheDistanceArrondie(distance, distanceArrondie, txtDistance);
-		chargeImage(nature, logoNature);
+		if(equipement.getLogo()!=0){
+			 ImageView logoNature = (ImageView)convertView.findViewById(R.id.Logo_geoloc_equipement);		
+			 logoNature.setVisibility(0);
+			 logoNature.setImageResource(equipement.getLogo());
+		 }
 		return convertView;
 	}
 
@@ -85,42 +87,6 @@ public class EquipementGeolocAdapter extends ArrayAdapter<Equipement> {
 			distance = 0;
 		}
 		return distance;
-	}
-
-	private void chargeImage(String nature, ImageView logoNature){
-		if(nature.equals("Patinoire")){
-			logoNature.setImageResource(R.drawable.picto_patinoire);
-		}
-		else if(nature.equals("Court de Tennis")){
-			logoNature.setImageResource(R.drawable.picto_tennis);
-		}
-		else if(nature.equals("Piscine")){
-			logoNature.setImageResource(R.drawable.picto_swim);
-		}
-		else if(nature.equals("Terrain de boules et de pétanque")){
-			logoNature.setImageResource(R.drawable.picto_petanque);
-		}
-		else if(nature.equals("Terrain multisports")){
-			logoNature.setImageResource(R.drawable.picto_mulisports);
-		}
-		else if(nature.equals("Complexe sportif")){
-			logoNature.setImageResource(R.drawable.picto_mulisports);
-		}
-		else if(nature.equals("Gymnase")){
-			logoNature.setImageResource(R.drawable.picto_gymnase);
-		}
-		else if(nature.equals("Terrain de grand jeu")){
-			logoNature.setImageResource(R.drawable.picto_interrogation);
-		}
-		else if(nature.equals("Site dédié à l'athlétisme")){
-			logoNature.setImageResource(R.drawable.picto_athletisme);
-		}
-		else if(nature.equals("Equipement spécialisé")){
-			logoNature.setImageResource(R.drawable.picto_specialise);
-		}
-		else{
-			logoNature.setImageResource(R.drawable.picto_interrogation);
-		}
 	}
 
 }
