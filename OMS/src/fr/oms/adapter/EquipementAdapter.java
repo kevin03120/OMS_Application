@@ -4,6 +4,8 @@ import java.util.List;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -38,11 +40,13 @@ public class EquipementAdapter extends ArrayAdapter<Equipement> {
 		 ImageView logoNature = (ImageView)convertView.findViewById(R.id.Logo_adherent);		
 		 logoNature.setVisibility(0);
 		 String nature = equipement.getNature();
+		 
 		 chargeImage(nature, logoNature);
 		return convertView;
 	}
 	
 	private void chargeImage(String nature, ImageView logoNature){
+		
 		if(nature.equals("Patinoire")){
 			 logoNature.setImageResource(R.drawable.picto_patinoire);
 		 }
@@ -74,4 +78,5 @@ public class EquipementAdapter extends ArrayAdapter<Equipement> {
 			 logoNature.setImageResource(R.drawable.picto_specialise);
 		 }
 	}
+	
 }
