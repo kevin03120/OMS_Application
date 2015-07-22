@@ -9,6 +9,8 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import android.content.Context;
+import android.widget.ImageView;
+import fr.oms.activities.R;
 import fr.oms.metier.Actualite;
 import fr.oms.metier.Association;
 import fr.oms.metier.Equipement;
@@ -193,13 +195,50 @@ public class ParserJson{
 		} catch (JSONException e) {
 			e.printStackTrace();
 		}
-		Equipement equip=new Equipement(id, title, address, codePostal, ville, telephone, goeLoc, quartier, nature);
+		int logo = chargeImage(nature);
+		Equipement equip=new Equipement(id, title, address, codePostal, ville, telephone, goeLoc, quartier, nature, logo);
 		if(quartier!=null){
 			quartier.getMesEquipements().add(equip);
 		}
 		Manager.getInstance().getListeEquipement().add(equip);		
 	}
 
+	private int chargeImage(String nature){
+		if(nature.equals("Patinoire")){
+			 return R.drawable.picto_patinoire;
+		 }
+		 else if(nature.equals("Court de Tennis")){
+			 return R.drawable.picto_tennis;
+		 }
+		 else if(nature.equals("Piscine")){
+			 return R.drawable.picto_swim;
+		 }
+		 else if(nature.equals("Terrain de boules et de pétanque")){
+			 return R.drawable.picto_petanque;
+		 }
+		 else if(nature.equals("Terrain multisports")){
+			 return R.drawable.picto_mulisports;
+		 }
+		 else if(nature.equals("Complexe sportif")){
+			 return R.drawable.picto_mulisports;
+		 }
+		 else if(nature.equals("Gymnase")){
+			 return R.drawable.picto_gymnase;
+		 }
+		 else if(nature.equals("Terrain de grand jeu")){
+			 return R.drawable.picto_grandjeu;
+		 }
+		 else if(nature.equals("Site dédié à l'athlétisme")){
+			 return R.drawable.picto_athletisme;
+		 }
+		 else if(nature.equals("Equipement spécialisé")){
+			 return R.drawable.picto_specialise;
+		 }
+		 else{
+			 return 0;
+		 }
+	}
+	
 	private Quartier recupereQuartier(JSONArray jsArr) {
 		Quartier quartier=null;
 		String nomQuartier="";
