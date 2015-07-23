@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name" translatable="false">OMS</string>
+    <string name="app_name" translatable="false">Sport à Clermont</string>
     <string name="search" translatable="false">Chercher</string>
     <string name="action_example" translatable="false">Site de l\'OMS</string>
     <string name="hello_world" translatable="false">Hello world!</string>
