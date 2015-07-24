@@ -24,6 +24,7 @@ import fr.oms.activities.R;
 import fr.oms.metier.Association;
 import fr.oms.metier.Equipement;
 import fr.oms.metier.Personne;
+import fr.oms.metier.Sport;
 import fr.oms.modele.Manager;
 
 public class FragmentAssociation extends Fragment {
@@ -36,6 +37,7 @@ public class FragmentAssociation extends Fragment {
 	private TextView nomAssocPasAdherente;
 	private TextView nomAssociation;
 	private TextView nomContact;
+	private TextView disciplines;
 	private ImageView iconeAdherent;
 	private TextView telFixContact;
 	private TextView telPortContact;
@@ -135,6 +137,8 @@ public class FragmentAssociation extends Fragment {
 		infoAssocNonAdherente = (TextView)v.findViewById(R.id.info_assoc_non_adherente);
 		arrow_left = (ImageView)v.findViewById(R.id.arrow_l_assoc);
 		arrow_right = (ImageView)v.findViewById(R.id.arrow_r_assoc);
+		disciplines=(TextView)v.findViewById(R.id.disciplines);
+		
 		onGoSite();
 
 	}
@@ -294,9 +298,23 @@ public class FragmentAssociation extends Fragment {
 			equipement2.setVisibility(4);
 			lieu_map_2.setVisibility(4);
 		}
+		afficherListeSports();
 		changeLayoutSiPasAdherent();
 		clicTelFix();
 		clicTelPortable();
+	}
+
+	private void afficherListeSports() {
+		String sports="";
+		for(Sport s: association.getListeSport()){
+			sports+=s.getNom()+", ";
+			}
+		if(sports.length()>0){
+			sports=sports.substring(0, sports.length()-2);
+		}
+		
+		disciplines.setText(sports);
+		
 	}
 
 	public void clicTelFix(){
