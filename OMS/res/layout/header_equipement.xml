@@ -52,7 +52,7 @@
         android:layout_height="wrap_content"
         android:layout_weight="0.1"
         android:gravity="center"
-        android:textColor="@color/NoirOms"
+        android:textColor="@color/BleuOms"
         android:textSize="18sp" />
 
     <TextView

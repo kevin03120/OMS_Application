@@ -11,7 +11,10 @@ import fr.oms.adapter.AssociationAdapter;
 import fr.oms.metier.Association;
 import fr.oms.metier.Equipement;
 import fr.oms.modele.Manager;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
@@ -32,6 +35,7 @@ public class FragmentEquipement extends Fragment {
 	private TextView txtPasAssoc;
 	private List<Association> lesAssocsEquipement;
 	private ImageView arrow_left;
+	private TextView txtTel;
 	private ImageView arrow_right;
 
 	public static FragmentEquipement newInstance(Equipement e) {
@@ -62,8 +66,8 @@ public class FragmentEquipement extends Fragment {
 			getActivity().setTitle(getResources().getString(R.string.titreDetailEquipement));
 		}
 		else{
-//			v = inflater.inflate(R.layout.header_equipement, container, false);
-//			recupererToutesViews(v);
+			//			v = inflater.inflate(R.layout.header_equipement, container, false);
+			//			recupererToutesViews(v);
 			v = inflater.inflate(R.layout.detail_equipement, container, false);
 			View header = getLayoutInflater(getArguments()).inflate(R.layout.header_equipement, null);
 			recupererToutesViews(header);
@@ -80,26 +84,38 @@ public class FragmentEquipement extends Fragment {
 
 	public void clicFlecheLeft(){
 		arrow_left.setOnClickListener(new View.OnClickListener() {
-			
+
 			@Override
 			public void onClick(View v) {
+				List<Equipement> equips = Manager.getInstance().getListeEquipement();
 				ViewPager pager = FragmentEquipementActivity.fragmentEquipementActivity.getPager();
-				pager.setCurrentItem(pager.getCurrentItem() - 1);
+				if(equips.indexOf(equipement) != 0){
+					pager.setCurrentItem(pager.getCurrentItem() - 1);
+				}
+				else{
+					pager.setCurrentItem(equips.size() - 1);
+				}
 			}
 		});
 	}
 
 	public void clicFlecheRight(){
 		arrow_right.setOnClickListener(new View.OnClickListener() {
-			
+
 			@Override
 			public void onClick(View v) {
+				List<Equipement> equips = Manager.getInstance().getListeEquipement();
 				ViewPager pager = FragmentEquipementActivity.fragmentEquipementActivity.getPager();
-				pager.setCurrentItem(pager.getCurrentItem() + 1);
+				if(equips.indexOf(equipement) != equips.size() - 1){
+					pager.setCurrentItem(pager.getCurrentItem() + 1);
+				}
+				else{
+					pager.setCurrentItem(0);
+				}
 			}
 		});
 	}
-	
+
 	private void adapterPourListAssociation(){
 		lesAssocsEquipement = new ArrayList<Association>();
 		for(Association a : Manager.getInstance().getListeAssociation()){
@@ -150,7 +166,7 @@ public class FragmentEquipement extends Fragment {
 	private void recupererToutesViews(View v){
 		TextView txtTitreEquipement = (TextView)v.findViewById(R.id.nomEquipement);
 		txtTitreEquipement.setText(equipement.getNom());
-		TextView txtTel = (TextView)v.findViewById(R.id.telFixEquipement);
+		txtTel = (TextView)v.findViewById(R.id.telFixEquipement);
 		if(!equipement.getTelephone().equals("")){
 			txtTel.setText(equipement.getTelephone());
 		}
@@ -198,6 +214,34 @@ public class FragmentEquipement extends Fragment {
 		arrow_left = (ImageView)v.findViewById(R.id.arrow_l_equip);
 		arrow_right = (ImageView)v.findViewById(R.id.arrow_r_equip);
 		goMap(btnGoMap);
+		clicTel();
+	}
+
+	private void clicTel(){
+		txtTel.setOnClickListener(new View.OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(getActivity());
+				alertDialogBuilder.setTitle("Passer un appel");
+				alertDialogBuilder
+				.setMessage("Appeler " + equipement.getNom() + " au " + equipement.getTelephone() + " ?")
+				.setPositiveButton("Appeler",new DialogInterface.OnClickListener() {
+					public void onClick(DialogInterface dialog,int id) {
+						Intent callIntent = new Intent(Intent.ACTION_CALL);
+						callIntent.setData(Uri.parse("tel:" + equipement.getTelephone()));
+						startActivity(callIntent);
+					}
+				})
+				.setNegativeButton("Annuler",new DialogInterface.OnClickListener() {
+					public void onClick(DialogInterface dialog,int id) {
+						dialog.dismiss();
+					}
+				});
+				AlertDialog alertDialog = alertDialogBuilder.create();
+				alertDialog.show();
+			}
+		});
 	}
 
 	private void goMap(Button b){

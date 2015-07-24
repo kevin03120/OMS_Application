@@ -1,5 +1,7 @@
 package fr.oms.fragments;
 
+import java.util.List;
+
 import fr.oms.activities.FragmentActuActivity;
 import fr.oms.activities.FragmentAssociationActivity;
 import fr.oms.activities.R;
@@ -51,11 +53,16 @@ public class FragmentDetailActualite extends Fragment {
 
 	public void clicFlecheLeft(){
 		arrow_left.setOnClickListener(new View.OnClickListener() {
-			
 			@Override
 			public void onClick(View v) {
+				List<Actualite> actus = Manager.getInstance().getListActualites();
 				ViewPager pager = FragmentActuActivity.fragmentActuActivity.getPager();
-				pager.setCurrentItem(pager.getCurrentItem() - 1);
+				if(actus.indexOf(actualite) != 0){
+					pager.setCurrentItem(pager.getCurrentItem()-1);
+				}
+				else{
+					pager.setCurrentItem(actus.size()-1);
+				}
 			}
 		});
 	}
@@ -65,8 +72,14 @@ public class FragmentDetailActualite extends Fragment {
 			
 			@Override
 			public void onClick(View v) {
+				List<Actualite> actus = Manager.getInstance().getListActualites();
 				ViewPager pager = FragmentActuActivity.fragmentActuActivity.getPager();
-				pager.setCurrentItem(pager.getCurrentItem() + 1);
+				if(actus.indexOf(actualite) != actus.size()-1){
+					pager.setCurrentItem(pager.getCurrentItem()+1);
+				}
+				else{
+					pager.setCurrentItem(0);
+				}
 			}
 		});
 	}
