@@ -5,205 +5,226 @@
     android:background="@drawable/custom_border_detail"
     android:orientation="vertical" >
 
-    <LinearLayout
-        android:id="@+id/fiche_assoc"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@color/Blanc"
-        android:orientation="vertical" >
+        android:layout_height="match_parent" >
 
-        <TextView
-            android:id="@+id/nomAssociation"
+        <LinearLayout
+            android:id="@+id/fiche_assoc"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="0.2"
+            android:layout_height="match_parent"
             android:background="@color/Blanc"
-            android:gravity="center"
-            android:text="@string/association"
-            android:textColor="@color/BlackDrawer"
-            android:textSize="24sp"
-            android:textStyle="bold" />
+            android:orientation="vertical" >
 
-        <FrameLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal" >
+            <TextView
+                android:id="@+id/nomAssociation"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:background="@color/Blanc"
+                android:gravity="center"
+                android:text="@string/association"
+                android:textColor="@color/BlackDrawer"
+                android:textSize="24sp"
+                android:textStyle="bold" />
 
-            <ImageView
-            	android:id="@+id/arrow_l_assoc"
-                android:layout_width="60dp"
-                android:layout_height="60dp"
-                android:alpha="0.70"
-                android:src="@drawable/arrow_l_green" />
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal" >
 
-            <ImageView
-                android:id="@+id/iconeAdherentAssociationFiche"
-                android:layout_width="25dp"
-                android:layout_height="25dp"
-                android:layout_gravity="center_horizontal|center_vertical"
-                android:layout_marginBottom="5dp"
-                android:layout_marginTop="5dp"
-                android:background="@drawable/logo_ad"
-                android:contentDescription="@string/info_image" />
+                <ImageView
+                    android:id="@+id/arrow_l_assoc"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:alpha="0.70"
+                    android:src="@drawable/arrow_l_green" />
 
-            <ImageView
-            	android:id="@+id/arrow_r_assoc"
-                android:layout_width="60dp"
-                android:layout_height="60dp"
-                android:layout_gravity="end"
-                android:alpha="0.70"
-                android:src="@drawable/arrow_r_green" />
-        </FrameLayout>
+                <ImageView
+                    android:id="@+id/iconeAdherentAssociationFiche"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:layout_gravity="center_horizontal|center_vertical"
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginTop="5dp"
+                    android:background="@drawable/logo_ad"
+                    android:contentDescription="@string/info_image" />
 
-        <TextView
-            style="?android:listSeparatorTextViewStyle"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="0.1"
-            android:background="@color/VertOms"
-            android:text="Contact"
-            android:textColor="@color/BlackDrawer" />
+                <ImageView
+                    android:id="@+id/arrow_r_assoc"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:layout_gravity="end"
+                    android:alpha="0.70"
+                    android:src="@drawable/arrow_r_green" />
+            </FrameLayout>
 
-        <TextView
-            android:id="@+id/nomContact"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="0.1"
-            android:gravity="center"
-            android:text="Contact"
-            android:textColor="@color/BlackDrawer"
-            android:textSize="15sp"
-            android:textStyle="bold" />
+            <TextView
+                style="?android:listSeparatorTextViewStyle"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:background="@color/VertOms"
+                android:text="Contact"
+                android:textColor="@color/BlackDrawer" />
 
-        <TextView
-            android:id="@+id/telFixContact"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="0.1"
-            android:clickable="true"
-            android:gravity="center"
-            android:textColor="@color/BleuOms"
-            android:textSize="15sp"
-            android:textStyle="bold" />
+            <TextView
+                android:id="@+id/nomContact"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="Contact"
+                android:textColor="@color/BlackDrawer"
+                android:textSize="15sp"
+                android:textStyle="bold" />
 
-        <TextView
-            android:id="@+id/telPortContact"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="0.1"
-            android:clickable="true"
-            android:gravity="center"
-            android:textColor="@color/BleuOms"
-            android:textSize="15sp"
-            android:textStyle="bold" />
+            <TextView
+                android:id="@+id/telFixContact"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:clickable="true"
+                android:gravity="center"
+                android:textColor="@color/BleuOms"
+                android:textSize="15sp"
+                android:textStyle="bold" />
 
-        <TextView
-            android:id="@+id/mailContact"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="0.1"
-            android:gravity="center"
-            android:text="Contact"
-            android:textColor="@color/BlackDrawer"
-            android:textSize="15sp"
-            android:textStyle="bold" />
+            <TextView
+                android:id="@+id/telPortContact"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:clickable="true"
+                android:gravity="center"
+                android:textColor="@color/BleuOms"
+                android:textSize="15sp"
+                android:textStyle="bold" />
 
-        <TextView
-            style="?android:listSeparatorTextViewStyle"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="0.1"
-            android:background="@color/BleuOms"
-            android:text="Horaires"
-            android:textColor="@color/BlackDrawer" />
+            <TextView
+                android:id="@+id/mailContact"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="Contact"
+                android:textColor="@color/BlackDrawer"
+                android:textSize="15sp"
+                android:textStyle="bold" />
+            
+             <TextView
+                style="?android:listSeparatorTextViewStyle"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:background="@color/Rouge1"
+                android:text="Disciplines"
+                android:textColor="@color/BlackDrawer" />
+             
+               <TextView
+                   android:id="@+id/disciplines"
+                   android:layout_width="match_parent"
+                   android:layout_height="0dp"
+                   android:layout_weight="25"
+                   android:gravity="center"
+                   android:textColor="@color/BlackDrawer"
+                   android:textSize="15sp" />
 
-        <ScrollView
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="0.5">
+            <TextView
+                style="?android:listSeparatorTextViewStyle"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:background="@color/BleuOms"
+                android:text="Horaires"
+                android:textColor="@color/BlackDrawer" />
 
             <TextView
                 android:id="@+id/horaire"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
                 android:gravity="center"
                 android:textColor="@color/BlackDrawer"
                 android:textSize="15sp" />
             
-        </ScrollView>
-
-        <TextView
-            style="?android:listSeparatorTextViewStyle"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="0.1"
-            android:background="@color/OrangeOms"
-            android:text="Lieux de pratique"
-            android:textColor="@color/BlackDrawer" />
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="0.2"
-            android:orientation="horizontal" >
+            
 
             <TextView
-                android:id="@+id/lieu_equipement1"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
+                style="?android:listSeparatorTextViewStyle"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
                 android:layout_weight="1"
-                android:gravity="center"
-                android:text="Contact"
-                android:textColor="@color/BlackDrawer"
-                android:textSize="15sp" />
+                android:background="@color/OrangeOms"
+                android:text="Lieux de pratique"
+                android:textColor="@color/BlackDrawer" />
 
-            <Button
-                android:id="@+id/btn_map_1"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_gravity="center"
-                android:layout_weight="0.2"
-                android:background="@drawable/ic_geoloc"
-                android:gravity="center" />
-        </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="2"
+                android:orientation="horizontal" >
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="0.2"
-            android:orientation="horizontal" >
+                <TextView
+                    android:id="@+id/lieu_equipement1"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="Contact"
+                    android:textColor="@color/BlackDrawer"
+                    android:textSize="15sp" />
+
+                <Button
+                    android:id="@+id/btn_map_1"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_gravity="center"
+                    android:layout_weight="0.08"
+                    android:background="@drawable/ic_geoloc"
+                    android:gravity="center" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="2"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:id="@+id/lieu_equipement2"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="Contact"
+                    android:textColor="@color/BlackDrawer"
+                    android:textSize="15sp" />
+
+                <Button
+                    android:id="@+id/btn_map_2"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_gravity="center"
+                    android:layout_weight="0.08"
+                    android:background="@drawable/ic_geoloc"
+                    android:gravity="center" />
+
+            </LinearLayout>
 
             <TextView
-                android:id="@+id/lieu_equipement2"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
+                android:paddingTop="30dp"
+                android:id="@+id/btn_info_site"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:clickable="true"
                 android:gravity="center"
-                android:text="Contact"
-                android:textColor="@color/BlackDrawer"
-                android:textSize="15sp" />
-
-            <Button
-                android:id="@+id/btn_map_2"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_gravity="center"
-                android:layout_weight="0.2"
-                android:background="@drawable/ic_geoloc"
-                android:gravity="center" />
+                android:onClick="onGoSite"
+                android:text="@string/goSite"
+                android:textColor="@color/BleuOms" />
         </LinearLayout>
-
-        <TextView
-            android:id="@+id/btn_info_site"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="0.1"
-            android:clickable="true"
-            android:gravity="center"
-            android:onClick="onGoSite"
-            android:text="@string/goSite"
-            android:textColor="@color/BleuOms" />
-    </LinearLayout>
+    </ScrollView>
 
     <LinearLayout
         android:id="@+id/layout_assoc_pas_adherente"
