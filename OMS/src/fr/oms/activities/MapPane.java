@@ -11,7 +11,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
-import android.widget.Toast;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -107,31 +106,13 @@ public class MapPane extends Activity implements OnMapReadyCallback, LocationLis
 
 	@Override
 	public void onStatusChanged(String provider, int status, Bundle extras) {
-		String newStatus = "";
-		switch (status) {
-		case LocationProvider.OUT_OF_SERVICE:
-			newStatus = "OUT_OF_SERVICE";
-			break;
-		case LocationProvider.TEMPORARILY_UNAVAILABLE:
-			newStatus = "TEMPORARILY_UNAVAILABLE";
-			break;
-		case LocationProvider.AVAILABLE:
-			newStatus = "AVAILABLE";
-			break;
-		}
-		String msg = String.format(getResources().getString(R.string.provider_disabled), provider, newStatus);
-		Toast.makeText(this, msg, Toast.LENGTH_SHORT).show();
 	}
 
 	@Override
 	public void onProviderEnabled(String provider) {
-		String msg = String.format(getResources().getString(R.string.provider_enabled), provider);
-		Toast.makeText(this, msg, Toast.LENGTH_SHORT).show();
 	}
 
 	@Override
 	public void onProviderDisabled(String provider) {
-		String msg = String.format(getResources().getString(R.string.provider_disabled), provider);
-		Toast.makeText(this, msg, Toast.LENGTH_SHORT).show();
 	}
 }

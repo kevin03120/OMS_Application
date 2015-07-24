@@ -25,6 +25,7 @@
 	        android:layout_height="50dp"
 	        android:gravity="center_vertical"
 	        android:text="@string/association"
+        	android:textSize="12sp"
 	        android:textColor="@color/NoirOms"
 	        android:textStyle="bold" />
 	    

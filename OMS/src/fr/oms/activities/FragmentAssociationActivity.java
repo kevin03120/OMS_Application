@@ -10,7 +10,6 @@ import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
-import android.util.Log;
 import fr.oms.fragments.FragmentAssociation;
 import fr.oms.metier.Association;
 import fr.oms.metier.Sport;
@@ -113,9 +112,6 @@ public class FragmentAssociationActivity extends FragmentActivity {
 						}
 					}
 				}
-			}
-			for(Association a : assocs){
-				Log.i("vuList", a.getNom());
 			}
 			return assocs;
 		}

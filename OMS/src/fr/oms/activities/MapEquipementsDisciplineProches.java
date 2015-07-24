@@ -2,7 +2,6 @@ package fr.oms.activities;
 
 import android.app.Activity;
 import android.os.Bundle;
-import android.util.Log;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -22,7 +21,6 @@ public class MapEquipementsDisciplineProches extends Activity implements OnMapRe
 	
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-    	Log.v("test", "t0");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.map_activity);
         
