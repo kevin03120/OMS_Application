@@ -138,7 +138,7 @@ public class FragmentAssociation extends Fragment {
 		arrow_left = (ImageView)v.findViewById(R.id.arrow_l_assoc);
 		arrow_right = (ImageView)v.findViewById(R.id.arrow_r_assoc);
 		disciplines=(TextView)v.findViewById(R.id.disciplines);
-		
+
 		onGoSite();
 
 	}
@@ -308,13 +308,12 @@ public class FragmentAssociation extends Fragment {
 		String sports="";
 		for(Sport s: association.getListeSport()){
 			sports+=s.getNom()+", ";
-			}
+		}
 		if(sports.length()>0){
 			sports=sports.substring(0, sports.length()-2);
 		}
-		
 		disciplines.setText(sports);
-		
+
 	}
 
 	public void clicTelFix(){
