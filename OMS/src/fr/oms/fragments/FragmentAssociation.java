@@ -7,8 +7,13 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.NavUtils;
 import android.support.v4.view.ViewPager;
+import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -47,7 +52,7 @@ public class FragmentAssociation extends Fragment {
 	private Personne pers;
 	private ImageView arrow_left;
 	private ImageView arrow_right;
-	
+
 	public static FragmentAssociation newInstance(Association a) {
 		Bundle extras = new Bundle();
 		extras.putInt("id", a.getId());
@@ -55,26 +60,33 @@ public class FragmentAssociation extends Fragment {
 		fragment.setArguments(extras);
 		return fragment;
 	}
-	
+
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-		 View v = inflater.inflate(R.layout.association, container, false);
-			for(Association a : Manager.getInstance().getListeAssociation()){
-				if(a.getId() == getArguments().getInt("id")){
-					association = a;
-				}
+		View v = inflater.inflate(R.layout.association, container, false);
+		for(Association a : Manager.getInstance().getListeAssociation()){
+			if(a.getId() == getArguments().getInt("id")){
+				association = a;
 			}
-			recupererToutesViews(v);
-			placeDonneeDansView();
-			getActivity().setTitle(getResources().getString(R.string.titreDetailAssociation));
-			clicFlecheLeft();
-			clicFlecheRight();
-			return v;
+		}
+		recupererToutesViews(v);
+		placeDonneeDansView();
+		getActivity().setTitle(getResources().getString(R.string.titreDetailAssociation));
+		clicFlecheLeft();
+		clicFlecheRight();
+		return v;
 	}
+
+	@Override
+	public void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+	}
+
 	
+
 	public void clicFlecheLeft(){
 		arrow_left.setOnClickListener(new View.OnClickListener() {
-			
+
 			@Override
 			public void onClick(View v) {
 				ViewPager view = FragmentAssociationActivity.fragmentAssociationActivity.getPager();
@@ -82,19 +94,21 @@ public class FragmentAssociation extends Fragment {
 			}
 		});
 	}
-	
+
+
+
 	public void clicFlecheRight(){
 		arrow_right.setOnClickListener(new View.OnClickListener() {
-			
+
 			@Override
 			public void onClick(View v) {
 				ViewPager view = FragmentAssociationActivity.fragmentAssociationActivity.getPager();
-				
+
 				view.setCurrentItem(view.getCurrentItem()+1);
 			}
 		});
 	}
-	
+
 	private void recupererToutesViews(View v){
 		nomAssociation = (TextView)v.findViewById(R.id.nomAssociation);
 		nomContact = (TextView)v.findViewById(R.id.nomContact);
@@ -115,11 +129,11 @@ public class FragmentAssociation extends Fragment {
 		arrow_left = (ImageView)v.findViewById(R.id.arrow_l_assoc);
 		arrow_right = (ImageView)v.findViewById(R.id.arrow_r_assoc);
 		disciplines=(TextView)v.findViewById(R.id.disciplines);
-		
+
 		onGoSite();
-		
+
 	}
-	
+
 	private void changeLayoutSiPasAdherent(){
 		if(!association.isAdherent()){
 			nomAssociation.setVisibility(0);
@@ -130,37 +144,37 @@ public class FragmentAssociation extends Fragment {
 			nomAssocPasAdherente.setText(association.getNom());
 		}
 	}
-	
+
 	private void onMap1(){
 		lieu_map_1.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-            	Equipement equipement = association.getListeEquipement().get(0);
-            	Intent intent = new Intent(getActivity(), MapPane.class);
+			public void onClick(View v) {
+				Equipement equipement = association.getListeEquipement().get(0);
+				Intent intent = new Intent(getActivity(), MapPane.class);
 				intent.putExtra("nom", equipement.getNom());
 				intent.putExtra("latitude", equipement.getGeoloc().getLatitude());
 				intent.putExtra("longitude", equipement.getGeoloc().getLongitude());
 				startActivity(intent);
-            }
-        });
+			}
+		});
 	}
-	
+
 	private void onMap2(){
 		lieu_map_2.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-            	Equipement equipement = association.getListeEquipement().get(1);
-            	Intent intent = new Intent(getActivity(), MapPane.class);
+			public void onClick(View v) {
+				Equipement equipement = association.getListeEquipement().get(1);
+				Intent intent = new Intent(getActivity(), MapPane.class);
 				intent.putExtra("nom", equipement.getNom());
 				intent.putExtra("latitude", equipement.getGeoloc().getLatitude());
 				intent.putExtra("longitude", equipement.getGeoloc().getLongitude());
 				startActivity(intent);
-            }
-        });
+			}
+		});
 	}
-	
+
 	public void onGoSite(){
 		btnSite.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-            	String nomAssoc = association.getNom();
+			public void onClick(View v) {
+				String nomAssoc = association.getNom();
 				nomAssoc = nomAssoc.replace("Œ", "OE");
 				nomAssoc = nomAssoc.replace("AS ", "");
 				nomAssoc = nomAssoc.replace(" A ", "-");
@@ -178,10 +192,10 @@ public class FragmentAssociation extends Fragment {
 				Intent i = new Intent(Intent.ACTION_VIEW);
 				i.setData(Uri.parse(url));
 				startActivity(i);
-            }
-        });
+			}
+		});
 	}
-	
+
 	private void placeDonneeDansView(){
 		nomAssociation.setText(association.getNom());
 		pers = association.getContact();
@@ -285,18 +299,18 @@ public class FragmentAssociation extends Fragment {
 		String sports="";
 		for(Sport s: association.getListeSport()){
 			sports+=s.getNom()+", ";
-			}
+		}
 		if(sports.length()>0){
 			sports=sports.substring(0, sports.length()-2);
 		}
-		
+
 		disciplines.setText(sports);
-		
+
 	}
 
 	public void clicTelFix(){
 		telFixContact.setOnClickListener(new View.OnClickListener() {
-			
+
 			@Override
 			public void onClick(View v) {
 				AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(getActivity());
@@ -320,10 +334,10 @@ public class FragmentAssociation extends Fragment {
 			}
 		});
 	}
-	
+
 	public void clicTelPortable(){
 		telPortContact.setOnClickListener(new View.OnClickListener() {
-			
+
 			@Override
 			public void onClick(View v) {
 				AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(getActivity());
@@ -347,7 +361,7 @@ public class FragmentAssociation extends Fragment {
 			}
 		});
 	}
-	
+
 	public ImageView getIconeAdherent() {
 		return iconeAdherent;
 	}

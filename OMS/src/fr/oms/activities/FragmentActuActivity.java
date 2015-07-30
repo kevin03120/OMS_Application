@@ -13,6 +13,7 @@ import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.view.MenuItem;
 
 public class FragmentActuActivity extends FragmentActivity {
 	/**
@@ -32,6 +33,15 @@ public class FragmentActuActivity extends FragmentActivity {
 				new ColorDrawable(getResources().getColor(R.color.BleuOms)));
         int pos = getIntent().getExtras().getInt("position");
         initPager(pos);
+        getActionBar().setDisplayHomeAsUpEnabled(true);
+		getActionBar().setDisplayShowHomeEnabled(true);
+		
+		
+	}
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		onBackPressed();
+		return super.onOptionsItemSelected(item);
 	}
 
 	public ViewPager getPager() {

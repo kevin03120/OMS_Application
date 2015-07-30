@@ -12,6 +12,7 @@ import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.view.MenuItem;
 
 public class FragmentEquipementActivity extends FragmentActivity {
 
@@ -47,6 +48,15 @@ public class FragmentEquipementActivity extends FragmentActivity {
         	}
         }
         pager.setCurrentItem(position);
+        getActionBar().setDisplayHomeAsUpEnabled(true);
+		getActionBar().setDisplayShowHomeEnabled(true);
+		
+		
+	}
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		onBackPressed();
+		return super.onOptionsItemSelected(item);
 	}
 	
 	public ViewPager getPager() {

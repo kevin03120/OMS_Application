@@ -10,6 +10,7 @@ import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.view.MenuItem;
 import fr.oms.fragments.FragmentAssociation;
 import fr.oms.metier.Association;
 import fr.oms.metier.Sport;
@@ -48,12 +49,23 @@ public class FragmentAssociationActivity extends FragmentActivity {
 			}
 		}
 		pager.setCurrentItem(position);
+		
+		getActionBar().setDisplayHomeAsUpEnabled(true);
+		getActionBar().setDisplayShowHomeEnabled(true);
+		
+		
 	}
-
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		onBackPressed();
+		return super.onOptionsItemSelected(item);
+	}
 	public ViewPager getPager() {
 		return pager;
 	}
 
+	
+	
 	private class MyPagerAdapter extends FragmentPagerAdapter {
 
 		private List<Association> associations;
@@ -125,6 +137,8 @@ public class FragmentAssociationActivity extends FragmentActivity {
 			return associations;
 		}
 
+	
+	
 		public void setAssociations(List<Association> associations) {
 			this.associations = associations;
 		}       
