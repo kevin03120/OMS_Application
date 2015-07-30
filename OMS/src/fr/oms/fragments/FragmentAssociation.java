@@ -10,8 +10,13 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.NavUtils;
 import android.support.v4.view.ViewPager;
+import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -50,6 +55,8 @@ public class FragmentAssociation extends Fragment {
 	private Personne pers;
 	private ImageView arrow_left;
 	private ImageView arrow_right;
+	private ImageView arrow_left_pas_adherent;
+	private ImageView arrow_right_pas_adherent;
 
 	public static FragmentAssociation newInstance(Association a) {
 		Bundle extras = new Bundle();
@@ -72,6 +79,8 @@ public class FragmentAssociation extends Fragment {
 		getActivity().setTitle(getResources().getString(R.string.titreDetailAssociation));
 		clicFlecheLeft();
 		clicFlecheRight();
+		clicFlecheLeftPasAdher();
+		clicFlecheRightPasAdher();
 		return v;
 	}
 
@@ -87,6 +96,7 @@ public class FragmentAssociation extends Fragment {
 
 	public void clicFlecheLeft(){
 		arrow_left.setOnClickListener(new View.OnClickListener() {
+
 			@Override
 			public void onClick(View v) {
 				List<Association> assocs = rendNouvelleListe();
@@ -100,14 +110,48 @@ public class FragmentAssociation extends Fragment {
 			}
 		});
 	}
+	
+	public void clicFlecheLeftPasAdher(){
+		arrow_left_pas_adherent.setOnClickListener(new View.OnClickListener() {
 
+			@Override
+			public void onClick(View v) {
+				List<Association> assocs = Manager.getInstance().getListeAssociation();
+				ViewPager view = FragmentAssociationActivity.fragmentAssociationActivity.getPager();
+				if(assocs.indexOf(association) != 0){
+					view.setCurrentItem(view.getCurrentItem()-1);
+				}
+				else{
+					view.setCurrentItem(assocs.size()-1);
+				}
+			}
+		});
+	}
+	
 	public void clicFlecheRight(){
 		arrow_right.setOnClickListener(new View.OnClickListener() {
 
 			@Override
 			public void onClick(View v) {
-				List<Association> assocs = rendNouvelleListe();
 				ViewPager view = FragmentAssociationActivity.fragmentAssociationActivity.getPager();
+				List<Association> assocs = rendNouvelleListe();
+				if(assocs.indexOf(association) != assocs.size()-1){
+					view.setCurrentItem(view.getCurrentItem()+1);
+				}
+				else{
+					view.setCurrentItem(0);
+				}
+			}
+		});
+	}
+	
+	public void clicFlecheRightPasAdher(){
+		arrow_right_pas_adherent.setOnClickListener(new View.OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				ViewPager view = FragmentAssociationActivity.fragmentAssociationActivity.getPager();
+				List<Association> assocs = Manager.getInstance().getListeAssociation();
 				if(assocs.indexOf(association) != assocs.size()-1){
 					view.setCurrentItem(view.getCurrentItem()+1);
 				}
@@ -137,6 +181,8 @@ public class FragmentAssociation extends Fragment {
 		infoAssocNonAdherente = (TextView)v.findViewById(R.id.info_assoc_non_adherente);
 		arrow_left = (ImageView)v.findViewById(R.id.arrow_l_assoc);
 		arrow_right = (ImageView)v.findViewById(R.id.arrow_r_assoc);
+		arrow_left_pas_adherent = (ImageView)v.findViewById(R.id.arrow_l_assoc_pas_adher);
+		arrow_right_pas_adherent = (ImageView)v.findViewById(R.id.arrow_r_assoc_pas_adher);
 		disciplines=(TextView)v.findViewById(R.id.disciplines);
 
 		onGoSite();
@@ -309,6 +355,7 @@ public class FragmentAssociation extends Fragment {
 		for(Sport s: association.getListeSport()){
 			sports+=s.getNom()+", ";
 		}
+		//
 		if(sports.length()>0){
 			sports=sports.substring(0, sports.length()-2);
 		}

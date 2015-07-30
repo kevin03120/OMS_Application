@@ -76,7 +76,7 @@ public class MainActivity extends FragmentActivity implements NavigationDrawerFr
 		case 0:
 			fragment = new AccueilFragment();
 			getActionBar().setBackgroundDrawable(
-					new ColorDrawable(getResources().getColor(R.color.Rouge1)));
+					new ColorDrawable(getResources().getColor(R.color.BleuOms)));
 			break;
 
 		case 1:
