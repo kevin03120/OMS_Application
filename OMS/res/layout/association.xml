@@ -72,6 +72,7 @@
                 android:id="@+id/nomContact"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
+                android:layout_marginTop="10dp"
                 android:layout_weight="1"
                 android:gravity="center"
                 android:text="Contact"
@@ -105,30 +106,33 @@
                 android:id="@+id/mailContact"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
+                android:layout_marginBottom="10dp"
                 android:layout_weight="1"
                 android:gravity="center"
                 android:text="Contact"
                 android:textColor="@color/BlackDrawer"
                 android:textSize="15sp"
                 android:textStyle="bold" />
-            
-             <TextView
+
+            <TextView
                 style="?android:listSeparatorTextViewStyle"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="1"
-                android:background="@color/Rouge1"
+                android:background="@color/JauneFlat"
                 android:text="Disciplines"
                 android:textColor="@color/BlackDrawer" />
-             
-               <TextView
-                   android:id="@+id/disciplines"
-                   android:layout_width="match_parent"
-                   android:layout_height="0dp"
-                   android:layout_weight="25"
-                   android:gravity="center"
-                   android:textColor="@color/BlackDrawer"
-                   android:textSize="15sp" />
+
+            <TextView
+                android:id="@+id/disciplines"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_weight="25"
+                android:gravity="center"
+                android:textColor="@color/BlackDrawer"
+                android:textSize="15sp" />
 
             <TextView
                 style="?android:listSeparatorTextViewStyle"
@@ -143,12 +147,12 @@
                 android:id="@+id/horaire"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="10dp"
                 android:layout_weight="1"
                 android:gravity="center"
                 android:textColor="@color/BlackDrawer"
                 android:textSize="15sp" />
-            
-            
 
             <TextView
                 style="?android:listSeparatorTextViewStyle"
@@ -162,6 +166,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
+                android:layout_marginTop="10dp"
                 android:layout_weight="2"
                 android:orientation="horizontal" >
 
@@ -180,7 +185,6 @@
                     android:layout_width="50dp"
                     android:layout_height="50dp"
                     android:layout_gravity="center"
-                    android:layout_weight="0.08"
                     android:background="@drawable/ic_geoloc"
                     android:gravity="center" />
             </LinearLayout>
@@ -188,6 +192,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
+                android:layout_marginBottom="10dp"
                 android:layout_weight="2"
                 android:orientation="horizontal" >
 
@@ -206,14 +211,11 @@
                     android:layout_width="50dp"
                     android:layout_height="50dp"
                     android:layout_gravity="center"
-                    android:layout_weight="0.08"
                     android:background="@drawable/ic_geoloc"
                     android:gravity="center" />
-
             </LinearLayout>
 
             <TextView
-                android:paddingTop="30dp"
                 android:id="@+id/btn_info_site"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -221,6 +223,7 @@
                 android:clickable="true"
                 android:gravity="center"
                 android:onClick="onGoSite"
+                android:paddingTop="30dp"
                 android:text="@string/goSite"
                 android:textColor="@color/BleuOms" />
         </LinearLayout>

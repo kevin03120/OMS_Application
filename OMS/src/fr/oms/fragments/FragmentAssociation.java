@@ -1,6 +1,9 @@
 package fr.oms.fragments;
 
 
+import java.util.ArrayList;
+import java.util.List;
+
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -77,34 +80,46 @@ public class FragmentAssociation extends Fragment {
 		return v;
 	}
 
-	@Override
-	public void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
+	private List<Association> rendNouvelleListe(){
+		List<Association> assocs = new ArrayList<Association>();
+		for(Association a : Manager.getInstance().getListeAssociation()){
+			if(a.isAdherent()){
+				assocs.add(a);
+			}
+		}
+		return assocs;
 	}
-
-	
 
 	public void clicFlecheLeft(){
 		arrow_left.setOnClickListener(new View.OnClickListener() {
 
 			@Override
 			public void onClick(View v) {
+				List<Association> assocs = rendNouvelleListe();
 				ViewPager view = FragmentAssociationActivity.fragmentAssociationActivity.getPager();
-				view.setCurrentItem(view.getCurrentItem()-1);
+				if(assocs.indexOf(association) != 0){
+					view.setCurrentItem(view.getCurrentItem()-1);
+				}
+				else{
+					view.setCurrentItem(assocs.size()-1);
+				}
 			}
 		});
 	}
-
-
-
 	public void clicFlecheRight(){
 		arrow_right.setOnClickListener(new View.OnClickListener() {
 
 			@Override
 			public void onClick(View v) {
 				ViewPager view = FragmentAssociationActivity.fragmentAssociationActivity.getPager();
-
 				view.setCurrentItem(view.getCurrentItem()+1);
+				List<Association> assocs = rendNouvelleListe();
+				if(assocs.indexOf(association) != assocs.size()-1){
+					view.setCurrentItem(view.getCurrentItem()+1);
+				}
+				else{
+					view.setCurrentItem(0);
+				}
 			}
 		});
 	}

@@ -1,5 +1,7 @@
 package fr.oms.fragments;
 
+import java.util.List;
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -56,8 +58,14 @@ public class FragmentDetailEvenement extends Fragment {
 			
 			@Override
 			public void onClick(View v) {
+				List<Evenement> events = Manager.getInstance().getListEvenements();
 				ViewPager pager = FragmentEventActivity.fragmentEventActivity.getPager();
-				pager.setCurrentItem(pager.getCurrentItem() - 1);
+				if(events.indexOf(evenement) != 0){
+					pager.setCurrentItem(pager.getCurrentItem() - 1);
+				}
+				else{
+					pager.setCurrentItem(events.size() - 1);
+				}
 			}
 		});
 	}
@@ -67,8 +75,14 @@ public class FragmentDetailEvenement extends Fragment {
 			
 			@Override
 			public void onClick(View v) {
+				List<Evenement> events = Manager.getInstance().getListEvenements();
 				ViewPager pager = FragmentEventActivity.fragmentEventActivity.getPager();
-				pager.setCurrentItem(pager.getCurrentItem() + 1);
+				if(events.indexOf(evenement) != events.size()){
+					pager.setCurrentItem(pager.getCurrentItem() + 1);
+				}
+				else{
+					pager.setCurrentItem(0);
+				}
 			}
 		});
 	}
