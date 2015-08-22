@@ -1,8 +1,10 @@
 package fr.oms.fragments;
 
 
+import java.text.Normalizer;
 import java.util.ArrayList;
 import java.util.Locale;
+import java.util.regex.Pattern;
 
 import android.content.Context;
 import android.content.Intent;
@@ -64,7 +66,7 @@ public class FragmentActus extends Fragment{
 			}
 		});
 	}
-
+	
 	private void ajouterRecherche() {
 		editRechercher.addTextChangedListener(new TextWatcher() {
 			@Override

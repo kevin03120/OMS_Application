@@ -233,6 +233,9 @@ public class ParserJson{
 		 else if(nature.equals("Equipement spécialisé")){
 			 return R.drawable.picto_specialise;
 		 }
+		 else if(nature.equals("Ecole")){
+			 return R.drawable.picto_ecole;
+		 }
 		 else{
 			 return 0;
 		 }
