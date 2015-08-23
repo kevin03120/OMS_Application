@@ -1,8 +1,10 @@
 package fr.oms.fragments;
 
 
+import java.text.Normalizer;
 import java.util.ArrayList;
 import java.util.Locale;
+import java.util.regex.Pattern;
 
 import android.content.Context;
 import android.content.Intent;
@@ -70,11 +72,20 @@ public class FragmentListeEquipements extends Fragment{
 		}); 
 	}
 
+	public static String sansAccent(String s) 
+	{
+
+		String strTemp = Normalizer.normalize(s, Normalizer.Form.NFD);
+		Pattern pattern = Pattern.compile("\\p{InCombiningDiacriticalMarks}+");
+		return pattern.matcher(strTemp).replaceAll("");
+	}
+
 	private void ajouterRecherche() {
 		editRechercher.addTextChangedListener(new TextWatcher() {
 			@Override
 			public void onTextChanged(CharSequence s, int start, int before, int count) {
 				ArrayList<Equipement> listeRecherche=new ArrayList<Equipement>();
+				s=sansAccent(s.toString());
 				for(Equipement e : Manager.getInstance().getListeEquipement()){
 					if(e.getNom().toLowerCase(Locale.FRENCH).contains(s.toString().toLowerCase(Locale.FRENCH))){						
 						listeRecherche.add(e);

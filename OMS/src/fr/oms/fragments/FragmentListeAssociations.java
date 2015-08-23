@@ -1,9 +1,11 @@
 package fr.oms.fragments;
 
 
+import java.text.Normalizer;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
+import java.util.regex.Pattern;
 
 import android.content.Context;
 import android.content.Intent;
@@ -92,10 +94,19 @@ public class FragmentListeAssociations extends Fragment {
 		}
 	}
 
+	public static String sansAccent(String s) 
+	{
+
+		String strTemp = Normalizer.normalize(s, Normalizer.Form.NFD);
+		Pattern pattern = Pattern.compile("\\p{InCombiningDiacriticalMarks}+");
+		return pattern.matcher(strTemp).replaceAll("");
+	}
+	
 	private void ajouterRecherche() {
 		editRechercher.addTextChangedListener(new TextWatcher() {
 			@Override
 			public void onTextChanged(CharSequence s, int start, int before, int count) {
+				s = sansAccent(s.toString());
 				ArrayList<Association> listeRecherche=new ArrayList<Association>();
 				if(isFiltreSport){
 					for(Association a : mesAssocFiltreSport){

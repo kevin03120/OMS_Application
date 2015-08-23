@@ -1,7 +1,9 @@
 package fr.oms.fragments;
 
+import java.text.Normalizer;
 import java.util.ArrayList;
 import java.util.Locale;
+import java.util.regex.Pattern;
 
 import android.content.Context;
 import android.content.Intent;
@@ -30,23 +32,23 @@ public class FragmentEvents extends Fragment{
 	private EditText editRechercher;
 	private TextView failRecherche;
 	private EvenementAdapter eventAdapter;
-	
+
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 	}
 
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-    	View v = inflater.inflate(R.layout.fragment_layout, container, false);
-        listEvenements = (ListView)v.findViewById(R.id.listActualiteEvenement);
-        editRechercher = (EditText)v.findViewById(R.id.rechercheActuEvent);
-        failRecherche = (TextView)v.findViewById(R.id.failRecherche);
-        editRechercher.setHint(getActivity().getResources().getString(R.string.recherche_event));
-        eventAdapter = new EvenementAdapter(getActivity(), 0, Manager.getInstance().getListEvenements());
-        listEvenements.setAdapter(eventAdapter);
-        touchEvent();
-        ajouterRecherche();
+	@Override
+	public View onCreateView(LayoutInflater inflater, ViewGroup container,
+			Bundle savedInstanceState) {
+		View v = inflater.inflate(R.layout.fragment_layout, container, false);
+		listEvenements = (ListView)v.findViewById(R.id.listActualiteEvenement);
+		editRechercher = (EditText)v.findViewById(R.id.rechercheActuEvent);
+		failRecherche = (TextView)v.findViewById(R.id.failRecherche);
+		editRechercher.setHint(getActivity().getResources().getString(R.string.recherche_event));
+		eventAdapter = new EvenementAdapter(getActivity(), 0, Manager.getInstance().getListEvenements());
+		listEvenements.setAdapter(eventAdapter);
+		touchEvent();
+		ajouterRecherche();
 		ajouterFocusChangedListener();
 		return v;
 	}
@@ -115,9 +117,9 @@ public class FragmentEvents extends Fragment{
 			}
 		}); 
 	}
-	
-    private void touchEvent(){
-    	listEvenements.setOnItemClickListener(new ListView.OnItemClickListener(){
+
+	private void touchEvent(){
+		listEvenements.setOnItemClickListener(new ListView.OnItemClickListener(){
 			@Override
 			public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 				Evenement event = Manager.getInstance().getListEvenements().get(position);
