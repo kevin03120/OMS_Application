@@ -2,23 +2,25 @@ package fr.oms.fragments;
 
 import java.util.List;
 
-import fr.oms.activities.FragmentActuActivity;
-import fr.oms.activities.FragmentAssociationActivity;
-import fr.oms.activities.R;
-import fr.oms.metier.Actualite;
-import fr.oms.modele.DownloadImageTask;
-import fr.oms.modele.Manager;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 import android.text.Html;
+import android.text.Spanned;
 import android.text.method.LinkMovementMethod;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import fr.oms.activities.FragmentActuActivity;
+import fr.oms.activities.FragmentAssociationActivity;
+import fr.oms.activities.R;
+import fr.oms.dataloader.URLImageParser;
+import fr.oms.metier.Actualite;
+import fr.oms.modele.DownloadImageTask;
+import fr.oms.modele.Manager;
 
 public class FragmentDetailActualite extends Fragment {
 
@@ -90,7 +92,13 @@ public class FragmentDetailActualite extends Fragment {
 		image = (ImageView)v.findViewById(R.id.imgActu);
 		new DownloadImageTask(image).execute(getActualite().getLienImage()+"=?reqwidth=200");
 		TextView txtDetailActu = (TextView)v.findViewById(R.id.txtDetailActu);
-		txtDetailActu.setText(Html.fromHtml(getActualite().getDescription()));
+		String textHtml = getActualite().getDescription();
+		
+		URLImageParser p = new URLImageParser(txtDetailActu, this.getActivity());
+		Spanned htmlSpan = Html.fromHtml(textHtml, p, null);
+		
+		txtDetailActu.setText(htmlSpan);
+		
 		txtDetailActu.setMovementMethod(LinkMovementMethod.getInstance());
 		TextView txtAssoc = (TextView)v.findViewById(R.id.txtAssociationConcerne);
 		TextView txtPasAssoc = (TextView)v.findViewById(R.id.txtPasAssocActu);
